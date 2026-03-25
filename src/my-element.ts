@@ -4,7 +4,8 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import {LitElement, html, css} from 'lit';
+import {LitElement, html, css, TemplateResult} from 'lit';
+import {sharedStyles} from './styles/shared-styles.js';
 import {customElement, property} from 'lit/decorators.js';
 
 /**
@@ -16,14 +17,17 @@ import {customElement, property} from 'lit/decorators.js';
  */
 @customElement('my-element')
 export class MyElement extends LitElement {
-  static override styles = css`
-    :host {
-      display: block;
-      border: solid 1px gray;
-      padding: 16px;
-      max-width: 800px;
-    }
-  `;
+  static override styles = [
+    sharedStyles,
+    css`
+      :host {
+        display: block;
+        border: solid 1px gray;
+        padding: 16px;
+        max-width: 800px;
+      }
+    `,
+  ];
 
   /**
    * The name to say "Hello" to.
@@ -37,17 +41,20 @@ export class MyElement extends LitElement {
   @property({type: Number})
   count = 0;
 
-  override render() {
+  override render(): TemplateResult<1> {
     return html`
       <h1>${this.sayHello(this.name)}!</h1>
-      <button @click=${this._onClick} part="button">
+      <button
+        @click=${this._onClick}
+        part="button"
+      >
         Click Count: ${this.count}
       </button>
       <slot></slot>
     `;
   }
 
-  private _onClick() {
+  private _onClick(): void {
     this.count++;
     this.dispatchEvent(new CustomEvent('count-changed'));
   }

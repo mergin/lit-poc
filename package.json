@@ -1,5 +1,5 @@
 {
-  "name": "@lit/lit-starter-ts",
+  "name": "lit-poc",
   "private": true,
   "version": "2.0.3",
   "description": "A simple web component",
@@ -10,8 +10,9 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "clean": "rimraf my-element.{d.ts,d.ts.map,js,js.map} test/my-element.{d.ts,d.ts.map,js,js.map} test/my-element_test.{d.ts,d.ts.map,js,js.map}",
+    "rebuild": "npm run clean && rm -rf node_modules && npm i && npm run build",
     "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
-    "lint:eslint": "eslint 'src/**/*.ts'",
+    "lint:eslint": "eslint \"src/**/*.ts\"",
     "lint:lit-analyzer": "lit-analyzer",
     "format": "prettier \"**/*.{cjs,html,js,json,md,ts}\" --ignore-path ./.eslintignore --write",
     "docs": "npm run docs:clean && npm run build && npm run analyze && npm run docs:build && npm run docs:assets && npm run docs:gen",
@@ -41,30 +42,30 @@
   "author": "Google LLC",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "lit": "^3.2.0"
+    "lit": "^3.3.2"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.1",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
-    "@custom-elements-manifest/analyzer": "^0.6.3",
+    "@11ty/eleventy": "^1.0.2",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "@custom-elements-manifest/analyzer": "^0.6.9",
     "@open-wc/testing": "^4.0.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-node-resolve": "^15.3.1",
     "@rollup/plugin-replace": "^5.0.7",
     "@rollup/plugin-terser": "^0.4.4",
-    "@typescript-eslint/eslint-plugin": "^5.25.0",
-    "@typescript-eslint/parser": "^5.25.0",
-    "@web/dev-server": "^0.1.31",
-    "@web/dev-server-legacy": "^1.0.0",
-    "@web/test-runner": "^0.15.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "@web/dev-server": "^0.1.38",
+    "@web/dev-server-legacy": "^1.0.3",
+    "@web/test-runner": "^0.15.3",
     "@web/test-runner-playwright": "^0.9.0",
     "@webcomponents/webcomponentsjs": "^2.8.0",
-    "eslint": "^8.15.0",
+    "eslint": "^8.57.1",
     "lit-analyzer": "^1.2.1",
-    "prettier": "^2.6.2",
+    "prettier": "^2.8.8",
     "rimraf": "^3.0.2",
     "rollup": "^4.18.0",
     "rollup-plugin-summary": "^2.0.1",
-    "typescript": "~5.9.0"
+    "typescript": "~5.9.3"
   },
   "customElements": "custom-elements.json"
 }
