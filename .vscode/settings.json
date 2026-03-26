@@ -5,5 +5,5 @@
     "npx playwright": true,
     "npx lint-staged": true
   },
-  "cSpell.words": ["csspart"]
+  "cSpell.words": ["csspart", "subcomponent"]
 }

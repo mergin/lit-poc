@@ -53,24 +53,23 @@ workspace conventions.
 
 ## Accessibility
 
-- Treat accessibility as a default requirement for all UI changes.
-- Every interactive control (buttons, links, toggles, icon-only actions) must have an accessible name (`aria-label`, `aria-labelledby`, or visible text).
-- Use semantic HTML elements (button, nav, main, header, footer, section, form, etc.) whenever possible.
-- Avoid using non-interactive elements (div, span) as interactive controls; if unavoidable, ensure correct `role` and keyboard support.
-- Ensure all interactive elements are keyboard accessible (tab order, Enter/Space activation, focus management).
-- Provide visible focus indicators for all focusable elements; do not remove outlines unless replaced with an accessible alternative.
-- Use `aria-live` regions for async loading/error states or dynamic content that needs to be announced by screen readers.
-- Ensure all custom components expose their roles, states, and properties via ARIA attributes as needed.
-- Use `aria-disabled` and `disabled` attributes appropriately; ensure disabled controls are not focusable or actionable.
-- Ensure all form fields have associated labels (using `<label for>`, `aria-label`, or `aria-labelledby`).
-- Support labeling and description via `aria-label`, `aria-labelledby`, and `aria-describedby` for custom controls.
-- Ensure all images have meaningful `alt` text; mark decorative images as `aria-hidden="true"` or `role="presentation"`.
-- Avoid using color as the only means of conveying information; provide text or icon alternatives.
-- Ensure sufficient color contrast for text, icons, and UI elements (WCAG AA minimum).
-- Announce validation errors and success states using `aria-live` or inline text.
-- Manage focus appropriately when dialogs, popovers, or overlays open/close (trap focus, return focus on close).
-- Use `role="dialog"`, `aria-modal`, and `aria-labelledby` for modal dialogs.
-- Ensure all components are testable with screen readers and keyboard navigation.
+### Lit Component Accessibility Rules
+
+- Use semantic HTML elements for structure and interaction (button, input, nav, etc.).
+- All interactive controls must have an accessible name (visible text, aria-label, or aria-labelledby).
+- Ensure all controls are keyboard accessible (Tab, Enter, Space, focus order).
+- Provide visible focus indicators for all focusable elements.
+- Use ARIA roles and attributes (role, aria-\*, aria-disabled, aria-checked, etc.) to expose state and structure.
+- Use disabled and aria-disabled appropriately; disabled controls must not be focusable or actionable.
+- All form fields must have associated labels (label, aria-label, or aria-labelledby).
+- Use aria-live regions to announce dynamic content, errors, or status changes.
+- Ensure color contrast meets WCAG AA requirements for all text and UI elements.
+- Never use color as the only means of conveying information; provide icons or text alternatives.
+- All images must have meaningful alt text or be marked decorative (aria-hidden or role="presentation").
+- Announce validation errors and success states using aria-live or inline text.
+- Manage focus for dialogs, overlays, and popovers (trap focus, return focus on close).
+- Use role="dialog", aria-modal, and aria-labelledby for modal dialogs.
+- Expose state changes via strongly-typed custom events for integration with assistive tech.
 - Document accessibility features and keyboard interactions for each component.
 
 ## Code Style — Prettier

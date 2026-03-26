@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>mu-button Demo</title>
+  </head>
+  <body>
+    <a href="/index.html">Back to main</a>
+    <h1>mu-button Demo</h1>
+    <script
+      type="module"
+      src="../src/button/mu-button.js"
+    ></script>
+    <script
+      type="module"
+      src="../src/icon/mu-icon.js"
+    ></script>
+    <mu-button
+      size="medium"
+      color="primary"
+      >Accessible Button</mu-button
+    >
+    <mu-button
+      size="small"
+      color="success"
+      variant="outlined"
+      >Small Outlined</mu-button
+    >
+    <mu-button
+      size="large"
+      color="error"
+      variant="icon"
+    >
+      <mu-icon
+        name="star"
+        color="warning"
+      ></mu-icon>
+    </mu-button>
+  </body>
+</html>
