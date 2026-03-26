@@ -1,154 +1,142 @@
-# LitElement TypeScript starter
+# Lit POC Component Library
 
-This project includes a sample component using LitElement with TypeScript.
+A modern, accessible, and compositional web component library built with Lit 3 and TypeScript, following Minimal/MUI design principles.
 
-This template is generated from the `lit-starter-ts` package in [the main Lit
-repo](https://github.com/lit/lit). Issues and PRs for this template should be
-filed in that repo.
+## Table of Contents
 
-## About this release
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Install dependencies](#install-dependencies)
+  - [Build](#build)
+  - [Development Server](#development-server)
+  - [Testing](#testing)
+  - [Linting & Formatting](#linting--formatting)
+  - [Static Docs Site](#static-docs-site)
+- [Commit Rules](#commit-rules)
+- [Project Structure](#project-structure)
+- [Tooling](#tooling)
+- [Contributing](#contributing)
+- [License](#license)
 
-This is a pre-release of Lit 3.0, the next major version of Lit.
+## Features
 
-Lit 3.0 has very few breaking changes from Lit 2.0:
+- **Lit 3 + TypeScript 5**: Strict, maintainable, and type-safe.
+- **Minimal/MUI-inspired UI**: Shared styles, tokens, and typography for a consistent look.
+- **Compositional Components**: Build complex UIs from small, reusable parts (e.g., `<mu-card>`, `<mu-card-header>`, etc.).
+- **Strict Linting & Formatting**: ESLint, Prettier, and lit-analyzer for code quality.
+- **Automated Testing**: Uses @web/test-runner and @open-wc/testing.
+- **Static Docs Site**: Built with Eleventy for demos and API docs.
+- **Commit Message Linting**: Enforces Conventional Commits via commitlint and Husky.
 
-- Drops support for IE11
-- Published as ES2021
-- Removes a couple of deprecated Lit 1.x APIs
+---
 
-Lit 3.0 should require no changes to upgrade from Lit 2.0 for the vast majority of users. Once the full release is published, most apps and libraries will be able to extend their npm version ranges to include both 2.x and 3.x, like `"^2.7.0 || ^3.0.0"`.
+## Getting Started
 
-Lit 2.x and 3.0 are _interoperable_: templates, base classes, directives, decorators, etc., from one version of Lit will work with those from another.
-
-Please file any issues you find on our [issue tracker](https://github.com/lit/lit/issues).
-
-## Setup
-
-Install dependencies:
+### Install dependencies
 
 ```bash
-npm i
+npm install
 ```
 
-## Build
-
-This sample uses the TypeScript compiler to produce JavaScript that runs in modern browsers.
-
-To build the JavaScript version of your component:
+### Build
 
 ```bash
 npm run build
 ```
 
-To watch files and rebuild when the files are modified, run the following command in a separate shell:
-
-```bash
-npm run build:watch
-```
-
-Both the TypeScript compiler and lit-analyzer are configured to be very strict. You may want to change `tsconfig.json` to make them less strict.
-
-## Testing
-
-This sample uses modern-web.dev's
-[@web/test-runner](https://www.npmjs.com/package/@web/test-runner) for testing. See the
-[modern-web.dev testing documentation](https://modern-web.dev/docs/test-runner/overview) for
-more information.
-
-Tests can be run with the `test` script, which will run your tests against Lit's development mode (with more verbose errors) as well as against Lit's production mode:
-
-```bash
-npm test
-```
-
-For local testing during development, the `test:dev:watch` command will run your tests in Lit's development mode (with verbose errors) on every change to your source files:
-
-```bash
-npm test:watch
-```
-
-Alternatively the `test:prod` and `test:prod:watch` commands will run your tests in Lit's production mode.
-
-## Dev Server
-
-This sample uses modern-web.dev's [@web/dev-server](https://www.npmjs.com/package/@web/dev-server) for previewing the project without additional build steps. Web Dev Server handles resolving Node-style "bare" import specifiers, which aren't supported in browsers. It also automatically transpiles JavaScript and adds polyfills to support older browsers. See [modern-web.dev's Web Dev Server documentation](https://modern-web.dev/docs/dev-server/overview/) for more information.
-
-To run the dev server and open the project in a new browser tab:
+### Development Server
 
 ```bash
 npm run serve
 ```
 
-There is a development HTML file located at `/dev/index.html` that you can view at http://localhost:8000/dev/index.html. Note that this command will serve your code using Lit's development mode (with more verbose errors). To serve your code against Lit's production mode, use `npm run serve:prod`.
+Open [http://localhost:8000/dev/index.html](http://localhost:8000/dev/index.html) to view the demo.
 
-## Editing
+### Testing
 
-If you use VS Code, we highly recommend the [lit-plugin extension](https://marketplace.visualstudio.com/items?itemName=runem.lit-plugin), which enables some extremely useful features for lit-html templates:
+Run all tests (dev and prod modes):
 
-- Syntax highlighting
-- Type-checking
-- Code completion
-- Hover-over docs
-- Jump to definition
-- Linting
-- Quick Fixes
+```bash
+npm test
+```
 
-The project is setup to recommend lit-plugin to VS Code users if they don't already have it installed.
+Watch tests during development:
 
-## Linting
+```bash
+npm run test:watch
+```
 
-Linting of TypeScript files is provided by [ESLint](eslint.org) and [TypeScript ESLint](https://github.com/typescript-eslint/typescript-eslint). In addition, [lit-analyzer](https://www.npmjs.com/package/lit-analyzer) is used to type-check and lint lit-html templates with the same engine and rules as lit-plugin.
+### Linting & Formatting
 
-The rules are mostly the recommended rules from each project, but some have been turned off to make LitElement usage easier. The recommended rules are pretty strict, so you may want to relax them by editing `.eslintrc.json` and `tsconfig.json`.
-
-To lint the project run:
+Check code quality and auto-fix issues:
 
 ```bash
 npm run lint
+npm run format
 ```
 
-## Formatting
+### Static Docs Site
 
-[Prettier](https://prettier.io/) is used for code formatting. It has been pre-configured according to the Lit's style. You can change this in `.prettierrc.json`.
-
-Prettier has not been configured to run when committing files, but this can be added with Husky and `pretty-quick`. See the [prettier.io](https://prettier.io/) site for instructions.
-
-## Static Site
-
-This project includes a simple website generated with the [eleventy](https://11ty.dev) static site generator and the templates and pages in `/docs-src`. The site is generated to `/docs` and intended to be checked in so that GitHub pages can serve the site [from `/docs` on the main branch](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
-
-To enable the site go to the GitHub settings and change the GitHub Pages &quot;Source&quot; setting to &quot;main branch /docs folder&quot;.</p>
-
-To build the site, run:
+Build and serve the documentation:
 
 ```bash
 npm run docs
-```
-
-To serve the site locally, run:
-
-```bash
 npm run docs:serve
 ```
 
-To watch the site files, and re-build automatically, run:
+---
 
-```bash
-npm run docs:gen:watch
+## Commit Rules
+
+This project enforces [Conventional Commits](https://www.conventionalcommits.org/) using commitlint and Husky.
+
+- **Pre-commit**: Runs Prettier, ESLint, and tests on staged files.
+- **Commit message**: Must follow the format `type(scope): subject`, e.g.:
+
+```text
+feat(card): add header slot to card component
+fix: correct button alignment in mu-card-actions
 ```
 
-The site will usually be served at http://localhost:8000.
+Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
 
-**Note**: The project uses Rollup to bundle and minify the source code for the docs site and not to publish to NPM. For bundling and minification, check the [Bundling and minification](#bundling-and-minification) section.
+If your commit message does not follow the rules, the commit will be rejected.
 
-## Bundling and minification
+---
 
-As stated in the [static site generation](#static-site) section, the bundling and minification setup in the Rollup configuration in this project is there specifically for the docs generation.
+## Project Structure
 
-We recommend publishing components as unoptimized JavaScript modules and performing build-time optimizations at the application level. This gives build tools the best chance to deduplicate code, remove dead code, and so on.
+- `src/` — Source code for all components and shared styles.
+- `dev/` — Demo HTML for local development.
+- `test/` — Test output and helpers.
+- `docs/` — Static documentation site (generated).
+- `.husky/` — Git hooks for linting, testing, and commit message checks.
 
-Please check the [Publishing best practices](https://lit.dev/docs/tools/publishing/#publishing-best-practices) for information on publishing reusable Web Components, and [Build for production](https://lit.dev/docs/tools/production/) for building application projects that include LitElement components, on the Lit site.
+---
 
-## More information
+## Tooling
 
-See [Get started](https://lit.dev/docs/getting-started/) on the Lit site for more information.
+- **Linting**: ESLint, lit-analyzer
+- **Formatting**: Prettier
+- **Pre-commit hooks**: Husky + lint-staged
+- **Commit message linting**: commitlint
+- **Testing**: @web/test-runner, @open-wc/testing
+- **Docs**: Eleventy
+
+---
+
+## Contributing
+
+1. Create feature branches with descriptive names.
+2. Write clear, conventional commit messages.
+3. Ensure all lint, format, and tests pass before pushing.
+
+---
+
+## License
+
+BSD-3-Clause (c) Google LLC
+
+---
+
+Let me know if you want to add usage examples, API docs, or further customization!

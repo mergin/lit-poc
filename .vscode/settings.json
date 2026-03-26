@@ -2,7 +2,8 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "chat.tools.terminal.autoApprove": {
-    "npx playwright": true
+    "npx playwright": true,
+    "npx lint-staged": true
   },
   "cSpell.words": ["csspart"]
 }
