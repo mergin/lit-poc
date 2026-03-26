@@ -9,3 +9,8 @@ my-element.d.ts
 my-element.d.ts.map
 # only generated for size check
 my-element.bundled.js
+mu-card.js
+mu-card.js.map
+mu-card.d.ts
+mu-card.d.ts.map
+styles/

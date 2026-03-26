@@ -10,6 +10,10 @@
       type="module"
       src="../my-element.js"
     ></script>
+    <script
+      type="module"
+      src="../mu-card.js"
+    ></script>
     <style>
       p {
         border: solid 1px blue;
@@ -21,5 +25,17 @@
     <my-element>
       <p>This is child content</p>
     </my-element>
+
+    <mu-card>
+      <mu-card-header
+        slot="header"
+        title="Card Title"
+      ></mu-card-header>
+      <mu-card-content> Main content goes here. </mu-card-content>
+      <mu-card-actions slot="actions">
+        <button>OK</button>
+        <button>Cancel</button>
+      </mu-card-actions>
+    </mu-card>
   </body>
 </html>
