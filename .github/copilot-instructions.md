@@ -37,6 +37,15 @@ workspace conventions.
 - Organize types and interfaces in dedicated files for large components or shared types.
 - Document all public/protected APIs, events, and types with concise JSDoc.
 
+## Test File Organization and Types
+
+- All component test files must be placed inside their respective component folder under `src/`, in a subfolder named `_tests` (e.g., `src/button/_tests/`).
+- Each component must have three types of tests, each in a separate file:
+  - `*.unit.test.ts` for unit tests (logic, class, methods)
+  - `*.render.test.ts` for render tests (DOM, template, rendering)
+  - `*.e2e.test.ts` for end-to-end tests (integration, accessibility, user flows)
+- No test files should exist outside a `_tests` folder within a component directory.
+
 ## Testing — AAA Pattern
 
 - All tests must follow the Arrange-Act-Assert (AAA) pattern for clarity and maintainability.

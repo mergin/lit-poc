@@ -5,6 +5,7 @@
  */
 
 import {legacyPlugin} from '@web/dev-server-legacy';
+import {esbuildPlugin} from '@web/dev-server-esbuild';
 import {playwrightLauncher} from '@web/test-runner-playwright';
 
 const mode = process.env.MODE || 'dev';
@@ -85,7 +86,7 @@ try {
 // https://modern-web.dev/docs/test-runner/cli-and-configuration/
 export default {
   rootDir: '.',
-  files: ['./test/**/*_test.js'],
+  files: ['dist/test/*/*.js'],
   nodeResolve: {exportConditions: mode === 'dev' ? ['development'] : []},
   preserveSymlinks: true,
   browsers: commandLineBrowsers ?? Object.values(browsers),
@@ -97,6 +98,7 @@ export default {
     },
   },
   plugins: [
+    esbuildPlugin(),
     // Detect browsers without modules (e.g. IE11) and transform to SystemJS
     // (https://modern-web.dev/docs/dev-server/plugins/legacy/).
     legacyPlugin({

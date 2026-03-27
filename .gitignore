@@ -1,6 +1,7 @@
 /node_modules/
 /lib/
 /test/
+/dist/
 custom-elements.json
 # top level source
 my-element.js
@@ -14,7 +15,8 @@ src/**/*.js
 src/**/*.js.map
 src/**/*.js.map
 src/**/*.d.*
-avatar/
-button/
-card/
-icon/
+
+/avatar/
+/button/
+/card/
+/icon/
