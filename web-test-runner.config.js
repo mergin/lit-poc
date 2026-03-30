@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /**
  * @license
  * Copyright 2021 Google LLC
@@ -93,7 +94,7 @@ export default {
   testFramework: {
     // https://mochajs.org/api/mocha
     config: {
-      ui: 'tdd',
+      ui: 'bdd', // switched from 'tdd' to 'bdd' to support describe/it
       timeout: '60000',
     },
   },

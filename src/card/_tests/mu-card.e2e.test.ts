@@ -1,15 +1,19 @@
-import {fixture, html, expect} from '@open-wc/testing';
-import '../mu-card';
+import {test, expect} from '@playwright/test';
 
-describe('mu-card e2e', (): void => {
-  // ARRANGE
-  it('should be focusable', async (): Promise<void> => {
-    // ACT
-    const el = await fixture(html`<mu-card tabindex="0"></mu-card>`);
-    (el as HTMLElement).focus();
-    // ASSERT
-    expect(document.activeElement).to.equal(el);
-    // CLEANUP
-    (el as HTMLElement).blur();
+const CARD_DEMO_URL = 'http://localhost:8000/dev/card.html';
+
+test.describe('mu-card (Playwright E2E)', (): void => {
+  test('should be focusable', async ({page}): Promise<void> => {
+    await page.goto(CARD_DEMO_URL);
+    const card = await page.locator('mu-card').first();
+    await card.evaluate(function (el: Element): void {
+      el.setAttribute('tabindex', '0');
+    });
+    await card.focus();
+    const tagName: unknown = await page.evaluate(function (): string | undefined {
+      return document.activeElement?.tagName;
+    });
+    if (typeof tagName !== 'string') throw new Error('tagName not string');
+    await expect(tagName).toBe('MU-CARD');
   });
 });
