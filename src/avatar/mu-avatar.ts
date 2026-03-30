@@ -9,19 +9,27 @@ import {sharedStyles} from '../styles/shared-styles';
 @customElement('mu-avatar')
 export class MuAvatar extends LitElement {
   /** Avatar image URL (optional). */
-  @property({type: String}) src: string | null = null;
+  @property({type: String}) src: string | null;
 
   /** Alt text for the image (for accessibility). */
-  @property({type: String}) alt = '';
+  @property({type: String}) alt: string;
 
   /** Fallback initials if no image. */
-  @property({type: String}) initials = '';
+  @property({type: String}) initials: string;
 
   /** Avatar size: 'small' | 'medium' | 'large'. */
-  @property({type: String}) size: 'small' | 'medium' | 'large' = 'medium';
+  @property({type: String}) size: 'small' | 'medium' | 'large';
 
   /** Predefined color: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'. */
-  @property({type: String}) color = 'primary';
+  @property({type: String}) color: string;
+  constructor() {
+    super();
+    this.src = null;
+    this.alt = '';
+    this.initials = '';
+    this.size = 'medium';
+    this.color = 'primary';
+  }
 
   static override styles = [
     sharedStyles,

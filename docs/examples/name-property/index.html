@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><my-element> ⌲ Examples ⌲ Name Property</title>
+    <title>Examples ⌲ Name Property ⌲ Docs</title>
     <link rel="stylesheet" href="../../docs.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto+Mono">
     <link href="../../prism-okaidia.css" rel="stylesheet" />
     <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="/node_modules/lit/polyfill-support.js"></script>
-    <script type="module" src="../../my-element.bundled.js"></script>
+    <!-- Bundles for all components are loaded on the home page or per example. -->
   </head>
   <body>
     
 <header>
-  <h1>&lt;my-element></h1>
-  <h2>A web component just for me.</h2>
+    <h1>Examples: Name Property</h1>
+    <h2>Component usage example</h2>
 </header>
     
 <nav>
@@ -33,33 +33,25 @@
     <section class="examples">
       <nav class="collection">
         <ul>
-          
-                  <li class=>
-                    <a href="../">A basic example</a>
-                  </li>
-                
-                  <li class=selected>
-                    <a href="">Setting the name property</a>
-                  </li>
-                
+          <li>
+            <a href="../">mu-avatar</a>
+          </li>
+          <li class=selected>
+            <a href="">mu-avatar: Setting the name property</a>
+          </li>
         </ul>
       </nav>
       <div>
-        <p><my-element name="Earth"></my-element></p>
-<h3>HTML</h3>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>my-element</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Earth<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>my-element</span><span class="token punctuation">></span></span></code></pre>
-
+        <p><mu-avatar name="Earth"></mu-avatar></p>
+        <h3>HTML</h3>
+        <pre class="language-html"><code class="language-html">&lt;mu-avatar name="Earth">&lt;/mu-avatar></code></pre>
       </div>
     </section>
-  
-      </main>
-    </div>
-    
-<footer>
-  <p>
-    Made with
-    <a href="https://github.com/lit/lit-element-starter-ts">lit-starter-ts</a>
-  </p>
-</footer>
+    <footer>
+      <p>
+        Made with
+        <a href="https://github.com/lit/lit-element-starter-ts">lit-starter-ts</a>
+      </p>
+    </footer>
   </body>
 </html>
