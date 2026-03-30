@@ -19,6 +19,12 @@ describe('mu-card render', (): void => {
       (txt || '').replace(/\s+/g, ' ').trim();
     // Wait for next animation frame to ensure slot assignment
     await new Promise((resolve) => requestAnimationFrame(resolve));
+
+    // Declare slot variables once
+    const headerSlot = el.shadowRoot?.querySelector('.header slot');
+    const contentSlot = el.shadowRoot?.querySelector('.content slot');
+    const actionsSlot = el.shadowRoot?.querySelector('.actions slot');
+
     // Debug output
     // eslint-disable-next-line no-console
     console.log('DEBUG mu-card:', {
@@ -41,7 +47,6 @@ describe('mu-card render', (): void => {
     });
 
     // Check header slot
-    const headerSlot = el.shadowRoot?.querySelector('.header slot');
     let headerText = '';
     if (headerSlot instanceof HTMLSlotElement) {
       const headerNodes = headerSlot.assignedNodes({flatten: true}) || [];
@@ -55,7 +60,6 @@ describe('mu-card render', (): void => {
     expect(headerText).to.include('Header');
 
     // Check content slot (default)
-    const contentSlot = el.shadowRoot?.querySelector('.content slot');
     let contentText = '';
     if (contentSlot instanceof HTMLSlotElement) {
       const contentNodes = contentSlot.assignedNodes({flatten: true}) || [];
@@ -72,7 +76,6 @@ describe('mu-card render', (): void => {
     expect(contentText).to.include('Content');
 
     // Check actions slot
-    const actionsSlot = el.shadowRoot?.querySelector('.actions slot');
     let actionsText = '';
     if (actionsSlot instanceof HTMLSlotElement) {
       const actionsNodes = actionsSlot.assignedNodes({flatten: true}) || [];

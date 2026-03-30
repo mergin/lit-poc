@@ -87,7 +87,7 @@ try {
 // https://modern-web.dev/docs/test-runner/cli-and-configuration/
 export default {
   rootDir: '.',
-  files: ['dist/test/*/*.js'],
+  files: ['src/**/_tests/*.unit.test.ts', 'src/**/_tests/*.render.test.ts'],
   nodeResolve: {exportConditions: mode === 'dev' ? ['development'] : []},
   preserveSymlinks: true,
   browsers: commandLineBrowsers ?? Object.values(browsers),
@@ -99,7 +99,7 @@ export default {
     },
   },
   plugins: [
-    esbuildPlugin(),
+    esbuildPlugin({ts: true, tsconfig: 'tsconfig.json'}),
     // Detect browsers without modules (e.g. IE11) and transform to SystemJS
     // (https://modern-web.dev/docs/dev-server/plugins/legacy/).
     legacyPlugin({
