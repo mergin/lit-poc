@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import {expect} from '@open-wc/testing';
 import {MuAvatar} from '../mu-avatar';
 
