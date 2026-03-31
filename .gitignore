@@ -11,6 +11,7 @@ my-element.d.ts.map
 # only generated for size check
 my-element.bundled.js
 styles/
+test-results/
 src/**/*.js
 src/**/*.js.map
 src/**/*.js.map
