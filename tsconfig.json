@@ -29,7 +29,7 @@
         "strict": true
       }
     ],
-    "types": ["mocha", "node"]
+    "types": ["node"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/_tests/*.test.ts"]

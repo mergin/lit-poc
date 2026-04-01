@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test';
 
-const CARD_DEMO_URL = 'http://localhost:8000/dev/card.html';
+const CARD_DEMO_URL = '/dev/card.html';
 
 test.describe('mu-card (Playwright E2E)', (): void => {
   test('should be focusable', async ({page}): Promise<void> => {

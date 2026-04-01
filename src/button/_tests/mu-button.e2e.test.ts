@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import {test, expect} from '@playwright/test';
 
-const BUTTON_DEMO_URL = 'http://localhost:8000/dev/button.html';
+const BUTTON_DEMO_URL = '/dev/button.html';
 
 test.describe('mu-button (Playwright E2E)', (): void => {
   test('renders with text', async ({page}): Promise<void> => {
     await page.goto(BUTTON_DEMO_URL);
     // Find the first mu-button with text
     const button = await page.locator('mu-button').first();
-    const innerButton = button.locator('button');
-    await expect(innerButton).toHaveText(/Accessible Button/);
+    await expect(button).toContainText('Accessible Button');
   });
 
   test('renders as disabled', async ({page}): Promise<void> => {

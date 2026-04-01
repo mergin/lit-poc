@@ -34,12 +34,6 @@
   },
   "overrides": [
     {
-      "files": ["rollup.config.js", "web-test-runner.config.js"],
-      "env": {
-        "node": true
-      }
-    },
-    {
       "files": [
         "*_test.ts",
         "**/custom_typings/*.ts",

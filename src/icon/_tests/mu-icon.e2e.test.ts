@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test';
 
-const ICON_DEMO_URL = 'http://localhost:8000/dev/icon.html';
+const ICON_DEMO_URL = '/dev/icon.html';
 
 test.describe('mu-icon (Playwright E2E)', (): void => {
   test('should be focusable', async ({page}): Promise<void> => {

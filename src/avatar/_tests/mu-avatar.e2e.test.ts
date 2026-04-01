@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test';
 
-const AVATAR_DEMO_URL = 'http://localhost:8000/dev/avatar.html';
+const AVATAR_DEMO_URL = '/dev/avatar.html';
 
 test.describe('mu-avatar (Playwright E2E)', (): void => {
   test('should be focusable and accessible', async ({page}): Promise<void> => {

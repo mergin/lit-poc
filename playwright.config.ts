@@ -16,7 +16,13 @@ export default defineConfig({
   use: {
     actionTimeout: 0,
     trace: 'on-first-retry',
-    baseURL: 'http://localhost:8000', // Adjust if your dev server runs elsewhere
+    baseURL: 'http://127.0.0.1:4173',
+  },
+  webServer: {
+    command: 'npm run serve -- --host 127.0.0.1 --port 4173',
+    url: 'http://127.0.0.1:4173',
+    reuseExistingServer: !process.env.CI,
+    timeout: 120000,
   },
   projects: [
     {
