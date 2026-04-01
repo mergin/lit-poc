@@ -1,6 +1,9 @@
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.options": {
+    "ignorePatterns": ["docs/**/*.html"]
+  },
   "chat.tools.terminal.autoApprove": {
     "npx playwright": true,
     "npx lint-staged": true
