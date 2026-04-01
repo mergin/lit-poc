@@ -9,23 +9,16 @@ import {sharedStyles} from '../styles/shared-styles';
 @customElement('mu-button')
 export class MuButton extends LitElement {
   /** Button size: 'small' | 'medium' | 'large'. */
-  @property({type: String}) size: 'small' | 'medium' | 'large';
+  @property({type: String}) size: 'small' | 'medium' | 'large' = 'medium';
 
   /** Button variant: 'contained' | 'outlined' | 'icon'. */
-  @property({type: String}) variant: 'contained' | 'outlined' | 'icon';
+  @property({type: String}) variant: 'contained' | 'outlined' | 'icon' = 'contained';
 
   /** Predefined color: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'. */
-  @property({type: String}) color: string;
+  @property({type: String}) color = 'primary';
 
   /** Disabled state. */
-  @property({type: Boolean, reflect: true}) disabled: boolean;
-  constructor() {
-    super();
-    this.size = 'medium';
-    this.variant = 'contained';
-    this.color = 'primary';
-    this.disabled = false;
-  }
+  @property({type: Boolean, reflect: true}) disabled = false;
 
   static override styles = [
     sharedStyles,

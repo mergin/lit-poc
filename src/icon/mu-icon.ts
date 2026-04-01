@@ -12,21 +12,13 @@ import {sharedStyles} from '../styles/shared-styles';
 @customElement('mu-icon')
 export class MuIcon extends LitElement {
   /** Icon name (Material Icons font ligature). */
-  @property({type: String}) name: string;
+  @property({type: String}) name = '';
 
   /** Icon size: 'small' | 'medium' | 'large' | number (px). */
-  @property({type: String}) size: 'small' | 'medium' | 'large' | string;
+  @property({type: String}) size: 'small' | 'medium' | 'large' | string = 'medium';
 
   /** Predefined color: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'. */
-  @property({type: String}) color: string;
-
-  // TODO: see if it can be removed
-  constructor() {
-    super();
-    this.name = '';
-    this.size = 'medium';
-    this.color = 'primary';
-  }
+  @property({type: String}) color = 'primary';
 
   static override styles = [
     sharedStyles,
@@ -45,6 +37,7 @@ export class MuIcon extends LitElement {
         text-transform: none;
         display: inline-block;
         direction: ltr;
+        font-feature-settings: 'liga';
         -webkit-font-feature-settings: 'liga';
         -webkit-font-smoothing: antialiased;
         user-select: none;
