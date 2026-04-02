@@ -3,7 +3,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:storybook/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -19,7 +20,10 @@
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
-      {"allowExpressions": false, "allowTypedFunctionExpressions": false}
+      {
+        "allowExpressions": false,
+        "allowTypedFunctionExpressions": false
+      }
     ],
     "@typescript-eslint/explicit-module-boundary-types": ["error"],
     "@typescript-eslint/no-explicit-any": "error",

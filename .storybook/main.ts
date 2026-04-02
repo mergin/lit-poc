@@ -1,19 +1,13 @@
-import {StorybookConfig} from '@storybook/web-components-vite';
+import type {StorybookConfig} from '@storybook/web-components-vite';
 
-/**
- * Storybook main configuration for Lit 3 + TypeScript 5 web components.
- * See: https://storybook.js.org/docs/web-components/configure/overview
- */
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx|md)'],
-  addons: ['@storybook/addon-docs', '@storybook/addon-essentials', '@storybook/addon-interactions'],
-  framework: {
-    name: '@storybook/web-components-vite',
-    options: {},
-  },
-  docs: {
-    autodocs: true,
-  },
+  stories: ['../src/*/*.stories.ts', '../src/**/*.mdx'],
+  addons: [
+    '@chromatic-com/storybook',
+    '@storybook/addon-vitest',
+    '@storybook/addon-a11y',
+    '@storybook/addon-docs',
+  ],
+  framework: '@storybook/web-components-vite',
 };
-
 export default config;

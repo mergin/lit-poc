@@ -10,3 +10,5 @@ src/**/*.js
 src/**/*.js.map
 src/**/*.js.map
 src/**/*.d.*
+*storybook.log
+storybook-static

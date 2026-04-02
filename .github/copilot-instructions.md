@@ -7,6 +7,12 @@ workspace conventions.
 - Stack: Lit 3 + TypeScript 5.
 - App structure lives under `src/` (not `projects/`).
 
+## Story File Organization
+
+- Every component folder under `src/` must include a colocated `*.stories.ts` file (for example, `src/button/mu-button.stories.ts`).
+- Story files for components must live inside the same component folder, not in centralized stories directories.
+- New components are not complete unless their colocated story file is created and loadable by Storybook.
+
 ## Deprecated Code and API Usage
 
 - Do not use deprecated APIs, functions, classes, or patterns. Always prefer the latest recommended Lit 3 and TypeScript APIs.
