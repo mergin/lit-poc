@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>mu-list Demo</title>
+  </head>
+  <body>
+    <a href="/index.html">Back to main</a>
+    <h1>mu-list Demo</h1>
+    <script
+      type="module"
+      src="/src/list/mu-list.ts"
+    ></script>
+    <script
+      type="module"
+      src="/src/list/mu-list-item.ts"
+    ></script>
+    <div style="max-width: 300px; border: 1px solid #ccc">
+      <mu-list>
+        <mu-list-item>Item 1</mu-list-item>
+        <mu-list-item>Item 2</mu-list-item>
+        <mu-list-item disabled>Disabled Item</mu-list-item>
+      </mu-list>
+    </div>
+  </body>
+</html>

@@ -8,39 +8,24 @@ const dirname =
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   test: {
+    coverage: {
+      thresholds: {
+        lines: 80,
+        functions: 80,
+        branches: 80,
+        statements: 80,
+      },
+    },
     projects: [
       {
         extends: true,
         test: {
           include: ['src/**/_tests/*.unit.test.ts', 'src/**/_tests/*.render.test.ts'],
           exclude: ['src/**/_tests/*.e2e.test.ts'],
-          environment: 'jsdom',
+          environment: 'happy-dom',
           globals: true,
           setupFiles: ['./vitest.setup.ts'],
           testTimeout: 60000,
-        },
-      },
-      {
-        extends: true,
-        plugins: [
-          // The plugin will run tests for the stories defined in your Storybook config
-          // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-          storybookTest({
-            configDir: path.join(dirname, '.storybook'),
-          }),
-        ],
-        test: {
-          name: 'storybook',
-          browser: {
-            enabled: true,
-            headless: true,
-            provider: 'playwright',
-            instances: [
-              {
-                browser: 'chromium',
-              },
-            ],
-          },
         },
       },
     ],

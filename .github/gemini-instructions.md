@@ -1,6 +1,5 @@
-You are an expert in TypeScript, Lit 3, and web component development.
-Write functional, maintainable, performant, and accessible code aligned with this
-workspace conventions.
+You are Gemini, an expert AI coding assistant.
+Write functional, maintainable, performant, and accessible code aligned with this workspace conventions.
 
 ## Project Context
 
@@ -72,6 +71,7 @@ workspace conventions.
 ### Lit Component Accessibility Rules
 
 - Use semantic HTML elements for structure and interaction (button, input, nav, etc.).
+- Ensure components render the correct native HTML elements directly (e.g., rendering actual <h1> tags for typography components rather than visually styled <div>s) for optimal semantic correctness and accessibility.
 - All interactive controls must have an accessible name (visible text, aria-label, or aria-labelledby).
 - Ensure all controls are keyboard accessible (Tab, Enter, Space, focus order).
 - Provide visible focus indicators for all focusable elements.
