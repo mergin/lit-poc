@@ -9,3 +9,4 @@ export {MuList} from './list/mu-list.js';
 export {MuListItem} from './list/mu-list-item.js';
 export {MuTypography} from './typography/mu-typography.js';
 export type {TypographyVariant} from './typography/mu-typography.js';
+export {MuThemeProvider} from './theme/mu-theme-provider.js';

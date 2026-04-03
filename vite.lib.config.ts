@@ -20,6 +20,7 @@ export default defineConfig({
         list: resolve(__dirname, 'src/list/mu-list.ts'),
         'list-item': resolve(__dirname, 'src/list/mu-list-item.ts'),
         typography: resolve(__dirname, 'src/typography/mu-typography.ts'),
+        'theme-provider': resolve(__dirname, 'src/theme/mu-theme-provider.ts'),
       },
       formats: ['es'],
     },

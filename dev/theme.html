@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-theme-provider dev</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <mu-theme-provider
+      mode="light"
+      id="provider"
+      style="display: block; padding: 24px"
+    >
+      <h2 style="color: var(--mu-text-primary)">Theme Provider Demo</h2>
+      <p style="color: var(--mu-text-secondary)">
+        Primary: <strong style="color: var(--mu-primary)">var(--mu-primary)</strong>
+      </p>
+      <mu-button id="toggle-btn">Toggle dark mode</mu-button>
+    </mu-theme-provider>
+
+    <script type="module">
+      import '/src/theme/mu-theme-provider.js';
+      import '/src/button/mu-button.js';
+
+      const provider = document.getElementById('provider');
+      document.getElementById('toggle-btn').addEventListener('click', () => {
+        provider.mode = provider.mode === 'light' ? 'dark' : 'light';
+        document.body.style.background = provider.mode === 'dark' ? '#121212' : '#f9fafb';
+      });
+    </script>
+  </body>
+</html>
