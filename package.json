@@ -31,6 +31,7 @@
     "test:all": "npm run test:unit && npm run test:e2e",
     "test:unit": "vitest run",
     "test:watch": "vitest",
+    "test:perf": "vitest bench --environment happy-dom",
     "test:e2e": "playwright test",
     "test:e2e:install": "playwright install chromium firefox",
     "test:e2e:headed": "playwright test --headed",

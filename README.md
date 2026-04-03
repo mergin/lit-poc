@@ -10,6 +10,9 @@ A modern, accessible, and compositional web component library built with Lit 3 a
   - [Build](#build)
   - [Development Server](#development-server)
   - [Testing](#testing)
+    - [Unit & Render Tests](#unit--render-tests)
+    - [End-to-End Tests](#end-to-end-tests)
+    - [Performance Tests](#performance-tests)
   - [Linting & Formatting](#linting--formatting)
   - [Static Docs Site](#static-docs-site)
 - [Commit Rules](#commit-rules)
@@ -24,7 +27,7 @@ A modern, accessible, and compositional web component library built with Lit 3 a
 - **Minimal/MUI-inspired UI**: Shared styles, tokens, and typography for a consistent look.
 - **Compositional Components**: Build complex UIs from small, reusable parts (e.g., `<mu-card>`, `<mu-card-header>`, etc.).
 - **Strict Linting & Formatting**: ESLint, Prettier, and lit-analyzer for code quality.
-- **Automated Testing**: Uses Vitest (Unit/Render tests) and Playwright (E2E tests).
+- **Automated Testing**: Uses Vitest (unit, render, and performance benchmarks) and Playwright (E2E tests).
 - **Component Explorer**: Storybook for viewing and interacting with components.
 - **Static Docs Site**: Built with Eleventy and Vite for demos and API docs.
 - **Commit Message Linting**: Enforces Conventional Commits via commitlint and Husky.
@@ -55,7 +58,9 @@ Open [http://localhost:8000/dev/index.html](http://localhost:8000/dev/index.html
 
 ### Testing
 
-Run all unit tests:
+#### Unit & Render Tests
+
+Run all unit and render tests:
 
 ```bash
 npm run test:unit
@@ -67,11 +72,44 @@ Watch unit tests during development:
 npm run test:watch
 ```
 
+#### End-to-End Tests
+
 Run end-to-end tests:
 
 ```bash
 npm run test:e2e
 ```
+
+#### Performance Tests
+
+Run all component performance benchmarks:
+
+```bash
+npm run test:perf
+```
+
+Benchmarks are located alongside each component in `src/<component>/_tests/*.perf.test.ts` and are powered by [Vitest's built-in benchmark runner](https://vitest.dev/guide/features.html#benchmarking) (based on [tinybench](https://github.com/tinylibs/tinybench)).
+
+Each suite measures two dimensions of cost per component:
+
+| Benchmark                      | What it measures                                                                                 |
+| ------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `instantiation`                | Overhead of `new MuXxx()` — Lit constructor + decorator setup                                    |
+| `property writes — <scenario>` | Cost of setting one or more reactive properties (e.g. variant cycle, disabled toggle, all props) |
+
+The output reports `hz` (operations per second), latency percentiles (`p75`, `p99`, `p999`), relative error margin, and a ranked summary — e.g.:
+
+```text
+✓ src/typography/_tests/mu-typography.perf.test.ts > mu-typography performance
+  · instantiation                          790,011 hz   ±1.00%
+  · property writes — full variant cycle   418,498 hz   ±0.95%
+
+Summary
+  instantiation
+    1.89x faster than property writes — full variant cycle
+```
+
+Benchmarks run in the `happy-dom` environment to keep results fast and consistent across machines. Use them as a regression baseline when making changes to component logic or styles.
 
 ### Linting & Formatting
 
@@ -141,7 +179,7 @@ If your commit message does not follow the rules, the commit will be rejected.
 - **Formatting**: Prettier
 - **Pre-commit hooks**: Husky + lint-staged
 - **Commit message linting**: commitlint
-- **Testing**: Vitest, Playwright
+- **Testing**: Vitest (unit/render/benchmarks), Playwright (E2E)
 - **Docs**: Eleventy, Vite
 - **Component Workshop**: Storybook
 

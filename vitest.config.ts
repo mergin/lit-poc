@@ -8,6 +8,9 @@ const dirname =
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   test: {
+    benchmark: {
+      include: ['src/**/_tests/*.perf.test.ts'],
+    },
     coverage: {
       include: ['src/**/*.ts'],
       exclude: ['src/**/*.stories.ts', 'src/**/_tests/**', 'src/test/**', 'src/stories/**'],
