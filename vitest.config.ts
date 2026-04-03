@@ -9,6 +9,8 @@ const dirname =
 export default defineConfig({
   test: {
     coverage: {
+      include: ['src/**/*.ts'],
+      exclude: ['src/**/*.stories.ts', 'src/**/_tests/**', 'src/test/**', 'src/stories/**'],
       thresholds: {
         lines: 80,
         functions: 80,

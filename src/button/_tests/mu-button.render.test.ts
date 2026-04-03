@@ -46,11 +46,12 @@ describe('mu-button render', (): void => {
   });
 
   it('renders as disabled', async (): Promise<void> => {
-    return;
     // ACT
     const el = await fixture(html`<mu-button disabled></mu-button>`);
+    await (el as {updateComplete: Promise<unknown>}).updateComplete;
     // ASSERT
     const btn = el.shadowRoot?.querySelector('button');
     expect(btn?.hasAttribute('disabled')).to.be.true;
+    expect(btn?.getAttribute('aria-disabled')).to.equal('true');
   });
 });

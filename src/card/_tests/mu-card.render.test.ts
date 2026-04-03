@@ -88,4 +88,47 @@ describe('mu-card render', (): void => {
     actionsText = normalize(actionsText);
     expect(actionsText).to.include('Actions');
   });
+
+  it('mu-card-header renders title and subtitle', async (): Promise<void> => {
+    // ARRANGE
+    const el = await fixture(
+      html`<mu-card-header
+        title="Hello"
+        subtitle="World"
+      ></mu-card-header>`
+    );
+    // ACT
+    const h2 = el.shadowRoot?.querySelector('h2');
+    const sub = el.shadowRoot?.querySelector('.subtitle');
+    // ASSERT
+    expect(h2?.textContent?.trim()).to.include('Hello');
+    expect(sub?.textContent?.trim()).to.include('World');
+  });
+
+  it('mu-card-header renders without subtitle when empty', async (): Promise<void> => {
+    // ARRANGE
+    const el = await fixture(html`<mu-card-header title="Only Title"></mu-card-header>`);
+    // ACT
+    const sub = el.shadowRoot?.querySelector('.subtitle');
+    // ASSERT
+    expect(sub).to.be.null;
+  });
+
+  it('mu-card-content renders slot', async (): Promise<void> => {
+    // ARRANGE
+    const el = await fixture(html`<mu-card-content>Body text</mu-card-content>`);
+    // ACT
+    const slot = el.shadowRoot?.querySelector('slot');
+    // ASSERT
+    expect(slot).to.not.be.null;
+  });
+
+  it('mu-card-actions renders slot', async (): Promise<void> => {
+    // ARRANGE
+    const el = await fixture(html`<mu-card-actions><button>OK</button></mu-card-actions>`);
+    // ACT
+    const slot = el.shadowRoot?.querySelector('slot');
+    // ASSERT
+    expect(slot).to.not.be.null;
+  });
 });

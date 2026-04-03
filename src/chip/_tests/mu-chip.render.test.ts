@@ -43,4 +43,52 @@ describe('mu-chip render', () => {
     // ASSERT
     expect(btn).toBeNull();
   });
+
+  test('dispatches delete event when delete button is clicked', async () => {
+    // ARRANGE
+    const el = await fixture<MuChip>(
+      html`<mu-chip
+        label="Chip"
+        deletable
+      ></mu-chip>`
+    );
+    let fired = false;
+    el.addEventListener('delete', () => {
+      fired = true;
+    });
+
+    // ACT
+    const btn = el.shadowRoot?.querySelector<HTMLButtonElement>('.delete-btn');
+    btn?.click();
+
+    // ASSERT
+    expect(fired).toBe(true);
+
+    // CLEANUP
+    // (fixture auto-cleans)
+  });
+
+  test('does not dispatch delete event when chip is disabled', async () => {
+    // ARRANGE
+    const el = await fixture<MuChip>(
+      html`<mu-chip
+        label="Chip"
+        deletable
+        disabled
+      ></mu-chip>`
+    );
+    let fired = false;
+    el.addEventListener('delete', () => {
+      fired = true;
+    });
+
+    // ACT — call handler directly to test the disabled guard since native click won't fire on disabled button
+    (el as unknown as {_handleDelete: (e: Event) => void})._handleDelete(new Event('click'));
+
+    // ASSERT
+    expect(fired).toBe(false);
+
+    // CLEANUP
+    // (fixture auto-cleans)
+  });
 });
