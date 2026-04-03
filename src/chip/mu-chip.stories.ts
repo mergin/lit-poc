@@ -57,3 +57,32 @@ export const DeletableTheme: StoryObj = {
     </div>
   `,
 };
+
+export const Colors: StoryObj = {
+  render: () => html`
+    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+      ${(['default', 'primary', 'secondary', 'error', 'success', 'warning', 'info'] as const).map(
+        (color) =>
+          html`<mu-chip
+            label=${color}
+            color=${color}
+          ></mu-chip>`
+      )}
+    </div>
+  `,
+};
+
+export const Disabled: StoryObj = {
+  args: {
+    label: 'Disabled',
+    disabled: true,
+    color: 'default',
+  },
+  render: (args) => html`
+    <mu-chip
+      label="${args.label}"
+      ?disabled="${args.disabled}"
+      color="${args.color}"
+    ></mu-chip>
+  `,
+};

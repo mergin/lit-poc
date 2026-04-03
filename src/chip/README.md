@@ -1,0 +1,62 @@
+# mu-chip
+
+Compact elements that represent attributes, tags, or actions. Supports static, deletable, disabled, and multiple color variants.
+
+## Import
+
+```ts
+import './src/chip/mu-chip.js';
+```
+
+## Usage
+
+```html
+<!-- Basic chip -->
+<mu-chip label="TypeScript"></mu-chip>
+
+<!-- Colored chip -->
+<mu-chip
+  label="Success"
+  color="success"
+></mu-chip>
+
+<!-- Deletable chip -->
+<mu-chip
+  label="React"
+  deletable
+  @delete="${handleDelete}"
+></mu-chip>
+
+<!-- Disabled chip -->
+<mu-chip
+  label="Unavailable"
+  disabled
+></mu-chip>
+```
+
+## Properties
+
+| Property    | Type                                                                                   | Default     | Description                                                  |
+| ----------- | -------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------ |
+| `label`     | `string`                                                                               | `''`        | Text content displayed inside the chip.                      |
+| `disabled`  | `boolean`                                                                              | `false`     | Disables the chip and all its interactive controls.          |
+| `deletable` | `boolean`                                                                              | `false`     | Renders a close/cancel button that fires the `delete` event. |
+| `color`     | `'default' \| 'primary' \| 'secondary' \| 'error' \| 'success' \| 'warning' \| 'info'` | `'default'` | Background color variant.                                    |
+
+## Events
+
+| Event    | Detail | Description                                                           |
+| -------- | ------ | --------------------------------------------------------------------- |
+| `delete` | —      | Fired when the delete button is clicked. Does not fire when disabled. |
+
+## Slots
+
+| Slot      | Description                                             |
+| --------- | ------------------------------------------------------- |
+| (default) | Optional content appended after the label (e.g. icons). |
+
+## Accessibility
+
+- The delete button carries `aria-label="Delete [label]"` to identify its target.
+- When `disabled`, the delete button also receives the `disabled` attribute so it is unreachable by keyboard.
+- Disabled chips use `pointer-events: none` and `opacity: 0.5` to signal their state visually.

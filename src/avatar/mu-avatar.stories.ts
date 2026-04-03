@@ -65,3 +65,23 @@ export const Large: Story = {
     size: 'large',
   },
 };
+
+export const Small: Story = {
+  args: {
+    size: 'small',
+  },
+};
+
+export const Colors: Story = {
+  render: () => html`
+    <div style="display: flex; gap: 8px; align-items: center;">
+      ${(['primary', 'secondary', 'info', 'success', 'warning', 'error'] as const).map(
+        (color) =>
+          html`<mu-avatar
+            initials="AB"
+            color=${color}
+          ></mu-avatar>`
+      )}
+    </div>
+  `,
+};

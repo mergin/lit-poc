@@ -84,3 +84,24 @@ export const IconOnly: Story = {
     label: '',
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    label: 'Disabled',
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: 'small',
+    label: 'Small',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: 'large',
+    label: 'Large',
+  },
+};

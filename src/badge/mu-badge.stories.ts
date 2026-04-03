@@ -50,3 +50,40 @@ export const DotBadge: StoryObj = {
     </div>
   `,
 };
+
+export const Invisible: StoryObj = {
+  args: {
+    content: '5',
+    color: 'primary',
+    invisible: true,
+  },
+  render: (args) => html`
+    <div style="padding: 24px;">
+      <mu-badge
+        content="${args.content}"
+        color="${args.color}"
+        ?invisible="${args.invisible}"
+      >
+        <div style="width: 40px; height: 40px; background: #e0e0e0; border-radius: 4px;"></div>
+      </mu-badge>
+    </div>
+  `,
+};
+
+export const WithLabel: StoryObj = {
+  args: {
+    content: '3',
+    color: 'secondary',
+  },
+  render: (args) => html`
+    <div style="padding: 24px;">
+      <mu-badge
+        content="${args.content}"
+        color="${args.color}"
+        label="3 new messages"
+      >
+        <mu-icon>mail</mu-icon>
+      </mu-badge>
+    </div>
+  `,
+};

@@ -57,3 +57,11 @@ export const StatusSuccess: Story = {
     color: 'success',
   },
 };
+
+export const Small: Story = {
+  args: {
+    name: 'star',
+    size: 'small',
+    color: 'primary',
+  },
+};

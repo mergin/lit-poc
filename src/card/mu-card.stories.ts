@@ -60,3 +60,32 @@ export const ContentFocused: Story = {
     secondaryActionLabel: 'Dismiss',
   },
 };
+
+export const NoActions: Story = {
+  render: () => html`
+    <div style="max-width: 420px;">
+      <mu-card>
+        <mu-card-header
+          slot="header"
+          title="Notification"
+          subtitle="2 minutes ago"
+        ></mu-card-header>
+        <mu-card-content>Your file has been successfully uploaded.</mu-card-content>
+      </mu-card>
+    </div>
+  `,
+};
+
+export const NoSubtitle: Story = {
+  render: () => html`
+    <div style="max-width: 420px;">
+      <mu-card>
+        <mu-card-header
+          slot="header"
+          title="Simple Card"
+        ></mu-card-header>
+        <mu-card-content>A card with a title but no subtitle.</mu-card-content>
+      </mu-card>
+    </div>
+  `,
+};

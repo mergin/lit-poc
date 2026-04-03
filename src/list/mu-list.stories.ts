@@ -29,3 +29,20 @@ export const Default: StoryObj = {
     </div>
   `,
 };
+
+export const Dense: StoryObj = {
+  args: {
+    dense: true,
+  },
+  render: (args) => html`
+    <div style="border: 1px solid #ccc; max-width: 360px;">
+      <mu-list ?dense="${args.dense}">
+        <mu-list-item>Dense item one</mu-list-item>
+        <mu-divider></mu-divider>
+        <mu-list-item>Dense item two</mu-list-item>
+        <mu-divider></mu-divider>
+        <mu-list-item>Dense item three</mu-list-item>
+      </mu-list>
+    </div>
+  `,
+};
