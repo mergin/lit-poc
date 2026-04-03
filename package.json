@@ -2,15 +2,16 @@
   "name": "lit-poc",
   "private": true,
   "version": "2.0.3",
-  "description": "A simple web component",
-  "main": "my-element.js",
-  "module": "my-element.js",
+  "description": "A Lit 3 web components proof of concept",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "tsc --noEmit",
     "build:watch": "tsc --noEmit --watch",
-    "clean": "rimraf my-element.{d.ts,d.ts.map,js,js.map} test/my-element.{d.ts,d.ts.map,js,js.map} test/my-element_test.{d.ts,d.ts.map,js,js.map}",
-    "rebuild": "npm run clean && rm -rf dist/ node_modules/ && npm i && npm run build",
+    "clean": "rm -rf dist/ test-results/ docs/ node_modules/",
+    "rebuild": "npm run clean && npm i && npm run build",
     "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
     "lint:eslint": "eslint \"src/**/*.ts\"",
     "lint:lit-analyzer": "lit-analyzer",
@@ -30,9 +31,6 @@
     "test:all": "npm run test:unit && npm run test:e2e",
     "test:unit": "vitest run",
     "test:watch": "vitest",
-    "test:dev": "vitest run",
-    "test:prod": "vitest run",
-    "test:prod:watch": "vitest --watch",
     "test:e2e": "playwright test",
     "test:e2e:install": "playwright install chromium firefox",
     "test:e2e:headed": "playwright test --headed",
@@ -48,7 +46,7 @@
     "typescript",
     "lit"
   ],
-  "author": "Google LLC",
+  "author": "David Prieto",
   "license": "BSD-3-Clause",
   "dependencies": {
     "lit": "^3.3.2"
