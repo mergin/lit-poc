@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-select dev</title>
+  </head>
+  <body style="padding: 24px; font-family: sans-serif; max-width: 400px">
+    <h2>Select</h2>
+    <mu-select
+      id="basic"
+      label="Country"
+      placeholder="Choose a country"
+    ></mu-select>
+    <br /><br />
+    <mu-select
+      id="has-value"
+      label="Framework"
+      value="lit"
+    ></mu-select>
+    <br /><br />
+    <mu-select
+      id="error"
+      label="Role"
+      error="Please select a role"
+    ></mu-select>
+    <br /><br />
+    <mu-select
+      id="disabled"
+      label="Disabled"
+      disabled
+    ></mu-select>
+
+    <script type="module">
+      import '/src/select/mu-select.js';
+
+      document.getElementById('basic').options = [
+        {value: 'us', label: 'United States'},
+        {value: 'gb', label: 'United Kingdom'},
+        {value: 'de', label: 'Germany'},
+      ];
+
+      document.getElementById('has-value').options = [
+        {value: 'react', label: 'React'},
+        {value: 'vue', label: 'Vue'},
+        {value: 'lit', label: 'Lit'},
+      ];
+
+      document.getElementById('error').options = [
+        {value: 'admin', label: 'Admin'},
+        {value: 'user', label: 'User'},
+      ];
+
+      document.getElementById('disabled').options = [{value: 'a', label: 'Option A'}];
+    </script>
+  </body>
+</html>

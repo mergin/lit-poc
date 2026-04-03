@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-checkbox dev</title>
+  </head>
+  <body style="padding: 24px; font-family: sans-serif">
+    <h2>Checkbox</h2>
+    <mu-checkbox
+      id="basic"
+      label="Accept terms"
+    ></mu-checkbox>
+    <br /><br />
+    <mu-checkbox
+      id="checked"
+      label="Pre-checked"
+      checked
+    ></mu-checkbox>
+    <br /><br />
+    <mu-checkbox
+      id="indeterminate"
+      label="Indeterminate"
+      indeterminate
+    ></mu-checkbox>
+    <br /><br />
+    <mu-checkbox
+      id="disabled"
+      label="Disabled"
+      disabled
+    ></mu-checkbox>
+
+    <script type="module">
+      import '/src/checkbox/mu-checkbox.js';
+    </script>
+  </body>
+</html>

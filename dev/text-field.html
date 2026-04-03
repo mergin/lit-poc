@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-text-field dev</title>
+  </head>
+  <body style="padding: 24px; font-family: sans-serif; max-width: 400px">
+    <h2>Text Field</h2>
+    <mu-text-field
+      id="basic"
+      label="Full name"
+      placeholder="John Doe"
+    ></mu-text-field>
+    <br /><br />
+    <mu-text-field
+      id="email"
+      label="Email"
+      type="email"
+      placeholder="you@example.com"
+      required
+    ></mu-text-field>
+    <br /><br />
+    <mu-text-field
+      id="error"
+      label="Username"
+      value="ab"
+      error="Minimum 3 characters"
+    ></mu-text-field>
+    <br /><br />
+    <mu-text-field
+      id="helper"
+      label="Password"
+      type="password"
+      helper-text="At least 8 characters"
+    ></mu-text-field>
+    <br /><br />
+    <mu-text-field
+      id="disabled"
+      label="Disabled field"
+      value="Read only"
+      disabled
+    ></mu-text-field>
+
+    <script type="module">
+      import '/src/text-field/mu-text-field.js';
+    </script>
+  </body>
+</html>

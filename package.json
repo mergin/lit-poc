@@ -60,6 +60,30 @@
     "./theme-provider": {
       "import": "./dist/theme-provider.js",
       "types": "./dist/theme/mu-theme-provider.d.ts"
+    },
+    "./checkbox": {
+      "import": "./dist/checkbox.js",
+      "types": "./dist/checkbox/mu-checkbox.d.ts"
+    },
+    "./radio": {
+      "import": "./dist/radio.js",
+      "types": "./dist/radio/mu-radio.d.ts"
+    },
+    "./radio-group": {
+      "import": "./dist/radio-group.js",
+      "types": "./dist/radio/mu-radio-group.d.ts"
+    },
+    "./switch": {
+      "import": "./dist/switch.js",
+      "types": "./dist/switch/mu-switch.d.ts"
+    },
+    "./text-field": {
+      "import": "./dist/text-field.js",
+      "types": "./dist/text-field/mu-text-field.d.ts"
+    },
+    "./select": {
+      "import": "./dist/select.js",
+      "types": "./dist/select/mu-select.d.ts"
     }
   },
   "engines": {

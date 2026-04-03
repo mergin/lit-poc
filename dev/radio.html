@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-radio dev</title>
+  </head>
+  <body style="padding: 24px; font-family: sans-serif">
+    <h2>Radio</h2>
+    <mu-radio-group label="Fruit">
+      <mu-radio
+        id="apple"
+        name="fruit"
+        value="apple"
+        label="Apple"
+        checked
+      ></mu-radio>
+      <br /><br />
+      <mu-radio
+        id="banana"
+        name="fruit"
+        value="banana"
+        label="Banana"
+      ></mu-radio>
+      <br /><br />
+      <mu-radio
+        id="cherry"
+        name="fruit"
+        value="cherry"
+        label="Cherry"
+        disabled
+      ></mu-radio>
+    </mu-radio-group>
+
+    <script type="module">
+      import '/src/radio/mu-radio.js';
+      import '/src/radio/mu-radio-group.js';
+    </script>
+  </body>
+</html>

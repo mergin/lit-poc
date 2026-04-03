@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-switch dev</title>
+  </head>
+  <body style="padding: 24px; font-family: sans-serif">
+    <h2>Switch</h2>
+    <mu-switch
+      id="basic"
+      label="Dark mode"
+    ></mu-switch>
+    <br /><br />
+    <mu-switch
+      id="checked"
+      label="Notifications on"
+      checked
+    ></mu-switch>
+    <br /><br />
+    <mu-switch
+      id="disabled"
+      label="Disabled"
+      disabled
+    ></mu-switch>
+
+    <script type="module">
+      import '/src/switch/mu-switch.js';
+    </script>
+  </body>
+</html>
