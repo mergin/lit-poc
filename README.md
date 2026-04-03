@@ -24,8 +24,9 @@ A modern, accessible, and compositional web component library built with Lit 3 a
 - **Minimal/MUI-inspired UI**: Shared styles, tokens, and typography for a consistent look.
 - **Compositional Components**: Build complex UIs from small, reusable parts (e.g., `<mu-card>`, `<mu-card-header>`, etc.).
 - **Strict Linting & Formatting**: ESLint, Prettier, and lit-analyzer for code quality.
-- **Automated Testing**: Uses @web/test-runner and @open-wc/testing.
-- **Static Docs Site**: Built with Eleventy for demos and API docs.
+- **Automated Testing**: Uses Vitest (Unit/Render tests) and Playwright (E2E tests).
+- **Component Explorer**: Storybook for viewing and interacting with components.
+- **Static Docs Site**: Built with Eleventy and Vite for demos and API docs.
 - **Commit Message Linting**: Enforces Conventional Commits via commitlint and Husky.
 
 ---
@@ -54,16 +55,22 @@ Open [http://localhost:8000/dev/index.html](http://localhost:8000/dev/index.html
 
 ### Testing
 
-Run all tests (dev and prod modes):
+Run all unit tests:
 
 ```bash
-npm test
+npm run test:unit
 ```
 
-Watch tests during development:
+Watch unit tests during development:
 
 ```bash
 npm run test:watch
+```
+
+Run end-to-end tests:
+
+```bash
+npm run test:e2e
 ```
 
 ### Linting & Formatting
@@ -73,6 +80,20 @@ Check code quality and auto-fix issues:
 ```bash
 npm run lint
 npm run format
+```
+
+### Storybook
+
+Run the interactive component explorer:
+
+```bash
+npm run storybook
+```
+
+Build Storybook for deployment:
+
+```bash
+npm run build-storybook
 ```
 
 ### Static Docs Site
@@ -106,10 +127,10 @@ If your commit message does not follow the rules, the commit will be rejected.
 
 ## Project Structure
 
-- `src/` — Source code for all components and shared styles.
+- `src/` — Source code for all components, unit/E2E tests (inside `_tests/` subfolders), story files (`*.stories.ts`), and shared styles.
 - `dev/` — Demo HTML for local development.
-- `test/` — Test output and helpers.
 - `docs/` — Static documentation site (generated).
+- `.storybook/` — Storybook configuration.
 - `.husky/` — Git hooks for linting, testing, and commit message checks.
 
 ---
@@ -120,8 +141,9 @@ If your commit message does not follow the rules, the commit will be rejected.
 - **Formatting**: Prettier
 - **Pre-commit hooks**: Husky + lint-staged
 - **Commit message linting**: commitlint
-- **Testing**: @web/test-runner, @open-wc/testing
-- **Docs**: Eleventy
+- **Testing**: Vitest, Playwright
+- **Docs**: Eleventy, Vite
+- **Component Workshop**: Storybook
 
 ---
 
@@ -149,8 +171,14 @@ This library is built with accessibility as a core requirement. All components m
 **Component compliance:**
 
 - `mu-avatar`: Uses semantic HTML, alt text for images, and is non-interactive.
-- `mu-button`: Uses native <button>, supports accessible names via slot, keyboard accessible, and uses aria-disabled/disabled.
-- `mu-icon`: Decorative by default (aria-hidden), not interactive.
+- `mu-badge`: Visually hides internal elements appropriately or provides accessible labels for alerts.
+- `mu-button`: Uses native `<button>`, supports accessible names via slot, keyboard accessible, and uses aria-disabled/disabled.
+- `mu-card`: Uses generic flow layout containers with semantic landmarks/headers via compositional slots.
+- `mu-chip`: Read-only or actionable with keyboard navigation, dispatches custom `delete` events cleanly.
+- `mu-divider`: Typically uses `role="separator"` and is purely presentational unless marked otherwise.
+- `mu-icon`: Decorative by default (`aria-hidden="true"`), not interactive.
+- `mu-list`: Employs semantic native list roles (`list` and `listitem`) or native tags (`<ul>`, `<li>`).
+- `mu-typography`: Renders exact semantic tags (`<h1>` to `<h6>`, `<p>`) to support proper document flow and screen reader landmarks.
 
 For full compliance, ensure you provide accessible labels and alt text when using these components. If you extend components with new features (e.g., interactive icons, dialogs), follow the rules above.
 
