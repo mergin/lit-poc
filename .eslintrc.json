@@ -3,14 +3,15 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jsdoc/recommended-typescript"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "jsdoc"],
   "env": {
     "browser": true
   },
@@ -33,7 +34,31 @@
       {
         "argsIgnorePattern": "^_"
       }
-    ]
+    ],
+    "jsdoc/require-jsdoc": [
+      "error",
+      {
+        "require": {
+          "MethodDefinition": false,
+          "FunctionDeclaration": false,
+          "ClassDeclaration": false,
+          "ArrowFunctionExpression": false,
+          "FunctionExpression": false
+        },
+        "contexts": [
+          "MethodDefinition[key.name!='render']",
+          "PropertyDefinition[value.type='ArrowFunctionExpression'][key.name!='render']"
+        ]
+      }
+    ],
+    "jsdoc/require-param": [
+      "error",
+      {
+        "checkRestProperty": false,
+        "checkDestructured": false
+      }
+    ],
+    "jsdoc/require-returns": "error"
   },
   "overrides": [
     {

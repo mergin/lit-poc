@@ -121,6 +121,10 @@ export class MuChip extends LitElement {
     `,
   ];
 
+  /**
+   * Handles the click event on the delete button.
+   * @param e - The click event object.
+   */
   private _handleDelete(e: Event): void {
     if (this.disabled) return;
     e.stopPropagation();

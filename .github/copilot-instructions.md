@@ -1,6 +1,6 @@
 You are an expert in TypeScript, Lit 3, and web component development.
 Write functional, maintainable, performant, and accessible code aligned with this
-workspace conventions.
+workspace conventions. All generated code must strictly comply with the ESLint and Prettier rules set in this project.
 
 ## Project Context
 
