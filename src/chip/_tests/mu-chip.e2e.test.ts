@@ -17,9 +17,7 @@ test.describe('mu-chip e2e', () => {
 
   test('fires delete event when cancel icon is clicked', async ({page}) => {
     // ACT
-    // Playwright evaluates light dom directly, but piercing shadow DOM needs deep locators or explicit evaluation
-    // We can use the playwright locator to pierce shadow DOM:
-    const deleteBtn = page.locator('mu-chip >> css=button.delete-btn');
+    const deleteBtn = page.locator('#chip').locator('.delete-btn');
     await deleteBtn.click();
 
     // ASSERT

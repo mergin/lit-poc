@@ -16,10 +16,7 @@ test.describe('mu-badge e2e', () => {
     // ASSERT
     await expect(badgeElement).toBeVisible();
 
-    // Playwright evaluates text nodes inside the element, which includes light DOM and shadow DOM text
-    // The inner text will contain the light dom "Mail" and the shadow dom badge numbers/a11y strings
-    const textContent = await badgeElement.textContent();
-    expect(textContent).toContain('Mail');
-    expect(textContent).toContain('3');
+    await expect(badgeElement).toContainText('Mail');
+    await expect(badgeElement).toContainText('3');
   });
 });

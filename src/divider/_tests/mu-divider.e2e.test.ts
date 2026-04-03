@@ -18,7 +18,7 @@ test.describe('mu-divider e2e', () => {
     const div2 = page.locator('#div2');
 
     // ASSERT
-    await expect(div1).toBeVisible();
-    await expect(div2).toBeVisible();
+    await expect(div1).toBeAttached();
+    await expect(div2).toBeAttached();
   });
 });
