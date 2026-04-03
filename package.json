@@ -1,14 +1,68 @@
 {
   "name": "lit-poc",
-  "private": true,
+  "private": false,
   "version": "2.0.3",
   "description": "A Lit 3 web components proof of concept",
   "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./avatar": {
+      "import": "./dist/avatar.js",
+      "types": "./dist/avatar/mu-avatar.d.ts"
+    },
+    "./badge": {
+      "import": "./dist/badge.js",
+      "types": "./dist/badge/mu-badge.d.ts"
+    },
+    "./button": {
+      "import": "./dist/button.js",
+      "types": "./dist/button/mu-button.d.ts"
+    },
+    "./card": {
+      "import": "./dist/card.js",
+      "types": "./dist/card/mu-card.d.ts"
+    },
+    "./chip": {
+      "import": "./dist/chip.js",
+      "types": "./dist/chip/mu-chip.d.ts"
+    },
+    "./divider": {
+      "import": "./dist/divider.js",
+      "types": "./dist/divider/mu-divider.d.ts"
+    },
+    "./icon": {
+      "import": "./dist/icon.js",
+      "types": "./dist/icon/mu-icon.d.ts"
+    },
+    "./list": {
+      "import": "./dist/list.js",
+      "types": "./dist/list/mu-list.d.ts"
+    },
+    "./list-item": {
+      "import": "./dist/list-item.js",
+      "types": "./dist/list/mu-list-item.d.ts"
+    },
+    "./typography": {
+      "import": "./dist/typography.js",
+      "types": "./dist/typography/mu-typography.d.ts"
+    }
+  },
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "build": "tsc --noEmit",
+    "build": "vite build --config vite.lib.config.ts && tsc --project tsconfig.build.json --emitDeclarationOnly",
     "build:watch": "tsc --noEmit --watch",
     "clean": "rm -rf dist/ test-results/ docs/ node_modules/",
     "rebuild": "npm run clean && npm i && npm run build",
@@ -39,7 +93,8 @@
     "checksize": "vite build --config vite.docs.config.ts && cat docs/mu-button.bundled.js | gzip -9 | wc -c",
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "chromatic --project-token=$CHROMATIC_PROJECT_TOKEN"
   },
   "keywords": [
     "web-components",
@@ -72,6 +127,7 @@
     "@vitest/coverage-v8": "^3.2.4",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "cross-env": "^10.1.0",
+    "custom-element-vs-code-integration": "^1.5.0",
     "eslint": "^8.57.1",
     "eslint-plugin-jsdoc": "^62.9.0",
     "eslint-plugin-storybook": "^10.3.4",

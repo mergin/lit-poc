@@ -13,7 +13,13 @@ export default defineConfig({
     },
     coverage: {
       include: ['src/**/*.ts'],
-      exclude: ['src/**/*.stories.ts', 'src/**/_tests/**', 'src/test/**', 'src/stories/**'],
+      exclude: [
+        'src/**/*.stories.ts',
+        'src/**/_tests/**',
+        'src/test/**',
+        'src/stories/**',
+        'src/index.ts',
+      ],
       thresholds: {
         lines: 80,
         functions: 80,

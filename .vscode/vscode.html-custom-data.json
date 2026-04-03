@@ -1,0 +1,229 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vscode-html-languageservice/main/docs/customData.schema.json",
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "mu-avatar",
+      "description": "Minimal/MUI-style avatar component.\r\nCan display an image or initials, supports size and color.\n---\n",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "Avatar image URL (optional).",
+          "values": []
+        },
+        {
+          "name": "alt",
+          "description": "Alt text for the image (for accessibility).",
+          "values": []
+        },
+        {
+          "name": "initials",
+          "description": "Fallback initials if no image.",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "Avatar size: 'small' | 'medium' | 'large'.",
+          "values": [{"name": "small"}, {"name": "medium"}, {"name": "large"}]
+        },
+        {
+          "name": "color",
+          "description": "Predefined color: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-badge",
+      "description": "A badge component to display status descriptors or unread counts.\n---\n",
+      "attributes": [
+        {
+          "name": "content",
+          "description": "The content rendered within the badge.",
+          "values": []
+        },
+        {
+          "name": "color",
+          "description": "The color of the badge.",
+          "values": []
+        },
+        {
+          "name": "invisible",
+          "description": "If true, the badge is hidden.",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "Accessible label for the badge content. Defaults to 'Badge: [content]'.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-button",
+      "description": "Minimal/MUI-style button component.\r\nSupports 3 sizes, 3 types, and predefined colors.\n---\n",
+      "attributes": [
+        {
+          "name": "size",
+          "description": "Button size: 'small' | 'medium' | 'large'.",
+          "values": [{"name": "small"}, {"name": "medium"}, {"name": "large"}]
+        },
+        {
+          "name": "variant",
+          "description": "Button variant: 'contained' | 'outlined' | 'icon'.",
+          "values": [{"name": "contained"}, {"name": "outlined"}, {"name": "icon"}]
+        },
+        {
+          "name": "color",
+          "description": "Predefined color: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'.",
+          "values": []
+        },
+        {"name": "disabled", "description": "Disabled state.", "values": []}
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-card",
+      "description": "Card container component. Use slots for header, content, and actions.\n---\n",
+      "attributes": [],
+      "references": []
+    },
+    {
+      "name": "mu-card-header",
+      "description": "Card header subcomponent. Use in the header slot of mu-card.\n---\n",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title text for the card header.",
+          "values": []
+        },
+        {
+          "name": "subtitle",
+          "description": "Optional subtitle text.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-card-content",
+      "description": "Card content subcomponent. Use as the default slot of mu-card.\n---\n",
+      "attributes": [],
+      "references": []
+    },
+    {
+      "name": "mu-card-actions",
+      "description": "Card actions subcomponent. Use in the actions slot of mu-card.\n---\n",
+      "attributes": [],
+      "references": []
+    },
+    {
+      "name": "mu-divider",
+      "description": "Divider component to separate content.\n---\n",
+      "attributes": [
+        {
+          "name": "orientation",
+          "description": "The orientation of the divider.",
+          "values": [{"name": "horizontal"}, {"name": "vertical"}]
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-chip",
+      "description": "Chip component for tags, attributes, and actions.\n---\n\n\n### **Events:**\n - **delete** - Dispatched when the delete button is clicked on a deletable chip.",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Text label displayed in the chip.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the chip and its actions.",
+          "values": []
+        },
+        {
+          "name": "deletable",
+          "description": "Allows the chip to be deleted, rendering a close icon.",
+          "values": []
+        },
+        {
+          "name": "color",
+          "description": "Predefined color variant.",
+          "values": [
+            {"name": ""},
+            {"name": "default"},
+            {"name": "primary"},
+            {"name": "secondary"},
+            {"name": "error"},
+            {"name": "success"},
+            {"name": "warning"},
+            {"name": "info"}
+          ]
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-icon",
+      "description": "Material Icon wrapper component.\r\nSupports size and color props.\n---\n",
+      "attributes": [
+        {
+          "name": "name",
+          "description": "Icon name (Material Icons font ligature).",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "Icon size: 'small' | 'medium' | 'large' | number (px).",
+          "values": [{"name": "small"}, {"name": "medium"}, {"name": "large"}]
+        },
+        {
+          "name": "color",
+          "description": "Predefined color: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-list-item",
+      "description": "List item component to be used inside mu-list.\n---\n",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "If true, the list item is disabled.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-list",
+      "description": "List component for continuous vertical indexes.\n---\n",
+      "attributes": [
+        {
+          "name": "dense",
+          "description": "Enables dense mode (reduces padding).",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-typography",
+      "description": "A typography component that ensures semantic HTML tags and consistent styling.\n---\n",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "The typography variant which determines the semantic HTML tag and visual style.",
+          "values": [{"name": "TypographyVariant"}]
+        }
+      ],
+      "references": []
+    }
+  ]
+}

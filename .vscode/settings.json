@@ -8,5 +8,7 @@
     "npx playwright": true,
     "npx lint-staged": true
   },
-  "cSpell.words": ["csspart", "subcomponent"]
+  "cSpell.words": ["csspart", "subcomponent"],
+  "html.customData": [".vscode/vscode.html-custom-data.json"],
+  "css.customData": []
 }
