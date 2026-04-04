@@ -18,3 +18,8 @@ export {MuTextField} from './text-field/mu-text-field.js';
 export type {TextFieldType} from './text-field/mu-text-field.js';
 export {MuSelect} from './select/mu-select.js';
 export type {SelectOption} from './select/mu-select.js';
+export {MuDialog} from './dialog/mu-dialog.js';
+export {MuTooltip} from './tooltip/mu-tooltip.js';
+export type {TooltipPlacement} from './tooltip/mu-tooltip.js';
+export {MuSnackbar} from './snackbar/mu-snackbar.js';
+export type {SnackbarVariant} from './snackbar/mu-snackbar.js';

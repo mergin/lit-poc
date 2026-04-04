@@ -84,6 +84,18 @@
     "./select": {
       "import": "./dist/select.js",
       "types": "./dist/select/mu-select.d.ts"
+    },
+    "./dialog": {
+      "import": "./dist/dialog.js",
+      "types": "./dist/dialog/mu-dialog.d.ts"
+    },
+    "./tooltip": {
+      "import": "./dist/tooltip.js",
+      "types": "./dist/tooltip/mu-tooltip.d.ts"
+    },
+    "./snackbar": {
+      "import": "./dist/snackbar.js",
+      "types": "./dist/snackbar/mu-snackbar.d.ts"
     }
   },
   "engines": {

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-snackbar dev</title>
+  </head>
+  <body style="padding: 24px; font-family: sans-serif">
+    <h2>Snackbar</h2>
+
+    <div style="display: flex; gap: 12px; flex-wrap: wrap">
+      <button id="show-default">Show default</button>
+      <button id="show-success">Show success</button>
+      <button id="show-error">Show error</button>
+      <button id="show-action">Show with action</button>
+    </div>
+
+    <mu-snackbar
+      id="snackbar"
+      duration="0"
+    ></mu-snackbar>
+
+    <script type="module">
+      import '/src/snackbar/mu-snackbar.js';
+
+      const sb = document.getElementById('snackbar');
+
+      document.getElementById('show-default').addEventListener('click', () => {
+        sb.variant = 'default';
+        sb.message = 'Changes saved';
+        sb.actionLabel = '';
+        sb.open = true;
+      });
+      document.getElementById('show-success').addEventListener('click', () => {
+        sb.variant = 'success';
+        sb.message = 'File uploaded successfully';
+        sb.actionLabel = '';
+        sb.open = true;
+      });
+      document.getElementById('show-error').addEventListener('click', () => {
+        sb.variant = 'error';
+        sb.message = 'Upload failed. Try again.';
+        sb.actionLabel = '';
+        sb.open = true;
+      });
+      document.getElementById('show-action').addEventListener('click', () => {
+        sb.variant = 'default';
+        sb.message = 'Item deleted';
+        sb.actionLabel = 'Undo';
+        sb.open = true;
+      });
+
+      sb.addEventListener('mu-action', () => console.log('mu-action fired'));
+      sb.addEventListener('mu-close', () => console.log('mu-close fired'));
+    </script>
+  </body>
+</html>

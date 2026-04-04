@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-tooltip dev</title>
+  </head>
+  <body style="padding: 80px 24px; font-family: sans-serif">
+    <h2>Tooltip</h2>
+
+    <div style="display: flex; gap: 48px; flex-wrap: wrap; align-items: center; margin: 40px">
+      <mu-tooltip
+        id="top-tip"
+        label="Top tooltip"
+        placement="top"
+      >
+        <button>Top (default)</button>
+      </mu-tooltip>
+
+      <mu-tooltip
+        id="bottom-tip"
+        label="Bottom tooltip"
+        placement="bottom"
+      >
+        <button>Bottom</button>
+      </mu-tooltip>
+
+      <mu-tooltip
+        id="left-tip"
+        label="Left tooltip"
+        placement="left"
+      >
+        <button>Left</button>
+      </mu-tooltip>
+
+      <mu-tooltip
+        id="right-tip"
+        label="Right tooltip"
+        placement="right"
+      >
+        <button>Right</button>
+      </mu-tooltip>
+    </div>
+
+    <script type="module">
+      import '/src/tooltip/mu-tooltip.js';
+    </script>
+  </body>
+</html>

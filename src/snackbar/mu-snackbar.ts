@@ -1,0 +1,210 @@
+import {LitElement, html, css, type TemplateResult} from 'lit';
+import {customElement, property} from 'lit/decorators.js';
+import {sharedStyles} from '../styles/shared-styles.js';
+
+/** Visual severity variant of the snackbar. */
+export type SnackbarVariant = 'default' | 'success' | 'error' | 'warning' | 'info';
+
+/**
+ * Snackbar notification component rendered in a fixed bottom-center position.
+ * Auto-dismisses after the configured duration; duration=0 is persistent.
+ * @fires mu-action - Dispatched when the action button is clicked.
+ * @fires mu-close - Dispatched when the snackbar is dismissed (any cause).
+ */
+@customElement('mu-snackbar')
+export class MuSnackbar extends LitElement {
+  /** Notification message text. */
+  @property({type: String}) message = '';
+
+  /** Visual severity variant controlling colours and ARIA live region urgency. */
+  @property({type: String, reflect: true}) variant: SnackbarVariant = 'default';
+
+  /** Auto-dismiss delay in milliseconds. Use 0 for a persistent snackbar. */
+  @property({type: Number}) duration = 5000;
+
+  /** Whether the snackbar is currently visible. Reflected to attribute. */
+  @property({type: Boolean, reflect: true}) open = false;
+
+  /** Optional label for the call-to-action button. Hidden when empty. */
+  @property({type: String, attribute: 'action-label'}) actionLabel = '';
+
+  /** Active auto-dismiss timer handle. */
+  private _timer: number | null = null;
+
+  static override styles = [
+    sharedStyles,
+    css`
+      :host {
+        display: contents;
+      }
+      .snackbar {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        background: var(--mu-text-primary, #212b36);
+        color: #fff;
+        font-size: var(--mu-body2-size, 0.875rem);
+        min-width: 280px;
+        max-width: min(560px, 90vw);
+        box-shadow: var(--mu-shadow-2, 0px 4px 8px rgba(145, 158, 171, 0.16));
+        z-index: 1400;
+        transition: opacity 0.2s, transform 0.2s;
+      }
+      :host(:not([open])) .snackbar {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-50%) translateY(16px);
+      }
+      :host([variant='success']) .snackbar {
+        background: var(--mu-success, #2e7d32);
+      }
+      :host([variant='error']) .snackbar {
+        background: var(--mu-error, #d32f2f);
+      }
+      :host([variant='warning']) .snackbar {
+        background: var(--mu-warning, #ed6c02);
+      }
+      :host([variant='info']) .snackbar {
+        background: var(--mu-info, #0288d1);
+      }
+      .message {
+        flex: 1;
+      }
+      .action {
+        background: transparent;
+        border: none;
+        color: inherit;
+        font-size: inherit;
+        font-weight: var(--mu-font-weight-medium, 500);
+        cursor: pointer;
+        padding: 4px 8px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .action:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .close {
+        background: transparent;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+        font-size: 1rem;
+        line-height: 1;
+        padding: 4px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .close:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    `,
+  ];
+
+  /**
+   * Responds to property changes; starts or clears the auto-dismiss timer.
+   * @param changedProps - Map of changed property names to their previous values.
+   */
+  override updated(changedProps: Map<string, unknown>): void {
+    if (changedProps.has('open') || changedProps.has('message')) {
+      if (this.open) {
+        this._startTimer();
+      } else {
+        this._clearTimer();
+      }
+    }
+  }
+
+  /**
+   * Called when the element is removed from the DOM. Clears any pending timer.
+   */
+  override disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this._clearTimer();
+  }
+
+  /**
+   * Starts the auto-dismiss timer, resetting it if already running.
+   */
+  private _startTimer(): void {
+    this._clearTimer();
+    if (this.duration > 0) {
+      this._timer = window.setTimeout((): void => {
+        this._dismiss();
+      }, this.duration);
+    }
+  }
+
+  /**
+   * Clears the active auto-dismiss timer.
+   */
+  private _clearTimer(): void {
+    if (this._timer !== null) {
+      window.clearTimeout(this._timer);
+      this._timer = null;
+    }
+  }
+
+  /**
+   * Closes the snackbar and dispatches the mu-close event.
+   */
+  private _dismiss(): void {
+    this.open = false;
+    this.dispatchEvent(new CustomEvent('mu-close', {bubbles: true, composed: true}));
+  }
+
+  /**
+   * Handles the action button click; dispatches mu-action then dismisses.
+   */
+  private _handleAction(): void {
+    this.dispatchEvent(new CustomEvent('mu-action', {bubbles: true, composed: true}));
+    this._dismiss();
+  }
+
+  /**
+   * @returns The rendered snackbar template.
+   */
+  override render(): TemplateResult {
+    const isAssertive = this.variant === 'error';
+    return html`
+      <div
+        class="snackbar"
+        role="status"
+        aria-live="${isAssertive ? 'assertive' : 'polite'}"
+        aria-atomic="true"
+      >
+        <span class="message">${this.message}</span>
+        ${this.actionLabel
+          ? html`<button
+              class="action"
+              @click="${this._handleAction}"
+            >
+              ${this.actionLabel}
+            </button>`
+          : ''}
+        <button
+          class="close"
+          aria-label="Dismiss"
+          @click="${this._dismiss}"
+        >
+          ✕
+        </button>
+      </div>
+    `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'mu-snackbar': MuSnackbar;
+  }
+}
