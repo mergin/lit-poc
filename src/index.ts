@@ -41,3 +41,6 @@ export {MuPagination} from './pagination/mu-pagination.js';
 export {MuAppBar} from './app-bar/mu-app-bar.js';
 export {MuDrawer} from './drawer/mu-drawer.js';
 export type {DrawerPlacement} from './drawer/mu-drawer.js';
+export {MuLocaleProvider, localeContext} from './i18n/mu-locale-provider.js';
+export {defaultLocale} from './i18n/default-locale.js';
+export type {MuLocale} from './i18n/default-locale.js';

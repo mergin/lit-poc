@@ -1,7 +1,10 @@
 import {LitElement, html, css, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
+import {consume} from '@lit/context';
 import {sharedStyles} from '../styles/shared-styles.js';
 import {classMap} from 'lit/directives/class-map.js';
+import {localeContext} from '../i18n/mu-locale-provider.js';
+import {defaultLocale, type MuLocale} from '../i18n/default-locale.js';
 import '../icon/mu-icon.js';
 
 /**
@@ -18,6 +21,10 @@ export class MuChip extends LitElement {
 
   /** Allows the chip to be deleted, rendering a close icon. */
   @property({type: Boolean}) deletable = false;
+
+  /** Current locale strings; provided via `mu-locale-provider` or defaults to English. */
+  @consume({context: localeContext, subscribe: true})
+  private _locale: MuLocale = defaultLocale;
 
   /** Predefined color variant. */
   @property({type: String}) color:
@@ -146,7 +153,7 @@ export class MuChip extends LitElement {
           ? html`
               <button
                 class="delete-btn"
-                aria-label="Delete ${this.label}"
+                aria-label="${this._locale.chip.deleteLabel(this.label)}"
                 @click="${this._handleDelete}"
                 ?disabled="${this.disabled}"
               >

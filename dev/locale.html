@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>mu-locale-provider Demo</title>
+  </head>
+  <body>
+    <a href="/index.html">Back to main</a>
+    <h1>mu-locale-provider Demo</h1>
+    <script
+      type="module"
+      src="/src/i18n/mu-locale-provider.ts"
+    ></script>
+    <script
+      type="module"
+      src="/src/chip/mu-chip.ts"
+    ></script>
+    <script
+      type="module"
+      src="/src/badge/mu-badge.ts"
+    ></script>
+    <script
+      type="module"
+      src="/src/snackbar/mu-snackbar.ts"
+    ></script>
+
+    <h2>Default locale (English)</h2>
+    <div style="display: flex; gap: 8px; align-items: center">
+      <mu-chip
+        label="Tag"
+        deletable
+      ></mu-chip>
+      <mu-badge content="4"><span>Notifications</span></mu-badge>
+      <mu-snackbar
+        id="default-snackbar"
+        message="File saved"
+        open
+      ></mu-snackbar>
+    </div>
+
+    <h2>Custom locale (German) via mu-locale-provider</h2>
+    <mu-locale-provider id="german-provider">
+      <div style="display: flex; gap: 8px; align-items: center">
+        <mu-chip
+          id="german-chip"
+          label="Schlagwort"
+          deletable
+        ></mu-chip>
+        <mu-badge
+          id="german-badge"
+          content="7"
+          ><span>Benachrichtigungen</span></mu-badge
+        >
+        <mu-snackbar
+          id="german-snackbar"
+          message="Datei gespeichert"
+          open
+        ></mu-snackbar>
+      </div>
+    </mu-locale-provider>
+
+    <script type="module">
+      const provider = document.getElementById('german-provider');
+      provider.locale = {
+        chip: {deleteLabel: (label) => `Entfernen ${label}`},
+        badge: {defaultLabel: (content) => `Ausweis: ${content}`},
+        dialog: {closeLabel: 'Schließen'},
+        snackbar: {closeLabel: 'Verwerfen'},
+      };
+    </script>
+  </body>
+</html>

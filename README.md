@@ -97,6 +97,12 @@ All components are available as individual subpath imports (`@your-scope/lit-poc
 | -------------- | --------------------- | ------------------------------------------------------- |
 | Theme Provider | `<mu-theme-provider>` | Sets CSS custom-property tokens for the component tree. |
 
+### Internationalisation (i18n)
+
+| Component       | Tag                    | Description                                                                           |
+| --------------- | ---------------------- | ------------------------------------------------------------------------------------- |
+| Locale Provider | `<mu-locale-provider>` | Provides localised strings to descendant components via Lit Context (`@lit/context`). |
+
 ---
 
 ## Getting Started
@@ -301,6 +307,7 @@ This library is built with accessibility as a core requirement. All components m
 - `mu-pagination`: `<nav aria-label="Pagination">` wrapper; `aria-label="Page N"` on every page button; `aria-current="page"` on the active page; ellipsis markers are `aria-hidden`.
 - `mu-app-bar`: Renders `<header role="banner">`, mapping to the `banner` ARIA landmark.
 - `mu-drawer`: Uses a native `<dialog>` for focus trapping and Escape-key close; focus returns to the triggering element on close.
+- `mu-locale-provider`: Non-visual context provider; renders only a `<slot>`. All localised strings it distributes are used as `aria-label` or visually-hidden text in consuming components.
 
 For full compliance, ensure you provide accessible labels and alt text when using these components. If you extend components with new features (e.g., interactive icons, dialogs), follow the rules above.
 
@@ -319,5 +326,3 @@ For full compliance, ensure you provide accessible labels and alt text when usin
 BSD-3-Clause (c) Google LLC
 
 ---
-
-Let me know if you want to add usage examples, API docs, or further customization!

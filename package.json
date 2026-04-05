@@ -152,6 +152,10 @@
     "./drawer": {
       "import": "./dist/drawer.js",
       "types": "./dist/drawer/mu-drawer.d.ts"
+    },
+    "./locale-provider": {
+      "import": "./dist/locale-provider.js",
+      "types": "./dist/i18n/mu-locale-provider.d.ts"
     }
   },
   "engines": {
@@ -201,6 +205,7 @@
   "author": "David Prieto",
   "license": "BSD-3-Clause",
   "dependencies": {
+    "@lit/context": "^1.1.6",
     "lit": "^3.3.2"
   },
   "devDependencies": {

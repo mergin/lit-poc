@@ -1,6 +1,9 @@
 import {LitElement, html, css, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
+import {consume} from '@lit/context';
 import {sharedStyles} from '../styles/shared-styles.js';
+import {localeContext} from '../i18n/mu-locale-provider.js';
+import {defaultLocale, type MuLocale} from '../i18n/default-locale.js';
 
 /** Visual severity variant of the snackbar. */
 export type SnackbarVariant = 'default' | 'success' | 'error' | 'warning' | 'info';
@@ -27,6 +30,10 @@ export class MuSnackbar extends LitElement {
 
   /** Optional label for the call-to-action button. Hidden when empty. */
   @property({type: String, attribute: 'action-label'}) actionLabel = '';
+
+  /** Current locale strings; provided via `mu-locale-provider` or defaults to English. */
+  @consume({context: localeContext, subscribe: true})
+  private _locale: MuLocale = defaultLocale;
 
   /** Active auto-dismiss timer handle. */
   private _timer: number | null = null;
@@ -193,7 +200,7 @@ export class MuSnackbar extends LitElement {
           : ''}
         <button
           class="close"
-          aria-label="Dismiss"
+          aria-label="${this._locale.snackbar.closeLabel}"
           @click="${this._dismiss}"
         >
           ✕

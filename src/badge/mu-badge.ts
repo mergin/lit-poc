@@ -1,7 +1,10 @@
 import {LitElement, html, css, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
+import {consume} from '@lit/context';
 import {sharedStyles} from '../styles/shared-styles.js';
 import {classMap} from 'lit/directives/class-map.js';
+import {localeContext} from '../i18n/mu-locale-provider.js';
+import {defaultLocale, type MuLocale} from '../i18n/default-locale.js';
 
 /**
  * A badge component to display status descriptors or unread counts.
@@ -19,6 +22,10 @@ export class MuBadge extends LitElement {
 
   /** Accessible label for the badge content. Defaults to 'Badge: [content]'. */
   @property({type: String}) label = '';
+
+  /** Current locale strings; provided via `mu-locale-provider` or defaults to English. */
+  @consume({context: localeContext, subscribe: true})
+  private _locale: MuLocale = defaultLocale;
 
   static override styles = [
     sharedStyles,
@@ -98,7 +105,7 @@ export class MuBadge extends LitElement {
       [`color-${this.color}`]: true,
     };
 
-    const ariaLabel = this.label || `Badge content: ${this.content || 'new'}`;
+    const ariaLabel = this.label || this._locale.badge.defaultLabel(this.content);
 
     return html`
       <slot></slot>

@@ -62,3 +62,4 @@ import './src/badge/mu-badge.js';
 - The visible badge span is `aria-hidden="true"` to avoid duplicate announcements.
 - A visually-hidden `<span>` renders the `label` (or the auto-generated fallback) for screen readers.
 - Provide a meaningful `label` whenever `content` alone is not self-explanatory in context.
+- The auto-generated fallback text is driven by `MuLocale.badge.defaultLabel(content)` and defaults to `"Badge content: [content]"`. Override it by placing the badge inside a `<mu-locale-provider>` with a custom locale.

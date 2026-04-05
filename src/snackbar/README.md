@@ -47,6 +47,7 @@ type SnackbarVariant = 'default' | 'success' | 'error' | 'warning' | 'info';
 - Uses `role="status"` with `aria-live="polite"` for non-error variants.
 - Uses `aria-live="assertive"` for the `error` variant.
 - `aria-atomic="true"` ensures the full message is announced on update.
+- The dismiss button `aria-label` is driven by `MuLocale.snackbar.closeLabel` and defaults to `"Dismiss"`. Override it by placing the snackbar inside a `<mu-locale-provider>` with a custom locale.
 
 ## Testing
 

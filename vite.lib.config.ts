@@ -44,11 +44,12 @@ export default defineConfig({
         pagination: resolve(__dirname, 'src/pagination/mu-pagination.ts'),
         'app-bar': resolve(__dirname, 'src/app-bar/mu-app-bar.ts'),
         drawer: resolve(__dirname, 'src/drawer/mu-drawer.ts'),
+        'locale-provider': resolve(__dirname, 'src/i18n/mu-locale-provider.ts'),
       },
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['lit', /^lit\//],
+      external: ['lit', /^lit\//, '@lit/context'],
       output: {
         entryFileNames: '[name].js',
         chunkFileNames: 'chunks/[name]-[hash].js',
