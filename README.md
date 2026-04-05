@@ -6,6 +6,7 @@ A modern, accessible, and compositional web component library built with Lit 3 a
 
 - [Features](#features)
 - [Components](#components)
+- [Framework Compatibility](#framework-compatibility)
 - [Getting Started](#getting-started)
   - [Install dependencies](#install-dependencies)
   - [Build](#build)
@@ -102,6 +103,201 @@ All components are available as individual subpath imports (`@your-scope/lit-poc
 | Component       | Tag                    | Description                                                                           |
 | --------------- | ---------------------- | ------------------------------------------------------------------------------------- |
 | Locale Provider | `<mu-locale-provider>` | Provides localised strings to descendant components via Lit Context (`@lit/context`). |
+
+---
+
+## Framework Compatibility
+
+This library ships standard Web Components (Custom Elements v1, Shadow DOM). All components work natively in any modern browser and any framework that renders to the real DOM. Below are framework-specific setup guides.
+
+### React
+
+React 19 provides native Web Component support. For **React 16.8–18**, use the included React wrapper subpath — generated with [`@lit/react`](https://www.npmjs.com/package/@lit/react) — which maps custom events to typed React prop callbacks.
+
+#### React 19 — native usage
+
+```tsx
+import 'lit-poc/button';
+import 'lit-poc/chip';
+
+function App() {
+  return <mu-button color="primary">Save</mu-button>;
+}
+```
+
+#### React 16.8–18 — `lit-poc/react` wrapper package
+
+```tsx
+import {Button, Chip, TextField, Dialog} from 'lit-poc/react';
+
+function App() {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <>
+      <Button
+        color="primary"
+        onClick={() => setOpen(true)}
+      >
+        Open
+      </Button>
+      <Chip
+        label="React"
+        deletable
+        onDelete={() => console.log('deleted')}
+      />
+      <TextField
+        label="Name"
+        onChange={(e) => console.log(e)}
+      />
+      <Dialog
+        headline="Confirm"
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        Are you sure?
+      </Dialog>
+    </>
+  );
+}
+```
+
+Every element has a PascalCase export (e.g. `<mu-pagination>` → `Pagination`). Custom events are mapped to `onEventName` props — see the table below.
+
+| Web Component event | React prop          |
+| ------------------- | ------------------- |
+| `delete`            | `onDelete`          |
+| `change`            | `onChange`          |
+| `mu-open`           | `onOpen`            |
+| `mu-close`          | `onClose`           |
+| `mu-action`         | `onAction`          |
+| `mu-complete`       | `onComplete`        |
+| `tab-change`        | `onTabChange`       |
+| `accordion-toggle`  | `onAccordionToggle` |
+| `page-change`       | `onPageChange`      |
+
+---
+
+### Vue 3
+
+Vue 3 supports custom elements natively. Configure the compiler to treat `mu-*` tags as custom elements.
+
+#### `vite.config.ts`
+
+```ts
+import vue from '@vitejs/plugin-vue';
+import {defineConfig} from 'vite';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('mu-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+#### Usage
+
+```vue
+<script setup lang="ts">
+import 'lit-poc/button';
+import 'lit-poc/chip';
+</script>
+
+<template>
+  <mu-button color="primary">Save</mu-button>
+  <mu-chip
+    label="Vue"
+    deletable
+    @delete="onDelete"
+  />
+</template>
+```
+
+Vue binds properties with `:propName="value"` and listens to DOM events with `@eventName`. All `mu-*` events use `bubbles: true, composed: true`.
+
+---
+
+### Angular
+
+Add `CUSTOM_ELEMENTS_SCHEMA` to suppress unknown-element warnings.
+
+#### Standalone component
+
+```ts
+import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import 'lit-poc/button';
+import 'lit-poc/chip';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <mu-button color="primary">Save</mu-button>
+    <mu-chip
+      label="Angular"
+      deletable
+      (delete)="onDelete()"
+    ></mu-chip>
+  `,
+})
+export class AppComponent {
+  onDelete(): void {
+    console.log('chip deleted');
+  }
+}
+```
+
+Angular binds properties with `[propName]="value"` and listens to events with `(eventName)`.
+
+---
+
+### Svelte
+
+Svelte supports Web Components natively — no configuration needed.
+
+```svelte
+<script>
+  import 'lit-poc/button';
+  import 'lit-poc/chip';
+</script>
+
+<mu-button color="primary">Save</mu-button>
+<mu-chip label="Svelte" deletable on:delete={() => console.log('deleted')} />
+```
+
+---
+
+### Vanilla JS / HTML
+
+```html
+<script
+  type="module"
+  src="https://unpkg.com/lit-poc/dist/button.js"
+></script>
+<script
+  type="module"
+  src="https://unpkg.com/lit-poc/dist/chip.js"
+></script>
+
+<mu-button color="primary">Save</mu-button>
+<mu-chip
+  id="chip"
+  label="Vanilla"
+  deletable
+></mu-chip>
+
+<script>
+  document.getElementById('chip').addEventListener('delete', () => {
+    console.log('chip deleted');
+  });
+</script>
+```
 
 ---
 

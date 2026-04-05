@@ -45,11 +45,13 @@ export default defineConfig({
         'app-bar': resolve(__dirname, 'src/app-bar/mu-app-bar.ts'),
         drawer: resolve(__dirname, 'src/drawer/mu-drawer.ts'),
         'locale-provider': resolve(__dirname, 'src/i18n/mu-locale-provider.ts'),
+        react: resolve(__dirname, 'src/react/index.ts'),
       },
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['lit', /^lit\//, '@lit/context'],
+      external: ['lit', /^lit\//, '@lit/context', '@lit/react', 'react', 'react-dom'],
+
       output: {
         entryFileNames: '[name].js',
         chunkFileNames: 'chunks/[name]-[hash].js',
