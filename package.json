@@ -96,6 +96,62 @@
     "./snackbar": {
       "import": "./dist/snackbar.js",
       "types": "./dist/snackbar/mu-snackbar.d.ts"
+    },
+    "./skeleton": {
+      "import": "./dist/skeleton.js",
+      "types": "./dist/skeleton/mu-skeleton.d.ts"
+    },
+    "./spinner": {
+      "import": "./dist/spinner.js",
+      "types": "./dist/spinner/mu-spinner.d.ts"
+    },
+    "./linear-progress": {
+      "import": "./dist/linear-progress.js",
+      "types": "./dist/linear-progress/mu-linear-progress.d.ts"
+    },
+    "./alert": {
+      "import": "./dist/alert.js",
+      "types": "./dist/alert/mu-alert.d.ts"
+    },
+    "./tabs": {
+      "import": "./dist/tabs.js",
+      "types": "./dist/tabs/mu-tabs.d.ts"
+    },
+    "./tab": {
+      "import": "./dist/tab.js",
+      "types": "./dist/tabs/mu-tab.d.ts"
+    },
+    "./tab-panel": {
+      "import": "./dist/tab-panel.js",
+      "types": "./dist/tabs/mu-tab-panel.d.ts"
+    },
+    "./accordion": {
+      "import": "./dist/accordion.js",
+      "types": "./dist/accordion/mu-accordion.d.ts"
+    },
+    "./accordion-item": {
+      "import": "./dist/accordion-item.js",
+      "types": "./dist/accordion/mu-accordion-item.d.ts"
+    },
+    "./breadcrumb": {
+      "import": "./dist/breadcrumb.js",
+      "types": "./dist/breadcrumb/mu-breadcrumb.d.ts"
+    },
+    "./breadcrumb-item": {
+      "import": "./dist/breadcrumb-item.js",
+      "types": "./dist/breadcrumb/mu-breadcrumb-item.d.ts"
+    },
+    "./pagination": {
+      "import": "./dist/pagination.js",
+      "types": "./dist/pagination/mu-pagination.d.ts"
+    },
+    "./app-bar": {
+      "import": "./dist/app-bar.js",
+      "types": "./dist/app-bar/mu-app-bar.d.ts"
+    },
+    "./drawer": {
+      "import": "./dist/drawer.js",
+      "types": "./dist/drawer/mu-drawer.d.ts"
     }
   },
   "engines": {

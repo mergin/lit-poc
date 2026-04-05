@@ -5,6 +5,7 @@ A modern, accessible, and compositional web component library built with Lit 3 a
 ## Table of Contents
 
 - [Features](#features)
+- [Components](#components)
 - [Getting Started](#getting-started)
   - [Install dependencies](#install-dependencies)
   - [Build](#build)
@@ -31,6 +32,70 @@ A modern, accessible, and compositional web component library built with Lit 3 a
 - **Component Explorer**: Storybook for viewing and interacting with components.
 - **Static Docs Site**: Built with Eleventy and Vite for demos and API docs.
 - **Commit Message Linting**: Enforces Conventional Commits via commitlint and Husky.
+
+---
+
+## Components
+
+All components are available as individual subpath imports (`@your-scope/lit-poc/<component>`) or via the main entry point.
+
+### Layout & Display
+
+| Component        | Tag                           | Description                                                   |
+| ---------------- | ----------------------------- | ------------------------------------------------------------- |
+| Avatar           | `<mu-avatar>`                 | User avatar with image or initials fallback.                  |
+| Badge            | `<mu-badge>`                  | Small status indicator overlaid on content.                   |
+| Card             | `<mu-card>`                   | Content container with header, body, and actions slots.       |
+| Chip             | `<mu-chip>`                   | Compact element for tags, filters, or actions.                |
+| Divider          | `<mu-divider>`                | Horizontal or vertical separator line.                        |
+| Icon             | `<mu-icon>`                   | Inline SVG icon wrapper.                                      |
+| List / List Item | `<mu-list>`, `<mu-list-item>` | Vertical list container with optional leading/trailing slots. |
+| Typography       | `<mu-typography>`             | Semantic text elements (h1–h6, body, caption, overline).      |
+
+### Feedback & Status
+
+| Component       | Tag                    | Description                                                 |
+| --------------- | ---------------------- | ----------------------------------------------------------- |
+| Alert           | `<mu-alert>`           | Contextual feedback banner (success, info, warning, error). |
+| Linear Progress | `<mu-linear-progress>` | Horizontal progress bar (determinate or indeterminate).     |
+| Skeleton        | `<mu-skeleton>`        | Animated placeholder for loading states.                    |
+| Snackbar        | `<mu-snackbar>`        | Brief notification toasts with optional action.             |
+| Spinner         | `<mu-spinner>`         | Circular progress indicator (determinate or indeterminate). |
+
+### Form Inputs
+
+| Component           | Tag                              | Description                                                |
+| ------------------- | -------------------------------- | ---------------------------------------------------------- |
+| Button              | `<mu-button>`                    | Interactive button with variants and states.               |
+| Checkbox            | `<mu-checkbox>`                  | Binary toggle with indeterminate support.                  |
+| Radio / Radio Group | `<mu-radio>`, `<mu-radio-group>` | Single-choice radio controls with group management.        |
+| Select              | `<mu-select>`                    | Native-backed dropdown with validation support.            |
+| Switch              | `<mu-switch>`                    | Toggle switch for boolean settings.                        |
+| Text Field          | `<mu-text-field>`                | Single-line text input with label, hint, and error states. |
+
+### Navigation
+
+| Component  | Tag                                       | Description                                                        |
+| ---------- | ----------------------------------------- | ------------------------------------------------------------------ |
+| App Bar    | `<mu-app-bar>`                            | Sticky application header with leading, title, and trailing slots. |
+| Breadcrumb | `<mu-breadcrumb>`, `<mu-breadcrumb-item>` | Hierarchical navigation trail.                                     |
+| Pagination | `<mu-pagination>`                         | Page navigation control with ellipsis support.                     |
+| Tabs       | `<mu-tabs>`, `<mu-tab>`, `<mu-tab-panel>` | ARIA-compliant tabbed interface.                                   |
+
+### Overlays & Disclosure
+
+| Component | Tag                                     | Description                                            |
+| --------- | --------------------------------------- | ------------------------------------------------------ |
+| Accordion | `<mu-accordion>`, `<mu-accordion-item>` | Expandable/collapsible sections.                       |
+| Dialog    | `<mu-dialog>`                           | Modal dialog with focus trapping and Escape-key close. |
+| Drawer    | `<mu-drawer>`                           | Side panel that slides in from left or right.          |
+| Tooltip   | `<mu-tooltip>`                          | Contextual hover/focus hint.                           |
+
+### Theme
+
+| Component      | Tag                   | Description                                             |
+| -------------- | --------------------- | ------------------------------------------------------- |
+| Theme Provider | `<mu-theme-provider>` | Sets CSS custom-property tokens for the component tree. |
 
 ---
 
@@ -217,6 +282,25 @@ This library is built with accessibility as a core requirement. All components m
 - `mu-icon`: Decorative by default (`aria-hidden="true"`), not interactive.
 - `mu-list`: Employs semantic native list roles (`list` and `listitem`) or native tags (`<ul>`, `<li>`).
 - `mu-typography`: Renders exact semantic tags (`<h1>` to `<h6>`, `<p>`) to support proper document flow and screen reader landmarks.
+- `mu-theme-provider`: Non-visual; wraps content to apply CSS custom-property tokens.
+- `mu-checkbox`: Uses a native `<input type="checkbox">` for built-in state exposure; supports `indeterminate`; labelled via slot.
+- `mu-radio` / `mu-radio-group`: Uses native `<input type="radio">`; `mu-radio-group` provides `role="radiogroup"` and `aria-labelledby`.
+- `mu-switch`: Rendered as `role="switch"` with `aria-checked`; keyboard toggleable via Space.
+- `mu-text-field`: Associates a visible `<label>` with the `<input>` via `id`/`for`; surfaces error text in an `aria-live` region.
+- `mu-select`: Wraps a native `<select>` for full keyboard and screen-reader support; error exposed via `aria-describedby`.
+- `mu-dialog`: Uses a native `<dialog>` for built-in focus trapping and Escape-key close; `aria-modal` and `aria-labelledby` applied.
+- `mu-tooltip`: Shown on hover and keyboard focus; tied to the trigger via `aria-describedby`; role="tooltip".
+- `mu-snackbar`: Content region is `aria-live="assertive"` or `role="status"` so announcements reach screen readers.
+- `mu-skeleton`: Marked `aria-hidden="true"` and `role="presentation"`; completely invisible to assistive technology.
+- `mu-spinner`: Exposes `role="progressbar"` with `aria-valuemin`, `aria-valuemax`, and conditionally `aria-valuenow`.
+- `mu-linear-progress`: Sets `role="progressbar"` and full aria-value attributes on the host; attributes are removed in indeterminate mode.
+- `mu-alert`: `role="alert"` for error severity (live assertive); `role="status"` for all others. Icon is `aria-hidden`.
+- `mu-tabs` / `mu-tab` / `mu-tab-panel`: Follows the ARIA Tabs pattern — `role="tab"` + `aria-selected`; `role="tabpanel"` + `aria-labelledby`; roving tabindex for arrow-key navigation.
+- `mu-accordion` / `mu-accordion-item`: `aria-expanded` on header buttons; `role="region"` with `aria-labelledby` on each content region.
+- `mu-breadcrumb` / `mu-breadcrumb-item`: `<nav aria-label>` wrapper; `<ol>` list structure; `aria-current="page"` on the current item.
+- `mu-pagination`: `<nav aria-label="Pagination">` wrapper; `aria-label="Page N"` on every page button; `aria-current="page"` on the active page; ellipsis markers are `aria-hidden`.
+- `mu-app-bar`: Renders `<header role="banner">`, mapping to the `banner` ARIA landmark.
+- `mu-drawer`: Uses a native `<dialog>` for focus trapping and Escape-key close; focus returns to the triggering element on close.
 
 For full compliance, ensure you provide accessible labels and alt text when using these components. If you extend components with new features (e.g., interactive icons, dialogs), follow the rules above.
 
