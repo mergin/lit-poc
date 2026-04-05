@@ -255,6 +255,219 @@ export class AppComponent {
 
 Angular binds properties with `[propName]="value"` and listens to events with `(eventName)`.
 
+#### Reactive Forms
+
+The library ships Angular `ControlValueAccessor` directives for form elements. Import them via `MuFormsModule` or as individual standalone directives.
+
+| Element            | Strategy                       | Notes                                                              |
+| ------------------ | ------------------------------ | ------------------------------------------------------------------ |
+| `<mu-text-field>`  | `[ngDefaultControl]`           | Works natively — inner `<input>` `input` event is `composed: true` |
+| `<mu-checkbox>`    | `MuCheckboxControlDirective`   | Maps boolean `checked` to form model                               |
+| `<mu-switch>`      | `MuSwitchControlDirective`     | Maps boolean `checked` to form model                               |
+| `<mu-select>`      | `MuSelectControlDirective`     | Bridges `change` event (not `input`)                               |
+| `<mu-radio-group>` | `MuRadioGroupControlDirective` | Intercepts bubbled `change` from child `<mu-radio>` elements       |
+
+##### NgModule setup
+
+```ts
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MuFormsModule} from 'lit-poc/angular';
+import 'lit-poc/text-field';
+import 'lit-poc/checkbox';
+import 'lit-poc/switch';
+import 'lit-poc/select';
+import 'lit-poc/radio';
+import 'lit-poc/radio-group';
+
+@NgModule({
+  imports: [ReactiveFormsModule, MuFormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}
+```
+
+##### Standalone component with reactive forms
+
+```ts
+import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {ReactiveFormsModule, FormGroup, FormControl} from '@angular/forms';
+import {
+  MuCheckboxControlDirective,
+  MuSwitchControlDirective,
+  MuSelectControlDirective,
+  MuRadioGroupControlDirective,
+} from 'lit-poc/angular';
+import 'lit-poc/text-field';
+import 'lit-poc/checkbox';
+import 'lit-poc/switch';
+import 'lit-poc/select';
+import 'lit-poc/radio';
+import 'lit-poc/radio-group';
+
+@Component({
+  selector: 'app-form',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [
+    ReactiveFormsModule,
+    MuCheckboxControlDirective,
+    MuSwitchControlDirective,
+    MuSelectControlDirective,
+    MuRadioGroupControlDirective,
+  ],
+  template: `
+    <form [formGroup]="form">
+      <!-- text-field: [ngDefaultControl] works natively -->
+      <mu-text-field
+        formControlName="name"
+        label="Name"
+        ngDefaultControl
+      ></mu-text-field>
+
+      <!-- checkbox: boolean checked value -->
+      <mu-checkbox
+        formControlName="agree"
+        label="I agree"
+      ></mu-checkbox>
+
+      <!-- switch: boolean checked value -->
+      <mu-switch
+        formControlName="notifications"
+        label="Email notifications"
+      ></mu-switch>
+
+      <!-- select: string value -->
+      <mu-select
+        formControlName="country"
+        label="Country"
+        [options]="countries"
+      ></mu-select>
+
+      <!-- radio-group: string value from child radios -->
+      <mu-radio-group
+        formControlName="color"
+        name="color"
+      >
+        <mu-radio
+          value="red"
+          label="Red"
+        ></mu-radio>
+        <mu-radio
+          value="blue"
+          label="Blue"
+        ></mu-radio>
+        <mu-radio
+          value="green"
+          label="Green"
+        ></mu-radio>
+      </mu-radio-group>
+    </form>
+  `,
+})
+export class AppFormComponent {
+  readonly countries = [
+    {value: 'us', label: 'United States'},
+    {value: 'uk', label: 'United Kingdom'},
+  ];
+
+  readonly form = new FormGroup({
+    name: new FormControl(''),
+    agree: new FormControl(false),
+    notifications: new FormControl(true),
+    country: new FormControl('us'),
+    color: new FormControl('red'),
+  });
+}
+```
+
+#### How the directives are activated
+
+The CVA directives use Angular's **selector-based activation** — no extra attribute is needed. Each directive's selector matches the standard Angular forms bindings:
+
+```
+mu-checkbox[formControlName], mu-checkbox[formControl], mu-checkbox[ngModel]
+mu-switch[formControlName],   mu-switch[formControl],   mu-switch[ngModel]
+mu-select[formControlName],   mu-select[formControl],   mu-select[ngModel]
+mu-radio-group[formControlName], mu-radio-group[formControl], mu-radio-group[ngModel]
+```
+
+When `formControlName="agree"` is placed on a `<mu-checkbox>` inside a reactive form, Angular automatically instantiates `MuCheckboxControlDirective`. No additional attribute or configuration is required.
+
+`<mu-text-field>` does not need a custom directive. Its inner `<input>` fires a `composed: true` `input` event that propagates through the shadow boundary, so Angular's built-in `DefaultValueAccessor` works with `ngDefaultControl`:
+
+```html
+<mu-text-field
+  formControlName="name"
+  label="Name"
+  ngDefaultControl
+></mu-text-field>
+```
+
+#### ControlValueAccessor contract
+
+Each directive fully implements the `ControlValueAccessor` interface used by both `ReactiveFormsModule` and `FormsModule`:
+
+| Method                  | Behaviour                                                                                                                                                          |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `writeValue(v)`         | Pushes a model value down to the element (`checked` for boolean controls, `value` for `mu-select`). **Never calls `onChange`** — Angular requires this separation. |
+| `registerOnChange(fn)`  | Stores Angular's callback. Called with the new value every time the user interacts with the element.                                                               |
+| `registerOnTouched(fn)` | Stores Angular's touched callback. Called alongside every `onChange`.                                                                                              |
+| `setDisabledState(b)`   | Sets the `disabled` property on the host element. For `mu-radio-group`, every child `<mu-radio>` is disabled or re-enabled.                                        |
+
+`<mu-radio-group>` also applies a **deselection guard**: it ignores `change` events fired by a radio whose `checked` property is `false` (i.e. the radio being deselected). This prevents a spurious second `onChange` call when the user switches between options.
+
+#### Testing the CVA contract
+
+The library ships unit tests for each directive under `src/angular/_tests/`. Each suite verifies the complete `ControlValueAccessor` contract in isolation. Angular's module graph is never loaded — Vitest's `vi.mock` stubs `@angular/core` and `@angular/forms` before any import, preventing the JIT compilation errors that would otherwise occur in a non-Angular test environment.
+
+```
+src/angular/_tests/
+├── mu-checkbox-control.directive.unit.test.ts    (9 tests)
+├── mu-switch-control.directive.unit.test.ts      (9 tests)
+├── mu-select-control.directive.unit.test.ts      (9 tests)
+└── mu-radio-group-control.directive.unit.test.ts (10 tests)
+```
+
+Each test follows the Arrange–Act–Assert pattern and covers:
+
+- `writeValue` for every valid input, including coercion of `null`.
+- `_handleChange` calling `onChange` with the correct value and calling `onTouched`.
+- `setDisabledState(true/false)` reflecting onto the element's `disabled` property.
+- Proof that `writeValue` **does not** call `onChange` (the key Angular contract invariant).
+
+Run only the Angular directive tests:
+
+```bash
+npx vitest run src/angular/_tests/
+```
+
+#### Known warnings when running tests
+
+Two warnings appear in the test output. Both are benign and do not affect correctness.
+
+**`Lit is in dev mode. Not recommended for production!`**
+
+Lit writes this message to `stderr` whenever `NODE_ENV` is not `"production"`. It is expected in a test environment. To suppress it, prefix the command with `NODE_ENV=production`:
+
+```bash
+NODE_ENV=production npx vitest run
+```
+
+Or set it globally in `vitest.config.ts`:
+
+```ts
+export default defineConfig({
+  test: {
+    env: {NODE_ENV: 'production'},
+  },
+});
+```
+
+**`[DEP0151] DeprecationWarning: No "main" or "exports" field in @open-wc/semantic-dom-diff`**
+
+This Node.js deprecation notice originates from `@open-wc/testing`. The `@open-wc/semantic-dom-diff` package does not declare an `exports` field in its `package.json`, so Node.js falls back to a legacy index-file lookup that is now deprecated. This is a bug in the upstream `@open-wc` packages and is unrelated to this library. It appears only in render test files that import `@open-wc/testing`, not in unit tests. No action is needed — it has no effect on test results.
+
 ---
 
 ### Svelte

@@ -160,6 +160,10 @@
     "./react": {
       "import": "./dist/react.js",
       "types": "./dist/react/index.d.ts"
+    },
+    "./angular": {
+      "import": "./dist/angular.js",
+      "types": "./dist/angular/index.d.ts"
     }
   },
   "engines": {
@@ -210,13 +214,21 @@
   "license": "BSD-3-Clause",
   "peerDependencies": {
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react-dom": ">=16.8.0",
+    "@angular/core": ">=14.0.0",
+    "@angular/forms": ">=14.0.0"
   },
   "peerDependenciesMeta": {
     "react": {
       "optional": true
     },
     "react-dom": {
+      "optional": true
+    },
+    "@angular/core": {
+      "optional": true
+    },
+    "@angular/forms": {
       "optional": true
     }
   },
@@ -228,6 +240,8 @@
   "devDependencies": {
     "@11ty/eleventy": "^1.0.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "@angular/core": "^19.2.20",
+    "@angular/forms": "^19.2.20",
     "@chromatic-com/storybook": "^5.1.1",
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",

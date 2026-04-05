@@ -46,11 +46,21 @@ export default defineConfig({
         drawer: resolve(__dirname, 'src/drawer/mu-drawer.ts'),
         'locale-provider': resolve(__dirname, 'src/i18n/mu-locale-provider.ts'),
         react: resolve(__dirname, 'src/react/index.ts'),
+        angular: resolve(__dirname, 'src/angular/index.ts'),
       },
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['lit', /^lit\//, '@lit/context', '@lit/react', 'react', 'react-dom'],
+      external: [
+        'lit',
+        /^lit\//,
+        '@lit/context',
+        '@lit/react',
+        'react',
+        'react-dom',
+        '@angular/core',
+        '@angular/forms',
+      ],
 
       output: {
         entryFileNames: '[name].js',
