@@ -43,12 +43,13 @@ export class MuTooltip extends LitElement {
         font-size: 0.75rem;
         line-height: 1.4;
         padding: 4px 8px;
-        border-radius: 4px;
+        border-radius: var(--mu-radius-md, 4px);
         white-space: nowrap;
         pointer-events: none;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.15s, visibility 0.15s;
+        transition: opacity var(--mu-duration-shortest, 150ms),
+          visibility var(--mu-duration-shortest, 150ms);
       }
       .tooltip.visible {
         opacity: 1;

@@ -49,7 +49,11 @@ export class MuAppBar extends LitElement {
       }
 
       .elevation-1 {
-        box-shadow: var(--mu-shadow-2, 0px 4px 8px rgba(145, 158, 171, 0.16));
+        box-shadow: var(
+          --mu-elevation-2,
+          0 3px 6px rgba(0, 0, 0, 0.16),
+          0 3px 6px rgba(0, 0, 0, 0.23)
+        );
       }
 
       .slot-start,

@@ -53,15 +53,20 @@ export class MuSnackbar extends LitElement {
         align-items: center;
         gap: 8px;
         padding: 12px 16px;
-        border-radius: 8px;
+        border-radius: var(--mu-radius-lg, 8px);
         background: var(--mu-text-primary, #212b36);
         color: #fff;
         font-size: var(--mu-body2-size, 0.875rem);
         min-width: 280px;
         max-width: min(560px, 90vw);
-        box-shadow: var(--mu-shadow-2, 0px 4px 8px rgba(145, 158, 171, 0.16));
+        box-shadow: var(
+          --mu-elevation-2,
+          0 3px 6px rgba(0, 0, 0, 0.16),
+          0 3px 6px rgba(0, 0, 0, 0.23)
+        );
         z-index: 1400;
-        transition: opacity 0.2s, transform 0.2s;
+        transition: opacity var(--mu-duration-shorter, 200ms),
+          transform var(--mu-duration-shorter, 200ms);
       }
       :host(:not([open])) .snackbar {
         opacity: 0;
@@ -91,7 +96,7 @@ export class MuSnackbar extends LitElement {
         font-weight: var(--mu-font-weight-medium, 500);
         cursor: pointer;
         padding: 4px 8px;
-        border-radius: 4px;
+        border-radius: var(--mu-radius-md, 4px);
         text-transform: uppercase;
         letter-spacing: 0.04em;
       }

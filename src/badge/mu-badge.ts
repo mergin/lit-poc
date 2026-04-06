@@ -52,7 +52,8 @@ export class MuBadge extends LitElement {
         height: 20px;
         border-radius: 10px;
         z-index: 1;
-        transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        transition: transform var(--mu-duration-shorter, 200ms)
+          var(--mu-easing-standard, cubic-bezier(0.4, 0, 0.2, 1)) 0ms;
         top: 0;
         right: 0;
         transform: scale(1) translate(50%, -50%);

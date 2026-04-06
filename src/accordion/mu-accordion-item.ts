@@ -68,7 +68,8 @@ export class MuAccordionItem extends LitElement {
         flex-shrink: 0;
         width: 20px;
         height: 20px;
-        transition: transform 250ms ease;
+        transition: transform var(--mu-duration-short, 250ms)
+          var(--mu-easing-standard, cubic-bezier(0.4, 0, 0.2, 1));
         display: flex;
         align-items: center;
         justify-content: center;
@@ -81,7 +82,8 @@ export class MuAccordionItem extends LitElement {
       .region {
         overflow: hidden;
         max-height: 0;
-        transition: max-height 250ms ease;
+        transition: max-height var(--mu-duration-short, 250ms)
+          var(--mu-easing-standard, cubic-bezier(0.4, 0, 0.2, 1));
       }
 
       :host([expanded]) .region {

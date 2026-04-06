@@ -192,6 +192,15 @@ export default defineConfig({
          * get typed props and native Svelte event attribute forwarding.
          */
         svelte: resolve(__dirname, 'src/svelte/index.ts'),
+
+        // ── Design tokens ────────────────────────────────────────────────────
+        /**
+         * Exposes all token maps (spacing, elevation, motion, shape) as a
+         * JavaScript module.  Consumers can use these values for dynamic
+         * theming or documentation tooling.  For static CSS consumption use
+         * the `tokens.css` subpath export produced by `npm run build:tokens`.
+         */
+        tokens: resolve(__dirname, 'src/styles/tokens.ts'),
       },
       /**
        * Only ES module output.  CJS and UMD are intentionally omitted:

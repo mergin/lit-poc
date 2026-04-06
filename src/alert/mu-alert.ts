@@ -86,7 +86,7 @@ export class MuAlert extends LitElement {
         opacity: 1;
         outline: 2px solid currentColor;
         outline-offset: 2px;
-        border-radius: 2px;
+        border-radius: var(--mu-radius-sm, 2px);
       }
     `,
   ];

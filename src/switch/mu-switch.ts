@@ -59,7 +59,7 @@ export class MuSwitch extends LitElement {
         height: 28px;
         border-radius: 14px;
         background: var(--mu-text-disabled, #919eab);
-        transition: background 0.2s;
+        transition: background var(--mu-duration-shorter, 200ms);
         box-sizing: border-box;
         outline: none;
         flex-shrink: 0;
@@ -79,8 +79,12 @@ export class MuSwitch extends LitElement {
         height: 22px;
         border-radius: 50%;
         background: #fff;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-        transition: transform 0.2s;
+        box-shadow: var(
+          --mu-elevation-1,
+          0 1px 3px rgba(0, 0, 0, 0.12),
+          0 1px 2px rgba(0, 0, 0, 0.24)
+        );
+        transition: transform var(--mu-duration-shorter, 200ms);
         pointer-events: none;
       }
       :host([checked]) .thumb {

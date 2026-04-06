@@ -53,8 +53,10 @@ export class MuChip extends LitElement {
         align-items: center;
         justify-content: center;
         white-space: nowrap;
-        transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-          box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        transition: background-color var(--mu-duration-standard, 300ms)
+            var(--mu-easing-standard, cubic-bezier(0.4, 0, 0.2, 1)) 0ms,
+          box-shadow var(--mu-duration-standard, 300ms)
+            var(--mu-easing-standard, cubic-bezier(0.4, 0, 0.2, 1)) 0ms;
         cursor: default;
         outline: 0;
         text-decoration: none;
@@ -116,7 +118,8 @@ export class MuChip extends LitElement {
         border-radius: 50%;
         height: 22px;
         width: 22px;
-        transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: opacity var(--mu-duration-shorter, 200ms)
+          var(--mu-easing-standard, cubic-bezier(0.4, 0, 0.2, 1));
       }
       .delete-btn:hover,
       .delete-btn:focus-visible {

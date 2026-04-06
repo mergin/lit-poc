@@ -25,7 +25,7 @@ export class MuLinearProgress extends LitElement {
       display: block;
       overflow: hidden;
       height: 4px;
-      border-radius: 2px;
+      border-radius: var(--mu-radius-sm, 2px);
       background-color: rgba(0, 0, 0, 0.1);
       position: relative;
     }
@@ -36,7 +36,8 @@ export class MuLinearProgress extends LitElement {
       left: 0;
       bottom: 0;
       border-radius: inherit;
-      transition: width 0.3s ease;
+      transition: width var(--mu-duration-standard, 300ms)
+        var(--mu-easing-standard, cubic-bezier(0.4, 0, 0.2, 1));
     }
 
     .bar-indeterminate-1 {

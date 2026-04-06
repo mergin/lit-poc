@@ -45,7 +45,8 @@ export class MuSpinner extends LitElement {
     .arc {
       fill: none;
       stroke-linecap: round;
-      transition: stroke-dashoffset 0.3s ease;
+      transition: stroke-dashoffset var(--mu-duration-standard, 300ms)
+        var(--mu-easing-standard, cubic-bezier(0.4, 0, 0.2, 1));
     }
 
     .spinning {

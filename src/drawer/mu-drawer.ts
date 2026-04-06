@@ -42,21 +42,26 @@ export class MuDrawer extends LitElement {
         max-height: 100dvh;
         background: var(--mu-bg-paper, #fff);
         color: var(--mu-text-primary, #212b36);
-        box-shadow: var(--mu-shadow-2, 0px 4px 8px rgba(145, 158, 171, 0.16));
+        box-shadow: var(
+          --mu-elevation-2,
+          0 3px 6px rgba(0, 0, 0, 0.16),
+          0 3px 6px rgba(0, 0, 0, 0.23)
+        );
         overflow-y: auto;
-        transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform var(--mu-duration-short, 250ms)
+          var(--mu-easing-standard, cubic-bezier(0.4, 0, 0.2, 1));
       }
 
       dialog.placement-left {
         inset-inline-start: 0;
         inset-inline-end: auto;
-        border-radius: 0 12px 12px 0;
+        border-radius: 0 var(--mu-radius-xl, 12px) var(--mu-radius-xl, 12px) 0;
       }
 
       dialog.placement-right {
         inset-inline-start: auto;
         inset-inline-end: 0;
-        border-radius: 12px 0 0 12px;
+        border-radius: var(--mu-radius-xl, 12px) 0 0 var(--mu-radius-xl, 12px);
       }
 
       dialog::backdrop {

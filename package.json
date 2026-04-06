@@ -217,13 +217,19 @@
     "./data-table": {
       "import": "./dist/data-table.js",
       "types": "./dist/data-table/mu-data-table.d.ts"
-    }
+    },
+    "./tokens": {
+      "import": "./dist/tokens.js",
+      "types": "./dist/styles/tokens.d.ts"
+    },
+    "./tokens.css": "./dist/tokens.css"
   },
   "engines": {
     "node": ">=22"
   },
   "scripts": {
     "build": "vite build --config vite.lib.config.ts && tsc --project tsconfig.build.json --emitDeclarationOnly",
+    "build:tokens": "style-dictionary build --config src/styles/sd.config.mjs",
     "build:watch": "tsc --noEmit --watch",
     "clean": "rm -rf dist/ test-results/ docs/ node_modules/",
     "rebuild": "npm run clean && npm i && npm run build",
@@ -343,6 +349,7 @@
     "prettier": "^2.8.8",
     "rimraf": "^3.0.2",
     "storybook": "^10.3.4",
+    "style-dictionary": "^4.4.0",
     "svelte": "^5.55.1",
     "typescript": "~5.9.3",
     "vite": "^7.3.1",

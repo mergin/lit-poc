@@ -81,7 +81,7 @@ export class MuRating extends LitElement {
       .star:focus-visible {
         outline: 2px solid var(--mu-primary, #1976d2);
         outline-offset: 2px;
-        border-radius: 2px;
+        border-radius: var(--mu-radius-sm, 2px);
       }
       .star.filled {
         color: var(--mu-warning, #ffc107);

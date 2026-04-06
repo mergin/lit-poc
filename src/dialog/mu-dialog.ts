@@ -35,11 +35,15 @@ export class MuDialog extends LitElement {
       }
       dialog {
         border: none;
-        border-radius: 12px;
+        border-radius: var(--mu-radius-xl, 12px);
         padding: 0;
         max-width: min(560px, 90vw);
         width: 100%;
-        box-shadow: var(--mu-shadow-2, 0px 4px 8px rgba(145, 158, 171, 0.16));
+        box-shadow: var(
+          --mu-elevation-2,
+          0 3px 6px rgba(0, 0, 0, 0.16),
+          0 3px 6px rgba(0, 0, 0, 0.23)
+        );
         background: var(--mu-bg-paper, #fff);
         color: var(--mu-text-primary, #212b36);
       }

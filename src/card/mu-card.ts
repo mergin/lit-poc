@@ -13,8 +13,8 @@ export class MuCard extends LitElement {
       :host {
         display: block;
         background: var(--mu-bg-paper);
-        border-radius: var(--mu-radius);
-        box-shadow: var(--mu-shadow-1);
+        border-radius: var(--mu-radius-lg, 8px);
+        box-shadow: var(--mu-elevation-1);
         padding: var(--mu-spacing);
         margin: var(--mu-spacing) 0;
       }

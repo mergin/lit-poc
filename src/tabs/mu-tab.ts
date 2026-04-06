@@ -42,7 +42,8 @@ export class MuTab extends LitElement {
       cursor: pointer;
       color: var(--mu-text-secondary, #637381);
       border-bottom: 2px solid transparent;
-      transition: color 200ms, border-color 200ms;
+      transition: color var(--mu-duration-shorter, 200ms),
+        border-color var(--mu-duration-shorter, 200ms);
       white-space: nowrap;
     }
 

@@ -1,6 +1,14 @@
-import {LitElement, html, css, type TemplateResult} from 'lit';
+import {LitElement, html, css, unsafeCSS, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {lightTokens, darkTokens, type TokenMap} from '../styles/tokens.js';
+import {
+  lightTokens,
+  darkTokens,
+  spacingTokens,
+  elevationTokens,
+  motionTokens,
+  shapeTokens,
+  type TokenMap,
+} from '../styles/tokens.js';
 
 /**
  * Theme provider component that applies design tokens to its DOM subtree.
@@ -25,6 +33,20 @@ export class MuThemeProvider extends LitElement {
   static override styles = css`
     :host {
       display: contents;
+      ${unsafeCSS(spacingTokens)}
+      ${unsafeCSS(elevationTokens)}
+      ${unsafeCSS(motionTokens)}
+      ${unsafeCSS(shapeTokens)}
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      :host {
+        --mu-duration-shortest: 0ms;
+        --mu-duration-shorter: 0ms;
+        --mu-duration-short: 0ms;
+        --mu-duration-standard: 0ms;
+        --mu-duration-complex: 0ms;
+      }
     }
   `;
 

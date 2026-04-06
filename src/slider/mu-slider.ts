@@ -79,7 +79,7 @@ export class MuSlider extends LitElement {
         inset: 0;
         margin: auto 0;
         height: 4px;
-        border-radius: 2px;
+        border-radius: var(--mu-radius-sm, 2px);
         background: var(--mu-text-disabled, #919eab);
         part: track;
       }
@@ -88,7 +88,7 @@ export class MuSlider extends LitElement {
         top: 0;
         left: 0;
         height: 4px;
-        border-radius: 2px;
+        border-radius: var(--mu-radius-sm, 2px);
         background: var(--mu-primary, #1976d2);
         pointer-events: none;
         part: fill;
@@ -101,7 +101,11 @@ export class MuSlider extends LitElement {
         border-radius: 50%;
         background: var(--mu-primary, #1976d2);
         border: 2px solid #fff;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        box-shadow: var(
+          --mu-elevation-1,
+          0 1px 3px rgba(0, 0, 0, 0.12),
+          0 1px 2px rgba(0, 0, 0, 0.24)
+        );
         transform: translate(-50%, -50%);
         outline: none;
         box-sizing: border-box;

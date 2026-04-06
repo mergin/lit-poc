@@ -33,14 +33,14 @@ export class MuSkeleton extends LitElement {
 
     .skeleton {
       background-color: rgba(0, 0, 0, 0.11);
-      border-radius: 4px;
+      border-radius: var(--mu-radius-md, 4px);
       display: block;
     }
 
     .variant-text {
       height: 1.2em;
       width: 100%;
-      border-radius: 4px;
+      border-radius: var(--mu-radius-md, 4px);
       transform-origin: 0 55%;
       transform: scale(1, 0.6);
     }
@@ -52,7 +52,7 @@ export class MuSkeleton extends LitElement {
     }
 
     .variant-rectangular {
-      border-radius: 0;
+      border-radius: var(--mu-radius-none, 0px);
       width: 100%;
       height: 118px;
     }

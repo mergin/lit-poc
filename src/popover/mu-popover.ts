@@ -42,8 +42,12 @@ export class MuPopover extends LitElement {
         position: fixed;
         z-index: 1000;
         background: var(--mu-paper, #fff);
-        border-radius: 8px;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.08);
+        border-radius: var(--mu-radius-lg, 8px);
+        box-shadow: var(
+          --mu-elevation-3,
+          0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23)
+        );
         padding: 16px;
         box-sizing: border-box;
         min-width: 200px;
