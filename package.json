@@ -164,6 +164,46 @@
     "./angular": {
       "import": "./dist/angular.js",
       "types": "./dist/angular/index.d.ts"
+    },
+    "./slider": {
+      "import": "./dist/slider.js",
+      "types": "./dist/slider/mu-slider.d.ts"
+    },
+    "./menu": {
+      "import": "./dist/menu.js",
+      "types": "./dist/menu/mu-menu.d.ts"
+    },
+    "./menu-item": {
+      "import": "./dist/menu-item.js",
+      "types": "./dist/menu/mu-menu-item.d.ts"
+    },
+    "./popover": {
+      "import": "./dist/popover.js",
+      "types": "./dist/popover/mu-popover.d.ts"
+    },
+    "./rating": {
+      "import": "./dist/rating.js",
+      "types": "./dist/rating/mu-rating.d.ts"
+    },
+    "./file-upload": {
+      "import": "./dist/file-upload.js",
+      "types": "./dist/file-upload/mu-file-upload.d.ts"
+    },
+    "./stepper": {
+      "import": "./dist/stepper.js",
+      "types": "./dist/stepper/mu-stepper.d.ts"
+    },
+    "./step": {
+      "import": "./dist/step.js",
+      "types": "./dist/stepper/mu-step.d.ts"
+    },
+    "./autocomplete": {
+      "import": "./dist/autocomplete.js",
+      "types": "./dist/autocomplete/mu-autocomplete.d.ts"
+    },
+    "./data-table": {
+      "import": "./dist/data-table.js",
+      "types": "./dist/data-table/mu-data-table.d.ts"
     }
   },
   "engines": {

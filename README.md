@@ -19,6 +19,11 @@ A modern, accessible, and compositional web component library built with Lit 3 a
   - [Static Docs Site](#static-docs-site)
 - [Commit Rules](#commit-rules)
 - [Project Structure](#project-structure)
+- [Vite Configuration](#vite-configuration)
+  - [vite.lib.config.ts — Library build](#vitelibconfigts--library-build)
+  - [vite.docs.config.ts — Docs site build](#vitedocsconfigts--docs-site-build)
+  - [Adding a new component](#adding-a-new-component-to-the-build)
+  - [Key differences at a glance](#key-differences-at-a-glance)
 - [Tooling](#tooling)
 - [Contributing](#contributing)
 - [License](#license)
@@ -650,6 +655,195 @@ If your commit message does not follow the rules, the commit will be rejected.
 - `docs/` — Static documentation site (generated).
 - `.storybook/` — Storybook configuration.
 - `.husky/` — Git hooks for linting, testing, and commit message checks.
+
+---
+
+## Vite Configuration
+
+The project uses two separate Vite configuration files. Each targets a distinct consumer and has different bundling rules.
+
+### `vite.lib.config.ts` — Library build
+
+**Script:** `npm run build` → `vite build --config vite.lib.config.ts`  
+**Output directory:** `dist/`
+
+This is the configuration used to publish the npm package. It compiles every component into its own flat ES-module file so consumers can tree-shake at the component level.
+
+#### Output layout
+
+```
+dist/
+├── index.js            ← full barrel re-export (import {} from 'lit-poc')
+├── button.js           ← individual component (~3 kB gzip)
+├── data-table.js
+├── react.js            ← React wrapper bundle
+├── angular.js          ← Angular CVA directives bundle
+├── ...                 ← one file per entry in lib.entry
+└── chunks/
+    └── shared-*.js     ← Rollup-extracted shared code (styles, utilities)
+```
+
+#### Key settings
+
+| Setting           | Value                     | Reason                                                                                                                    |
+| ----------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `outDir`          | `dist/`                   | Wiped clean before each build (`emptyOutDir: true`) to remove artefacts from deleted components.                          |
+| `sourcemap`       | `true`                    | Inline source maps let consumers debug into TypeScript source in development environments.                                |
+| `target`          | `es2021`                  | Matches the minimum browser baseline; provides logical-assignment operators, `WeakRef`, and other features used by Lit 3. |
+| `formats`         | `['es']`                  | Only ES module output. CJS/UMD are intentionally omitted to avoid dual-package hazards and halve the dist size.           |
+| `external`        | see below                 | All peer dependencies are externalised so they are _never_ inlined into dist bundles.                                     |
+| `preserveModules` | `false`                   | Rollup merges modules into optimised per-entry bundles for a flat, predictable dist layout.                               |
+| `chunkFileNames`  | `chunks/[name]-[hash].js` | Content-hashed chunks enable long-lived HTTP cache headers.                                                               |
+
+#### Externalised peer dependencies
+
+The following packages are treated as peer dependencies and must be provided by the consuming application:
+
+| Package              | Used by                                     |
+| -------------------- | ------------------------------------------- |
+| `lit`, `lit/*`       | All components (Lit 3 runtime + directives) |
+| `@lit/context`       | `mu-locale-provider` (context protocol)     |
+| `@lit/react`         | `react` entry (React wrapper generator)     |
+| `react`, `react-dom` | `react` entry                               |
+| `@angular/core`      | `angular` entry (DI, decorators)            |
+| `@angular/forms`     | `angular` entry (`ControlValueAccessor`)    |
+
+#### Multi-entry strategy
+
+Every component has its own entry in `lib.entry`. The key names map 1-to-1 with the `exports` subpath map in `package.json` and the dist filenames:
+
+```ts
+// vite.lib.config.ts
+lib: {
+  entry: {
+    index:       'src/index.ts',         // import {} from 'lit-poc'
+    button:      'src/button/mu-button.ts',   // import 'lit-poc/button'
+    'list-item': 'src/list/mu-list-item.ts',  // import 'lit-poc/list-item'
+    // ...
+  }
+}
+```
+
+```json
+// package.json
+"exports": {
+  ".": { "import": "./dist/index.js", "types": "./dist/index.d.ts" },
+  "./button": { "import": "./dist/button.js", "types": "./dist/button/mu-button.d.ts" },
+  "./list-item": { "import": "./dist/list-item.js", "types": "./dist/list/mu-list-item.d.ts" }
+}
+```
+
+#### TypeScript declarations
+
+Vite handles JavaScript output only. Declaration files (`.d.ts`) are emitted by a separate `tsc` invocation that runs immediately after Vite as part of the same `build` script:
+
+```bash
+vite build --config vite.lib.config.ts && tsc --project tsconfig.build.json --emitDeclarationOnly
+```
+
+The `tsconfig.build.json` file sets `"declaration": true` and `"emitDeclarationOnly": true`, writing `.d.ts` files alongside the compiled JS in `dist/`.
+
+---
+
+### `vite.docs.config.ts` — Docs site build
+
+**Script:** `npm run docs` (runs as part of the full docs pipeline)  
+**Output directory:** `docs/` (appended alongside Eleventy's HTML output)
+
+This configuration produces **self-contained** ES module bundles for use in the static documentation site. Unlike the library build, Lit and all other dependencies are **inlined**, so the output files can be loaded directly by a `<script type="module">` tag with no import maps or package manager required.
+
+#### Output layout
+
+```
+docs/
+├── index.html               ← generated by Eleventy (not touched by this build)
+├── mu-avatar.bundled.js     ← self-contained bundle (Lit inlined)
+├── mu-button.bundled.js
+├── mu-card.bundled.js
+└── mu-icon.bundled.js
+```
+
+#### Key settings
+
+| Setting       | Value    | Reason                                                                                                                                                                             |
+| ------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `outDir`      | `docs/`  | Bundles land alongside Eleventy's output so the docs site has everything in one directory.                                                                                         |
+| `emptyOutDir` | `false`  | The `docs/` directory is managed by Eleventy. Setting this to `true` would delete all generated HTML before JS files are written. Full resets are handled by `npm run docs:clean`. |
+| `sourcemap`   | `false`  | Not needed for the public docs site; omitting them reduces payload size.                                                                                                           |
+| `external`    | _(none)_ | All imports, including Lit, are bundled. This is the key difference from the library build.                                                                                        |
+
+#### Naming convention
+
+Entries use the `<tag-name>.bundled` key pattern so the output filenames clearly signal that the file is a bundled variant:
+
+```ts
+entry: {
+  'mu-button.bundled': 'src/button/mu-button.ts',  // → docs/mu-button.bundled.js
+}
+```
+
+In Eleventy templates, reference the file as:
+
+```html
+<script
+  type="module"
+  src="/mu-button.bundled.js"
+></script>
+```
+
+> **Bundle size note:** Because Lit is included in every bundle, each file is significantly larger than the equivalent library entry (~25 kB vs ~3 kB for `mu-button`). This is acceptable for a documentation site. **Do not use these bundles in production application code** — use the library subpath entries from `dist/` instead.
+
+Only components that appear in live documentation examples need entries here. You do not need one for every component in the library.
+
+---
+
+### Adding a new component to the build
+
+Adding a component requires a coordinated update to three files. The changes must stay in sync or subpath imports will break.
+
+**1. `vite.lib.config.ts` — add an entry**
+
+```ts
+// Inside lib.entry:
+'my-widget': resolve(__dirname, 'src/my-widget/mu-my-widget.ts'),
+```
+
+**2. `src/index.ts` — add the barrel export**
+
+```ts
+export {MuMyWidget} from './my-widget/mu-my-widget.js';
+export type {MyWidgetVariant} from './my-widget/mu-my-widget.js'; // if applicable
+```
+
+**3. `package.json` — add the subpath export**
+
+```json
+"./my-widget": {
+  "import": "./dist/my-widget.js",
+  "types": "./dist/my-widget/mu-my-widget.d.ts"
+}
+```
+
+If the component should also appear in the docs site, add it to `vite.docs.config.ts`:
+
+```ts
+'mu-my-widget.bundled': resolve(__dirname, 'src/my-widget/mu-my-widget.ts'),
+```
+
+---
+
+### Key differences at a glance
+
+|                  | `vite.lib.config.ts`        | `vite.docs.config.ts`                             |
+| ---------------- | --------------------------- | ------------------------------------------------- |
+| **Purpose**      | Publishable npm package     | Static documentation site                         |
+| **Output dir**   | `dist/`                     | `docs/`                                           |
+| **Lit bundled?** | No (externalised)           | Yes (inlined)                                     |
+| **Source maps**  | Yes                         | No                                                |
+| **emptyOutDir**  | `true`                      | `false`                                           |
+| **Consumer**     | Application bundlers        | `<script type="module">` in HTML                  |
+| **File size**    | ~1–10 kB gzip               | ~25–35 kB gzip                                    |
+| **Entry naming** | `button` → `dist/button.js` | `mu-button.bundled` → `docs/mu-button.bundled.js` |
 
 ---
 

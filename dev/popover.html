@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-popover dev</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      h2 {
+        margin: 0;
+        font-size: 0.85rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>Basic</h2>
+      <mu-popover id="basic">
+        <button slot="trigger">Show popover</button>
+        <p style="margin: 0">This is the popover content.</p>
+      </mu-popover>
+    </section>
+
+    <section>
+      <h2>Rich Content</h2>
+      <mu-popover id="rich">
+        <button slot="trigger">Show info</button>
+        <div>
+          <strong>Info title</strong>
+          <p style="margin: 8px 0 0">More detailed information here.</p>
+        </div>
+      </mu-popover>
+    </section>
+
+    <section style="padding-top: 80px">
+      <h2>Top Placement</h2>
+      <mu-popover
+        id="top"
+        placement="top"
+      >
+        <button slot="trigger">Show above</button>
+        <p style="margin: 0">Opens above the trigger.</p>
+      </mu-popover>
+    </section>
+
+    <script type="module">
+      import '/src/popover/mu-popover.js';
+
+      document.querySelectorAll('mu-popover').forEach((el) => {
+        el.addEventListener('mu-open', () => console.log('mu-open', el.id));
+        el.addEventListener('mu-close', () => console.log('mu-close', el.id));
+      });
+    </script>
+  </body>
+</html>

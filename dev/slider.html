@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-slider dev</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        max-width: 500px;
+      }
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      h2 {
+        margin: 0;
+        font-size: 0.85rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>Basic</h2>
+      <mu-slider
+        id="basic"
+        label="Volume"
+        value="30"
+      ></mu-slider>
+    </section>
+
+    <section>
+      <h2>Disabled</h2>
+      <mu-slider
+        id="disabled"
+        label="Disabled"
+        value="50"
+        disabled
+      ></mu-slider>
+    </section>
+
+    <section>
+      <h2>Custom Step (10)</h2>
+      <mu-slider
+        id="stepped"
+        label="Zoom"
+        value="40"
+        step="10"
+      ></mu-slider>
+    </section>
+
+    <section>
+      <h2>Custom Range (-50 to 50)</h2>
+      <mu-slider
+        id="custom-range"
+        label="Temperature"
+        value="0"
+        min="-50"
+        max="50"
+      ></mu-slider>
+    </section>
+
+    <script type="module">
+      import '/src/slider/mu-slider.js';
+
+      document.querySelectorAll('mu-slider').forEach((el) => {
+        el.addEventListener('change', (e) => {
+          console.log('change', e.target.id, e.detail);
+        });
+      });
+    </script>
+  </body>
+</html>

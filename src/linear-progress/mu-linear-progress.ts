@@ -105,7 +105,7 @@ export class MuLinearProgress extends LitElement {
     `;
   }
 
-  /** @returns The ARIA role attributes for this element. */
+  /** Applies the ARIA role attribute when the element is connected to the DOM. */
   override connectedCallback(): void {
     super.connectedCallback();
     if (!this.hasAttribute('role')) {
@@ -115,7 +115,7 @@ export class MuLinearProgress extends LitElement {
   }
 
   /**
-   * @returns Updated ARIA attributes and mu-complete event dispatch.
+   * Syncs ARIA attributes and fires mu-complete when progress reaches 100.
    * @param changedProps - Map of changed property names to their previous values.
    */
   override updated(changedProps: Map<string, unknown>): void {

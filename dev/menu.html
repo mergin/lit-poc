@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-menu dev</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      h2 {
+        margin: 0;
+        font-size: 0.85rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>Basic</h2>
+      <mu-menu id="basic">
+        <button slot="trigger">Open menu</button>
+        <mu-menu-item label="Edit">Edit</mu-menu-item>
+        <mu-menu-item label="Duplicate">Duplicate</mu-menu-item>
+        <mu-menu-item label="Archive">Archive</mu-menu-item>
+        <mu-menu-item label="Delete">Delete</mu-menu-item>
+      </mu-menu>
+    </section>
+
+    <section>
+      <h2>With Disabled Item</h2>
+      <mu-menu id="with-disabled">
+        <button slot="trigger">Open menu</button>
+        <mu-menu-item label="Edit">Edit</mu-menu-item>
+        <mu-menu-item
+          label="Duplicate"
+          disabled
+          >Duplicate (disabled)</mu-menu-item
+        >
+        <mu-menu-item label="Delete">Delete</mu-menu-item>
+      </mu-menu>
+    </section>
+
+    <section style="padding-top: 80px">
+      <h2>Top Placement</h2>
+      <mu-menu
+        id="top-placement"
+        placement="top-start"
+      >
+        <button slot="trigger">Open menu (top)</button>
+        <mu-menu-item label="Option A">Option A</mu-menu-item>
+        <mu-menu-item label="Option B">Option B</mu-menu-item>
+        <mu-menu-item label="Option C">Option C</mu-menu-item>
+      </mu-menu>
+    </section>
+
+    <script type="module">
+      import '/src/menu/mu-menu.js';
+      import '/src/menu/mu-menu-item.js';
+
+      document.querySelectorAll('mu-menu').forEach((el) => {
+        el.addEventListener('mu-open', () => console.log('mu-open', el.id));
+        el.addEventListener('mu-close', () => console.log('mu-close', el.id));
+      });
+
+      document.querySelectorAll('mu-menu-item').forEach((el) => {
+        el.addEventListener('mu-select', (e) => console.log('mu-select', e.detail));
+      });
+    </script>
+  </body>
+</html>

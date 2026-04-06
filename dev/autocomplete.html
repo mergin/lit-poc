@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-autocomplete dev</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        max-width: 400px;
+      }
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      h2 {
+        margin: 0;
+        font-size: 0.85rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>Basic</h2>
+      <mu-autocomplete
+        id="basic"
+        label="Country"
+        placeholder="Search country…"
+      ></mu-autocomplete>
+    </section>
+
+    <section>
+      <h2>Disabled</h2>
+      <mu-autocomplete
+        id="disabled"
+        label="Country"
+        placeholder="Search country…"
+        disabled
+      ></mu-autocomplete>
+    </section>
+
+    <section>
+      <h2>Min 2 Characters</h2>
+      <mu-autocomplete
+        id="min2"
+        label="Country (min 2 chars)"
+        placeholder="Type at least 2 chars…"
+        min-chars="2"
+      ></mu-autocomplete>
+    </section>
+
+    <script type="module">
+      import '/src/autocomplete/mu-autocomplete.js';
+
+      const COUNTRIES = [
+        {value: 'us', label: 'United States'},
+        {value: 'gb', label: 'United Kingdom'},
+        {value: 'ca', label: 'Canada'},
+        {value: 'au', label: 'Australia'},
+        {value: 'de', label: 'Germany'},
+        {value: 'fr', label: 'France'},
+        {value: 'jp', label: 'Japan'},
+        {value: 'br', label: 'Brazil'},
+      ];
+
+      document.querySelectorAll('mu-autocomplete').forEach((el) => {
+        el.options = COUNTRIES;
+        el.addEventListener('change', (e) => {
+          console.log('change', el.id, e.detail);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-data-table dev</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      h2 {
+        margin: 0;
+        font-size: 0.85rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>Basic</h2>
+      <mu-data-table id="basic"></mu-data-table>
+    </section>
+
+    <section>
+      <h2>Selectable</h2>
+      <mu-data-table
+        id="selectable"
+        selectable
+      ></mu-data-table>
+    </section>
+
+    <section>
+      <h2>Loading</h2>
+      <mu-data-table
+        id="loading"
+        loading
+      ></mu-data-table>
+    </section>
+
+    <section>
+      <h2>Empty State</h2>
+      <mu-data-table id="empty">
+        <span slot="empty-state">No records found.</span>
+      </mu-data-table>
+    </section>
+
+    <script type="module">
+      import '/src/data-table/mu-data-table.js';
+
+      const COLUMNS = [
+        {key: 'name', label: 'Name', sortable: true},
+        {key: 'role', label: 'Role'},
+        {key: 'status', label: 'Status', sortable: true},
+      ];
+
+      const ROWS = [
+        {name: 'Alice Martin', role: 'Engineer', status: 'Active'},
+        {name: 'Bob Smith', role: 'Designer', status: 'Inactive'},
+        {name: 'Carol Jones', role: 'Manager', status: 'Active'},
+        {name: 'Dave Brown', role: 'Engineer', status: 'Active'},
+      ];
+
+      document.querySelectorAll('mu-data-table').forEach((el) => {
+        el.columns = COLUMNS;
+        if (el.id !== 'empty') {
+          el.rows = ROWS;
+        }
+        el.addEventListener('sort-change', (e) => console.log('sort-change', e.detail));
+        el.addEventListener('selection-change', (e) => console.log('selection-change', e.detail));
+      });
+    </script>
+  </body>
+</html>

@@ -58,7 +58,10 @@
         "checkDestructured": false
       }
     ],
-    "jsdoc/require-returns": "error"
+    "jsdoc/require-returns": "error",
+    "jsdoc/check-tag-names": ["warn", {"definedTags": ["csspart"]}],
+    "jsdoc/tag-lines": "off",
+    "jsdoc/valid-types": "off"
   },
   "overrides": [
     {

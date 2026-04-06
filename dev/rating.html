@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-rating dev</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      h2 {
+        margin: 0;
+        font-size: 0.85rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>Basic</h2>
+      <mu-rating
+        id="basic"
+        value="3"
+        label="Rating"
+      ></mu-rating>
+    </section>
+
+    <section>
+      <h2>Read Only</h2>
+      <mu-rating
+        id="readonly"
+        value="4"
+        readonly
+        label="Rating"
+      ></mu-rating>
+    </section>
+
+    <section>
+      <h2>Half Precision</h2>
+      <mu-rating
+        id="half"
+        value="2.5"
+        precision="0.5"
+        label="Rating"
+      ></mu-rating>
+    </section>
+
+    <section>
+      <h2>Disabled</h2>
+      <mu-rating
+        id="disabled"
+        value="2"
+        disabled
+        label="Rating"
+      ></mu-rating>
+    </section>
+
+    <script type="module">
+      import '/src/rating/mu-rating.js';
+
+      document.querySelectorAll('mu-rating').forEach((el) => {
+        el.addEventListener('change', (e) => {
+          console.log('change', el.id, e.detail);
+        });
+      });
+    </script>
+  </body>
+</html>
