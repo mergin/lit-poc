@@ -222,7 +222,11 @@
       "import": "./dist/tokens.js",
       "types": "./dist/styles/tokens.d.ts"
     },
-    "./tokens.css": "./dist/tokens.css"
+    "./tokens.css": "./dist/tokens.css",
+    "./ssr": {
+      "import": "./dist/ssr.js",
+      "types": "./dist/ssr/index.d.ts"
+    }
   },
   "engines": {
     "node": ">=22"
@@ -254,6 +258,7 @@
     "test:watch": "vitest",
     "test:perf": "vitest bench --environment happy-dom",
     "test:e2e": "playwright test",
+    "test:e2e:log": "bash scripts/e2e-log.sh",
     "test:e2e:install": "playwright install webkit chromium firefox",
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:ui": "playwright test --ui",

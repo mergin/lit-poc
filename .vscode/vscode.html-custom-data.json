@@ -3,23 +3,6 @@
   "version": 1.1,
   "tags": [
     {
-      "name": "mu-alert",
-      "description": "Alert component for communicating feedback messages.\r\nUses role=\"alert\" for error severity and role=\"status\" for others.\n---\n\n\n### **Events:**\n - **mu-close** - Dispatched when the close button is clicked.",
-      "attributes": [
-        {
-          "name": "severity",
-          "description": "Severity level controlling color, icon and ARIA role.",
-          "values": [{"name": "AlertSeverity"}]
-        },
-        {
-          "name": "closeLabel",
-          "description": "When provided, renders a close button.\r\nThe button's aria-label is set to this value.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
       "name": "mu-accordion-item",
       "description": "Individual accordion item with an expandable content region.\r\nManaged by `mu-accordion`; can also be used standalone.\n---\n\n\n### **Events:**\n - **accordion-toggle** - Dispatched when the item expands or collapses. Detail: `{ expanded: boolean }`.\n\n### **CSS Properties:**\n - **--mu-accordion-divider-color** - Border colour between items; defaults to `--mu-divider` (#e0e0e0). _(default: undefined)_\n- **--mu-accordion-header-color** - Text colour of the header; defaults to `--mu-text-primary`. _(default: undefined)_\n- **--mu-accordion-content-color** - Text colour of the content area; defaults to `--mu-text-secondary`. _(default: undefined)_\n\n### **CSS Parts:**\n - **header** - The `<button>` element that acts as the expandable heading.\n- **content** - The collapsible content region `div`.",
       "attributes": [
@@ -54,6 +37,23 @@
       "references": []
     },
     {
+      "name": "mu-alert",
+      "description": "Alert component for communicating feedback messages.\r\nUses role=\"alert\" for error severity and role=\"status\" for others.\n---\n\n\n### **Events:**\n - **mu-close** - Dispatched when the close button is clicked.",
+      "attributes": [
+        {
+          "name": "severity",
+          "description": "Severity level controlling color, icon and ARIA role.",
+          "values": [{"name": "AlertSeverity"}]
+        },
+        {
+          "name": "closeLabel",
+          "description": "When provided, renders a close button.\r\nThe button's aria-label is set to this value.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "mu-app-bar",
       "description": "Application top bar with three named slots: `start`, default, and `end`.\r\nRenders as a sticky header.\n---\n",
       "attributes": [
@@ -76,29 +76,45 @@
       "references": []
     },
     {
-      "name": "mu-badge",
-      "description": "A badge component to display status descriptors or unread counts.\n---\n\n\n### **CSS Properties:**\n - **--mu-badge-bg** - Background colour; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-badge-color** - Text colour; defaults to `--mu-primary-contrast`. _(default: undefined)_\n- **--mu-badge-radius** - Border radius; defaults to 10 px for a pill shape. _(default: undefined)_\n\n### **CSS Parts:**\n - **badge** - The badge bubble element positioned in the corner of its anchor.",
+      "name": "mu-autocomplete",
+      "description": "Autocomplete / combobox form component with filtering and keyboard navigation.\r\nParticipates natively in HTML forms.\n---\n\n\n### **Events:**\n - **change** - Dispatched when an option is selected. Detail: `{ value: string, label: string }`.\n\n### **CSS Parts:**\n - **input** - The text input element.\n- **listbox** - The dropdown option list.\n- **option** - Each individual option in the listbox.",
       "attributes": [
         {
-          "name": "content",
-          "description": "The content rendered within the badge.",
-          "values": []
-        },
-        {
-          "name": "color",
-          "description": "The color of the badge.",
-          "values": []
-        },
-        {
-          "name": "invisible",
-          "description": "If true, the badge is hidden.",
+          "name": "value",
+          "description": "Selected option value.",
           "values": []
         },
         {
           "name": "label",
-          "description": "Accessible label for the badge content. Defaults to 'Badge: [content]'.",
+          "description": "Label displayed above the input.",
           "values": []
-        }
+        },
+        {
+          "name": "options",
+          "description": "Array of options to search.",
+          "values": [{"name": "AutocompleteOption[]"}]
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the control.",
+          "values": []
+        },
+        {
+          "name": "required",
+          "description": "Makes the field required for form validation.",
+          "values": []
+        },
+        {
+          "name": "placeholder",
+          "description": "Placeholder text for the input.",
+          "values": []
+        },
+        {
+          "name": "minChars",
+          "description": "Minimum number of characters before showing options.",
+          "values": []
+        },
+        {"name": "name", "description": "Form field name.", "values": []}
       ],
       "references": []
     },
@@ -129,6 +145,33 @@
         {
           "name": "color",
           "description": "Predefined color: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-badge",
+      "description": "A badge component to display status descriptors or unread counts.\n---\n\n\n### **CSS Properties:**\n - **--mu-badge-bg** - Background colour; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-badge-color** - Text colour; defaults to `--mu-primary-contrast`. _(default: undefined)_\n- **--mu-badge-radius** - Border radius; defaults to 10 px for a pill shape. _(default: undefined)_\n\n### **CSS Parts:**\n - **badge** - The badge bubble element positioned in the corner of its anchor.",
+      "attributes": [
+        {
+          "name": "content",
+          "description": "The content rendered within the badge.",
+          "values": []
+        },
+        {
+          "name": "color",
+          "description": "The color of the badge.",
+          "values": []
+        },
+        {
+          "name": "invisible",
+          "description": "If true, the badge is hidden.",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "Accessible label for the badge content. Defaults to 'Badge: [content]'.",
           "values": []
         }
       ],
@@ -183,49 +226,6 @@
           "values": []
         },
         {"name": "disabled", "description": "Disabled state.", "values": []}
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-autocomplete",
-      "description": "Autocomplete / combobox form component with filtering and keyboard navigation.\r\nParticipates natively in HTML forms.\n---\n\n\n### **Events:**\n - **change** - Dispatched when an option is selected. Detail: `{ value: string, label: string }`.\n\n### **CSS Parts:**\n - **input** - The text input element.\n- **listbox** - The dropdown option list.\n- **option** - Each individual option in the listbox.",
-      "attributes": [
-        {
-          "name": "value",
-          "description": "Selected option value.",
-          "values": []
-        },
-        {
-          "name": "label",
-          "description": "Label displayed above the input.",
-          "values": []
-        },
-        {
-          "name": "options",
-          "description": "Array of options to search.",
-          "values": [{"name": "AutocompleteOption[]"}]
-        },
-        {
-          "name": "disabled",
-          "description": "Disables the control.",
-          "values": []
-        },
-        {
-          "name": "required",
-          "description": "Makes the field required for form validation.",
-          "values": []
-        },
-        {
-          "name": "placeholder",
-          "description": "Placeholder text for the input.",
-          "values": []
-        },
-        {
-          "name": "minChars",
-          "description": "Minimum number of characters before showing options.",
-          "values": []
-        },
-        {"name": "name", "description": "Form field name.", "values": []}
       ],
       "references": []
     },
@@ -365,6 +365,33 @@
       "references": []
     },
     {
+      "name": "mu-dialog",
+      "description": "Modal dialog overlay using the native &lt;dialog&gt; element.\r\nManages focus on open/close, traps focus inside, and closes on Escape.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched when the dialog finishes opening.\n- **mu-close** - Dispatched when the dialog closes (any cause).\n\n### **CSS Properties:**\n - **--mu-dialog-radius** - Border radius of the dialog panel; defaults to `--mu-radius-xl` (12 px). _(default: undefined)_\n- **--mu-dialog-shadow** - Box shadow of the dialog; defaults to `--mu-elevation-2`. _(default: undefined)_\n- **--mu-dialog-max-width** - Maximum width of the dialog; defaults to `min(560px, 90vw)`. _(default: undefined)_\n\n### **CSS Parts:**\n - **dialog** - The native `<dialog>` element.\n- **header** - The `<h2>` headline element at the top of the dialog.\n- **content** - The scrollable content area containing the default slot.\n- **actions** - The footer actions area containing the `actions` named slot.\n- **close-button** - The × icon button in the top-right corner.",
+      "attributes": [
+        {
+          "name": "open",
+          "description": "Whether the dialog is currently open. Reflected to attribute.",
+          "values": []
+        },
+        {
+          "name": "headline",
+          "description": "Text rendered as the dialog headline / title.",
+          "values": []
+        },
+        {
+          "name": "fullscreen",
+          "description": "Expands the dialog to fill the full viewport.",
+          "values": []
+        },
+        {
+          "name": "scrollable",
+          "description": "Makes the dialog content area scrollable when content overflows.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "mu-data-table",
       "description": "Data table component with sorting, row selection, and skeleton loading state.\r\nDoes not support virtualization in v1 — keep row count reasonable (< 1000).\n---\n\n\n### **Events:**\n - **sort-change** - Dispatched when sorting changes. Detail: `{ key: string, direction: SortDirection }`.\n- **selection-change** - Dispatched when selection changes. Detail: `{ selected: number[] }`.\n\n### **CSS Parts:**\n - **table** - The `<table>` element.\n- **head** - The `<thead>` element.\n- **body** - The `<tbody>` element.\n- **header-cell** - Each `<th>` in the header row.\n- **cell** - Each `<td>` in a data row.\n- **row** - Each `<tr>` in the body.\n- **row--selected-** - Applied to selected rows.",
       "attributes": [
@@ -407,45 +434,6 @@
       "references": []
     },
     {
-      "name": "mu-divider",
-      "description": "Divider component to separate content.\n---\n",
-      "attributes": [
-        {
-          "name": "orientation",
-          "description": "The orientation of the divider.",
-          "values": [{"name": "horizontal"}, {"name": "vertical"}]
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-dialog",
-      "description": "Modal dialog overlay using the native &lt;dialog&gt; element.\r\nManages focus on open/close, traps focus inside, and closes on Escape.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched when the dialog finishes opening.\n- **mu-close** - Dispatched when the dialog closes (any cause).\n\n### **CSS Properties:**\n - **--mu-dialog-radius** - Border radius of the dialog panel; defaults to `--mu-radius-xl` (12 px). _(default: undefined)_\n- **--mu-dialog-shadow** - Box shadow of the dialog; defaults to `--mu-elevation-2`. _(default: undefined)_\n- **--mu-dialog-max-width** - Maximum width of the dialog; defaults to `min(560px, 90vw)`. _(default: undefined)_\n\n### **CSS Parts:**\n - **dialog** - The native `<dialog>` element.\n- **header** - The `<h2>` headline element at the top of the dialog.\n- **content** - The scrollable content area containing the default slot.\n- **actions** - The footer actions area containing the `actions` named slot.\n- **close-button** - The × icon button in the top-right corner.",
-      "attributes": [
-        {
-          "name": "open",
-          "description": "Whether the dialog is currently open. Reflected to attribute.",
-          "values": []
-        },
-        {
-          "name": "headline",
-          "description": "Text rendered as the dialog headline / title.",
-          "values": []
-        },
-        {
-          "name": "fullscreen",
-          "description": "Expands the dialog to fill the full viewport.",
-          "values": []
-        },
-        {
-          "name": "scrollable",
-          "description": "Makes the dialog content area scrollable when content overflows.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
       "name": "mu-drawer",
       "description": "Side drawer that slides in from the left or right edge of the viewport.\r\nUses a native `<dialog>` element for focus trapping and Escape handling.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched after the drawer opens.\n- **mu-close** - Dispatched after the drawer closes.",
       "attributes": [
@@ -468,9 +456,15 @@
       "references": []
     },
     {
-      "name": "mu-locale-provider",
-      "description": "Locale provider component that supplies a `MuLocale` object to all\r\ndescendant components via the Lit Context API.\r\nWhen no provider is present in the tree, components fall back to\r\n`defaultLocale` (English).\n---\n",
-      "attributes": [],
+      "name": "mu-divider",
+      "description": "Divider component to separate content.\n---\n",
+      "attributes": [
+        {
+          "name": "orientation",
+          "description": "The orientation of the divider.",
+          "values": [{"name": "horizontal"}, {"name": "vertical"}]
+        }
+      ],
       "references": []
     },
     {
@@ -504,6 +498,12 @@
         },
         {"name": "name", "description": "Form field name.", "values": []}
       ],
+      "references": []
+    },
+    {
+      "name": "mu-locale-provider",
+      "description": "Locale provider component that supplies a `MuLocale` object to all\r\ndescendant components via the Lit Context API.\r\nWhen no provider is present in the tree, components fall back to\r\n`defaultLocale` (English).\n---\n",
+      "attributes": [],
       "references": []
     },
     {
@@ -802,33 +802,6 @@
       "references": []
     },
     {
-      "name": "mu-skeleton",
-      "description": "Skeleton placeholder component used to preview content shape before loading.\r\nRenders a pulsing or waving animated placeholder with configurable shape and size.\n---\n",
-      "attributes": [
-        {
-          "name": "variant",
-          "description": "Shape variant of the skeleton.",
-          "values": [{"name": "SkeletonVariant"}]
-        },
-        {
-          "name": "width",
-          "description": "Width of the skeleton element (any valid CSS length value).",
-          "values": []
-        },
-        {
-          "name": "height",
-          "description": "Height of the skeleton element (any valid CSS length value).",
-          "values": []
-        },
-        {
-          "name": "animation",
-          "description": "Animation style; set to false to disable animation.",
-          "values": [{"name": "SkeletonAnimation"}]
-        }
-      ],
-      "references": []
-    },
-    {
       "name": "mu-slider",
       "description": "Range slider form element that participates in native HTML forms.\r\nSupports keyboard navigation, pointer drag, and full accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the value changes. Detail: `{ value: number }`.\n\n### **CSS Parts:**\n - **track** - The background track element.\n- **fill** - The filled portion of the track representing the current value.\n- **thumb** - The draggable circular handle.",
       "attributes": [
@@ -866,6 +839,33 @@
           "name": "name",
           "description": "Form field name submitted with the form.",
           "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-skeleton",
+      "description": "Skeleton placeholder component used to preview content shape before loading.\r\nRenders a pulsing or waving animated placeholder with configurable shape and size.\n---\n",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "Shape variant of the skeleton.",
+          "values": [{"name": "SkeletonVariant"}]
+        },
+        {
+          "name": "width",
+          "description": "Width of the skeleton element (any valid CSS length value).",
+          "values": []
+        },
+        {
+          "name": "height",
+          "description": "Height of the skeleton element (any valid CSS length value).",
+          "values": []
+        },
+        {
+          "name": "animation",
+          "description": "Animation style; set to false to disable animation.",
+          "values": [{"name": "SkeletonAnimation"}]
         }
       ],
       "references": []
@@ -1067,6 +1067,23 @@
       "references": []
     },
     {
+      "name": "mu-tooltip",
+      "description": "Tooltip overlay component that reveals a short label near a trigger element.\r\nDisplays on hover and keyboard focus with a 300 ms delay.\r\nUses the Popover API (popover=\"manual\") for top-layer rendering where supported.\n---\n\n\n### **CSS Properties:**\n - **--mu-tooltip-bg** - Background colour of the tooltip; defaults to `--mu-text-primary` (#212b36). _(default: undefined)_\n- **--mu-tooltip-color** - Text colour; defaults to `#fff`. _(default: undefined)_\n- **--mu-tooltip-radius** - Border radius; defaults to `--mu-radius-md` (4 px). _(default: undefined)_\n\n### **CSS Parts:**\n - **tooltip** - The tooltip bubble element.",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Text content of the tooltip.",
+          "values": []
+        },
+        {
+          "name": "placement",
+          "description": "Side of the trigger on which the tooltip appears.",
+          "values": [{"name": "TooltipPlacement"}]
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "mu-text-field",
       "description": "Single-line text input form component that participates in native HTML forms.\r\nWraps a native `<input>` inside shadow DOM with an accessible floating label.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the input loses focus with a changed value.\n- **input** - Dispatched on every keystroke (native input event forwarded).\n\n### **CSS Properties:**\n - **--mu-text-field-radius** - Border radius of the input element; defaults to `--mu-radius` (8 px). _(default: undefined)_\n- **--mu-text-field-border-color** - Default border colour; defaults to `--mu-divider`. _(default: undefined)_\n- **--mu-text-field-focus-color** - Border and ring colour on focus; defaults to `--mu-primary`. _(default: undefined)_\n\n### **CSS Parts:**\n - **label** - The `<label>` element displayed above the input.\n- **wrapper** - The flex wrapper that holds prefix slot, input, and suffix slot.\n- **input** - The native `<input>` or `<textarea>` element.\n- **helper** - The helper text element displayed below the field.\n- **error** - The error message element displayed below the field.",
       "attributes": [
@@ -1146,23 +1163,6 @@
           "name": "mode",
           "description": "Active color scheme. Switches between the light and dark token sets.",
           "values": [{"name": "light"}, {"name": "dark"}]
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-tooltip",
-      "description": "Tooltip overlay component that reveals a short label near a trigger element.\r\nDisplays on hover and keyboard focus with a 300 ms delay.\r\nUses the Popover API (popover=\"manual\") for top-layer rendering where supported.\n---\n\n\n### **CSS Properties:**\n - **--mu-tooltip-bg** - Background colour of the tooltip; defaults to `--mu-text-primary` (#212b36). _(default: undefined)_\n- **--mu-tooltip-color** - Text colour; defaults to `#fff`. _(default: undefined)_\n- **--mu-tooltip-radius** - Border radius; defaults to `--mu-radius-md` (4 px). _(default: undefined)_\n\n### **CSS Parts:**\n - **tooltip** - The tooltip bubble element.",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "Text content of the tooltip.",
-          "values": []
-        },
-        {
-          "name": "placement",
-          "description": "Side of the trigger on which the tooltip appears.",
-          "values": [{"name": "TooltipPlacement"}]
         }
       ],
       "references": []

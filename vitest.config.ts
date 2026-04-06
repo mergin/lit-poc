@@ -70,6 +70,18 @@ export default defineConfig({
           testTimeout: 60000,
         },
       },
+      {
+        // ── SSR / Node project ────────────────────────────────────────────
+        // Runs tests that require a real Node environment (no DOM) such as
+        // the @lit-labs/ssr smoke test. No DOM setup file is applied.
+        test: {
+          name: 'node',
+          include: ['src/test/*.test.ts'],
+          environment: 'node',
+          globals: true,
+          testTimeout: 60000,
+        },
+      },
     ],
   },
 });

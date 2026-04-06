@@ -1,7 +1,7 @@
 // @vitest-environment node
 import {describe, expect, it} from 'vitest';
-import {render, collectResult} from '@lit-labs/ssr';
-import {collectResult as collectResultAlt} from '@lit-labs/ssr/lib/render-result.js';
+import {render} from '@lit-labs/ssr';
+import {collectResult} from '@lit-labs/ssr/lib/render-result.js';
 import {html} from 'lit';
 
 /**
@@ -13,7 +13,7 @@ describe('SSR smoke test', (): void => {
   it('renders mu-button to a string without throwing', async (): Promise<void> => {
     // ARRANGE
     // Dynamically import to allow server-side custom element registration
-    await import('../../src/button/mu-button.js');
+    await import('../button/mu-button.js');
 
     // ACT
     const result = render(html`<mu-button>Click</mu-button>`);
@@ -28,7 +28,7 @@ describe('SSR smoke test', (): void => {
   it('collectResult produces a non-empty string', async (): Promise<void> => {
     // ARRANGE / ACT
     const result = render(html`<div>hello ssr</div>`);
-    const output = await collectResultAlt(result);
+    const output = await collectResult(result);
 
     // ASSERT
     expect(typeof output).toBe('string');
