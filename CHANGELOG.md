@@ -1,6 +1,37 @@
 # @lit/lit-starter-ts
 
-## 2.0.3
+## Unreleased — Phase 9: Internationalisation (i18n)
+
+### New Components
+
+- **`mu-locale-provider`** — Context provider (`@lit/context`) that distributes a `MuLocale` object to all descendant components. Ships with a built-in English `defaultLocale`; components work without a provider in the DOM.
+
+### New Features
+
+- **i18n support in `mu-chip`** — delete button `aria-label` is now driven by `MuLocale.chip.deleteLabel(label)`.
+- **i18n support in `mu-badge`** — visually-hidden accessible label now uses `MuLocale.badge.defaultLabel(content)`.
+- **i18n support in `mu-snackbar`** — dismiss button `aria-label` is now driven by `MuLocale.snackbar.closeLabel`.
+- Added `@lit/context` dependency and externalised it in the Vite rollup build.
+- Added `./locale-provider` package export subpath.
+
+---
+
+## Phase 8: Additional Components
+
+### New Components
+
+- **`mu-skeleton`** — Loading placeholder with `text`, `circular`, and `rectangular` variants and optional `pulse`/`wave` animation.
+- **`mu-spinner`** — SVG-based circular progress indicator with determinate and indeterminate modes.
+- **`mu-linear-progress`** — Horizontal progress bar (determinate/indeterminate); fires `mu-complete` when value reaches 100.
+- **`mu-alert`** — Contextual feedback banner with `success`, `info`, `warning`, and `error` severity levels; optional close button.
+- **`mu-tabs` / `mu-tab` / `mu-tab-panel`** — ARIA-compliant tabbed interface with roving tabindex keyboard navigation.
+- **`mu-accordion` / `mu-accordion-item`** — Expandable/collapsible sections with optional single-expansion enforcement.
+- **`mu-breadcrumb` / `mu-breadcrumb-item`** — Accessible navigation trail using `<nav aria-label>` and `<ol>` structure.
+- **`mu-pagination`** — Page navigation control with ellipsis support and `page-change` event.
+- **`mu-app-bar`** — Sticky application header rendering `<header role="banner">` with `start`, default, and `end` slots.
+- **`mu-drawer`** — Side panel using a native `<dialog>` for focus trapping; supports `left` and `right` placement.
+
+---
 
 ### Patch Changes
 

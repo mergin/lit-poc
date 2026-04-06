@@ -38,8 +38,17 @@
  */
 import {resolve} from 'node:path';
 import {defineConfig} from 'vite';
+import {svelte} from '@sveltejs/vite-plugin-svelte';
 
 export default defineConfig({
+  plugins: [
+    /**
+     * Compiles `.svelte` files for the `svelte` entry.  The plugin is applied
+     * globally but only activates on `.svelte` imports — all other entries are
+     * unaffected.
+     */
+    svelte(),
+  ],
   build: {
     /** All compiled files land here. Wiped clean before every build. */
     outDir: 'dist',
@@ -177,6 +186,12 @@ export default defineConfig({
          * can use Vue template event shorthands (e.g. `@mu-close`).
          */
         vue: resolve(__dirname, 'src/vue/index.ts'),
+        /**
+         * Svelte 5 wrappers.  Each web component is wrapped in a `.svelte`
+         * component with typed `$props()` and rest-prop forwarding so consumers
+         * get typed props and native Svelte event attribute forwarding.
+         */
+        svelte: resolve(__dirname, 'src/svelte/index.ts'),
       },
       /**
        * Only ES module output.  CJS and UMD are intentionally omitted:
@@ -209,6 +224,8 @@ export default defineConfig({
         '@angular/core',
         '@angular/forms',
         'vue',
+        'svelte',
+        /^svelte\//,
       ],
 
       output: {

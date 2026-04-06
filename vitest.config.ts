@@ -2,6 +2,7 @@ import {defineConfig} from 'vitest/config';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {storybookTest} from '@storybook/addon-vitest/vitest-plugin';
+import {svelte} from '@sveltejs/vite-plugin-svelte';
 const dirname =
   typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
@@ -29,6 +30,9 @@ export default defineConfig({
     },
     projects: [
       {
+        // ── Main project ─────────────────────────────────────────────────
+        // Covers all unit / render / integration tests except the Svelte
+        // wrapper suite which needs its own browser-mode resolution.
         extends: true,
         test: {
           include: [
@@ -36,8 +40,31 @@ export default defineConfig({
             'src/**/_tests/*.render.test.ts',
             'src/**/_tests/*.integration.test.ts',
           ],
-          exclude: ['src/**/_tests/*.e2e.test.ts'],
+          exclude: [
+            'src/**/_tests/*.e2e.test.ts',
+            // Svelte wrapper tests are handled by the Svelte project below
+            // so they don't inherit the wrong module-resolution conditions.
+            'src/svelte/_tests/**',
+          ],
           environment: 'happy-dom',
+          globals: true,
+          setupFiles: ['./vitest.setup.ts'],
+          testTimeout: 60000,
+        },
+      },
+      {
+        // ── Svelte wrapper project ────────────────────────────────────────
+        // Uses the Svelte 5 Vite plugin and the `browser` resolve condition
+        // so that `import {mount} from 'svelte'` resolves to the client-side
+        // entry instead of the server-side SSR entry.
+        plugins: [svelte({hot: false})],
+        resolve: {
+          conditions: ['browser', 'svelte', 'import', 'module', 'default'],
+        },
+        test: {
+          name: 'svelte',
+          include: ['src/svelte/_tests/**/*.test.ts'],
+          environment: 'jsdom',
           globals: true,
           setupFiles: ['./vitest.setup.ts'],
           testTimeout: 60000,
