@@ -169,6 +169,10 @@
       "import": "./dist/angular.js",
       "types": "./dist/angular/index.d.ts"
     },
+    "./vue": {
+      "import": "./dist/vue.js",
+      "types": "./dist/vue/index.d.ts"
+    },
     "./slider": {
       "import": "./dist/slider.js",
       "types": "./dist/slider/mu-slider.d.ts"
@@ -262,7 +266,8 @@
     "@angular/core": ">=14.0.0",
     "@angular/forms": ">=14.0.0",
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react-dom": ">=16.8.0",
+    "vue": ">=3.0.0"
   },
   "peerDependenciesMeta": {
     "react": {
@@ -275,6 +280,9 @@
       "optional": true
     },
     "@angular/forms": {
+      "optional": true
+    },
+    "vue": {
       "optional": true
     }
   },
@@ -309,6 +317,7 @@
     "@typescript-eslint/parser": "^5.62.0",
     "@vitest/browser": "^3.2.4",
     "@vitest/coverage-v8": "^3.2.4",
+    "@vue/test-utils": "^2.4.6",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "cross-env": "^10.1.0",
     "custom-element-vs-code-integration": "^1.5.0",
@@ -326,7 +335,8 @@
     "storybook": "^10.3.4",
     "typescript": "~5.9.3",
     "vite": "^7.3.1",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "vue": "^3.5.32"
   },
   "customElements": "custom-elements.json"
 }

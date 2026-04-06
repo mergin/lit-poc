@@ -171,6 +171,12 @@ export default defineConfig({
          * Re-exports `MuFormsModule` for easy import in Angular modules.
          */
         angular: resolve(__dirname, 'src/angular/index.ts'),
+        /**
+         * Vue 3 wrappers generated with `defineComponent`.  Each web component
+         * is wrapped in a typed Vue component so consumers get typed props and
+         * can use Vue template event shorthands (e.g. `@mu-close`).
+         */
+        vue: resolve(__dirname, 'src/vue/index.ts'),
       },
       /**
        * Only ES module output.  CJS and UMD are intentionally omitted:
@@ -202,6 +208,7 @@ export default defineConfig({
         'react-dom',
         '@angular/core',
         '@angular/forms',
+        'vue',
       ],
 
       output: {
