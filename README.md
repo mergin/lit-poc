@@ -264,13 +264,13 @@ Angular binds properties with `[propName]="value"` and listens to events with `(
 
 The library ships Angular `ControlValueAccessor` directives for form elements. Import them via `MuFormsModule` or as individual standalone directives.
 
-| Element            | Strategy                       | Notes                                                              |
-| ------------------ | ------------------------------ | ------------------------------------------------------------------ |
-| `<mu-text-field>`  | `[ngDefaultControl]`           | Works natively — inner `<input>` `input` event is `composed: true` |
-| `<mu-checkbox>`    | `MuCheckboxControlDirective`   | Maps boolean `checked` to form model                               |
-| `<mu-switch>`      | `MuSwitchControlDirective`     | Maps boolean `checked` to form model                               |
-| `<mu-select>`      | `MuSelectControlDirective`     | Bridges `change` event (not `input`)                               |
-| `<mu-radio-group>` | `MuRadioGroupControlDirective` | Intercepts bubbled `change` from child `<mu-radio>` elements       |
+| Element            | Strategy                       | Notes                                                                                       |
+| ------------------ | ------------------------------ | ------------------------------------------------------------------------------------------- |
+| `<mu-text-field>`  | `MuTextFieldControlDirective`  | Value, disabled, and error state synced; `error` set automatically from validation messages |
+| `<mu-checkbox>`    | `MuCheckboxControlDirective`   | Maps boolean `checked` to form model                                                        |
+| `<mu-switch>`      | `MuSwitchControlDirective`     | Maps boolean `checked` to form model                                                        |
+| `<mu-select>`      | `MuSelectControlDirective`     | Bridges `change` event (not `input`)                                                        |
+| `<mu-radio-group>` | `MuRadioGroupControlDirective` | Intercepts bubbled `change` from child `<mu-radio>` elements                                |
 
 ##### NgModule setup
 
@@ -302,6 +302,7 @@ import {
   MuSwitchControlDirective,
   MuSelectControlDirective,
   MuRadioGroupControlDirective,
+  MuTextFieldControlDirective,
 } from 'lit-poc/angular';
 import 'lit-poc/text-field';
 import 'lit-poc/checkbox';
@@ -320,14 +321,14 @@ import 'lit-poc/radio-group';
     MuSwitchControlDirective,
     MuSelectControlDirective,
     MuRadioGroupControlDirective,
+    MuTextFieldControlDirective,
   ],
   template: `
     <form [formGroup]="form">
-      <!-- text-field: [ngDefaultControl] works natively -->
+      <!-- text-field: MuTextFieldControlDirective activated automatically -->
       <mu-text-field
         formControlName="name"
         label="Name"
-        ngDefaultControl
       ></mu-text-field>
 
       <!-- checkbox: boolean checked value -->
@@ -391,23 +392,16 @@ export class AppFormComponent {
 The CVA directives use Angular's **selector-based activation** — no extra attribute is needed. Each directive's selector matches the standard Angular forms bindings:
 
 ```
-mu-checkbox[formControlName], mu-checkbox[formControl], mu-checkbox[ngModel]
-mu-switch[formControlName],   mu-switch[formControl],   mu-switch[ngModel]
-mu-select[formControlName],   mu-select[formControl],   mu-select[ngModel]
+mu-text-field[formControlName], mu-text-field[formControl], mu-text-field[ngModel]
+mu-checkbox[formControlName],   mu-checkbox[formControl],   mu-checkbox[ngModel]
+mu-switch[formControlName],     mu-switch[formControl],     mu-switch[ngModel]
+mu-select[formControlName],     mu-select[formControl],     mu-select[ngModel]
 mu-radio-group[formControlName], mu-radio-group[formControl], mu-radio-group[ngModel]
 ```
 
-When `formControlName="agree"` is placed on a `<mu-checkbox>` inside a reactive form, Angular automatically instantiates `MuCheckboxControlDirective`. No additional attribute or configuration is required.
+When `formControlName="agree"` is placed on any of these elements inside a reactive form, Angular automatically instantiates the corresponding directive. No additional attribute or configuration is required.
 
-`<mu-text-field>` does not need a custom directive. Its inner `<input>` fires a `composed: true` `input` event that propagates through the shadow boundary, so Angular's built-in `DefaultValueAccessor` works with `ngDefaultControl`:
-
-```html
-<mu-text-field
-  formControlName="name"
-  label="Name"
-  ngDefaultControl
-></mu-text-field>
-```
+`MuTextFieldControlDirective` also subscribes to the control's `statusChanges` observable (via `ControlContainer`) and automatically sets the element's `error` property when the control is touched and invalid, clearing it when it becomes valid again.
 
 #### ControlValueAccessor contract
 
