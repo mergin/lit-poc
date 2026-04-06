@@ -1,4 +1,5 @@
 import {test, expect} from '@playwright/test';
+import {assertNoA11yViolations} from '../../test/a11y.js';
 
 const URL = '/dev/select.html';
 
@@ -48,6 +49,15 @@ test.describe('mu-select (Playwright E2E)', (): void => {
     // ASSERT
     expect(errorText).toBe('Please select a role');
 
+    // CLEANUP — none
+  });
+
+  test('mu-select has no accessibility violations', async ({page}): Promise<void> => {
+    // ARRANGE
+    await page.goto(URL);
+    await page.waitForSelector('mu-select');
+    // ACT / ASSERT
+    await assertNoA11yViolations(page);
     // CLEANUP — none
   });
 });

@@ -79,3 +79,22 @@ if (typeof HTMLElement !== 'undefined' && !HTMLElement.prototype.attachInternals
     } as unknown as ElementInternals;
   };
 }
+
+// Patch jsdom's (and any other environment's) partial ElementInternals implementation
+// to ensure setFormValue and setValidity are always callable.
+if (
+  typeof HTMLElement !== 'undefined' &&
+  typeof HTMLElement.prototype.attachInternals === 'function'
+) {
+  const _nativeAttachInternals = HTMLElement.prototype.attachInternals;
+  HTMLElement.prototype.attachInternals = function (this: HTMLElement): ElementInternals {
+    const internals = _nativeAttachInternals.call(this);
+    if (typeof internals.setFormValue !== 'function') {
+      (internals as unknown as Record<string, () => void>).setFormValue = (): void => {};
+    }
+    if (typeof internals.setValidity !== 'function') {
+      (internals as unknown as Record<string, () => void>).setValidity = (): void => {};
+    }
+    return internals;
+  };
+}

@@ -1,4 +1,5 @@
 import {test, expect} from '@playwright/test';
+import {assertNoA11yViolations} from '../../test/a11y.js';
 
 const URL = '/dev/dialog.html';
 
@@ -54,6 +55,15 @@ test.describe('mu-dialog (Playwright E2E)', (): void => {
     // ASSERT
     expect(isOpen).toBe(false);
 
+    // CLEANUP — none
+  });
+
+  test('mu-dialog has no accessibility violations', async ({page}): Promise<void> => {
+    // ARRANGE
+    await page.goto(URL);
+    await page.waitForSelector('mu-dialog');
+    // ACT / ASSERT
+    await assertNoA11yViolations(page);
     // CLEANUP — none
   });
 });

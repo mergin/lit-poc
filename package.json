@@ -242,6 +242,8 @@
     "test:e2e:install": "playwright install chromium firefox",
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:ui": "playwright test --ui",
+    "test:visual": "playwright test --project=visual",
+    "test:visual:update": "playwright test --project=visual --update-snapshots",
     "checksize": "vite build --config vite.docs.config.ts && cat docs/mu-button.bundled.js | gzip -9 | wc -c",
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
@@ -257,10 +259,10 @@
   "author": "David Prieto",
   "license": "BSD-3-Clause",
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
     "@angular/core": ">=14.0.0",
-    "@angular/forms": ">=14.0.0"
+    "@angular/forms": ">=14.0.0",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "peerDependenciesMeta": {
     "react": {
@@ -284,8 +286,12 @@
   "devDependencies": {
     "@11ty/eleventy": "^1.0.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "@angular/common": "^19.2.20",
+    "@angular/compiler": "^19.2.20",
     "@angular/core": "^19.2.20",
     "@angular/forms": "^19.2.20",
+    "@angular/platform-browser-dynamic": "^19.2.20",
+    "@axe-core/playwright": "^4.11.1",
     "@chromatic-com/storybook": "^5.1.1",
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
@@ -296,6 +302,7 @@
     "@storybook/addon-docs": "^10.3.4",
     "@storybook/addon-vitest": "^10.3.4",
     "@storybook/web-components-vite": "^10.3.4",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^25.5.0",
     "@types/react": "^19.2.14",
     "@typescript-eslint/eslint-plugin": "^5.62.0",

@@ -1,4 +1,5 @@
 import {test, expect} from '@playwright/test';
+import {assertNoA11yViolations} from '../../test/a11y.js';
 
 const URL = '/dev/snackbar.html';
 
@@ -53,6 +54,15 @@ test.describe('mu-snackbar (Playwright E2E)', (): void => {
     // ASSERT
     expect(isOpen).toBe(false);
 
+    // CLEANUP — none
+  });
+
+  test('mu-snackbar has no accessibility violations', async ({page}): Promise<void> => {
+    // ARRANGE
+    await page.goto(URL);
+    await page.waitForSelector('mu-snackbar');
+    // ACT / ASSERT
+    await assertNoA11yViolations(page);
     // CLEANUP — none
   });
 });

@@ -1,4 +1,5 @@
 import {test, expect} from '@playwright/test';
+import {assertNoA11yViolations} from '../../test/a11y.js';
 
 const URL = '/dev/switch.html';
 
@@ -56,6 +57,15 @@ test.describe('mu-switch (Playwright E2E)', (): void => {
     // ASSERT
     expect(checked).toBe(false);
 
+    // CLEANUP — none
+  });
+
+  test('mu-switch has no accessibility violations', async ({page}): Promise<void> => {
+    // ARRANGE
+    await page.goto(URL);
+    await page.waitForSelector('mu-switch');
+    // ACT / ASSERT
+    await assertNoA11yViolations(page);
     // CLEANUP — none
   });
 });

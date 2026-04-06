@@ -1,4 +1,5 @@
 import {test, expect} from '@playwright/test';
+import {assertNoA11yViolations} from '../../test/a11y.js';
 
 const URL = '/dev/text-field.html';
 
@@ -56,6 +57,15 @@ test.describe('mu-text-field (Playwright E2E)', (): void => {
     // ASSERT
     expect(errorText).toBe('Minimum 3 characters');
 
+    // CLEANUP — none
+  });
+
+  test('mu-text-field has no accessibility violations', async ({page}): Promise<void> => {
+    // ARRANGE
+    await page.goto(URL);
+    await page.waitForSelector('mu-text-field');
+    // ACT / ASSERT
+    await assertNoA11yViolations(page);
     // CLEANUP — none
   });
 });

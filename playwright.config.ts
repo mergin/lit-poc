@@ -37,5 +37,14 @@ export default defineConfig({
       name: 'webkit',
       use: {...devices['Desktop Safari']},
     },
+    {
+      name: 'visual',
+      testMatch: 'src/**/_tests/*.visual.test.ts',
+      use: {
+        ...devices['Desktop Chrome'],
+        // Fixed viewport for deterministic screenshots.
+        viewport: {width: 1280, height: 900},
+      },
+    },
   ],
 });

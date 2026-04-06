@@ -1,4 +1,5 @@
 import {test, expect} from '@playwright/test';
+import {assertNoA11yViolations} from '../../test/a11y.js';
 
 const URL = '/dev/radio.html';
 
@@ -56,6 +57,15 @@ test.describe('mu-radio (Playwright E2E)', (): void => {
     // ASSERT
     expect(checked).toBe(false);
 
+    // CLEANUP — none
+  });
+
+  test('mu-radio has no accessibility violations', async ({page}): Promise<void> => {
+    // ARRANGE
+    await page.goto(URL);
+    await page.waitForSelector('mu-radio');
+    // ACT / ASSERT
+    await assertNoA11yViolations(page);
     // CLEANUP — none
   });
 });

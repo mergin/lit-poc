@@ -31,7 +31,11 @@ export default defineConfig({
       {
         extends: true,
         test: {
-          include: ['src/**/_tests/*.unit.test.ts', 'src/**/_tests/*.render.test.ts'],
+          include: [
+            'src/**/_tests/*.unit.test.ts',
+            'src/**/_tests/*.render.test.ts',
+            'src/**/_tests/*.integration.test.ts',
+          ],
           exclude: ['src/**/_tests/*.e2e.test.ts'],
           environment: 'happy-dom',
           globals: true,

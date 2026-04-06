@@ -11,10 +11,19 @@
       type="module"
       src="/src/badge/mu-badge.ts"
     ></script>
-    <div style="padding: 24px">
+    <div style="padding: 24px; display: flex; gap: 32px; align-items: center">
+      <mu-badge content="4">
+        <div style="width: 40px; height: 40px; background: #e0e0e0; border-radius: 4px"></div>
+      </mu-badge>
       <mu-badge
         content="4"
         color="primary"
+      >
+        <div style="width: 40px; height: 40px; background: #e0e0e0; border-radius: 4px"></div>
+      </mu-badge>
+      <mu-badge
+        content="4"
+        color="error"
       >
         <div style="width: 40px; height: 40px; background: #e0e0e0; border-radius: 4px"></div>
       </mu-badge>

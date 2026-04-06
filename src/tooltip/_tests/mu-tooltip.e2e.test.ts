@@ -1,4 +1,5 @@
 import {test, expect} from '@playwright/test';
+import {assertNoA11yViolations} from '../../test/a11y.js';
 
 const URL = '/dev/tooltip.html';
 
@@ -53,6 +54,15 @@ test.describe('mu-tooltip (Playwright E2E)', (): void => {
     // ASSERT
     expect(isVisible).toBe(true);
 
+    // CLEANUP — none
+  });
+
+  test('mu-tooltip has no accessibility violations', async ({page}): Promise<void> => {
+    // ARRANGE
+    await page.goto(URL);
+    await page.waitForSelector('mu-tooltip');
+    // ACT / ASSERT
+    await assertNoA11yViolations(page);
     // CLEANUP — none
   });
 });
