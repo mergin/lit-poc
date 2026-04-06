@@ -4,6 +4,8 @@ import {customElement, property} from 'lit/decorators.js';
 /**
  * Content panel associated with a `mu-tab`.
  * Visibility is managed by `mu-tabs`; do not use standalone.
+ * @csspart tab-panel - The `div[role="tabpanel"]` element.
+ * @cssproperty --mu-tab-panel-padding - Padding inside the panel; defaults to 16 px.
  */
 @customElement('mu-tab-panel')
 export class MuTabPanel extends LitElement {
@@ -15,6 +17,7 @@ export class MuTabPanel extends LitElement {
 
   static override styles = css`
     :host {
+      --mu-tab-panel-padding: 16px;
       display: block;
     }
 
@@ -34,6 +37,7 @@ export class MuTabPanel extends LitElement {
     return html`
       <div
         class="panel"
+        part="tab-panel"
         role="tabpanel"
         aria-labelledby="${this.labelledby}"
         tabindex="0"

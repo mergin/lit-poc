@@ -6,6 +6,11 @@ import {sharedStyles} from '../styles/shared-styles.js';
  * Checkbox form component that participates in native HTML forms via ElementInternals.
  * Supports checked, indeterminate, and disabled states with full keyboard accessibility.
  * @fires change - Dispatched when the checked state changes.
+ * @csspart checkbox - The focusable wrapper element that holds the visual box.
+ * @csspart checkmark - The inner box containing the SVG tick / dash mark.
+ * @csspart label - The visible label text element.
+ * @cssproperty --mu-checkbox-color - Active (checked) fill and border colour; defaults to `--mu-primary`.
+ * @cssproperty --mu-checkbox-radius - Border radius of the box; defaults to 3 px.
  */
 @customElement('mu-checkbox')
 export class MuCheckbox extends LitElement {
@@ -44,6 +49,8 @@ export class MuCheckbox extends LitElement {
     sharedStyles,
     css`
       :host {
+        --mu-checkbox-color: var(--mu-primary, #1976d2);
+        --mu-checkbox-radius: 3px;
         display: inline-flex;
         align-items: center;
         gap: 8px;
@@ -172,6 +179,7 @@ export class MuCheckbox extends LitElement {
     return html`
       <span
         class="${wrapperClass}"
+        part="checkbox"
         role="checkbox"
         tabindex="${this.disabled ? -1 : 0}"
         aria-checked="${ariaChecked}"
@@ -180,7 +188,10 @@ export class MuCheckbox extends LitElement {
         @click="${this._handleChange}"
         @keydown="${this._handleKeyDown}"
       >
-        <span class="box">
+        <span
+          class="box"
+          part="checkmark"
+        >
           ${this.checked && !this.indeterminate
             ? html`<svg
                 width="12"
@@ -208,7 +219,13 @@ export class MuCheckbox extends LitElement {
             : ''}
         </span>
       </span>
-      ${this.label ? html`<span class="label-text">${this.label}</span>` : html`<slot></slot>`}
+      ${this.label
+        ? html`<span
+            class="label-text"
+            part="label"
+            >${this.label}</span
+          >`
+        : html`<slot></slot>`}
     `;
   }
 }

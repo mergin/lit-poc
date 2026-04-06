@@ -56,3 +56,20 @@ npx vitest run src/snackbar/_tests/mu-snackbar.unit.test.ts
 npx vitest run src/snackbar/_tests/mu-snackbar.render.test.ts
 npx playwright test src/snackbar/_tests/mu-snackbar.e2e.test.ts
 ```
+
+## CSS Parts
+
+| Part           | Description                             |
+| -------------- | --------------------------------------- |
+| `snackbar`     | The container div for the notification. |
+| `message`      | The text message span.                  |
+| `action`       | The optional call-to-action button.     |
+| `close-button` | The dismiss (×) icon button.            |
+
+## CSS Custom Properties
+
+| Property               | Description        | Default                           |
+| ---------------------- | ------------------ | --------------------------------- |
+| `--mu-snackbar-bg`     | Background colour. | `var(--mu-text-primary, #212b36)` |
+| `--mu-snackbar-radius` | Border radius.     | `var(--mu-radius-lg, 8px)`        |
+| `--mu-snackbar-shadow` | Box shadow.        | `var(--mu-elevation-2)`           |

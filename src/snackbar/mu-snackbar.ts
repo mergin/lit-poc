@@ -13,6 +13,13 @@ export type SnackbarVariant = 'default' | 'success' | 'error' | 'warning' | 'inf
  * Auto-dismisses after the configured duration; duration=0 is persistent.
  * @fires mu-action - Dispatched when the action button is clicked.
  * @fires mu-close - Dispatched when the snackbar is dismissed (any cause).
+ * @csspart snackbar - The container div for the snackbar notification.
+ * @csspart message - The text message span inside the snackbar.
+ * @csspart action - The optional call-to-action button.
+ * @csspart close-button - The dismiss (×) icon button.
+ * @cssproperty --mu-snackbar-bg - Background colour; defaults to `--mu-text-primary` (#212b36).
+ * @cssproperty --mu-snackbar-radius - Border radius; defaults to `--mu-radius-lg` (8 px).
+ * @cssproperty --mu-snackbar-shadow - Box shadow; defaults to `--mu-elevation-2`.
  */
 @customElement('mu-snackbar')
 export class MuSnackbar extends LitElement {
@@ -42,6 +49,13 @@ export class MuSnackbar extends LitElement {
     sharedStyles,
     css`
       :host {
+        --mu-snackbar-bg: var(--mu-text-primary, #212b36);
+        --mu-snackbar-radius: var(--mu-radius-lg, 8px);
+        --mu-snackbar-shadow: var(
+          --mu-elevation-2,
+          0 3px 6px rgba(0, 0, 0, 0.16),
+          0 3px 6px rgba(0, 0, 0, 0.23)
+        );
         display: contents;
       }
       .snackbar {
@@ -190,14 +204,20 @@ export class MuSnackbar extends LitElement {
     return html`
       <div
         class="snackbar"
+        part="snackbar"
         role="status"
         aria-live="${isAssertive ? 'assertive' : 'polite'}"
         aria-atomic="true"
       >
-        <span class="message">${this.message}</span>
+        <span
+          class="message"
+          part="message"
+          >${this.message}</span
+        >
         ${this.actionLabel
           ? html`<button
               class="action"
+              part="action"
               @click="${this._handleAction}"
             >
               ${this.actionLabel}
@@ -205,6 +225,7 @@ export class MuSnackbar extends LitElement {
           : ''}
         <button
           class="close"
+          part="close-button"
           aria-label="${this._locale.snackbar.closeLabel}"
           @click="${this._dismiss}"
         >

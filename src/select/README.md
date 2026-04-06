@@ -66,3 +66,19 @@ npx vitest run src/select/_tests/mu-select.unit.test.ts
 npx vitest run src/select/_tests/mu-select.render.test.ts
 npx playwright test src/select/_tests/mu-select.e2e.test.ts
 ```
+
+## CSS Parts
+
+| Part     | Description                                |
+| -------- | ------------------------------------------ |
+| `label`  | The `<label>` element above the select.    |
+| `select` | The native `<select>` element.             |
+| `error`  | The error message element below the field. |
+
+## CSS Custom Properties
+
+| Property                   | Description                      | Default                      |
+| -------------------------- | -------------------------------- | ---------------------------- |
+| `--mu-select-radius`       | Border radius of the select.     | `var(--mu-radius, 8px)`      |
+| `--mu-select-border-color` | Default border colour.           | `var(--mu-divider, #e0e0e0)` |
+| `--mu-select-focus-color`  | Border and ring colour on focus. | `var(--mu-primary, #1976d2)` |

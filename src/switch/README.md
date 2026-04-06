@@ -44,3 +44,18 @@ npx vitest run src/switch/_tests/mu-switch.unit.test.ts
 npx vitest run src/switch/_tests/mu-switch.render.test.ts
 npx playwright test src/switch/_tests/mu-switch.e2e.test.ts
 ```
+
+## CSS Parts
+
+| Part    | Description                             |
+| ------- | --------------------------------------- |
+| `track` | The sliding track element (pill shape). |
+| `thumb` | The circular thumb inside the track.    |
+| `label` | The visible label text element.         |
+
+## CSS Custom Properties
+
+| Property             | Description                         | Default                      |
+| -------------------- | ----------------------------------- | ---------------------------- |
+| `--mu-switch-color`  | Track colour when the switch is on. | `var(--mu-primary, #1976d2)` |
+| `--mu-switch-radius` | Border radius of the track.         | `14px`                       |

@@ -59,7 +59,7 @@
       }
     ],
     "jsdoc/require-returns": "error",
-    "jsdoc/check-tag-names": ["warn", {"definedTags": ["csspart"]}],
+    "jsdoc/check-tag-names": ["warn", {"definedTags": ["csspart", "cssproperty"]}],
     "jsdoc/tag-lines": "off",
     "jsdoc/valid-types": "off"
   },

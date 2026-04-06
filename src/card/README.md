@@ -54,3 +54,20 @@ No properties. Accepts slotted action controls; aligns them to the right with a 
 
 - `mu-card-header` renders the title as an `<h2>`. Ensure heading hierarchy is correct in context.
 - Action buttons inside the `actions` slot must each have an accessible label.
+
+## CSS Parts
+
+| Part      | Description                                       |
+| --------- | ------------------------------------------------- |
+| `card`    | The root layout div wrapping all card sections.   |
+| `header`  | The header section containing the `header` slot.  |
+| `content` | The body section containing the default slot.     |
+| `actions` | The footer section containing the `actions` slot. |
+
+## CSS Custom Properties
+
+| Property            | Description       | Default                    |
+| ------------------- | ----------------- | -------------------------- |
+| `--mu-card-radius`  | Border radius.    | `var(--mu-radius-lg, 8px)` |
+| `--mu-card-shadow`  | Box shadow.       | `var(--mu-elevation-1)`    |
+| `--mu-card-padding` | Internal padding. | `var(--mu-spacing)`        |

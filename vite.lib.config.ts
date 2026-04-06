@@ -201,6 +201,14 @@ export default defineConfig({
          * the `tokens.css` subpath export produced by `npm run build:tokens`.
          */
         tokens: resolve(__dirname, 'src/styles/tokens.ts'),
+
+        // ── SSR ──────────────────────────────────────────────────────────────
+        /**
+         * Server-side rendering entry point.  Re-exports the full library
+         * alongside `@lit-labs/ssr` utilities so consumers can render
+         * component HTML strings on the server without a separate import.
+         */
+        ssr: resolve(__dirname, 'src/ssr/index.ts'),
       },
       /**
        * Only ES module output.  CJS and UMD are intentionally omitted:
@@ -228,6 +236,8 @@ export default defineConfig({
         /^lit\//,
         '@lit/context',
         '@lit/react',
+        '@lit-labs/ssr',
+        /^@lit-labs\/ssr\//,
         'react',
         'react-dom',
         '@angular/core',

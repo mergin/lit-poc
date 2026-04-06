@@ -5,6 +5,11 @@ import {sharedStyles} from '../styles/shared-styles';
 /**
  * Minimal/MUI-style button component.
  * Supports 3 sizes, 3 types, and predefined colors.
+ * @csspart button - The inner `<button>` element.
+ * @cssproperty --mu-button-bg - Background colour; defaults to `--mu-primary`.
+ * @cssproperty --mu-button-color - Text colour; defaults to `#fff` for contained variant.
+ * @cssproperty --mu-button-radius - Border radius; falls back to `--mu-radius-md` (4 px).
+ * @cssproperty --mu-button-padding - Internal block / inline padding; falls back to `--mu-spacing-2` / `--mu-spacing-4`.
  */
 @customElement('mu-button')
 export class MuButton extends LitElement {
@@ -24,17 +29,19 @@ export class MuButton extends LitElement {
     sharedStyles,
     css`
       :host {
+        --mu-button-radius: var(--mu-radius-md, 4px);
+        --mu-button-padding: 0 var(--mu-spacing-4, 16px);
         display: inline-block;
       }
       button {
         font-family: inherit;
         font-weight: var(--mu-font-weight-medium);
-        border-radius: var(--mu-radius);
+        border-radius: var(--mu-button-radius);
         border: none;
         cursor: pointer;
         outline: none;
         transition: background 0.2s, color 0.2s, border 0.2s;
-        padding: 0 16px;
+        padding: var(--mu-button-padding);
         min-width: 64px;
         height: 40px;
         font-size: 1rem;

@@ -6,6 +6,11 @@ import {sharedStyles} from '../styles/shared-styles.js';
  * Toggle switch form component that participates in native HTML forms.
  * Supports checked, disabled states and full keyboard accessibility.
  * @fires change - Dispatched when the switch is toggled.
+ * @csspart track - The sliding track element (the pill shape).
+ * @csspart thumb - The circular thumb that slides inside the track.
+ * @csspart label - The visible label text element.
+ * @cssproperty --mu-switch-color - Track colour when the switch is on; defaults to `--mu-primary`.
+ * @cssproperty --mu-switch-radius - Border radius of the track; defaults to 14 px.
  */
 @customElement('mu-switch')
 export class MuSwitch extends LitElement {
@@ -41,6 +46,8 @@ export class MuSwitch extends LitElement {
     sharedStyles,
     css`
       :host {
+        --mu-switch-color: var(--mu-primary, #1976d2);
+        --mu-switch-radius: 14px;
         display: inline-flex;
         align-items: center;
         gap: 8px;
@@ -153,6 +160,7 @@ export class MuSwitch extends LitElement {
     return html`
       <span
         class="track"
+        part="track"
         role="switch"
         tabindex="${this.disabled ? -1 : 0}"
         aria-checked="${this.checked ? 'true' : 'false'}"
@@ -161,9 +169,18 @@ export class MuSwitch extends LitElement {
         @click="${this._handleToggle}"
         @keydown="${this._handleKeyDown}"
       >
-        <span class="thumb"></span>
+        <span
+          class="thumb"
+          part="thumb"
+        ></span>
       </span>
-      ${this.label ? html`<span class="label-text">${this.label}</span>` : html`<slot></slot>`}
+      ${this.label
+        ? html`<span
+            class="label-text"
+            part="label"
+            >${this.label}</span
+          >`
+        : html`<slot></slot>`}
     `;
   }
 }

@@ -4,6 +4,13 @@ import {sharedStyles} from '../styles/shared-styles';
 
 /**
  * Card container component. Use slots for header, content, and actions.
+ * @csspart card - The root layout div wrapping all card sections.
+ * @csspart header - The header section containing the `header` named slot.
+ * @csspart content - The body section containing the default slot.
+ * @csspart actions - The footer section containing the `actions` named slot.
+ * @cssproperty --mu-card-radius - Border radius of the card; defaults to `--mu-radius-lg` (8 px).
+ * @cssproperty --mu-card-shadow - Box shadow of the card; defaults to `--mu-elevation-1`.
+ * @cssproperty --mu-card-padding - Internal padding; defaults to `--mu-spacing`.
  */
 @customElement('mu-card')
 export class MuCard extends LitElement {
@@ -11,11 +18,14 @@ export class MuCard extends LitElement {
     sharedStyles,
     css`
       :host {
+        --mu-card-radius: var(--mu-radius-lg, 8px);
+        --mu-card-shadow: var(--mu-elevation-1);
+        --mu-card-padding: var(--mu-spacing);
         display: block;
         background: var(--mu-bg-paper);
-        border-radius: var(--mu-radius-lg, 8px);
-        box-shadow: var(--mu-elevation-1);
-        padding: var(--mu-spacing);
+        border-radius: var(--mu-card-radius);
+        box-shadow: var(--mu-card-shadow);
+        padding: var(--mu-card-padding);
         margin: var(--mu-spacing) 0;
       }
       .header {
@@ -32,14 +42,25 @@ export class MuCard extends LitElement {
 
   override render(): TemplateResult<1> {
     return html`
-      <div class="header">
-        <slot name="header"></slot>
-      </div>
-      <div class="content">
-        <slot></slot>
-      </div>
-      <div class="actions">
-        <slot name="actions"></slot>
+      <div part="card">
+        <div
+          class="header"
+          part="header"
+        >
+          <slot name="header"></slot>
+        </div>
+        <div
+          class="content"
+          part="content"
+        >
+          <slot></slot>
+        </div>
+        <div
+          class="actions"
+          part="actions"
+        >
+          <slot name="actions"></slot>
+        </div>
       </div>
     `;
   }

@@ -59,3 +59,18 @@ A tabs component suite consisting of `mu-tabs` (container), `mu-tab` (tab button
 ## Accessibility
 
 Follows the [ARIA Tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/). Tab buttons have `role="tab"` and `aria-selected`; panels have `role="tabpanel"` and `aria-labelledby`. Roving tabindex is implemented for keyboard navigation.
+
+## CSS Parts
+
+| Part       | Description                          |
+| ---------- | ------------------------------------ |
+| `tab-list` | The `div[role="tablist"]` container. |
+
+(`mu-tab` exposes part `tab`; `mu-tab-panel` exposes part `tab-panel`.)
+
+## CSS Custom Properties
+
+| Property                    | Description                           | Default                      |
+| --------------------------- | ------------------------------------- | ---------------------------- |
+| `--mu-tabs-indicator-color` | Active tab indicator and text colour. | `var(--mu-primary, #1976d2)` |
+| `--mu-tabs-divider-color`   | Bottom border colour of the tab list. | `var(--mu-divider, #e0e0e0)` |

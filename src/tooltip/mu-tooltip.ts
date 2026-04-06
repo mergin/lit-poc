@@ -9,6 +9,10 @@ export type TooltipPlacement = 'top' | 'bottom' | 'left' | 'right';
  * Tooltip overlay component that reveals a short label near a trigger element.
  * Displays on hover and keyboard focus with a 300 ms delay.
  * Uses the Popover API (popover="manual") for top-layer rendering where supported.
+ * @csspart tooltip - The tooltip bubble element.
+ * @cssproperty --mu-tooltip-bg - Background colour of the tooltip; defaults to `--mu-text-primary` (#212b36).
+ * @cssproperty --mu-tooltip-color - Text colour; defaults to `#fff`.
+ * @cssproperty --mu-tooltip-radius - Border radius; defaults to `--mu-radius-md` (4 px).
  */
 @customElement('mu-tooltip')
 export class MuTooltip extends LitElement {
@@ -28,6 +32,9 @@ export class MuTooltip extends LitElement {
     sharedStyles,
     css`
       :host {
+        --mu-tooltip-bg: var(--mu-text-primary, #212b36);
+        --mu-tooltip-color: #fff;
+        --mu-tooltip-radius: var(--mu-radius-md, 4px);
         display: inline-block;
         position: relative;
       }
@@ -139,6 +146,7 @@ export class MuTooltip extends LitElement {
         <div
           id="tt"
           role="tooltip"
+          part="tooltip"
           class="tooltip ${this.placement} ${this._visible ? 'visible' : ''}"
         >
           ${this.label}

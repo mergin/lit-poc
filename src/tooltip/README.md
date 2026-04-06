@@ -37,3 +37,17 @@ npx vitest run src/tooltip/_tests/mu-tooltip.unit.test.ts
 npx vitest run src/tooltip/_tests/mu-tooltip.render.test.ts
 npx playwright test src/tooltip/_tests/mu-tooltip.e2e.test.ts
 ```
+
+## CSS Parts
+
+| Part      | Description                 |
+| --------- | --------------------------- |
+| `tooltip` | The tooltip bubble element. |
+
+## CSS Custom Properties
+
+| Property              | Description        | Default                           |
+| --------------------- | ------------------ | --------------------------------- |
+| `--mu-tooltip-bg`     | Background colour. | `var(--mu-text-primary, #212b36)` |
+| `--mu-tooltip-color`  | Text colour.       | `#fff`                            |
+| `--mu-tooltip-radius` | Border radius.     | `var(--mu-radius-md, 4px)`        |

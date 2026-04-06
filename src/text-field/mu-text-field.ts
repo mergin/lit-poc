@@ -11,6 +11,14 @@ export type TextFieldType = 'text' | 'email' | 'password' | 'search' | 'tel' | '
  * Wraps a native `<input>` inside shadow DOM with an accessible floating label.
  * @fires input - Dispatched on every keystroke (native input event forwarded).
  * @fires change - Dispatched when the input loses focus with a changed value.
+ * @csspart label - The `<label>` element displayed above the input.
+ * @csspart wrapper - The flex wrapper that holds prefix slot, input, and suffix slot.
+ * @csspart input - The native `<input>` or `<textarea>` element.
+ * @csspart helper - The helper text element displayed below the field.
+ * @csspart error - The error message element displayed below the field.
+ * @cssproperty --mu-text-field-radius - Border radius of the input element; defaults to `--mu-radius` (8 px).
+ * @cssproperty --mu-text-field-border-color - Default border colour; defaults to `--mu-divider`.
+ * @cssproperty --mu-text-field-focus-color - Border and ring colour on focus; defaults to `--mu-primary`.
  */
 @customElement('mu-text-field')
 export class MuTextField extends LitElement {
@@ -76,6 +84,9 @@ export class MuTextField extends LitElement {
     sharedStyles,
     css`
       :host {
+        --mu-text-field-radius: var(--mu-radius, 8px);
+        --mu-text-field-border-color: var(--mu-divider, #e0e0e0);
+        --mu-text-field-focus-color: var(--mu-primary, #1976d2);
         display: block;
       }
       :host([disabled]) {
@@ -257,12 +268,16 @@ export class MuTextField extends LitElement {
           ? html`<label
               id="label"
               for="${fieldId}"
+              part="label"
               class="${hasError ? 'error-label' : ''}"
             >
               ${this.label}${this.required ? ' *' : ''}
             </label>`
           : ''}
-        <div class="${classMap(wrapperClasses)}">
+        <div
+          class="${classMap(wrapperClasses)}"
+          part="wrapper"
+        >
           <slot
             name="prefix"
             @slotchange="${this._handlePrefixSlotChange}"
@@ -270,6 +285,7 @@ export class MuTextField extends LitElement {
           ${this.multiline
             ? html`<textarea
                 id="textarea"
+                part="input"
                 .value="${this.value}"
                 placeholder="${this.placeholder}"
                 rows="${this.rows}"
@@ -286,6 +302,7 @@ export class MuTextField extends LitElement {
               ></textarea>`
             : html`<input
                 id="input"
+                part="input"
                 type="${this.type}"
                 .value="${this.value}"
                 placeholder="${this.placeholder}"
@@ -315,6 +332,7 @@ export class MuTextField extends LitElement {
         ${this.error
           ? html`<span
               id="helper"
+              part="error"
               class="helper error-text"
               role="alert"
               >${this.error}</span
@@ -322,6 +340,7 @@ export class MuTextField extends LitElement {
           : this.helperText
           ? html`<span
               id="helper"
+              part="helper"
               class="helper"
               >${this.helperText}</span
             >`

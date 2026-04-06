@@ -11,6 +11,9 @@ import './mu-tab-panel.js';
  * slotted `mu-tab` and `mu-tab-panel` children.
  * @fires tab-change - Dispatched when the selected tab index changes.
  *                     Detail: `{ index: number }`.
+ * @csspart tab-list - The `div[role="tablist"]` container element.
+ * @cssproperty --mu-tabs-indicator-color - Active tab indicator and text colour; defaults to `--mu-primary`.
+ * @cssproperty --mu-tabs-divider-color - Bottom border colour of the tab list; defaults to `--mu-divider`.
  */
 @customElement('mu-tabs')
 export class MuTabs extends LitElement {
@@ -46,6 +49,8 @@ export class MuTabs extends LitElement {
     sharedStyles,
     css`
       :host {
+        --mu-tabs-indicator-color: var(--mu-primary, #1976d2);
+        --mu-tabs-divider-color: var(--mu-divider, #e0e0e0);
         display: block;
       }
 
@@ -297,6 +302,7 @@ export class MuTabs extends LitElement {
         </button>
         <div
           class="tab-list"
+          part="tab-list"
           role="tablist"
           aria-orientation="${this.orientation}"
           @keydown="${this._handleKeyDown}"

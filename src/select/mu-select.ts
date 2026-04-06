@@ -19,6 +19,12 @@ export type SelectValue = string | string[];
  * Select (dropdown) form component that participates in native HTML forms.
  * Uses a native `<select>` inside shadow DOM for maximum accessibility.
  * @fires change - Dispatched when the selected value changes.
+ * @csspart label - The `<label>` element displayed above the select.
+ * @csspart select - The native `<select>` element.
+ * @csspart error - The error message element displayed below the field.
+ * @cssproperty --mu-select-radius - Border radius of the select element; defaults to `--mu-radius` (8 px).
+ * @cssproperty --mu-select-border-color - Default border colour; defaults to `--mu-divider`.
+ * @cssproperty --mu-select-focus-color - Border and ring colour on focus; defaults to `--mu-primary`.
  */
 @customElement('mu-select')
 export class MuSelect extends LitElement {
@@ -61,6 +67,9 @@ export class MuSelect extends LitElement {
     sharedStyles,
     css`
       :host {
+        --mu-select-radius: var(--mu-radius, 8px);
+        --mu-select-border-color: var(--mu-divider, #e0e0e0);
+        --mu-select-focus-color: var(--mu-primary, #1976d2);
         display: block;
       }
       :host([disabled]) {
@@ -182,6 +191,7 @@ export class MuSelect extends LitElement {
         ${this.label
           ? html`<label
               for="select"
+              part="label"
               class="${hasError ? 'error-label' : ''}"
             >
               ${this.label}${this.required ? ' *' : ''}
@@ -190,6 +200,7 @@ export class MuSelect extends LitElement {
         <div class="select-wrapper">
           <select
             id="select"
+            part="select"
             ?multiple="${isMultiple}"
             ?disabled="${this.disabled}"
             ?required="${this.required}"
@@ -246,6 +257,7 @@ export class MuSelect extends LitElement {
         ${hasError
           ? html`<span
               id="helper"
+              part="error"
               class="helper error-text"
               role="alert"
               >${this.error}</span

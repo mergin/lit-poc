@@ -53,3 +53,21 @@ npx vitest run src/text-field/_tests/mu-text-field.unit.test.ts
 npx vitest run src/text-field/_tests/mu-text-field.render.test.ts
 npx playwright test src/text-field/_tests/mu-text-field.e2e.test.ts
 ```
+
+## CSS Parts
+
+| Part      | Description                                         |
+| --------- | --------------------------------------------------- |
+| `label`   | The `<label>` element displayed above the input.    |
+| `wrapper` | The flex wrapper holding prefix, input, and suffix. |
+| `input`   | The native `<input>` or `<textarea>` element.       |
+| `helper`  | The helper text element shown below the field.      |
+| `error`   | The error message element shown below the field.    |
+
+## CSS Custom Properties
+
+| Property                       | Description                      | Default                      |
+| ------------------------------ | -------------------------------- | ---------------------------- |
+| `--mu-text-field-radius`       | Border radius of the input.      | `var(--mu-radius, 8px)`      |
+| `--mu-text-field-border-color` | Default border colour.           | `var(--mu-divider, #e0e0e0)` |
+| `--mu-text-field-focus-color`  | Border and ring colour on focus. | `var(--mu-primary, #1976d2)` |

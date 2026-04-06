@@ -52,3 +52,16 @@ import './src/button/mu-button.js';
 - The underlying `<button>` element receives both `disabled` and `aria-disabled` attributes when disabled.
 - For icon-only buttons, slot in a visually-hidden label or `aria-label` on a parent wrapper to describe the action.
 - Exposed via `part="button"` for external CSS overrides.
+
+## CSS Parts
+
+| Part     | Description                   |
+| -------- | ----------------------------- |
+| `button` | The inner `<button>` element. |
+
+## CSS Custom Properties
+
+| Property              | Description     | Default                       |
+| --------------------- | --------------- | ----------------------------- |
+| `--mu-button-radius`  | Border radius.  | `var(--mu-radius-md, 4px)`    |
+| `--mu-button-padding` | Inline padding. | `0 var(--mu-spacing-4, 16px)` |

@@ -7,6 +7,11 @@ import {sharedStyles} from '../styles/shared-styles.js';
  * Managed by `mu-accordion`; can also be used standalone.
  * @fires accordion-toggle - Dispatched when the item expands or collapses.
  *                           Detail: `{ expanded: boolean }`.
+ * @csspart header - The `<button>` element that acts as the expandable heading.
+ * @csspart content - The collapsible content region `div`.
+ * @cssproperty --mu-accordion-divider-color - Border colour between items; defaults to `--mu-divider` (#e0e0e0).
+ * @cssproperty --mu-accordion-header-color - Text colour of the header; defaults to `--mu-text-primary`.
+ * @cssproperty --mu-accordion-content-color - Text colour of the content area; defaults to `--mu-text-secondary`.
  */
 @customElement('mu-accordion-item')
 export class MuAccordionItem extends LitElement {
@@ -23,12 +28,15 @@ export class MuAccordionItem extends LitElement {
     sharedStyles,
     css`
       :host {
+        --mu-accordion-divider-color: var(--mu-divider, #e0e0e0);
+        --mu-accordion-header-color: var(--mu-text-primary, #212b36);
+        --mu-accordion-content-color: var(--mu-text-secondary, #637381);
         display: block;
-        border-bottom: 1px solid var(--mu-divider, #e0e0e0);
+        border-bottom: 1px solid var(--mu-accordion-divider-color);
       }
 
       :host(:first-of-type) {
-        border-top: 1px solid var(--mu-divider, #e0e0e0);
+        border-top: 1px solid var(--mu-accordion-divider-color);
       }
 
       .header {
@@ -123,6 +131,7 @@ export class MuAccordionItem extends LitElement {
     return html`
       <button
         class="header"
+        part="header"
         aria-expanded="${this.expanded}"
         aria-controls="${regionId}"
         id="${headingId}"
@@ -155,6 +164,7 @@ export class MuAccordionItem extends LitElement {
       </button>
       <div
         class="region"
+        part="content"
         id="${regionId}"
         role="region"
         aria-labelledby="${headingId}"

@@ -8,6 +8,10 @@ import {defaultLocale, type MuLocale} from '../i18n/default-locale.js';
 
 /**
  * A badge component to display status descriptors or unread counts.
+ * @csspart badge - The badge bubble element positioned in the corner of its anchor.
+ * @cssproperty --mu-badge-bg - Background colour; defaults to `--mu-primary`.
+ * @cssproperty --mu-badge-color - Text colour; defaults to `--mu-primary-contrast`.
+ * @cssproperty --mu-badge-radius - Border radius; defaults to 10 px for a pill shape.
  */
 @customElement('mu-badge')
 export class MuBadge extends LitElement {
@@ -31,6 +35,9 @@ export class MuBadge extends LitElement {
     sharedStyles,
     css`
       :host {
+        --mu-badge-bg: var(--mu-primary);
+        --mu-badge-color: var(--mu-primary-contrast);
+        --mu-badge-radius: 10px;
         display: inline-flex;
         position: relative;
         vertical-align: middle;
@@ -112,6 +119,7 @@ export class MuBadge extends LitElement {
       <slot></slot>
       <span
         class="${classMap(badgeClasses)}"
+        part="badge"
         aria-hidden="true"
         >${this.content}</span
       >

@@ -45,3 +45,18 @@ An accordion component consisting of `mu-accordion` (container) and `mu-accordio
 ## Accessibility
 
 Uses `aria-expanded` on the header button and `role="region"` with `aria-labelledby` on the content region.
+
+## CSS Parts
+
+| Part      | Description                                   |
+| --------- | --------------------------------------------- |
+| `header`  | The `<button>` element acting as the heading. |
+| `content` | The collapsible content region `<div>`.       |
+
+## CSS Custom Properties
+
+| Property                       | Description                  | Default                             |
+| ------------------------------ | ---------------------------- | ----------------------------------- |
+| `--mu-accordion-divider-color` | Border colour between items. | `var(--mu-divider, #e0e0e0)`        |
+| `--mu-accordion-header-color`  | Header text colour.          | `var(--mu-text-primary, #212b36)`   |
+| `--mu-accordion-content-color` | Content area text colour.    | `var(--mu-text-secondary, #637381)` |

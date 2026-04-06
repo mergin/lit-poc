@@ -63,3 +63,17 @@ import './src/badge/mu-badge.js';
 - A visually-hidden `<span>` renders the `label` (or the auto-generated fallback) for screen readers.
 - Provide a meaningful `label` whenever `content` alone is not self-explanatory in context.
 - The auto-generated fallback text is driven by `MuLocale.badge.defaultLabel(content)` and defaults to `"Badge content: [content]"`. Override it by placing the badge inside a `<mu-locale-provider>` with a custom locale.
+
+## CSS Parts
+
+| Part    | Description                                        |
+| ------- | -------------------------------------------------- |
+| `badge` | The badge bubble element positioned at the anchor. |
+
+## CSS Custom Properties
+
+| Property            | Description        | Default                      |
+| ------------------- | ------------------ | ---------------------------- |
+| `--mu-badge-bg`     | Background colour. | `var(--mu-primary)`          |
+| `--mu-badge-color`  | Text colour.       | `var(--mu-primary-contrast)` |
+| `--mu-badge-radius` | Border radius.     | `10px`                       |

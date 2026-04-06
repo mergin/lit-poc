@@ -4,6 +4,9 @@ import {customElement, property} from 'lit/decorators.js';
 /**
  * Individual tab button inside a `mu-tabs` container.
  * Managed by `mu-tabs`; do not use standalone.
+ * @csspart tab - The `<button>` element that acts as the tab trigger.
+ * @cssproperty --mu-tab-color - Text colour of the inactive tab; defaults to `--mu-text-secondary`.
+ * @cssproperty --mu-tab-indicator-color - Active tab indicator and text colour; defaults to `--mu-primary`.
  */
 @customElement('mu-tab')
 export class MuTab extends LitElement {
@@ -21,6 +24,8 @@ export class MuTab extends LitElement {
 
   static override styles = css`
     :host {
+      --mu-tab-color: var(--mu-text-secondary, #637381);
+      --mu-tab-indicator-color: var(--mu-primary, #1976d2);
       display: inline-flex;
       outline: none;
     }
@@ -82,6 +87,7 @@ export class MuTab extends LitElement {
     return html`
       <button
         role="tab"
+        part="tab"
         aria-selected="${this.selected}"
         aria-controls="${this.controls || nothing}"
         ?disabled="${this.disabled}"

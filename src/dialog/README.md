@@ -73,3 +73,21 @@ npx vitest run src/dialog/_tests/mu-dialog.unit.test.ts
 npx vitest run src/dialog/_tests/mu-dialog.render.test.ts
 npx playwright test src/dialog/_tests/mu-dialog.e2e.test.ts
 ```
+
+## CSS Parts
+
+| Part           | Description                                |
+| -------------- | ------------------------------------------ |
+| `dialog`       | The native `<dialog>` element.             |
+| `header`       | The `<h2>` headline element.               |
+| `content`      | The scrollable content area.               |
+| `actions`      | The footer actions area.                   |
+| `close-button` | The × icon button in the top-right corner. |
+
+## CSS Custom Properties
+
+| Property                | Description    | Default                     |
+| ----------------------- | -------------- | --------------------------- |
+| `--mu-dialog-radius`    | Border radius. | `var(--mu-radius-xl, 12px)` |
+| `--mu-dialog-shadow`    | Box shadow.    | `var(--mu-elevation-2)`     |
+| `--mu-dialog-max-width` | Maximum width. | `min(560px, 90vw)`          |

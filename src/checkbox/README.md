@@ -51,3 +51,18 @@ npx vitest run src/checkbox/_tests/mu-checkbox.render.test.ts
 # E2E (requires preview server)
 npx playwright test src/checkbox/_tests/mu-checkbox.e2e.test.ts
 ```
+
+## CSS Parts
+
+| Part        | Description                                           |
+| ----------- | ----------------------------------------------------- |
+| `checkbox`  | The focusable wrapper span that holds the visual box. |
+| `checkmark` | The inner box containing the SVG tick / dash mark.    |
+| `label`     | The visible label text element.                       |
+
+## CSS Custom Properties
+
+| Property               | Description                       | Default                      |
+| ---------------------- | --------------------------------- | ---------------------------- |
+| `--mu-checkbox-color`  | Active (checked) fill and border. | `var(--mu-primary, #1976d2)` |
+| `--mu-checkbox-radius` | Border radius of the box.         | `3px`                        |

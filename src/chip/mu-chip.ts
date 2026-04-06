@@ -10,6 +10,12 @@ import '../icon/mu-icon.js';
 /**
  * Chip component for tags, attributes, and actions.
  * @fires delete - Dispatched when the delete button is clicked on a deletable chip.
+ * @csspart chip - The outer chip container element.
+ * @csspart label - The text label inside the chip.
+ * @csspart delete-button - The delete / close icon button (only present when `deletable`).
+ * @cssproperty --mu-chip-radius - Border radius of the chip; defaults to 16 px.
+ * @cssproperty --mu-chip-height - Height of the chip; defaults to 32 px.
+ * @cssproperty --mu-chip-bg - Background colour for the default chip variant.
  */
 @customElement('mu-chip')
 export class MuChip extends LitElement {
@@ -43,6 +49,9 @@ export class MuChip extends LitElement {
     sharedStyles,
     css`
       :host {
+        --mu-chip-radius: 16px;
+        --mu-chip-height: 32px;
+        --mu-chip-bg: #e0e0e0;
         display: inline-flex;
         outline: 0;
         vertical-align: middle;
@@ -174,18 +183,26 @@ export class MuChip extends LitElement {
     };
 
     return html`
-      <div class="${classMap(classes)}">
+      <div
+        class="${classMap(classes)}"
+        part="chip"
+      >
         <slot
           name="avatar"
           class="${this._hasAvatar ? '' : 'avatar-hidden'}"
           @slotchange="${this._handleAvatarSlotChange}"
         ></slot>
-        <span class="label">${this.label}</span>
+        <span
+          class="label"
+          part="label"
+          >${this.label}</span
+        >
         <slot></slot>
         ${this.deletable
           ? html`
               <button
                 class="delete-btn"
+                part="delete-button"
                 aria-label="${this._locale.chip.deleteLabel(this.label)}"
                 @click="${this._handleDelete}"
                 ?disabled="${this.disabled}"
