@@ -1,4 +1,4 @@
-import {LitElement, html, css, type TemplateResult} from 'lit';
+import {LitElement, html, css, nothing, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {sharedStyles} from '../styles/shared-styles.js';
 
@@ -49,9 +49,14 @@ export class MuRadio extends LitElement {
         vertical-align: middle;
       }
       :host([disabled]) {
-        opacity: 0.38;
         cursor: not-allowed;
         pointer-events: none;
+      }
+      :host([disabled]) .ripple {
+        opacity: 0.38;
+      }
+      :host([disabled]) .label-text {
+        color: var(--mu-text-disabled, #767676);
       }
       .ripple {
         display: inline-flex;
@@ -194,6 +199,7 @@ export class MuRadio extends LitElement {
         tabindex="${this.checked || !this.disabled ? 0 : -1}"
         aria-checked="${this.checked ? 'true' : 'false'}"
         aria-disabled="${this.disabled ? 'true' : 'false'}"
+        aria-label="${this.label || nothing}"
         @click="${this._select}"
         @keydown="${this._handleKeyDown}"
       >

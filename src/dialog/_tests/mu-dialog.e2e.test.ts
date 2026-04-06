@@ -61,7 +61,7 @@ test.describe('mu-dialog (Playwright E2E)', (): void => {
   test('mu-dialog has no accessibility violations', async ({page}): Promise<void> => {
     // ARRANGE
     await page.goto(URL);
-    await page.waitForSelector('mu-dialog');
+    await page.waitForSelector('mu-dialog', {state: 'attached'});
     // ACT / ASSERT
     await assertNoA11yViolations(page);
     // CLEANUP — none

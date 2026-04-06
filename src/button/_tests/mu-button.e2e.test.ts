@@ -7,7 +7,7 @@ test.describe('mu-button (Playwright E2E)', (): void => {
   test('renders with text', async ({page}): Promise<void> => {
     await page.goto(BUTTON_DEMO_URL);
     // Find the first mu-button with text
-    const button = await page.locator('mu-button').first();
+    const button = await page.locator('mu-button').filter({hasText: 'Accessible Button'});
     await expect(button).toContainText('Accessible Button');
   });
 

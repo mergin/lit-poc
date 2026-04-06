@@ -1,4 +1,4 @@
-import {LitElement, html, css, type TemplateResult} from 'lit';
+import {LitElement, html, css, nothing, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {sharedStyles} from '../styles/shared-styles.js';
 
@@ -52,9 +52,14 @@ export class MuCheckbox extends LitElement {
         vertical-align: middle;
       }
       :host([disabled]) {
-        opacity: 0.38;
         cursor: not-allowed;
         pointer-events: none;
+      }
+      :host([disabled]) .wrapper {
+        opacity: 0.38;
+      }
+      :host([disabled]) .label-text {
+        color: var(--mu-text-disabled, #767676);
       }
       .wrapper {
         display: inline-flex;
@@ -171,6 +176,7 @@ export class MuCheckbox extends LitElement {
         tabindex="${this.disabled ? -1 : 0}"
         aria-checked="${ariaChecked}"
         aria-disabled="${this.disabled ? 'true' : 'false'}"
+        aria-label="${this.label || nothing}"
         @click="${this._handleChange}"
         @keydown="${this._handleKeyDown}"
       >

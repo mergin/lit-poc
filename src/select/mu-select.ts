@@ -1,4 +1,4 @@
-import {LitElement, html, css, type TemplateResult} from 'lit';
+import {LitElement, html, css, nothing, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {sharedStyles} from '../styles/shared-styles.js';
 
@@ -195,7 +195,7 @@ export class MuSelect extends LitElement {
             ?required="${this.required}"
             class="${hasError ? 'has-error' : ''}"
             aria-invalid="${hasError ? 'true' : 'false'}"
-            aria-describedby="${hasError ? 'helper' : ''}"
+            aria-describedby="${hasError ? 'helper' : nothing}"
             @change="${this._handleChange}"
           >
             ${!isMultiple && this.placeholder

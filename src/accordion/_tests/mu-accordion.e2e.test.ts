@@ -28,7 +28,8 @@ test.describe('mu-accordion e2e', () => {
     // ARRANGE
     await page.setContent(`
       <!DOCTYPE html>
-      <html>
+      <html lang="en">
+        <head><title>Accordion Test</title></head>
         <body>
           <script type="module" src="/src/accordion/mu-accordion.ts"></script>
           <mu-accordion>

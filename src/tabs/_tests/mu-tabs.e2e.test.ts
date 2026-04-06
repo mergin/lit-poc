@@ -4,6 +4,7 @@ import {assertNoA11yViolations} from '../../test/a11y.js';
 test.describe('mu-tabs e2e', () => {
   test('switches panel on tab click', async ({page}) => {
     // ARRANGE
+    await page.goto('/');
     await page.setContent(`
       <!DOCTYPE html>
       <html>
@@ -18,7 +19,8 @@ test.describe('mu-tabs e2e', () => {
         </body>
       </html>
     `);
-    await page.waitForSelector('mu-tabs');
+    await page.waitForLoadState('networkidle');
+    await page.waitForFunction((): boolean => customElements.get('mu-tab') !== undefined);
 
     // ACT
     const secondTab = page.locator('mu-tab').nth(1);
@@ -34,7 +36,8 @@ test.describe('mu-tabs e2e', () => {
     // ARRANGE
     await page.setContent(`
       <!DOCTYPE html>
-      <html>
+      <html lang="en">
+        <head><title>Tabs Test</title></head>
         <body>
           <script type="module" src="/src/tabs/mu-tabs.ts"></script>
           <mu-tabs>

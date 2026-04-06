@@ -1,4 +1,4 @@
-import {LitElement, html, css, type TemplateResult} from 'lit';
+import {LitElement, html, css, nothing, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {sharedStyles} from '../styles/shared-styles.js';
 
@@ -49,9 +49,14 @@ export class MuSwitch extends LitElement {
         vertical-align: middle;
       }
       :host([disabled]) {
-        opacity: 0.38;
         cursor: not-allowed;
         pointer-events: none;
+      }
+      :host([disabled]) .track {
+        opacity: 0.38;
+      }
+      :host([disabled]) .label-text {
+        color: var(--mu-text-disabled, #767676);
       }
       .track {
         position: relative;
@@ -152,6 +157,7 @@ export class MuSwitch extends LitElement {
         tabindex="${this.disabled ? -1 : 0}"
         aria-checked="${this.checked ? 'true' : 'false'}"
         aria-disabled="${this.disabled ? 'true' : 'false'}"
+        aria-label="${this.label || nothing}"
         @click="${this._handleToggle}"
         @keydown="${this._handleKeyDown}"
       >

@@ -60,7 +60,7 @@ test.describe('mu-snackbar (Playwright E2E)', (): void => {
   test('mu-snackbar has no accessibility violations', async ({page}): Promise<void> => {
     // ARRANGE
     await page.goto(URL);
-    await page.waitForSelector('mu-snackbar');
+    await page.waitForSelector('mu-snackbar', {state: 'attached'});
     // ACT / ASSERT
     await assertNoA11yViolations(page);
     // CLEANUP — none

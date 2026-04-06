@@ -7,14 +7,15 @@ test.describe('mu-chip-input e2e', (): void => {
     // ARRANGE
     await page.goto(CHIP_INPUT_URL);
     await page.waitForSelector('mu-chip-input');
-    const input = page.locator('mu-chip-input').locator('input');
+    const chipInput = page.locator('mu-chip-input').first();
+    const input = chipInput.locator('input');
 
     // ACT
     await input.fill('TypeScript');
     await input.press('Enter');
 
     // ASSERT
-    await expect(page.locator('mu-chip-input').locator('mu-chip')).toHaveCount(1);
+    await expect(chipInput.locator('mu-chip')).toHaveCount(1);
 
     // CLEANUP — none
   });
@@ -23,14 +24,15 @@ test.describe('mu-chip-input e2e', (): void => {
     // ARRANGE
     await page.goto(CHIP_INPUT_URL);
     await page.waitForSelector('mu-chip-input');
-    const input = page.locator('mu-chip-input').locator('input');
+    const chipInput = page.locator('mu-chip-input').first();
+    const input = chipInput.locator('input');
 
     // ACT
     await input.fill('React');
     await page.keyboard.press(',');
 
     // ASSERT
-    await expect(page.locator('mu-chip-input').locator('mu-chip')).toHaveCount(1);
+    await expect(chipInput.locator('mu-chip')).toHaveCount(1);
 
     // CLEANUP — none
   });
@@ -45,15 +47,16 @@ test.describe('mu-chip-input e2e', (): void => {
       const el = document.querySelector('mu-chip-input') as HTMLElement & {chips: string[]};
       el.chips = ['Angular', 'Vue'];
     });
-    const input = page.locator('mu-chip-input').locator('input');
-    await expect(page.locator('mu-chip-input').locator('mu-chip')).toHaveCount(2);
+    const chipInput = page.locator('mu-chip-input').first();
+    const input = chipInput.locator('input');
+    await expect(chipInput.locator('mu-chip')).toHaveCount(2);
 
     // ACT
     await input.focus();
     await page.keyboard.press('Backspace');
 
     // ASSERT
-    await expect(page.locator('mu-chip-input').locator('mu-chip')).toHaveCount(1);
+    await expect(chipInput.locator('mu-chip')).toHaveCount(1);
 
     // CLEANUP — none
   });
@@ -71,7 +74,8 @@ test.describe('mu-chip-input e2e', (): void => {
         log.textContent = JSON.stringify((e as CustomEvent<{chips: string[]}>).detail.chips);
       });
     });
-    const input = page.locator('mu-chip-input').locator('input');
+    const chipInput = page.locator('mu-chip-input').first();
+    const input = chipInput.locator('input');
 
     // ACT
     await input.fill('Svelte');

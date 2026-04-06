@@ -1,4 +1,4 @@
-import {LitElement, html, css, type TemplateResult} from 'lit';
+import {LitElement, html, css, nothing, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 
 /**
@@ -83,7 +83,7 @@ export class MuTab extends LitElement {
       <button
         role="tab"
         aria-selected="${this.selected}"
-        aria-controls="${this.controls}"
+        aria-controls="${this.controls || nothing}"
         ?disabled="${this.disabled}"
         tabindex="${this.selected ? 0 : -1}"
         @click="${this._handleClick}"

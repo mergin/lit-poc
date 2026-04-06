@@ -254,7 +254,7 @@
     "test:watch": "vitest",
     "test:perf": "vitest bench --environment happy-dom",
     "test:e2e": "playwright test",
-    "test:e2e:install": "playwright install chromium firefox",
+    "test:e2e:install": "playwright install webkit chromium firefox",
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:ui": "playwright test --ui",
     "test:visual": "playwright test --project=visual",

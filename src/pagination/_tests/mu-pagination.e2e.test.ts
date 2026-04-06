@@ -3,7 +3,8 @@ import {test, expect} from '@playwright/test';
 test.describe('mu-pagination e2e', () => {
   test('navigates pages on click', async ({page}) => {
     // ARRANGE
-    await page.setContent(`
+    await page.setContent(
+      `
       <!DOCTYPE html>
       <html>
         <body>
@@ -17,8 +18,10 @@ test.describe('mu-pagination e2e', () => {
           </script>
         </body>
       </html>
-    `);
-    await page.waitForSelector('mu-pagination');
+    `,
+      {waitUntil: 'domcontentloaded'}
+    );
+    await page.waitForSelector('mu-pagination', {state: 'attached'});
 
     // ACT
     const pagination = page.locator('mu-pagination');
