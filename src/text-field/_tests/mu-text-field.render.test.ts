@@ -126,4 +126,78 @@ describe('MuTextField — render', (): void => {
 
     // CLEANUP — none
   });
+
+  it('renders a textarea when multiline is set', async (): Promise<void> => {
+    // ARRANGE / ACT
+    const el = await fixture<MuTextField>(
+      html`<mu-text-field
+        multiline
+        rows="4"
+      ></mu-text-field>`
+    );
+    const textarea = el.shadowRoot?.querySelector('textarea');
+    const input = el.shadowRoot?.querySelector('input');
+
+    // ASSERT
+    expect(textarea).not.toBeNull();
+    expect(input).toBeNull();
+
+    // CLEANUP — none
+  });
+
+  it('textarea has correct rows attribute', async (): Promise<void> => {
+    // ARRANGE / ACT
+    const el = await fixture<MuTextField>(
+      html`<mu-text-field
+        multiline
+        rows="6"
+      ></mu-text-field>`
+    );
+    const textarea = el.shadowRoot?.querySelector('textarea');
+
+    // ASSERT
+    expect(Number(textarea?.rows)).toBe(6);
+
+    // CLEANUP — none
+  });
+
+  it('renders char count when showCharCount and maxlength are set', async (): Promise<void> => {
+    // ARRANGE / ACT
+    const el = await fixture<MuTextField>(
+      html`<mu-text-field
+        maxlength="100"
+        showcharcount
+      ></mu-text-field>`
+    );
+    const counter = el.shadowRoot?.querySelector('.char-count');
+
+    // ASSERT
+    expect(counter).not.toBeNull();
+
+    // CLEANUP — none
+  });
+
+  it('does not render char count when showCharCount is false', async (): Promise<void> => {
+    // ARRANGE / ACT
+    const el = await fixture<MuTextField>(html`<mu-text-field maxlength="100"></mu-text-field>`);
+    const counter = el.shadowRoot?.querySelector('.char-count');
+
+    // ASSERT
+    expect(counter).toBeNull();
+
+    // CLEANUP — none
+  });
+
+  it('renders prefix and suffix slots inside the input wrapper', async (): Promise<void> => {
+    // ARRANGE / ACT
+    const el = await fixture<MuTextField>(
+      html`<mu-text-field label="Search"><span slot="prefix">🔍</span></mu-text-field>`
+    );
+    const wrapper = el.shadowRoot?.querySelector('.input-wrapper');
+
+    // ASSERT
+    expect(wrapper).not.toBeNull();
+
+    // CLEANUP — none
+  });
 });

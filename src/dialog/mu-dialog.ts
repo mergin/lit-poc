@@ -16,6 +16,12 @@ export class MuDialog extends LitElement {
   /** Text rendered as the dialog headline / title. */
   @property({type: String}) headline = '';
 
+  /** Expands the dialog to fill the full viewport. */
+  @property({type: Boolean, reflect: true}) fullscreen = false;
+
+  /** Makes the dialog content area scrollable when content overflows. */
+  @property({type: Boolean, reflect: true}) scrollable = false;
+
   @query('dialog') private _dialog!: HTMLDialogElement;
 
   /** Stores the element that had focus before the dialog opened. */
@@ -57,6 +63,22 @@ export class MuDialog extends LitElement {
         justify-content: flex-end;
         gap: 8px;
         padding: 8px 16px 16px;
+      }
+      :host([fullscreen]) dialog {
+        position: fixed;
+        inset: 0;
+        border-radius: 0;
+        max-width: 100%;
+        max-height: 100%;
+        margin: 0;
+        width: 100%;
+      }
+      :host([scrollable]) dialog {
+        overflow: hidden;
+      }
+      :host([scrollable]) .content {
+        overflow-y: auto;
+        max-height: calc(100vh - 160px);
       }
     `,
   ];

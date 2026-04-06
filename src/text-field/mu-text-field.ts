@@ -1,5 +1,6 @@
-import {LitElement, html, css, type TemplateResult} from 'lit';
-import {customElement, property, query} from 'lit/decorators.js';
+import {LitElement, html, css, nothing, type TemplateResult} from 'lit';
+import {customElement, property, query, state} from 'lit/decorators.js';
+import {classMap} from 'lit/directives/class-map.js';
 import {sharedStyles} from '../styles/shared-styles.js';
 
 /** Supported HTML input types for mu-text-field. */
@@ -45,11 +46,27 @@ export class MuTextField extends LitElement {
   /** Secondary descriptive text shown below the input when no error is present. */
   @property({type: String, attribute: 'helper-text'}) helperText = '';
 
-  @query('#input') private _input!: HTMLInputElement;
+  /** Renders a multi-line textarea instead of a single-line input. */
+  @property({type: Boolean, reflect: true}) multiline = false;
 
-  /**
-   *
-   */
+  /** Visible row count when multiline is true. */
+  @property({type: Number}) rows = 3;
+
+  /** Maximum character count. Used with showCharCount to render a counter. */
+  @property({type: Number}) maxlength = Infinity;
+
+  /** Displays a character counter below the field when maxlength is finite. */
+  @property({type: Boolean}) showCharCount = false;
+
+  @query('#input') private _input?: HTMLInputElement;
+  @query('#textarea') private _textarea?: HTMLTextAreaElement;
+
+  /** Whether the prefix slot currently has assigned nodes. */
+  @state() private _hasPrefix = false;
+  /** Whether the suffix slot currently has assigned nodes. */
+  @state() private _hasSuffix = false;
+
+  /** Creates a MuTextField instance and registers it with the form. */
   constructor() {
     super();
     this._internals = this.attachInternals();
@@ -80,7 +97,21 @@ export class MuTextField extends LitElement {
       .error-label {
         color: var(--mu-error, #d32f2f);
       }
-      input {
+      .input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: stretch;
+      }
+      .input-wrapper ::slotted([slot='prefix']),
+      .input-wrapper ::slotted([slot='suffix']) {
+        display: flex;
+        align-items: center;
+        padding: 0 8px;
+        color: var(--mu-text-secondary, #637381);
+        pointer-events: none;
+      }
+      input,
+      textarea {
         font-family: inherit;
         font-size: 0.9375rem;
         color: var(--mu-text-primary, #212b36);
@@ -93,13 +124,38 @@ export class MuTextField extends LitElement {
         box-sizing: border-box;
         transition: border-color 0.2s, box-shadow 0.2s;
       }
-      input:focus {
+      textarea {
+        resize: vertical;
+        line-height: 1.5;
+      }
+      .has-prefix input,
+      .has-prefix textarea {
+        padding-left: 4px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      .has-suffix input,
+      .has-suffix textarea {
+        padding-right: 4px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      input:focus,
+      textarea:focus {
         border-color: var(--mu-primary, #1976d2);
         box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
       }
       :host([error]) input,
-      input.has-error {
+      :host([error]) textarea,
+      input.has-error,
+      textarea.has-error {
         border-color: var(--mu-error, #d32f2f);
+      }
+      .char-count {
+        font-size: 0.75rem;
+        margin-top: 2px;
+        text-align: right;
+        color: var(--mu-text-secondary, #637381);
       }
       .helper {
         font-size: 0.75rem;
@@ -131,6 +187,9 @@ export class MuTextField extends LitElement {
       if (this._input && this._input.value !== this.value) {
         this._input.value = this.value;
       }
+      if (this._textarea && this._textarea.value !== this.value) {
+        this._textarea.value = this.value;
+      }
     }
   }
 
@@ -139,7 +198,7 @@ export class MuTextField extends LitElement {
    * @param e - The native input event.
    */
   private _handleInput(e: Event): void {
-    const target = e.target as HTMLInputElement;
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement;
     this.value = target.value;
     this._internals.setFormValue(this.value);
   }
@@ -149,7 +208,7 @@ export class MuTextField extends LitElement {
    * @param e - The native change event.
    */
   private _handleChange(e: Event): void {
-    const target = e.target as HTMLInputElement;
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement;
     this.value = target.value;
     this._internals.setFormValue(this.value);
     this.dispatchEvent(new Event('change', {bubbles: true, composed: true}));
@@ -162,37 +221,97 @@ export class MuTextField extends LitElement {
     this.error = this._internals.validationMessage;
   }
 
+  /**
+   * Updates _hasPrefix state when the prefix slot content changes.
+   * @param e - The slotchange event.
+   */
+  private _handlePrefixSlotChange(e: Event): void {
+    const slot = e.target as HTMLSlotElement;
+    this._hasPrefix = slot.assignedNodes().length > 0;
+  }
+
+  /**
+   * Updates _hasSuffix state when the suffix slot content changes.
+   * @param e - The slotchange event.
+   */
+  private _handleSuffixSlotChange(e: Event): void {
+    const slot = e.target as HTMLSlotElement;
+    this._hasSuffix = slot.assignedNodes().length > 0;
+  }
+
   override render(): TemplateResult {
-    const inputId = 'input';
+    const fieldId = this.multiline ? 'textarea' : 'input';
     const helperId = this.error || this.helperText ? 'helper' : '';
     const hasError = this.error !== '';
+    const maxAttr = isFinite(this.maxlength) ? this.maxlength : nothing;
+    const showCount = this.showCharCount && isFinite(this.maxlength);
+    const wrapperClasses = {
+      'input-wrapper': true,
+      'has-prefix': this._hasPrefix,
+      'has-suffix': this._hasSuffix,
+    };
 
     return html`
       <div class="field">
         ${this.label
           ? html`<label
               id="label"
-              for="${inputId}"
+              for="${fieldId}"
               class="${hasError ? 'error-label' : ''}"
             >
               ${this.label}${this.required ? ' *' : ''}
             </label>`
           : ''}
-        <input
-          id="${inputId}"
-          type="${this.type}"
-          .value="${this.value}"
-          placeholder="${this.placeholder}"
-          ?disabled="${this.disabled}"
-          ?readonly="${this.readonly}"
-          ?required="${this.required}"
-          class="${hasError ? 'has-error' : ''}"
-          aria-describedby="${helperId}"
-          aria-invalid="${hasError ? 'true' : 'false'}"
-          @input="${this._handleInput}"
-          @change="${this._handleChange}"
-          @invalid="${this._handleInvalid}"
-        />
+        <div class="${classMap(wrapperClasses)}">
+          <slot
+            name="prefix"
+            @slotchange="${this._handlePrefixSlotChange}"
+          ></slot>
+          ${this.multiline
+            ? html`<textarea
+                id="textarea"
+                .value="${this.value}"
+                placeholder="${this.placeholder}"
+                rows="${this.rows}"
+                maxlength="${maxAttr}"
+                ?disabled="${this.disabled}"
+                ?readonly="${this.readonly}"
+                ?required="${this.required}"
+                class="${hasError ? 'has-error' : ''}"
+                aria-describedby="${helperId}"
+                aria-invalid="${hasError ? 'true' : 'false'}"
+                @input="${this._handleInput}"
+                @change="${this._handleChange}"
+                @invalid="${this._handleInvalid}"
+              ></textarea>`
+            : html`<input
+                id="input"
+                type="${this.type}"
+                .value="${this.value}"
+                placeholder="${this.placeholder}"
+                maxlength="${maxAttr}"
+                ?disabled="${this.disabled}"
+                ?readonly="${this.readonly}"
+                ?required="${this.required}"
+                class="${hasError ? 'has-error' : ''}"
+                aria-describedby="${helperId}"
+                aria-invalid="${hasError ? 'true' : 'false'}"
+                @input="${this._handleInput}"
+                @change="${this._handleChange}"
+                @invalid="${this._handleInvalid}"
+              />`}
+          <slot
+            name="suffix"
+            @slotchange="${this._handleSuffixSlotChange}"
+          ></slot>
+        </div>
+        ${showCount
+          ? html`<span
+              class="char-count"
+              aria-live="polite"
+              >${this.value.length} / ${this.maxlength}</span
+            >`
+          : ''}
         ${this.error
           ? html`<span
               id="helper"

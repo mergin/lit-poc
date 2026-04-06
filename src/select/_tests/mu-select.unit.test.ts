@@ -91,4 +91,29 @@ describe('MuSelect — unit', (): void => {
 
     // CLEANUP — none
   });
+
+  it('defaults: multiple is false', (): void => {
+    // ARRANGE — done in beforeEach
+
+    // ACT — none
+
+    // ASSERT
+    expect(el.multiple).toBe(false);
+
+    // CLEANUP — none
+  });
+
+  it('accepts multiple property and value as string array', (): void => {
+    // ARRANGE — done in beforeEach
+
+    // ACT
+    el.multiple = true;
+    el.value = ['a', 'b'];
+
+    // ASSERT
+    expect(el.multiple).toBe(true);
+    expect(el.value).toEqual(['a', 'b']);
+
+    // CLEANUP — none
+  });
 });

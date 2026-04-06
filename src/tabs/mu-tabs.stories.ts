@@ -44,3 +44,37 @@ export const WithDisabledTab: StoryObj = {
     </mu-tabs>
   `,
 };
+
+/** Vertical orientation places the tab list to the left of the panels. */
+export const Vertical: StoryObj = {
+  render: () => html`
+    <mu-tabs orientation="vertical">
+      <mu-tab slot="tab">Profile</mu-tab>
+      <mu-tab slot="tab">Security</mu-tab>
+      <mu-tab slot="tab">Notifications</mu-tab>
+      <mu-tab-panel slot="panel">Profile content</mu-tab-panel>
+      <mu-tab-panel slot="panel">Security settings</mu-tab-panel>
+      <mu-tab-panel slot="panel">Notification preferences</mu-tab-panel>
+    </mu-tabs>
+  `,
+};
+
+/** Scrollable tab list shows scroll-indicator chevron buttons when overflowing. */
+export const Scrollable: StoryObj = {
+  render: () => html`
+    <div style="max-width:320px">
+      <mu-tabs scrollable>
+        <mu-tab slot="tab">Overview</mu-tab>
+        <mu-tab slot="tab">Analytics</mu-tab>
+        <mu-tab slot="tab">Reports</mu-tab>
+        <mu-tab slot="tab">Integrations</mu-tab>
+        <mu-tab slot="tab">Settings</mu-tab>
+        <mu-tab-panel slot="panel">Overview panel</mu-tab-panel>
+        <mu-tab-panel slot="panel">Analytics panel</mu-tab-panel>
+        <mu-tab-panel slot="panel">Reports panel</mu-tab-panel>
+        <mu-tab-panel slot="panel">Integrations panel</mu-tab-panel>
+        <mu-tab-panel slot="panel">Settings panel</mu-tab-panel>
+      </mu-tabs>
+    </div>
+  `,
+};

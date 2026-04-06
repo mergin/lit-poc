@@ -95,4 +95,36 @@ describe('MuTextField — unit', (): void => {
 
     // CLEANUP — none
   });
+
+  it('defaults: multiline is false, rows is 3, maxlength is Infinity, showCharCount is false', (): void => {
+    // ARRANGE — done in beforeEach
+
+    // ACT — none
+
+    // ASSERT
+    expect(el.multiline).toBe(false);
+    expect(el.rows).toBe(3);
+    expect(el.maxlength).toBe(Infinity);
+    expect(el.showCharCount).toBe(false);
+
+    // CLEANUP — none
+  });
+
+  it('accepts multiline, rows, maxlength, showCharCount', (): void => {
+    // ARRANGE — done in beforeEach
+
+    // ACT
+    el.multiline = true;
+    el.rows = 5;
+    el.maxlength = 200;
+    el.showCharCount = true;
+
+    // ASSERT
+    expect(el.multiline).toBe(true);
+    expect(el.rows).toBe(5);
+    expect(el.maxlength).toBe(200);
+    expect(el.showCharCount).toBe(true);
+
+    // CLEANUP — none
+  });
 });

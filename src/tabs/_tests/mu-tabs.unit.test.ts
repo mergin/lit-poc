@@ -70,4 +70,37 @@ describe('mu-tabs unit', () => {
     // ASSERT
     expect(el.active).toBe(false);
   });
+
+  it('MuTabs defaults: orientation is horizontal, scrollable is false', (): void => {
+    // ARRANGE
+    const tabs = new MuTabs();
+
+    // ACT — none
+
+    // ASSERT
+    expect(tabs.orientation).toBe('horizontal');
+    expect(tabs.scrollable).toBe(false);
+  });
+
+  it('MuTabs accepts vertical orientation', (): void => {
+    // ARRANGE
+    const tabs = new MuTabs();
+
+    // ACT
+    tabs.orientation = 'vertical';
+
+    // ASSERT
+    expect(tabs.orientation).toBe('vertical');
+  });
+
+  it('MuTabs accepts scrollable property', (): void => {
+    // ARRANGE
+    const tabs = new MuTabs();
+
+    // ACT
+    tabs.scrollable = true;
+
+    // ASSERT
+    expect(tabs.scrollable).toBe(true);
+  });
 });

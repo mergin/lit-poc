@@ -75,3 +75,53 @@ export const InformationOnly: Story = {
     </mu-dialog>
   `,
 };
+
+/** Fullscreen dialog that fills the whole viewport. */
+export const Fullscreen: Story = {
+  args: {headline: 'Full Page Form', open: true},
+  render: (args) => html`
+    <mu-dialog
+      headline="${args.headline}"
+      ?open="${args.open}"
+      fullscreen
+    >
+      <p>This dialog occupies the entire viewport.</p>
+      <button
+        slot="actions"
+        @click="${(e: Event) =>
+          (((e.target as HTMLElement).closest('mu-dialog') as HTMLElement & {open: boolean}).open =
+            false)}"
+      >
+        Close
+      </button>
+    </mu-dialog>
+  `,
+};
+
+/** Scrollable dialog with overflowing body content. */
+export const Scrollable: Story = {
+  args: {headline: 'Terms and Conditions', open: true},
+  render: (args) => html`
+    <mu-dialog
+      headline="${args.headline}"
+      ?open="${args.open}"
+      scrollable
+    >
+      ${Array.from(
+        {length: 20},
+        (_: unknown, i: number): string =>
+          `Paragraph ${i + 1}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.`
+      )
+        .map((p: string): string => `<p>${p}</p>`)
+        .join('')}
+      <button
+        slot="actions"
+        @click="${(e: Event) =>
+          (((e.target as HTMLElement).closest('mu-dialog') as HTMLElement & {open: boolean}).open =
+            false)}"
+      >
+        Accept
+      </button>
+    </mu-dialog>
+  `,
+};

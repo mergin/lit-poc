@@ -86,6 +86,7 @@ export default defineConfig({
         button: resolve(__dirname, 'src/button/mu-button.ts'),
         card: resolve(__dirname, 'src/card/mu-card.ts'),
         chip: resolve(__dirname, 'src/chip/mu-chip.ts'),
+        'chip-input': resolve(__dirname, 'src/chip/mu-chip-input.ts'),
         divider: resolve(__dirname, 'src/divider/mu-divider.ts'),
         icon: resolve(__dirname, 'src/icon/mu-icon.ts'),
         list: resolve(__dirname, 'src/list/mu-list.ts'),

@@ -1,5 +1,5 @@
 import {LitElement, html, css, type TemplateResult} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
+import {customElement, property, state} from 'lit/decorators.js';
 import {consume} from '@lit/context';
 import {sharedStyles} from '../styles/shared-styles.js';
 import {classMap} from 'lit/directives/class-map.js';
@@ -25,6 +25,9 @@ export class MuChip extends LitElement {
   /** Current locale strings; provided via `mu-locale-provider` or defaults to English. */
   @consume({context: localeContext, subscribe: true})
   private _locale: MuLocale = defaultLocale;
+
+  /** Whether the avatar slot has assigned nodes. */
+  @state() private _hasAvatar = false;
 
   /** Predefined color variant. */
   @property({type: String}) color:
@@ -125,6 +128,19 @@ export class MuChip extends LitElement {
         --mu-icon-size: 18px;
         font-size: 18px;
       }
+      ::slotted([slot='avatar']) {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+        margin-left: -6px;
+        margin-right: 4px;
+        overflow: hidden;
+      }
+      .avatar-hidden {
+        display: none;
+      }
     `,
   ];
 
@@ -138,6 +154,15 @@ export class MuChip extends LitElement {
     this.dispatchEvent(new CustomEvent('delete', {bubbles: true, composed: true}));
   }
 
+  /**
+   * Updates the _hasAvatar flag when the avatar slot population changes.
+   * @param e - The slotchange event from the avatar slot.
+   */
+  private _handleAvatarSlotChange(e: Event): void {
+    const slot = e.target as HTMLSlotElement;
+    this._hasAvatar = slot.assignedNodes().length > 0;
+  }
+
   override render(): TemplateResult {
     const classes = {
       chip: true,
@@ -147,6 +172,11 @@ export class MuChip extends LitElement {
 
     return html`
       <div class="${classMap(classes)}">
+        <slot
+          name="avatar"
+          class="${this._hasAvatar ? '' : 'avatar-hidden'}"
+          @slotchange="${this._handleAvatarSlotChange}"
+        ></slot>
         <span class="label">${this.label}</span>
         <slot></slot>
         ${this.deletable

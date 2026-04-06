@@ -86,3 +86,34 @@ export const Disabled: StoryObj = {
     ></mu-chip>
   `,
 };
+
+/** Chip with an avatar image in the avatar slot. */
+export const WithAvatar: StoryObj = {
+  render: () => html`
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <mu-chip label="Alice">
+        <img
+          slot="avatar"
+          src="https://i.pravatar.cc/40?u=alice"
+          alt="Alice"
+          width="24"
+          height="24"
+          style="border-radius:50%;object-fit:cover"
+        />
+      </mu-chip>
+      <mu-chip
+        label="Bob"
+        color="primary"
+      >
+        <img
+          slot="avatar"
+          src="https://i.pravatar.cc/40?u=bob"
+          alt="Bob"
+          width="24"
+          height="24"
+          style="border-radius:50%;object-fit:cover"
+        />
+      </mu-chip>
+    </div>
+  `,
+};

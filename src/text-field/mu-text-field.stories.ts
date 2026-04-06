@@ -91,3 +91,59 @@ export const Disabled: Story = {
       ></mu-text-field>
     </div>`,
 };
+
+/** Multiline textarea mode. */
+export const Multiline: Story = {
+  args: {label: 'Message', placeholder: 'Write your message…'},
+  render: (args) =>
+    html`<div style="max-width:400px">
+      <mu-text-field
+        label="${args.label}"
+        placeholder="${args.placeholder}"
+        multiline
+        rows="4"
+      ></mu-text-field>
+    </div>`,
+};
+
+/** Multiline with character counter. */
+export const WithCharCount: Story = {
+  args: {label: 'Bio', placeholder: 'Tell us about yourself'},
+  render: (args) =>
+    html`<div style="max-width:400px">
+      <mu-text-field
+        label="${args.label}"
+        placeholder="${args.placeholder}"
+        multiline
+        rows="3"
+        maxlength="200"
+        showcharcount
+      ></mu-text-field>
+    </div>`,
+};
+
+/** Single-line input with prefix and suffix icon slots. */
+export const WithPrefixSuffix: Story = {
+  render: () =>
+    html`<div style="max-width:320px; display:flex; flex-direction:column; gap:12px">
+      <mu-text-field label="Search">
+        <span
+          slot="prefix"
+          style="padding:0 8px;color:#637381;font-size:1rem"
+          >🔍</span
+        >
+      </mu-text-field>
+      <mu-text-field label="Amount">
+        <span
+          slot="prefix"
+          style="padding:0 8px;color:#637381"
+          >&dollar;</span
+        >
+        <span
+          slot="suffix"
+          style="padding:0 8px;color:#637381"
+          >.00</span
+        >
+      </mu-text-field>
+    </div>`,
+};

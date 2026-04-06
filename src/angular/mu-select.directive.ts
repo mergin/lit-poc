@@ -1,6 +1,6 @@
 import {Directive, ElementRef, HostListener, forwardRef, inject} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import type {MuSelect} from '../select/mu-select.js';
+import type {MuSelect, SelectValue} from '../select/mu-select.js';
 
 /**
  * Angular `ControlValueAccessor` directive for `<mu-select>`.
@@ -27,7 +27,7 @@ export class MuSelectControlDirective implements ControlValueAccessor {
   private readonly _el = inject<ElementRef<MuSelect>>(ElementRef);
 
   /** Registered onChange callback provided by Angular forms. */
-  private _onChange: (value: string) => void = (): void => {
+  private _onChange: (value: SelectValue) => void = (): void => {
     /* no-op until Angular registers a handler */
   };
 
@@ -48,9 +48,9 @@ export class MuSelectControlDirective implements ControlValueAccessor {
 
   /**
    * Writes a new value to the element.
-   * @param value - The string value to assign.
+   * @param value - The string or string-array value to assign.
    */
-  writeValue(value: string): void {
+  writeValue(value: SelectValue): void {
     this._el.nativeElement.value = value ?? '';
   }
 
@@ -58,7 +58,7 @@ export class MuSelectControlDirective implements ControlValueAccessor {
    * Registers the Angular-provided `onChange` callback.
    * @param fn - The callback to invoke when the selected value changes.
    */
-  registerOnChange(fn: (value: string) => void): void {
+  registerOnChange(fn: (value: SelectValue) => void): void {
     this._onChange = fn;
   }
 

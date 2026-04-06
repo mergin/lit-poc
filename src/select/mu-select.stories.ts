@@ -80,3 +80,20 @@ export const Disabled: Story = {
       ></mu-select>
     </div>`,
 };
+
+/** Multi-select mode — hold Ctrl / Cmd to select multiple options. */
+export const Multiple: Story = {
+  render: () =>
+    html`<div style="max-width:320px">
+      <mu-select
+        label="Roles"
+        multiple
+        .options="${[
+          {value: 'admin', label: 'Admin'},
+          {value: 'editor', label: 'Editor'},
+          {value: 'viewer', label: 'Viewer'},
+          {value: 'guest', label: 'Guest'},
+        ]}"
+      ></mu-select>
+    </div>`,
+};

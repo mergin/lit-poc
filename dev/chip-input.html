@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>mu-chip-input Demo</title>
+  </head>
+  <body>
+    <a href="/index.html">Back to main</a>
+    <h1>mu-chip-input Demo</h1>
+    <script
+      type="module"
+      src="/src/chip/mu-chip-input.ts"
+    ></script>
+    <div style="max-width: 420px; display: flex; flex-direction: column; gap: 16px">
+      <p>
+        Type a value and press <kbd>Enter</kbd> or <kbd>,</kbd> to add a chip. Press
+        <kbd>Backspace</kbd> on an empty input to remove the last chip.
+      </p>
+      <mu-chip-input placeholder="Add technology…"></mu-chip-input>
+      <mu-chip-input
+        placeholder="Pre-seeded tags…"
+        id="seeded"
+      ></mu-chip-input>
+      <mu-chip-input
+        placeholder="Disabled"
+        disabled
+      ></mu-chip-input>
+    </div>
+    <script type="module">
+      document.querySelector('#seeded').chips = ['TypeScript', 'Lit'];
+    </script>
+  </body>
+</html>

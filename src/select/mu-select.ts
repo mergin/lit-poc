@@ -12,6 +12,9 @@ export interface SelectOption {
   disabled?: boolean;
 }
 
+/** Value type for mu-select — single string or array when multiple is true. */
+export type SelectValue = string | string[];
+
 /**
  * Select (dropdown) form component that participates in native HTML forms.
  * Uses a native `<select>` inside shadow DOM for maximum accessibility.
@@ -24,8 +27,8 @@ export class MuSelect extends LitElement {
 
   private readonly _internals: ElementInternals;
 
-  /** Currently selected value. */
-  @property({type: String}) value = '';
+  /** Currently selected value; a string array when multiple is true. */
+  @property({type: String}) value: SelectValue = '';
 
   /** Floating label displayed above the select. */
   @property({type: String}) label = '';
@@ -45,9 +48,10 @@ export class MuSelect extends LitElement {
   /** Placeholder text shown as the first unselectable option. */
   @property({type: String}) placeholder = '';
 
-  /**
-   *
-   */
+  /** Enables multi-select mode; value becomes string[]. */
+  @property({type: Boolean, reflect: true}) multiple = false;
+
+  /** Creates a MuSelect instance and registers it with the form. */
   constructor() {
     super();
     this._internals = this.attachInternals();
@@ -129,7 +133,7 @@ export class MuSelect extends LitElement {
    */
   override connectedCallback(): void {
     super.connectedCallback();
-    this._internals.setFormValue(this.value);
+    this._internals.setFormValue(this._serializeValue());
   }
 
   /**
@@ -139,8 +143,16 @@ export class MuSelect extends LitElement {
   override updated(changedProps: Map<string | number | symbol, unknown>): void {
     super.updated(changedProps);
     if (changedProps.has('value')) {
-      this._internals.setFormValue(this.value);
+      this._internals.setFormValue(this._serializeValue());
     }
+  }
+
+  /**
+   * Serializes the current value for form submission.
+   * @returns A comma-joined string when multiple, otherwise the raw string value.
+   */
+  private _serializeValue(): string {
+    return Array.isArray(this.value) ? this.value.join(',') : (this.value as string);
   }
 
   /**
@@ -149,13 +161,21 @@ export class MuSelect extends LitElement {
    */
   private _handleChange(e: Event): void {
     const target = e.target as HTMLSelectElement;
-    this.value = target.value;
-    this._internals.setFormValue(this.value);
+    if (this.multiple) {
+      this.value = Array.from(target.selectedOptions).map(
+        (o: HTMLOptionElement): string => o.value
+      );
+    } else {
+      this.value = target.value;
+    }
+    this._internals.setFormValue(this._serializeValue());
     this.dispatchEvent(new Event('change', {bubbles: true, composed: true}));
   }
 
   override render(): TemplateResult {
     const hasError = this.error !== '';
+    const isMultiple = Boolean(this.multiple);
+    const currentValue = this.value;
 
     return html`
       <div class="field">
@@ -170,7 +190,7 @@ export class MuSelect extends LitElement {
         <div class="select-wrapper">
           <select
             id="select"
-            .value="${this.value}"
+            ?multiple="${isMultiple}"
             ?disabled="${this.disabled}"
             ?required="${this.required}"
             class="${hasError ? 'has-error' : ''}"
@@ -178,11 +198,11 @@ export class MuSelect extends LitElement {
             aria-describedby="${hasError ? 'helper' : ''}"
             @change="${this._handleChange}"
           >
-            ${this.placeholder
+            ${!isMultiple && this.placeholder
               ? html`<option
                   value=""
                   disabled
-                  selected="${!this.value}"
+                  selected="${!currentValue}"
                 >
                   ${this.placeholder}
                 </option>`
@@ -192,32 +212,36 @@ export class MuSelect extends LitElement {
                 html`<option
                   value="${opt.value}"
                   ?disabled="${opt.disabled ?? false}"
-                  ?selected="${opt.value === this.value}"
+                  ?selected="${isMultiple
+                    ? (Array.isArray(currentValue) ? currentValue : []).includes(opt.value)
+                    : opt.value === currentValue}"
                 >
                   ${opt.label}
                 </option>`
             )}
           </select>
-          <span
-            class="chevron"
-            aria-hidden="true"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-            >
-              <path
-                d="M4 6l4 4 4-4"
-                stroke="currentColor"
-                stroke-width="1.5"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </span>
+          ${!isMultiple
+            ? html`<span
+                class="chevron"
+                aria-hidden="true"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M4 6l4 4 4-4"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>`
+            : ''}
         </div>
         ${hasError
           ? html`<span

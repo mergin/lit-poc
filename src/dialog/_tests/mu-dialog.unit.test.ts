@@ -66,4 +66,30 @@ describe('MuDialog — unit', (): void => {
 
     // CLEANUP — none
   });
+
+  it('defaults: fullscreen is false, scrollable is false', (): void => {
+    // ARRANGE — done in beforeEach
+
+    // ACT — none
+
+    // ASSERT
+    expect(el.fullscreen).toBe(false);
+    expect(el.scrollable).toBe(false);
+
+    // CLEANUP — none
+  });
+
+  it('accepts fullscreen and scrollable properties', (): void => {
+    // ARRANGE — done in beforeEach
+
+    // ACT
+    el.fullscreen = true;
+    el.scrollable = true;
+
+    // ASSERT
+    expect(el.fullscreen).toBe(true);
+    expect(el.scrollable).toBe(true);
+
+    // CLEANUP — none
+  });
 });

@@ -37,6 +37,10 @@
       "import": "./dist/chip.js",
       "types": "./dist/chip/mu-chip.d.ts"
     },
+    "./chip-input": {
+      "import": "./dist/chip-input.js",
+      "types": "./dist/chip/mu-chip-input.d.ts"
+    },
     "./divider": {
       "import": "./dist/divider.js",
       "types": "./dist/divider/mu-divider.d.ts"
