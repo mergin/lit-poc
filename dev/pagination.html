@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-pagination Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 24px;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-pagination Demo</h1>
+    </header>
+
+    <main>
+      <mu-pagination
+        count="10"
+        page="1"
+        siblingCount="1"
+      ></mu-pagination>
+
+      <mu-pagination
+        count="20"
+        page="10"
+      ></mu-pagination>
+
+      <mu-pagination
+        count="5"
+        page="3"
+      ></mu-pagination>
+
+      <mu-pagination
+        count="10"
+        page="3"
+        disabled
+      ></mu-pagination>
+    </main>
+
+    <script
+      type="module"
+      src="/src/pagination/mu-pagination.ts"
+    ></script>
+  </body>
+</html>

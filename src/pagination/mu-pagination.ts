@@ -1,5 +1,6 @@
 import {LitElement, html, css, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
+import {ifDefined} from 'lit/directives/if-defined.js';
 import {sharedStyles} from '../styles/shared-styles.js';
 
 /**
@@ -180,7 +181,7 @@ export class MuPagination extends LitElement {
             <button
               class="${isActive ? 'active' : ''}"
               aria-label="Page ${p}"
-              aria-current="${isActive ? 'page' : ''}"
+              aria-current="${ifDefined(isActive ? 'page' : undefined)}"
               ?disabled="${this.disabled}"
               @click="${(): void => this._navigate(p)}"
             >

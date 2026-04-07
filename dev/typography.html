@@ -1,17 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>mu-typography Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
   <body>
-    <a href="/index.html">Back to main</a>
-    <h1>mu-typography Demo</h1>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-typography Demo</h1>
+    </header>
     <script
       type="module"
       src="/src/typography/mu-typography.ts"
     ></script>
-    <mu-typography variant="h1">Heading 1</mu-typography>
-    <mu-typography variant="body1">Body 1 text goes here</mu-typography>
+
+    <main>
+      <section>
+        <h2>Examples</h2>
+        <mu-typography variant="h1">Heading 1</mu-typography>
+        <mu-typography variant="body1">Body 1 text goes here</mu-typography>
+      </section>
+    </main>
   </body>
 </html>

@@ -1,18 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>mu-divider Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
   <body>
-    <a href="/index.html">Back to main</a>
-    <h1>mu-divider Demo</h1>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-divider Demo</h1>
+    </header>
     <script
       type="module"
       src="/src/divider/mu-divider.ts"
     ></script>
-    <p>Above Content</p>
-    <mu-divider></mu-divider>
-    <p>Below Content</p>
+
+    <main>
+      <section>
+        <h2>Default</h2>
+        <p>Above Content</p>
+        <mu-divider></mu-divider>
+        <p>Below Content</p>
+      </section>
+    </main>
   </body>
 </html>

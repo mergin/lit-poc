@@ -213,7 +213,7 @@ export class MuSelect extends LitElement {
               ? html`<option
                   value=""
                   disabled
-                  selected="${!currentValue}"
+                  ?selected="${!currentValue}"
                 >
                   ${this.placeholder}
                 </option>`

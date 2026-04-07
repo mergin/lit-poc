@@ -6,26 +6,42 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-theme-provider dev</title>
+    <title>mu-theme-provider Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
     <style>
-      body {
-        margin: 0;
-        font-family: sans-serif;
+      main {
+        max-width: 720px;
       }
     </style>
   </head>
   <body>
-    <mu-theme-provider
-      mode="light"
-      id="provider"
-      style="display: block; padding: 24px"
-    >
-      <h2 style="color: var(--mu-text-primary)">Theme Provider Demo</h2>
-      <p style="color: var(--mu-text-secondary)">
-        Primary: <strong style="color: var(--mu-primary)">var(--mu-primary)</strong>
-      </p>
-      <mu-button id="toggle-btn">Toggle dark mode</mu-button>
-    </mu-theme-provider>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-theme-provider Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Interactive Theme</h2>
+        <mu-theme-provider
+          mode="light"
+          id="provider"
+          style="display: block; padding: 24px"
+        >
+          <p style="color: var(--mu-text-secondary)">
+            Primary: <strong style="color: var(--mu-primary)">var(--mu-primary)</strong>
+          </p>
+          <mu-button id="toggle-btn">Toggle dark mode</mu-button>
+        </mu-theme-provider>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/theme/mu-theme-provider.js';

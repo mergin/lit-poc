@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>mu-list Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
   <body>
-    <a href="/index.html">Back to main</a>
-    <h1>mu-list Demo</h1>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-list Demo</h1>
+    </header>
     <script
       type="module"
       src="/src/list/mu-list.ts"
@@ -15,12 +29,18 @@
       type="module"
       src="/src/list/mu-list-item.ts"
     ></script>
-    <div style="max-width: 300px; border: 1px solid #ccc">
-      <mu-list>
-        <mu-list-item>Item 1</mu-list-item>
-        <mu-list-item>Item 2</mu-list-item>
-        <mu-list-item disabled>Disabled Item</mu-list-item>
-      </mu-list>
-    </div>
+
+    <main>
+      <section>
+        <h2>Default</h2>
+        <div style="max-width: 300px; border: 1px solid #ccc">
+          <mu-list>
+            <mu-list-item>Item 1</mu-list-item>
+            <mu-list-item>Item 2</mu-list-item>
+            <mu-list-item disabled>Disabled Item</mu-list-item>
+          </mu-list>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

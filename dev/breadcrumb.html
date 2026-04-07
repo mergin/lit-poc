@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-breadcrumb Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-breadcrumb Demo</h1>
+    </header>
+
+    <mu-breadcrumb>
+      <mu-breadcrumb-item href="/">Home</mu-breadcrumb-item>
+      <mu-breadcrumb-item href="/components">Components</mu-breadcrumb-item>
+      <mu-breadcrumb-item current>Breadcrumb</mu-breadcrumb-item>
+    </mu-breadcrumb>
+
+    <mu-breadcrumb>
+      <mu-breadcrumb-item href="/">Home</mu-breadcrumb-item>
+      <mu-breadcrumb-item current>About</mu-breadcrumb-item>
+    </mu-breadcrumb>
+
+    <script
+      type="module"
+      src="/src/breadcrumb/mu-breadcrumb.ts"
+    ></script>
+    <script
+      type="module"
+      src="/src/breadcrumb/mu-breadcrumb-item.ts"
+    ></script>
+  </body>
+</html>

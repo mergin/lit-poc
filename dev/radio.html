@@ -6,34 +6,51 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-radio dev</title>
+    <title>mu-radio Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
-  <body style="padding: 24px; font-family: sans-serif">
-    <h2>Radio</h2>
-    <mu-radio-group label="Fruit">
-      <mu-radio
-        id="apple"
-        name="fruit"
-        value="apple"
-        label="Apple"
-        checked
-      ></mu-radio>
-      <br /><br />
-      <mu-radio
-        id="banana"
-        name="fruit"
-        value="banana"
-        label="Banana"
-      ></mu-radio>
-      <br /><br />
-      <mu-radio
-        id="cherry"
-        name="fruit"
-        value="cherry"
-        label="Cherry"
-        disabled
-      ></mu-radio>
-    </mu-radio-group>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-radio Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Group Example</h2>
+        <mu-radio-group label="Fruit">
+          <div style="display: flex; flex-direction: column; gap: 16px">
+            <mu-radio
+              id="apple"
+              name="fruit"
+              value="apple"
+              label="Apple"
+              checked
+            ></mu-radio>
+            <mu-radio
+              id="banana"
+              name="fruit"
+              value="banana"
+              label="Banana"
+            ></mu-radio>
+            <mu-radio
+              id="cherry"
+              name="fruit"
+              value="cherry"
+              label="Cherry"
+              disabled
+            ></mu-radio>
+          </div>
+        </mu-radio-group>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/radio/mu-radio.js';

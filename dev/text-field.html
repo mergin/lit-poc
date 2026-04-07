@@ -6,44 +6,59 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-text-field dev</title>
+    <title>mu-text-field Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
-  <body style="padding: 24px; font-family: sans-serif; max-width: 400px">
-    <h2>Text Field</h2>
-    <mu-text-field
-      id="basic"
-      label="Full name"
-      placeholder="John Doe"
-    ></mu-text-field>
-    <br /><br />
-    <mu-text-field
-      id="email"
-      label="Email"
-      type="email"
-      placeholder="you@example.com"
-      required
-    ></mu-text-field>
-    <br /><br />
-    <mu-text-field
-      id="error"
-      label="Username"
-      value="ab"
-      error="Minimum 3 characters"
-    ></mu-text-field>
-    <br /><br />
-    <mu-text-field
-      id="helper"
-      label="Password"
-      type="password"
-      helper-text="At least 8 characters"
-    ></mu-text-field>
-    <br /><br />
-    <mu-text-field
-      id="disabled"
-      label="Disabled field"
-      value="Read only"
-      disabled
-    ></mu-text-field>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-text-field Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>States</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px">
+          <mu-text-field
+            id="basic"
+            label="Full name"
+            placeholder="John Doe"
+          ></mu-text-field>
+          <mu-text-field
+            id="email"
+            label="Email"
+            type="email"
+            placeholder="you@example.com"
+            required
+          ></mu-text-field>
+          <mu-text-field
+            id="error"
+            label="Username"
+            value="ab"
+            error="Minimum 3 characters"
+          ></mu-text-field>
+          <mu-text-field
+            id="helper"
+            label="Password"
+            type="password"
+            helper-text="At least 8 characters"
+          ></mu-text-field>
+          <mu-text-field
+            id="disabled"
+            label="Disabled field"
+            value="Read only"
+            disabled
+          ></mu-text-field>
+        </div>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/text-field/mu-text-field.js';

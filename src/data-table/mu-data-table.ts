@@ -29,7 +29,7 @@ export type SortDirection = 'asc' | 'desc';
  * @csspart header-cell  - Each `<th>` in the header row.
  * @csspart cell         - Each `<td>` in a data row.
  * @csspart row          - Each `<tr>` in the body.
- * @csspart row--selected- Applied to selected rows.
+ * @csspart row--selected - Applied to selected rows.
  *
  * @fires sort-change      - Dispatched when sorting changes. Detail: `{ key: string, direction: SortDirection }`.
  * @fires selection-change - Dispatched when selection changes. Detail: `{ selected: number[] }`.
@@ -192,7 +192,7 @@ export class MuDataTable extends LitElement {
    * @param key - The column key.
    * @returns 'ascending' | 'descending' | 'none'
    */
-  private _ariaSortFor(key: string): string {
+  private _ariaSortFor(key: string): 'ascending' | 'descending' | 'none' {
     if (this.sortKey !== key) return 'none';
     return this.sortDirection === 'asc' ? 'ascending' : 'descending';
   }
@@ -241,12 +241,13 @@ export class MuDataTable extends LitElement {
                   </th>
                 `
               : ''}
-            ${this.columns.map(
-              (col): TemplateResult => html`
+            ${this.columns.map((col): TemplateResult => {
+              const ariaSort = col.sortable ? this._ariaSortFor(col.key) : 'none';
+              return html`
                 <th
                   part="header-cell"
                   role="columnheader"
-                  aria-sort="${col.sortable ? this._ariaSortFor(col.key) : 'none'}"
+                  aria-sort="${ariaSort}"
                   @click="${col.sortable
                     ? (): void => {
                         this._handleSort(col.key);
@@ -267,8 +268,8 @@ export class MuDataTable extends LitElement {
                       </span>`
                     : ''}
                 </th>
-              `
-            )}
+              `;
+            })}
           </tr>
         </thead>
         <tbody part="body">
@@ -298,7 +299,11 @@ export class MuDataTable extends LitElement {
                     part="row"
                     role="row"
                     aria-rowindex="${i + 1}"
-                    aria-selected="${this.selectable ? String(this._selected.has(i)) : 'false'}"
+                    aria-selected="${this.selectable
+                      ? this._selected.has(i)
+                        ? 'true'
+                        : 'false'
+                      : 'false'}"
                   >
                     ${this.selectable
                       ? html`

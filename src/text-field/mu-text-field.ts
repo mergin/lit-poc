@@ -254,7 +254,6 @@ export class MuTextField extends LitElement {
     const fieldId = this.multiline ? 'textarea' : 'input';
     const helperId = this.error || this.helperText ? 'helper' : '';
     const hasError = this.error !== '';
-    const maxAttr = isFinite(this.maxlength) ? this.maxlength : nothing;
     const showCount = this.showCharCount && isFinite(this.maxlength);
     const wrapperClasses = {
       'input-wrapper': true,
@@ -289,7 +288,7 @@ export class MuTextField extends LitElement {
                 .value="${this.value}"
                 placeholder="${this.placeholder}"
                 rows="${this.rows}"
-                maxlength="${maxAttr}"
+                ${isFinite(this.maxlength) ? html`maxlength="${this.maxlength}"` : ''}
                 ?disabled="${this.disabled}"
                 ?readonly="${this.readonly}"
                 ?required="${this.required}"
@@ -306,7 +305,7 @@ export class MuTextField extends LitElement {
                 type="${this.type}"
                 .value="${this.value}"
                 placeholder="${this.placeholder}"
-                maxlength="${maxAttr}"
+                ${isFinite(this.maxlength) ? html`maxlength="${this.maxlength}"` : ''}
                 ?disabled="${this.disabled}"
                 ?readonly="${this.readonly}"
                 ?required="${this.required}"

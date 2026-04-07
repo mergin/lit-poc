@@ -30,7 +30,7 @@
         "strict": true
       }
     ],
-    "types": ["node"]
+    "types": ["node", "svelte"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/_tests/*.test.ts"]

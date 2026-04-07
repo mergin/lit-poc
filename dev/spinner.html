@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-spinner Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 24px;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-spinner Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <p>Sizes</p>
+        <div style="display: flex; gap: 24px; align-items: center">
+          <mu-spinner size="small"></mu-spinner>
+          <mu-spinner size="medium"></mu-spinner>
+          <mu-spinner size="large"></mu-spinner>
+        </div>
+      </section>
+
+      <section>
+        <p>Determinate</p>
+        <mu-spinner
+          id="determinate"
+          size="medium"
+          value="60"
+        ></mu-spinner>
+      </section>
+
+      <section>
+        <p>Custom color</p>
+        <mu-spinner
+          size="medium"
+          color="#e91e63"
+        ></mu-spinner>
+      </section>
+    </main>
+
+    <script
+      type="module"
+      src="/src/spinner/mu-spinner.ts"
+    ></script>
+    <script type="module">
+      const spinner = document.getElementById('determinate');
+      let value = 60;
+
+      setInterval(() => {
+        value = value >= 100 ? 0 : value + 10;
+        spinner.value = value;
+      }, 1000);
+    </script>
+  </body>
+</html>

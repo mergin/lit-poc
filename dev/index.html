@@ -3,39 +3,31 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>&lt;my-element> Demo</title>
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../node_modules/lit/polyfill-support.js"></script>
-    <script
-      type="module"
-      src="../my-element.js"
-    ></script>
-    <script
-      type="module"
-      src="../mu-card.js"
-    ></script>
-    <style>
-      p {
-        border: solid 1px blue;
-        padding: 8px;
-      }
-    </style>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Lit PoC Dev Index</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
-  <body>
-    <my-element>
-      <p>This is child content</p>
-    </my-element>
-
-    <mu-card>
-      <mu-card-header
-        slot="header"
-        title="Card Title"
-      ></mu-card-header>
-      <mu-card-content> Main content goes here. </mu-card-content>
-      <mu-card-actions slot="actions">
-        <button>OK</button>
-        <button>Cancel</button>
-      </mu-card-actions>
-    </mu-card>
+  <body
+    class="landing-page"
+    data-link-prefix="./"
+  >
+    <main>
+      <h1>Lit PoC Dev Index</h1>
+      <p class="landing-intro">Component demos organized to match the Storybook sidebar.</p>
+      <div
+        id="landing-sections"
+        class="sections"
+      ></div>
+    </main>
+    <script
+      type="module"
+      src="/dev/render-landing.js"
+    ></script>
   </body>
 </html>

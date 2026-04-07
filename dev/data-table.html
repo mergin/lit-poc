@@ -6,11 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-data-table dev</title>
+    <title>mu-data-table Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
     <style>
-      body {
-        font-family: sans-serif;
-        padding: 2rem;
+      main {
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -30,33 +32,44 @@
     </style>
   </head>
   <body>
-    <section>
-      <h2>Basic</h2>
-      <mu-data-table id="basic"></mu-data-table>
-    </section>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-data-table Demo</h1>
+    </header>
 
-    <section>
-      <h2>Selectable</h2>
-      <mu-data-table
-        id="selectable"
-        selectable
-      ></mu-data-table>
-    </section>
+    <main>
+      <section>
+        <h2>Basic</h2>
+        <mu-data-table id="basic"></mu-data-table>
+      </section>
 
-    <section>
-      <h2>Loading</h2>
-      <mu-data-table
-        id="loading"
-        loading
-      ></mu-data-table>
-    </section>
+      <section>
+        <h2>Selectable</h2>
+        <mu-data-table
+          id="selectable"
+          selectable
+        ></mu-data-table>
+      </section>
 
-    <section>
-      <h2>Empty State</h2>
-      <mu-data-table id="empty">
-        <span slot="empty-state">No records found.</span>
-      </mu-data-table>
-    </section>
+      <section>
+        <h2>Loading</h2>
+        <mu-data-table
+          id="loading"
+          loading
+        ></mu-data-table>
+      </section>
+
+      <section>
+        <h2>Empty State</h2>
+        <mu-data-table id="empty">
+          <span slot="empty-state">No records found.</span>
+        </mu-data-table>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/data-table/mu-data-table.js';

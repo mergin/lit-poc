@@ -1,26 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>mu-card Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
   <body>
-    <a href="/index.html">Back to main</a>
-    <h1>mu-card Demo</h1>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-card Demo</h1>
+    </header>
     <script
       type="module"
       src="/src/card/mu-card.ts"
     ></script>
     <script
       type="module"
-      src="../dist/button/mu-button.js"
+      src="/src/button/mu-button.ts"
     ></script>
-    <mu-card>
-      <div slot="header">Header</div>
-      <div slot="content">Content goes here</div>
-      <div slot="actions">
-        <mu-button>Action</mu-button>
-      </div>
-    </mu-card>
+
+    <main>
+      <section>
+        <h2>Basic Card</h2>
+        <div style="max-width: 320px">
+          <mu-card>
+            <div slot="header">Header</div>
+            <div slot="content">Content goes here</div>
+            <div slot="actions">
+              <mu-button>Action</mu-button>
+            </div>
+          </mu-card>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

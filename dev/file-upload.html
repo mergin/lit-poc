@@ -6,11 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-file-upload dev</title>
+    <title>mu-file-upload Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
     <style>
-      body {
-        font-family: sans-serif;
-        padding: 2rem;
+      main {
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -31,43 +33,54 @@
     </style>
   </head>
   <body>
-    <section>
-      <h2>Basic</h2>
-      <mu-file-upload
-        id="basic"
-        label="Choose file"
-        name="file"
-      ></mu-file-upload>
-    </section>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-file-upload Demo</h1>
+    </header>
 
-    <section>
-      <h2>Multiple Files</h2>
-      <mu-file-upload
-        id="multiple"
-        label="Choose files"
-        multiple
-        name="files"
-      ></mu-file-upload>
-    </section>
+    <main>
+      <section>
+        <h2>Basic</h2>
+        <mu-file-upload
+          id="basic"
+          label="Choose file"
+          name="file"
+        ></mu-file-upload>
+      </section>
 
-    <section>
-      <h2>Images Only</h2>
-      <mu-file-upload
-        id="images"
-        label="Choose image"
-        accept="image/*"
-        name="image"
-      ></mu-file-upload>
-    </section>
+      <section>
+        <h2>Multiple Files</h2>
+        <mu-file-upload
+          id="multiple"
+          label="Choose files"
+          multiple
+          name="files"
+        ></mu-file-upload>
+      </section>
 
-    <section>
-      <h2>Disabled</h2>
-      <mu-file-upload
-        id="disabled"
-        label="Choose file"
-        disabled
-      ></mu-file-upload>
-    </section>
+      <section>
+        <h2>Images Only</h2>
+        <mu-file-upload
+          id="images"
+          label="Choose image"
+          accept="image/*"
+          name="image"
+        ></mu-file-upload>
+      </section>
+
+      <section>
+        <h2>Disabled</h2>
+        <mu-file-upload
+          id="disabled"
+          label="Choose file"
+          disabled
+        ></mu-file-upload>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/file-upload/mu-file-upload.js';

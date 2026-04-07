@@ -1,27 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>mu-chip Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
   <body>
-    <a href="/index.html">Back to main</a>
-    <h1>mu-chip Demo</h1>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-chip Demo</h1>
+    </header>
     <script
       type="module"
       src="/src/chip/mu-chip.ts"
     ></script>
-    <div style="display: flex; gap: 8px">
-      <mu-chip label="Default Chip"></mu-chip>
-      <mu-chip
-        label="Primary Deletable"
-        color="primary"
-        deletable
-      ></mu-chip>
-      <mu-chip
-        label="Selected Chip"
-        selected
-      ></mu-chip>
-    </div>
+
+    <main>
+      <section>
+        <h2>Examples</h2>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <mu-chip label="Default Chip"></mu-chip>
+          <mu-chip
+            label="Primary Deletable"
+            color="primary"
+            deletable
+          ></mu-chip>
+          <mu-chip
+            label="Selected Chip"
+            selected
+          ></mu-chip>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

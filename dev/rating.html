@@ -6,11 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-rating dev</title>
+    <title>mu-rating Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
     <style>
-      body {
-        font-family: sans-serif;
-        padding: 2rem;
+      main {
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -30,44 +32,55 @@
     </style>
   </head>
   <body>
-    <section>
-      <h2>Basic</h2>
-      <mu-rating
-        id="basic"
-        value="3"
-        label="Rating"
-      ></mu-rating>
-    </section>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-rating Demo</h1>
+    </header>
 
-    <section>
-      <h2>Read Only</h2>
-      <mu-rating
-        id="readonly"
-        value="4"
-        readonly
-        label="Rating"
-      ></mu-rating>
-    </section>
+    <main>
+      <section>
+        <h2>Basic</h2>
+        <mu-rating
+          id="basic"
+          value="3"
+          label="Rating"
+        ></mu-rating>
+      </section>
 
-    <section>
-      <h2>Half Precision</h2>
-      <mu-rating
-        id="half"
-        value="2.5"
-        precision="0.5"
-        label="Rating"
-      ></mu-rating>
-    </section>
+      <section>
+        <h2>Read Only</h2>
+        <mu-rating
+          id="readonly"
+          value="4"
+          readonly
+          label="Rating"
+        ></mu-rating>
+      </section>
 
-    <section>
-      <h2>Disabled</h2>
-      <mu-rating
-        id="disabled"
-        value="2"
-        disabled
-        label="Rating"
-      ></mu-rating>
-    </section>
+      <section>
+        <h2>Half Precision</h2>
+        <mu-rating
+          id="half"
+          value="2.5"
+          precision="0.5"
+          label="Rating"
+        ></mu-rating>
+      </section>
+
+      <section>
+        <h2>Disabled</h2>
+        <mu-rating
+          id="disabled"
+          value="2"
+          disabled
+          label="Rating"
+        ></mu-rating>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/rating/mu-rating.js';

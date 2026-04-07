@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-alert Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        max-width: 720px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-alert Demo</h1>
+    </header>
+
+    <main>
+      <mu-alert severity="success">Your changes have been saved.</mu-alert>
+      <mu-alert severity="info">This is an informational alert.</mu-alert>
+      <mu-alert severity="warning">Please review this before proceeding.</mu-alert>
+      <mu-alert severity="error">Something went wrong. Please try again.</mu-alert>
+      <mu-alert
+        severity="info"
+        closeLabel="Dismiss"
+      >
+        This alert can be dismissed.
+      </mu-alert>
+    </main>
+
+    <script
+      type="module"
+      src="/src/alert/mu-alert.ts"
+    ></script>
+  </body>
+</html>

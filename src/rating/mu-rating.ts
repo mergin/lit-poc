@@ -10,7 +10,7 @@ import {sharedStyles} from '../styles/shared-styles.js';
  * @csspart star         - Each individual star wrapper span.
  * @csspart star--filled - Applied to fully filled stars.
  * @csspart star--empty  - Applied to empty stars.
- * @csspart star--partial- Applied to partial/half stars.
+ * @csspart star--partial - Applied to partial/half stars.
  *
  * @fires change - Dispatched when the rating value changes. Detail: `{ value: number }`.
  */

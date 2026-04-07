@@ -1,28 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>mu-icon Demo</title>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
   <body>
-    <a href="/index.html">Back to main</a>
-    <h1>mu-icon Demo</h1>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-icon Demo</h1>
+    </header>
     <script
       type="module"
       src="/src/icon/mu-icon.ts"
     ></script>
-    <mu-icon
-      name="check_circle"
-      color="success"
-    ></mu-icon>
-    <mu-icon
-      name="error"
-      color="error"
-      size="large"
-    ></mu-icon>
+
+    <main>
+      <section>
+        <h2>Examples</h2>
+        <div style="display: flex; gap: 16px; align-items: center">
+          <mu-icon
+            name="check_circle"
+            color="success"
+          ></mu-icon>
+          <mu-icon
+            name="error"
+            color="error"
+            size="large"
+          ></mu-icon>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

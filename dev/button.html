@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>mu-button Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
   <body>
-    <a href="/index.html">Back to main</a>
-    <h1>mu-button Demo</h1>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-button Demo</h1>
+    </header>
     <script
       type="module"
       src="/src/button/mu-button.ts"
@@ -15,28 +29,36 @@
       type="module"
       src="/src/icon/mu-icon.ts"
     ></script>
-    <mu-button>Default Button</mu-button>
-    <mu-button disabled>Disabled Button</mu-button>
-    <mu-button
-      size="medium"
-      color="primary"
-      >Accessible Button</mu-button
-    >
-    <mu-button
-      size="small"
-      color="success"
-      variant="outlined"
-      >Small Outlined</mu-button
-    >
-    <mu-button
-      size="large"
-      color="error"
-      variant="icon"
-    >
-      <mu-icon
-        name="star"
-        color="warning"
-      ></mu-icon>
-    </mu-button>
+
+    <main>
+      <section>
+        <h2>States and Variants</h2>
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+          <mu-button>Default Button</mu-button>
+          <mu-button disabled>Disabled Button</mu-button>
+          <mu-button
+            size="medium"
+            color="primary"
+            >Accessible Button</mu-button
+          >
+          <mu-button
+            size="small"
+            color="success"
+            variant="outlined"
+            >Small Outlined</mu-button
+          >
+          <mu-button
+            size="large"
+            color="error"
+            variant="icon"
+          >
+            <mu-icon
+              name="star"
+              color="warning"
+            ></mu-icon>
+          </mu-button>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

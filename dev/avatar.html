@@ -1,26 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>mu-avatar Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
   <body>
-    <a href="/index.html">Back to main</a>
-    <h1>mu-avatar Demo</h1>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-avatar Demo</h1>
+    </header>
     <script
       type="module"
       src="/src/avatar/mu-avatar.ts"
     ></script>
-    <mu-avatar
-      initials="AB"
-      size="medium"
-      color="primary"
-    ></mu-avatar>
-    <mu-avatar
-      src="https://i.pravatar.cc/100"
-      alt="Avatar"
-      size="large"
-      color="secondary"
-    ></mu-avatar>
+
+    <main>
+      <section>
+        <h2>Examples</h2>
+        <div style="display: flex; gap: 16px; align-items: center">
+          <mu-avatar
+            initials="AB"
+            size="medium"
+            color="primary"
+          ></mu-avatar>
+          <mu-avatar
+            src="https://i.pravatar.cc/100"
+            alt="Avatar"
+            size="large"
+            color="secondary"
+          ></mu-avatar>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
