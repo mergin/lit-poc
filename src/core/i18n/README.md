@@ -5,9 +5,9 @@ Context provider for internationalisation (i18n). Wraps descendant components an
 ## Import
 
 ```ts
-import './src/i18n/mu-locale-provider.js';
-import {defaultLocale} from './src/i18n/default-locale.js';
-import type {MuLocale} from './src/i18n/default-locale.js';
+import './src/core/i18n/mu-locale-provider.js';
+import {defaultLocale} from './src/core/i18n/default-locale.js';
+import type {MuLocale} from './src/core/i18n/default-locale.js';
 ```
 
 Or via the package entry point:
@@ -53,7 +53,7 @@ Wrap the components you want to localise inside `<mu-locale-provider>` and set t
 </mu-locale-provider>
 
 <script type="module">
-  import {defaultLocale} from './src/i18n/default-locale.js';
+  import {defaultLocale} from './src/core/i18n/default-locale.js';
 
   document.getElementById('provider').locale = {
     ...defaultLocale,
@@ -66,7 +66,7 @@ Wrap the components you want to localise inside `<mu-locale-provider>` and set t
 ### TypeScript — strongly typed locale
 
 ```ts
-import {defaultLocale, type MuLocale} from './src/i18n/default-locale.js';
+import {defaultLocale, type MuLocale} from './src/core/i18n/default-locale.js';
 
 const germanLocale: MuLocale = {
   chip: {deleteLabel: (label: string): string => `Entfernen ${label}`},

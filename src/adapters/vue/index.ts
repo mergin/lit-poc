@@ -33,7 +33,7 @@ import '../../list/mu-list.js';
 import '../../list/mu-list-item.js';
 import '../../typography/mu-typography.js';
 import '../../theme/mu-theme-provider.js';
-import '../../i18n/mu-locale-provider.js';
+import '../../core/i18n/mu-locale-provider.js';
 import '../../checkbox/mu-checkbox.js';
 import '../../radio/mu-radio.js';
 import '../../radio/mu-radio-group.js';

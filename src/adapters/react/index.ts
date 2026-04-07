@@ -58,7 +58,7 @@ import {MuBreadcrumbItem} from '../../breadcrumb/mu-breadcrumb-item.js';
 import {MuPagination} from '../../pagination/mu-pagination.js';
 import {MuAppBar} from '../../app-bar/mu-app-bar.js';
 import {MuDrawer} from '../../drawer/mu-drawer.js';
-import {MuLocaleProvider} from '../../i18n/mu-locale-provider.js';
+import {MuLocaleProvider} from '../../core/i18n/mu-locale-provider.js';
 
 // ─── Layout & Display ─────────────────────────────────────────────────────────
 

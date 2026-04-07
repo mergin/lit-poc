@@ -265,43 +265,6 @@
       "references": []
     },
     {
-      "name": "mu-checkbox",
-      "description": "Checkbox form component that participates in native HTML forms via ElementInternals.\r\nSupports checked, indeterminate, and disabled states with full keyboard accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the checked state changes.\n\n### **CSS Properties:**\n - **--mu-checkbox-color** - Active (checked) fill and border colour; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-checkbox-radius** - Border radius of the box; defaults to 3 px. _(default: undefined)_\n\n### **CSS Parts:**\n - **checkbox** - The focusable wrapper element that holds the visual box.\n- **checkmark** - The inner box containing the SVG tick / dash mark.\n- **label** - The visible label text element.",
-      "attributes": [
-        {
-          "name": "checked",
-          "description": "Whether the checkbox is checked.",
-          "values": []
-        },
-        {
-          "name": "indeterminate",
-          "description": "Tri-state: when true, overrides checked visually with a dash mark.",
-          "values": []
-        },
-        {
-          "name": "disabled",
-          "description": "Disables the checkbox, making it non-interactive.",
-          "values": []
-        },
-        {
-          "name": "name",
-          "description": "Form field name submitted with the form.",
-          "values": []
-        },
-        {
-          "name": "value",
-          "description": "Value submitted to the form when checked.",
-          "values": []
-        },
-        {
-          "name": "label",
-          "description": "Visible label rendered next to the checkbox. Falls back to default slot.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
       "name": "mu-chip-input",
       "description": "Input component that tokenises typed values into deletable chips.\r\nParticipates in native HTML forms via ElementInternals.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the chip array changes. Detail: `{ chips: string[] }`.\n\n### **CSS Parts:**\n - **container** - The flex wrapper around chips and the text input.\n- **chip-text-input** - The inline text input field.",
       "attributes": [
@@ -365,27 +328,37 @@
       "references": []
     },
     {
-      "name": "mu-dialog",
-      "description": "Modal dialog overlay using the native &lt;dialog&gt; element.\r\nManages focus on open/close, traps focus inside, and closes on Escape.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched when the dialog finishes opening.\n- **mu-close** - Dispatched when the dialog closes (any cause).\n\n### **CSS Properties:**\n - **--mu-dialog-radius** - Border radius of the dialog panel; defaults to `--mu-radius-xl` (12 px). _(default: undefined)_\n- **--mu-dialog-shadow** - Box shadow of the dialog; defaults to `--mu-elevation-2`. _(default: undefined)_\n- **--mu-dialog-max-width** - Maximum width of the dialog; defaults to `min(560px, 90vw)`. _(default: undefined)_\n\n### **CSS Parts:**\n - **dialog** - The native `<dialog>` element.\n- **header** - The `<h2>` headline element at the top of the dialog.\n- **content** - The scrollable content area containing the default slot.\n- **actions** - The footer actions area containing the `actions` named slot.\n- **close-button** - The × icon button in the top-right corner.",
+      "name": "mu-checkbox",
+      "description": "Checkbox form component that participates in native HTML forms via ElementInternals.\r\nSupports checked, indeterminate, and disabled states with full keyboard accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the checked state changes.\n\n### **CSS Properties:**\n - **--mu-checkbox-color** - Active (checked) fill and border colour; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-checkbox-radius** - Border radius of the box; defaults to 3 px. _(default: undefined)_\n\n### **CSS Parts:**\n - **checkbox** - The focusable wrapper element that holds the visual box.\n- **checkmark** - The inner box containing the SVG tick / dash mark.\n- **label** - The visible label text element.",
       "attributes": [
         {
-          "name": "open",
-          "description": "Whether the dialog is currently open. Reflected to attribute.",
+          "name": "checked",
+          "description": "Whether the checkbox is checked.",
           "values": []
         },
         {
-          "name": "headline",
-          "description": "Text rendered as the dialog headline / title.",
+          "name": "indeterminate",
+          "description": "Tri-state: when true, overrides checked visually with a dash mark.",
           "values": []
         },
         {
-          "name": "fullscreen",
-          "description": "Expands the dialog to fill the full viewport.",
+          "name": "disabled",
+          "description": "Disables the checkbox, making it non-interactive.",
           "values": []
         },
         {
-          "name": "scrollable",
-          "description": "Makes the dialog content area scrollable when content overflows.",
+          "name": "name",
+          "description": "Form field name submitted with the form.",
+          "values": []
+        },
+        {
+          "name": "value",
+          "description": "Value submitted to the form when checked.",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "Visible label rendered next to the checkbox. Falls back to default slot.",
           "values": []
         }
       ],
@@ -393,7 +366,7 @@
     },
     {
       "name": "mu-data-table",
-      "description": "Data table component with sorting, row selection, and skeleton loading state.\r\nDoes not support virtualization in v1 — keep row count reasonable (< 1000).\n---\n\n\n### **Events:**\n - **sort-change** - Dispatched when sorting changes. Detail: `{ key: string, direction: SortDirection }`.\n- **selection-change** - Dispatched when selection changes. Detail: `{ selected: number[] }`.\n\n### **CSS Parts:**\n - **table** - The `<table>` element.\n- **head** - The `<thead>` element.\n- **body** - The `<tbody>` element.\n- **header-cell** - Each `<th>` in the header row.\n- **cell** - Each `<td>` in a data row.\n- **row** - Each `<tr>` in the body.\n- **row--selected-** - Applied to selected rows.",
+      "description": "Data table component with sorting, row selection, and skeleton loading state.\r\nDoes not support virtualization in v1 — keep row count reasonable (< 1000).\n---\n\n\n### **Events:**\n - **sort-change** - Dispatched when sorting changes. Detail: `{ key: string, direction: SortDirection }`.\n- **selection-change** - Dispatched when selection changes. Detail: `{ selected: number[] }`.\n\n### **CSS Parts:**\n - **table** - The `<table>` element.\n- **head** - The `<thead>` element.\n- **body** - The `<tbody>` element.\n- **header-cell** - Each `<th>` in the header row.\n- **cell** - Each `<td>` in a data row.\n- **row** - Each `<tr>` in the body.\n- **row--selected** - Applied to selected rows.",
       "attributes": [
         {
           "name": "columns",
@@ -434,6 +407,33 @@
       "references": []
     },
     {
+      "name": "mu-dialog",
+      "description": "Modal dialog overlay using the native &lt;dialog&gt; element.\r\nManages focus on open/close, traps focus inside, and closes on Escape.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched when the dialog finishes opening.\n- **mu-close** - Dispatched when the dialog closes (any cause).\n\n### **CSS Properties:**\n - **--mu-dialog-radius** - Border radius of the dialog panel; defaults to `--mu-radius-xl` (12 px). _(default: undefined)_\n- **--mu-dialog-shadow** - Box shadow of the dialog; defaults to `--mu-elevation-2`. _(default: undefined)_\n- **--mu-dialog-max-width** - Maximum width of the dialog; defaults to `min(560px, 90vw)`. _(default: undefined)_\n\n### **CSS Parts:**\n - **dialog** - The native `<dialog>` element.\n- **header** - The `<h2>` headline element at the top of the dialog.\n- **content** - The scrollable content area containing the default slot.\n- **actions** - The footer actions area containing the `actions` named slot.\n- **close-button** - The × icon button in the top-right corner.",
+      "attributes": [
+        {
+          "name": "open",
+          "description": "Whether the dialog is currently open. Reflected to attribute.",
+          "values": []
+        },
+        {
+          "name": "headline",
+          "description": "Text rendered as the dialog headline / title.",
+          "values": []
+        },
+        {
+          "name": "fullscreen",
+          "description": "Expands the dialog to fill the full viewport.",
+          "values": []
+        },
+        {
+          "name": "scrollable",
+          "description": "Makes the dialog content area scrollable when content overflows.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "mu-drawer",
       "description": "Side drawer that slides in from the left or right edge of the viewport.\r\nUses a native `<dialog>` element for focus trapping and Escape handling.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched after the drawer opens.\n- **mu-close** - Dispatched after the drawer closes.",
       "attributes": [
@@ -451,18 +451,6 @@
           "name": "width",
           "description": "Width of the drawer panel (any valid CSS length value).",
           "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-divider",
-      "description": "Divider component to separate content.\n---\n",
-      "attributes": [
-        {
-          "name": "orientation",
-          "description": "The orientation of the divider.",
-          "values": [{"name": "horizontal"}, {"name": "vertical"}]
         }
       ],
       "references": []
@@ -498,12 +486,6 @@
         },
         {"name": "name", "description": "Form field name.", "values": []}
       ],
-      "references": []
-    },
-    {
-      "name": "mu-locale-provider",
-      "description": "Locale provider component that supplies a `MuLocale` object to all\r\ndescendant components via the Lit Context API.\r\nWhen no provider is present in the tree, components fall back to\r\n`defaultLocale` (English).\n---\n",
-      "attributes": [],
       "references": []
     },
     {
@@ -614,8 +596,20 @@
       "references": []
     },
     {
+      "name": "mu-divider",
+      "description": "Divider component to separate content.\n---\n",
+      "attributes": [
+        {
+          "name": "orientation",
+          "description": "The orientation of the divider.",
+          "values": [{"name": "horizontal"}, {"name": "vertical"}]
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "mu-pagination",
-      "description": "Pagination component for navigating through pages of content.\nEmits a `page-change` event when a page button or prev/next is clicked.\n---\n\n\n### **Events:**\n - **page-change** - Detail: `{ page: number }`.",
+      "description": "Pagination component for navigating through pages of content.\r\nEmits a `page-change` event when a page button or prev/next is clicked.\n---\n\n\n### **Events:**\n - **page-change** - Detail: `{ page: number }`.",
       "attributes": [
         {
           "name": "count",
@@ -718,7 +712,7 @@
     },
     {
       "name": "mu-rating",
-      "description": "Star rating form component.\r\nSupports half-star precision, read-only mode, and full keyboard navigation.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the rating value changes. Detail: `{ value: number }`.\n\n### **CSS Parts:**\n - **star** - Each individual star wrapper span.\n- **star--filled** - Applied to fully filled stars.\n- **star--empty** - Applied to empty stars.\n- **star--partial-** - Applied to partial/half stars.",
+      "description": "Star rating form component.\r\nSupports half-star precision, read-only mode, and full keyboard navigation.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the rating value changes. Detail: `{ value: number }`.\n\n### **CSS Parts:**\n - **star** - Each individual star wrapper span.\n- **star--filled** - Applied to fully filled stars.\n- **star--empty** - Applied to empty stars.\n- **star--partial** - Applied to partial/half stars.",
       "attributes": [
         {
           "name": "value",
@@ -802,6 +796,33 @@
       "references": []
     },
     {
+      "name": "mu-skeleton",
+      "description": "Skeleton placeholder component used to preview content shape before loading.\r\nRenders a pulsing or waving animated placeholder with configurable shape and size.\n---\n",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "Shape variant of the skeleton.",
+          "values": [{"name": "SkeletonVariant"}]
+        },
+        {
+          "name": "width",
+          "description": "Width of the skeleton element (any valid CSS length value).",
+          "values": []
+        },
+        {
+          "name": "height",
+          "description": "Height of the skeleton element (any valid CSS length value).",
+          "values": []
+        },
+        {
+          "name": "animation",
+          "description": "Animation style; set to false to disable animation.",
+          "values": [{"name": "SkeletonAnimation"}]
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "mu-slider",
       "description": "Range slider form element that participates in native HTML forms.\r\nSupports keyboard navigation, pointer drag, and full accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the value changes. Detail: `{ value: number }`.\n\n### **CSS Parts:**\n - **track** - The background track element.\n- **fill** - The filled portion of the track representing the current value.\n- **thumb** - The draggable circular handle.",
       "attributes": [
@@ -839,33 +860,6 @@
           "name": "name",
           "description": "Form field name submitted with the form.",
           "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-skeleton",
-      "description": "Skeleton placeholder component used to preview content shape before loading.\r\nRenders a pulsing or waving animated placeholder with configurable shape and size.\n---\n",
-      "attributes": [
-        {
-          "name": "variant",
-          "description": "Shape variant of the skeleton.",
-          "values": [{"name": "SkeletonVariant"}]
-        },
-        {
-          "name": "width",
-          "description": "Width of the skeleton element (any valid CSS length value).",
-          "values": []
-        },
-        {
-          "name": "height",
-          "description": "Height of the skeleton element (any valid CSS length value).",
-          "values": []
-        },
-        {
-          "name": "animation",
-          "description": "Animation style; set to false to disable animation.",
-          "values": [{"name": "SkeletonAnimation"}]
         }
       ],
       "references": []
@@ -924,6 +918,67 @@
         {
           "name": "indeterminate",
           "description": "Whether to spin indefinitely regardless of `value`.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-tab-panel",
+      "description": "Content panel associated with a `mu-tab`.\r\nVisibility is managed by `mu-tabs`; do not use standalone.\n---\n\n\n### **CSS Properties:**\n - **--mu-tab-panel-padding** - Padding inside the panel; defaults to 16 px. _(default: undefined)_\n\n### **CSS Parts:**\n - **tab-panel** - The `div[role=\"tabpanel\"]` element.",
+      "attributes": [
+        {
+          "name": "active",
+          "description": "Whether this panel is currently visible.",
+          "values": []
+        },
+        {
+          "name": "labelledby",
+          "description": "ID of the `mu-tab` that controls this panel.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-tab",
+      "description": "Individual tab button inside a `mu-tabs` container.\r\nManaged by `mu-tabs`; do not use standalone.\n---\n\n\n### **Events:**\n - **tab-select**\n\n### **CSS Properties:**\n - **--mu-tab-color** - Text colour of the inactive tab; defaults to `--mu-text-secondary`. _(default: undefined)_\n- **--mu-tab-indicator-color** - Active tab indicator and text colour; defaults to `--mu-primary`. _(default: undefined)_\n\n### **CSS Parts:**\n - **tab** - The `<button>` element that acts as the tab trigger.",
+      "attributes": [
+        {
+          "name": "selected",
+          "description": "Whether this tab is currently the selected one.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Whether the tab is disabled.",
+          "values": []
+        },
+        {
+          "name": "controls",
+          "description": "ID of the `mu-tab-panel` this tab controls.\r\nSet automatically by `mu-tabs`.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-tabs",
+      "description": "Tabs container that manages selection and keyboard navigation across\r\nslotted `mu-tab` and `mu-tab-panel` children.\n---\n\n\n### **Events:**\n - **tab-change** - Dispatched when the selected tab index changes. Detail: `{ index: number }`.\n\n### **CSS Properties:**\n - **--mu-tabs-indicator-color** - Active tab indicator and text colour; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-tabs-divider-color** - Bottom border colour of the tab list; defaults to `--mu-divider`. _(default: undefined)_\n\n### **CSS Parts:**\n - **tab-list** - The `div[role=\"tablist\"]` container element.",
+      "attributes": [
+        {
+          "name": "selectedIndex",
+          "description": "Zero-based index of the currently selected tab.",
+          "values": []
+        },
+        {
+          "name": "orientation",
+          "description": "Layout orientation of the tab list.\r\n`vertical` places the tab list beside the panels in a row layout.",
+          "values": [{"name": "horizontal"}, {"name": "vertical"}]
+        },
+        {
+          "name": "scrollable",
+          "description": "Enables horizontal scroll overflow on the tab list and shows\r\nscroll-indicator chevron buttons at each end when overflow is present.",
           "values": []
         }
       ],
@@ -1001,84 +1056,6 @@
           "name": "label",
           "description": "Visible label rendered next to the switch. Falls back to default slot.",
           "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-tab-panel",
-      "description": "Content panel associated with a `mu-tab`.\r\nVisibility is managed by `mu-tabs`; do not use standalone.\n---\n\n\n### **CSS Properties:**\n - **--mu-tab-panel-padding** - Padding inside the panel; defaults to 16 px. _(default: undefined)_\n\n### **CSS Parts:**\n - **tab-panel** - The `div[role=\"tabpanel\"]` element.",
-      "attributes": [
-        {
-          "name": "active",
-          "description": "Whether this panel is currently visible.",
-          "values": []
-        },
-        {
-          "name": "labelledby",
-          "description": "ID of the `mu-tab` that controls this panel.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-tab",
-      "description": "Individual tab button inside a `mu-tabs` container.\r\nManaged by `mu-tabs`; do not use standalone.\n---\n\n\n### **Events:**\n - **tab-select**\n\n### **CSS Properties:**\n - **--mu-tab-color** - Text colour of the inactive tab; defaults to `--mu-text-secondary`. _(default: undefined)_\n- **--mu-tab-indicator-color** - Active tab indicator and text colour; defaults to `--mu-primary`. _(default: undefined)_\n\n### **CSS Parts:**\n - **tab** - The `<button>` element that acts as the tab trigger.",
-      "attributes": [
-        {
-          "name": "selected",
-          "description": "Whether this tab is currently the selected one.",
-          "values": []
-        },
-        {
-          "name": "disabled",
-          "description": "Whether the tab is disabled.",
-          "values": []
-        },
-        {
-          "name": "controls",
-          "description": "ID of the `mu-tab-panel` this tab controls.\r\nSet automatically by `mu-tabs`.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-tabs",
-      "description": "Tabs container that manages selection and keyboard navigation across\r\nslotted `mu-tab` and `mu-tab-panel` children.\n---\n\n\n### **Events:**\n - **tab-change** - Dispatched when the selected tab index changes. Detail: `{ index: number }`.\n\n### **CSS Properties:**\n - **--mu-tabs-indicator-color** - Active tab indicator and text colour; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-tabs-divider-color** - Bottom border colour of the tab list; defaults to `--mu-divider`. _(default: undefined)_\n\n### **CSS Parts:**\n - **tab-list** - The `div[role=\"tablist\"]` container element.",
-      "attributes": [
-        {
-          "name": "selectedIndex",
-          "description": "Zero-based index of the currently selected tab.",
-          "values": []
-        },
-        {
-          "name": "orientation",
-          "description": "Layout orientation of the tab list.\r\n`vertical` places the tab list beside the panels in a row layout.",
-          "values": [{"name": "horizontal"}, {"name": "vertical"}]
-        },
-        {
-          "name": "scrollable",
-          "description": "Enables horizontal scroll overflow on the tab list and shows\r\nscroll-indicator chevron buttons at each end when overflow is present.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-tooltip",
-      "description": "Tooltip overlay component that reveals a short label near a trigger element.\r\nDisplays on hover and keyboard focus with a 300 ms delay.\r\nUses the Popover API (popover=\"manual\") for top-layer rendering where supported.\n---\n\n\n### **CSS Properties:**\n - **--mu-tooltip-bg** - Background colour of the tooltip; defaults to `--mu-text-primary` (#212b36). _(default: undefined)_\n- **--mu-tooltip-color** - Text colour; defaults to `#fff`. _(default: undefined)_\n- **--mu-tooltip-radius** - Border radius; defaults to `--mu-radius-md` (4 px). _(default: undefined)_\n\n### **CSS Parts:**\n - **tooltip** - The tooltip bubble element.",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "Text content of the tooltip.",
-          "values": []
-        },
-        {
-          "name": "placement",
-          "description": "Side of the trigger on which the tooltip appears.",
-          "values": [{"name": "TooltipPlacement"}]
         }
       ],
       "references": []
@@ -1177,6 +1154,29 @@
           "values": [{"name": "TypographyVariant"}]
         }
       ],
+      "references": []
+    },
+    {
+      "name": "mu-tooltip",
+      "description": "Tooltip overlay component that reveals a short label near a trigger element.\r\nDisplays on hover and keyboard focus with a 300 ms delay.\r\nUses the Popover API (popover=\"manual\") for top-layer rendering where supported.\n---\n\n\n### **CSS Properties:**\n - **--mu-tooltip-bg** - Background colour of the tooltip; defaults to `--mu-text-primary` (#212b36). _(default: undefined)_\n- **--mu-tooltip-color** - Text colour; defaults to `#fff`. _(default: undefined)_\n- **--mu-tooltip-radius** - Border radius; defaults to `--mu-radius-md` (4 px). _(default: undefined)_\n\n### **CSS Parts:**\n - **tooltip** - The tooltip bubble element.",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Text content of the tooltip.",
+          "values": []
+        },
+        {
+          "name": "placement",
+          "description": "Side of the trigger on which the tooltip appears.",
+          "values": [{"name": "TooltipPlacement"}]
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-locale-provider",
+      "description": "Locale provider component that supplies a `MuLocale` object to all\r\ndescendant components via the Lit Context API.\r\nWhen no provider is present in the tree, components fall back to\r\n`defaultLocale` (English).\n---\n",
+      "attributes": [],
       "references": []
     }
   ]

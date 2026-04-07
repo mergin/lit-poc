@@ -3,8 +3,8 @@ import {customElement, property} from 'lit/decorators.js';
 import {consume} from '@lit/context';
 import {sharedStyles} from '../styles/shared-styles.js';
 import {classMap} from 'lit/directives/class-map.js';
-import {localeContext} from '../i18n/mu-locale-provider.js';
-import {defaultLocale, type MuLocale} from '../i18n/default-locale.js';
+import {localeContext} from '../core/i18n/mu-locale-provider.js';
+import {defaultLocale, type MuLocale} from '../core/i18n/default-locale.js';
 
 /**
  * A badge component to display status descriptors or unread counts.
