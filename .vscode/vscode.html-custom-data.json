@@ -3,48 +3,6 @@
   "version": 1.1,
   "tags": [
     {
-      "name": "mu-list-item",
-      "description": "List item component to be used inside mu-list.\n---\n",
-      "attributes": [
-        {
-          "name": "disabled",
-          "description": "If true, the list item is disabled.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-list",
-      "description": "List component for continuous vertical indexes.\n---\n",
-      "attributes": [
-        {
-          "name": "dense",
-          "description": "Enables dense mode (reduces padding).",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-theme-provider",
-      "description": "Theme provider component that applies design tokens to its DOM subtree.\r\nWrap your application root or a section of UI with this element to enable\r\ntheming. Switches between light and dark token sets via the `mode` property.\r\n\r\nCSS custom properties are applied directly to the host element's inline style,\r\nso they cascade through both light DOM children and shadow roots of\r\ndescendant components.\n---\n",
-      "attributes": [
-        {
-          "name": "mode",
-          "description": "Active color scheme. Switches between the light and dark token sets.",
-          "values": [{"name": "light"}, {"name": "dark"}]
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-locale-provider",
-      "description": "Locale provider component that supplies a `MuLocale` object to all\r\ndescendant components via the Lit Context API.\r\nWhen no provider is present in the tree, components fall back to\r\n`defaultLocale` (English).\n---\n",
-      "attributes": [],
-      "references": []
-    },
-    {
       "name": "mu-alert",
       "description": "Alert component for communicating feedback messages.\nUses role=\"alert\" for error severity and role=\"status\" for others.\n---\n\n\n### **Events:**\n - **mu-close** - Dispatched when the close button is clicked.",
       "attributes": [
@@ -565,28 +523,6 @@
       "references": []
     },
     {
-      "name": "mu-linear-progress",
-      "description": "Linear progress bar component.\nSupports determinate (value-based) and indeterminate (animated) modes.\n---\n\n\n### **Events:**\n - **mu-complete** - Dispatched when value reaches 100 in determinate mode.",
-      "attributes": [
-        {
-          "name": "value",
-          "description": "Progress value from 0 to 100.\nIgnored when `indeterminate` is true.",
-          "values": []
-        },
-        {
-          "name": "color",
-          "description": "Stroke/fill color of the progress bar. Accepts any valid CSS color.",
-          "values": []
-        },
-        {
-          "name": "indeterminate",
-          "description": "When true the bar animates indefinitely instead of showing a fixed value.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
       "name": "mu-menu-item",
       "description": "Individual menu item used inside `mu-menu`.\n---\n\n\n### **Events:**\n - **mu-select** - Dispatched when the item is selected. Detail: `{ label: string }`.\n\n### **CSS Parts:**\n - **item** - The root button element of the menu item.",
       "attributes": [
@@ -621,6 +557,28 @@
             {"name": "top-start"},
             {"name": "top-end"}
           ]
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-linear-progress",
+      "description": "Linear progress bar component.\nSupports determinate (value-based) and indeterminate (animated) modes.\n---\n\n\n### **Events:**\n - **mu-complete** - Dispatched when value reaches 100 in determinate mode.",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Progress value from 0 to 100.\nIgnored when `indeterminate` is true.",
+          "values": []
+        },
+        {
+          "name": "color",
+          "description": "Stroke/fill color of the progress bar. Accepts any valid CSS color.",
+          "values": []
+        },
+        {
+          "name": "indeterminate",
+          "description": "When true the bar animates indefinitely instead of showing a fixed value.",
+          "values": []
         }
       ],
       "references": []
@@ -680,6 +638,53 @@
       "references": []
     },
     {
+      "name": "mu-select",
+      "description": "Select (dropdown) form component that participates in native HTML forms.\nUses a native `<select>` inside shadow DOM for maximum accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the selected value changes.\n\n### **CSS Properties:**\n - **--mu-select-radius** - Border radius of the select element; defaults to `--mu-radius` (8 px). _(default: undefined)_\n- **--mu-select-border-color** - Default border colour; defaults to `--mu-divider`. _(default: undefined)_\n- **--mu-select-focus-color** - Border and ring colour on focus; defaults to `--mu-primary`. _(default: undefined)_\n\n### **CSS Parts:**\n - **label** - The `<label>` element displayed above the select.\n- **select** - The native `<select>` element.\n- **error** - The error message element displayed below the field.",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Currently selected value; a string array when multiple is true.",
+          "values": [{"name": "SelectValue"}]
+        },
+        {
+          "name": "label",
+          "description": "Floating label displayed above the select.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the select, making it non-interactive.",
+          "values": []
+        },
+        {
+          "name": "required",
+          "description": "Marks the field as required in form validation.",
+          "values": []
+        },
+        {
+          "name": "error",
+          "description": "Validation error message. Non-empty string triggers error styling.",
+          "values": []
+        },
+        {
+          "name": "options",
+          "description": "Array of options to render in the dropdown.",
+          "values": [{"name": "SelectOption[]"}]
+        },
+        {
+          "name": "placeholder",
+          "description": "Placeholder text shown as the first unselectable option.",
+          "values": []
+        },
+        {
+          "name": "multiple",
+          "description": "Enables multi-select mode; value becomes string[].",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "mu-radio-group",
       "description": "Radio group container that wraps `mu-radio` elements.\nProvides `role=\"radiogroup\"` and an accessible group label.\n---\n",
       "attributes": [
@@ -723,53 +728,6 @@
         {
           "name": "label",
           "description": "Visible label rendered next to the radio button. Falls back to default slot.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-select",
-      "description": "Select (dropdown) form component that participates in native HTML forms.\nUses a native `<select>` inside shadow DOM for maximum accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the selected value changes.\n\n### **CSS Properties:**\n - **--mu-select-radius** - Border radius of the select element; defaults to `--mu-radius` (8 px). _(default: undefined)_\n- **--mu-select-border-color** - Default border colour; defaults to `--mu-divider`. _(default: undefined)_\n- **--mu-select-focus-color** - Border and ring colour on focus; defaults to `--mu-primary`. _(default: undefined)_\n\n### **CSS Parts:**\n - **label** - The `<label>` element displayed above the select.\n- **select** - The native `<select>` element.\n- **error** - The error message element displayed below the field.",
-      "attributes": [
-        {
-          "name": "value",
-          "description": "Currently selected value; a string array when multiple is true.",
-          "values": [{"name": "SelectValue"}]
-        },
-        {
-          "name": "label",
-          "description": "Floating label displayed above the select.",
-          "values": []
-        },
-        {
-          "name": "disabled",
-          "description": "Disables the select, making it non-interactive.",
-          "values": []
-        },
-        {
-          "name": "required",
-          "description": "Marks the field as required in form validation.",
-          "values": []
-        },
-        {
-          "name": "error",
-          "description": "Validation error message. Non-empty string triggers error styling.",
-          "values": []
-        },
-        {
-          "name": "options",
-          "description": "Array of options to render in the dropdown.",
-          "values": [{"name": "SelectOption[]"}]
-        },
-        {
-          "name": "placeholder",
-          "description": "Placeholder text shown as the first unselectable option.",
-          "values": []
-        },
-        {
-          "name": "multiple",
-          "description": "Enables multi-select mode; value becomes string[].",
           "values": []
         }
       ],
@@ -942,6 +900,38 @@
       "references": []
     },
     {
+      "name": "mu-switch",
+      "description": "Toggle switch form component that participates in native HTML forms.\nSupports checked, disabled states and full keyboard accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the switch is toggled.\n\n### **CSS Properties:**\n - **--mu-switch-color** - Track colour when the switch is on; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-switch-radius** - Border radius of the track; defaults to 14 px. _(default: undefined)_\n\n### **CSS Parts:**\n - **track** - The sliding track element (the pill shape).\n- **thumb** - The circular thumb that slides inside the track.\n- **label** - The visible label text element.",
+      "attributes": [
+        {
+          "name": "checked",
+          "description": "Whether the switch is in the on/checked state.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the switch, making it non-interactive.",
+          "values": []
+        },
+        {
+          "name": "name",
+          "description": "Form field name submitted with the form.",
+          "values": []
+        },
+        {
+          "name": "value",
+          "description": "Value submitted to the form when the switch is on.",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "Visible label rendered next to the switch. Falls back to default slot.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "mu-step",
       "description": "Individual step used inside `mu-stepper`.\nDisplays a step indicator with a label and optional content slot.\n---\n\n\n### **CSS Parts:**\n - **indicator** - The circular step indicator.\n- **label** - The step label text.\n- **content** - The slot container for step content.",
       "attributes": [
@@ -980,38 +970,6 @@
         {
           "name": "linear",
           "description": "When true, steps can only be activated in sequence.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-switch",
-      "description": "Toggle switch form component that participates in native HTML forms.\nSupports checked, disabled states and full keyboard accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the switch is toggled.\n\n### **CSS Properties:**\n - **--mu-switch-color** - Track colour when the switch is on; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-switch-radius** - Border radius of the track; defaults to 14 px. _(default: undefined)_\n\n### **CSS Parts:**\n - **track** - The sliding track element (the pill shape).\n- **thumb** - The circular thumb that slides inside the track.\n- **label** - The visible label text element.",
-      "attributes": [
-        {
-          "name": "checked",
-          "description": "Whether the switch is in the on/checked state.",
-          "values": []
-        },
-        {
-          "name": "disabled",
-          "description": "Disables the switch, making it non-interactive.",
-          "values": []
-        },
-        {
-          "name": "name",
-          "description": "Form field name submitted with the form.",
-          "values": []
-        },
-        {
-          "name": "value",
-          "description": "Value submitted to the form when the switch is on.",
-          "values": []
-        },
-        {
-          "name": "label",
-          "description": "Visible label rendered next to the switch. Falls back to default slot.",
           "values": []
         }
       ],
@@ -1175,6 +1133,48 @@
           "name": "variant",
           "description": "The typography variant which determines the semantic HTML tag and visual style.",
           "values": [{"name": "TypographyVariant"}]
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-locale-provider",
+      "description": "Locale provider component that supplies a `MuLocale` object to all\r\ndescendant components via the Lit Context API.\r\nWhen no provider is present in the tree, components fall back to\r\n`defaultLocale` (English).\n---\n",
+      "attributes": [],
+      "references": []
+    },
+    {
+      "name": "mu-theme-provider",
+      "description": "Theme provider component that applies design tokens to its DOM subtree.\r\nWrap your application root or a section of UI with this element to enable\r\ntheming. Switches between light and dark token sets via the `mode` property.\r\n\r\nCSS custom properties are applied directly to the host element's inline style,\r\nso they cascade through both light DOM children and shadow roots of\r\ndescendant components.\n---\n",
+      "attributes": [
+        {
+          "name": "mode",
+          "description": "Active color scheme. Switches between the light and dark token sets.",
+          "values": [{"name": "light"}, {"name": "dark"}]
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-list-item",
+      "description": "List item component to be used inside mu-list.\n---\n",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "If true, the list item is disabled.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-list",
+      "description": "List component for continuous vertical indexes.\n---\n",
+      "attributes": [
+        {
+          "name": "dense",
+          "description": "Enables dense mode (reduces padding).",
+          "values": []
         }
       ],
       "references": []
