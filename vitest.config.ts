@@ -44,7 +44,7 @@ export default defineConfig({
             'src/**/_tests/*.e2e.test.ts',
             // Svelte wrapper tests are handled by the Svelte project below
             // so they don't inherit the wrong module-resolution conditions.
-            'src/svelte/_tests/**',
+            'src/adapters/svelte/_tests/**',
           ],
           environment: 'happy-dom',
           globals: true,
@@ -63,7 +63,7 @@ export default defineConfig({
         },
         test: {
           name: 'svelte',
-          include: ['src/svelte/_tests/**/*.test.ts'],
+          include: ['src/adapters/svelte/_tests/**/*.test.ts'],
           environment: 'jsdom',
           globals: true,
           setupFiles: ['./vitest.setup.ts'],

@@ -463,10 +463,10 @@ Each directive fully implements the `ControlValueAccessor` interface used by bot
 
 #### Testing the CVA contract
 
-The library ships unit tests for each directive under `src/angular/_tests/`. Each suite verifies the complete `ControlValueAccessor` contract in isolation. Angular's module graph is never loaded — Vitest's `vi.mock` stubs `@angular/core` and `@angular/forms` before any import, preventing the JIT compilation errors that would otherwise occur in a non-Angular test environment.
+The library ships unit tests for each directive under `src/adapters/angular/_tests/`. Each suite verifies the complete `ControlValueAccessor` contract in isolation. Angular's module graph is never loaded — Vitest's `vi.mock` stubs `@angular/core` and `@angular/forms` before any import, preventing the JIT compilation errors that would otherwise occur in a non-Angular test environment.
 
 ```
-src/angular/_tests/
+src/adapters/angular/_tests/
 ├── mu-checkbox-control.directive.unit.test.ts    (9 tests)
 ├── mu-switch-control.directive.unit.test.ts      (9 tests)
 ├── mu-select-control.directive.unit.test.ts      (9 tests)
@@ -483,7 +483,7 @@ Each test follows the Arrange–Act–Assert pattern and covers:
 Run only the Angular directive tests:
 
 ```bash
-npx vitest run src/angular/_tests/
+npx vitest run src/adapters/angular/_tests/
 ```
 
 #### Known warnings when running tests
