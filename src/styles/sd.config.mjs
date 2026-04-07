@@ -7,7 +7,7 @@
  *   dist/tokens.json — nested token map (key → value)
  */
 export default {
-  source: ['src/styles/tokens.json'],
+  source: ['src/tokens/tokens.json'],
   platforms: {
     css: {
       transformGroup: 'css',
