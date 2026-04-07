@@ -1,7 +1,7 @@
 import {LitElement, html, css, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {sharedStyles} from '../../styles/shared-styles.js';
+import {sharedStyles} from '../../../internal/utils/shared-styles.js';
 
 /**
  * Pagination component for navigating through pages of content.

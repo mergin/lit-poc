@@ -1,6 +1,6 @@
 import {LitElement, html, css, type TemplateResult} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
-import {sharedStyles} from '../../styles/shared-styles.js';
+import {sharedStyles} from '../../../internal/utils/shared-styles.js';
 import type {MuMenuItem} from './mu-menu-item.js';
 import './mu-menu-item.js';
 

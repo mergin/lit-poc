@@ -1,6 +1,6 @@
 import {LitElement, html, css, type TemplateResult} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
-import {sharedStyles} from '../../styles/shared-styles.js';
+import {sharedStyles} from '../../../internal/utils/shared-styles.js';
 
 /** Drawer placement options. */
 export type DrawerPlacement = 'left' | 'right';

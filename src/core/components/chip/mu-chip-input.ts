@@ -1,7 +1,7 @@
 import {LitElement, html, css, type TemplateResult} from 'lit';
 import {customElement, property, query, state} from 'lit/decorators.js';
 import {repeat} from 'lit/directives/repeat.js';
-import {sharedStyles} from '../../styles/shared-styles.js';
+import {sharedStyles} from '../../../internal/utils/shared-styles.js';
 import './mu-chip.js';
 
 /**

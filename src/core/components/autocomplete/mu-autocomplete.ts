@@ -1,7 +1,7 @@
 import {LitElement, html, css, type TemplateResult, type PropertyValues} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
 import {repeat} from 'lit/directives/repeat.js';
-import {sharedStyles} from '../../styles/shared-styles.js';
+import {sharedStyles} from '../../../internal/utils/shared-styles.js';
 
 /** An option item for the autocomplete dropdown. */
 export interface AutocompleteOption {

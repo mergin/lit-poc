@@ -8,5 +8,11 @@
     "sourceMap": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["src/**/_tests/**", "src/**/*.stories.ts", "src/test/**", "src/stories/**"]
+  "exclude": [
+    "src/**/_tests/**",
+    "src/**/*.stories.ts",
+    "src/test/**",
+    "src/stories/**",
+    "src/internal/utils/a11y.ts"
+  ]
 }

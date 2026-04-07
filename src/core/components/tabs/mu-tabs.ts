@@ -1,6 +1,6 @@
 import {LitElement, html, css, type TemplateResult} from 'lit';
 import {customElement, property, query, queryAssignedElements, state} from 'lit/decorators.js';
-import {sharedStyles} from '../../styles/shared-styles.js';
+import {sharedStyles} from '../../../internal/utils/shared-styles.js';
 import {MuTab} from './mu-tab.js';
 import type {MuTabPanel} from './mu-tab-panel.js';
 import './mu-tab.js';

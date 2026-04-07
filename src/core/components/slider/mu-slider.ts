@@ -1,6 +1,6 @@
 import {LitElement, html, css, type TemplateResult, type PropertyValues} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {sharedStyles} from '../../styles/shared-styles.js';
+import {sharedStyles} from '../../../internal/utils/shared-styles.js';
 
 /**
  * Range slider form element that participates in native HTML forms.

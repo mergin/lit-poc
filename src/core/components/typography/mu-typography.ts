@@ -1,6 +1,6 @@
 import {LitElement, html, css, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {sharedStyles} from '../../styles/shared-styles.js'; // Using .js for TS module resolution, though shared-styles is .ts. Wait, other files didn't use .js
+import {sharedStyles} from '../../../internal/utils/shared-styles.js'; // Using .js for TS module resolution, though shared-styles is .ts. Wait, other files didn't use .js
 
 export type TypographyVariant =
   | 'h1'

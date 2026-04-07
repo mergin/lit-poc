@@ -1,6 +1,6 @@
 import {LitElement, html, css, TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {sharedStyles} from '../../styles/shared-styles';
+import {sharedStyles} from '../../../internal/utils/shared-styles.js';
 
 /**
  * Card container component. Use slots for header, content, and actions.

@@ -2,6 +2,31 @@
 
 This document describes an incremental source-structure migration for the library. The plan is written to be followed by GitHub Copilot or a human contributor without breaking the published API during intermediate steps.
 
+## Progress Tracker
+
+- [x] **Phase 1** — Create Domain Folders
+- [x] **Phase 2** — Move Adapters First
+  - [x] `src/react` → `src/adapters/react`
+  - [x] `src/angular` → `src/adapters/angular`
+  - [x] `src/vue` → `src/adapters/vue`
+  - [x] `src/svelte` → `src/adapters/svelte`
+- [x] **Phase 3** — Move SSR and Tokens
+  - [x] `src/ssr` → `src/platform/ssr`
+  - [x] `src/styles/tokens.ts` → `src/tokens/tokens.ts`
+  - [x] `src/styles/tokens.json` → `src/tokens/tokens.json`
+- [x] **Phase 4** — Move Shared Core Domains
+  - [x] `src/i18n` → `src/core/i18n`
+  - [x] Shared styles → `src/core/styles`
+- [x] **Phase 5** — Move Components in Batches
+  - [x] Batch A: `avatar`, `badge`, `divider`, `icon`, `typography`
+  - [x] Batch B: `button`, `checkbox`, `radio`, `switch`, `text-field`, `select`
+  - [x] Batch C: `card`, `chip`, `alert`, `snackbar`, `skeleton`, `spinner`, `linear-progress`
+  - [x] Batch D: `tabs`, `breadcrumb`, `pagination`, `dialog`, `drawer`, `tooltip`, `menu`, `popover`, `app-bar`
+  - [x] Batch E: `accordion`, `autocomplete`, `data-table`, `file-upload`, `rating`, `slider`, `stepper`
+- [x] **Phase 6** — Update Primary Barrels and Build Entries
+- [x] **Phase 7** — Introduce Internal-Only Modules
+- [ ] **Phase 8** — Remove Compatibility Layers
+
 ## Goal
 
 Reorganize the library into clearer domains while preserving the current public package contract.

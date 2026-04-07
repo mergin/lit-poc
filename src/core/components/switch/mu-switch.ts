@@ -1,6 +1,6 @@
 import {LitElement, html, css, nothing, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {sharedStyles} from '../../styles/shared-styles.js';
+import {sharedStyles} from '../../../internal/utils/shared-styles.js';
 
 /**
  * Toggle switch form component that participates in native HTML forms.

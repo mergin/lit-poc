@@ -1,6 +1,6 @@
 import {LitElement, html, css, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {sharedStyles} from '../../styles/shared-styles';
+import {sharedStyles} from '../../../internal/utils/shared-styles.js';
 
 /**
  * Minimal/MUI-style button component.

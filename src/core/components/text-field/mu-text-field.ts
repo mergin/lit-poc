@@ -1,7 +1,7 @@
 import {LitElement, html, css, nothing, type TemplateResult} from 'lit';
 import {customElement, property, query, state} from 'lit/decorators.js';
 import {classMap} from 'lit/directives/class-map.js';
-import {sharedStyles} from '../../styles/shared-styles.js';
+import {sharedStyles} from '../../../internal/utils/shared-styles.js';
 
 /** Supported HTML input types for mu-text-field. */
 export type TextFieldType = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'number';

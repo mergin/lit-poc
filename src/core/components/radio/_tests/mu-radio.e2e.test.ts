@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/test';
-import {assertNoA11yViolations} from '../../../../test/a11y.js';
+import {assertNoA11yViolations} from '../../../../../internal/utils/a11y.js';
 
 const URL = '/dev/radio.html';
 
