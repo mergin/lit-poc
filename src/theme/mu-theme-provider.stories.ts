@@ -1,13 +1,13 @@
 import {html} from 'lit';
 import type {Meta, StoryObj} from '@storybook/web-components';
 import './mu-theme-provider.js';
-import '../button/mu-button.js';
-import '../chip/mu-chip.js';
-import '../badge/mu-badge.js';
-import '../avatar/mu-avatar.js';
-import '../typography/mu-typography.js';
-import '../card/mu-card.js';
-import '../divider/mu-divider.js';
+import '../core/components/button/mu-button.js';
+import '../core/components/chip/mu-chip.js';
+import '../core/components/badge/mu-badge.js';
+import '../core/components/avatar/mu-avatar.js';
+import '../core/components/typography/mu-typography.js';
+import '../core/components/card/mu-card.js';
+import '../core/components/divider/mu-divider.js';
 
 const meta: Meta = {
   title: 'Theme/MuThemeProvider',

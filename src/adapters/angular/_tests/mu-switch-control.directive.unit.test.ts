@@ -16,8 +16,8 @@ vi.mock('@angular/forms', () => ({
 }));
 
 import {inject} from '@angular/core';
-import '../../../switch/mu-switch.js';
-import type {MuSwitch} from '../../../switch/mu-switch.js';
+import '../../../core/components/switch/mu-switch.js';
+import type {MuSwitch} from '../../../core/components/switch/mu-switch.js';
 import {MuSwitchControlDirective} from '../mu-switch.directive.js';
 
 const mockInject = inject as unknown as ReturnType<typeof vi.fn>;

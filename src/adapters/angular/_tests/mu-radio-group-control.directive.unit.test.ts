@@ -16,9 +16,9 @@ vi.mock('@angular/forms', () => ({
 }));
 
 import {inject} from '@angular/core';
-import '../../../radio/mu-radio.js';
-import '../../../radio/mu-radio-group.js';
-import type {MuRadio} from '../../../radio/mu-radio.js';
+import '../../../core/components/radio/mu-radio.js';
+import '../../../core/components/radio/mu-radio-group.js';
+import type {MuRadio} from '../../../core/components/radio/mu-radio.js';
 import {MuRadioGroupControlDirective} from '../mu-radio-group.directive.js';
 
 const mockInject = inject as unknown as ReturnType<typeof vi.fn>;

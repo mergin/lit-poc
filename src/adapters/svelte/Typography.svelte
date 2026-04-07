@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../typography/mu-typography.js';
+  import '../../core/components/typography/mu-typography.js';
   import type {Snippet} from 'svelte';
 
   /**

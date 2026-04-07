@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../select/mu-select.js';
+  import '../../core/components/select/mu-select.js';
   import type {Snippet} from 'svelte';
 
   /**

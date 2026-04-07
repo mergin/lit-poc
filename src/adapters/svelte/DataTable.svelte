@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../data-table/mu-data-table.js';
+  import '../../core/components/data-table/mu-data-table.js';
   import type {Snippet} from 'svelte';
 
   /**

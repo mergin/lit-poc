@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../alert/mu-alert.js';
+  import '../../core/components/alert/mu-alert.js';
   import type {Snippet} from 'svelte';
 
   /**

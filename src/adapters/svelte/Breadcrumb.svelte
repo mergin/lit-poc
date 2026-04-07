@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../breadcrumb/mu-breadcrumb.js';
+  import '../../core/components/breadcrumb/mu-breadcrumb.js';
   import type {Snippet} from 'svelte';
 
   /**

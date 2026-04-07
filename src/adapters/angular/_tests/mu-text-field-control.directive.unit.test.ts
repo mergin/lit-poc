@@ -20,8 +20,8 @@ vi.mock('@angular/forms', () => ({
 }));
 
 import {inject} from '@angular/core';
-import '../../../text-field/mu-text-field.js';
-import type {MuTextField} from '../../../text-field/mu-text-field.js';
+import '../../../core/components/text-field/mu-text-field.js';
+import type {MuTextField} from '../../../core/components/text-field/mu-text-field.js';
 import {MuTextFieldControlDirective} from '../mu-text-field.directive.js';
 
 const mockInject = inject as unknown as ReturnType<typeof vi.fn>;

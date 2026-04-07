@@ -1,6 +1,6 @@
 import {Directive, ElementRef, HostListener, forwardRef, inject} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import type {MuSwitch} from '../../switch/mu-switch.js';
+import type {MuSwitch} from '../../core/components/switch/mu-switch.js';
 
 /**
  * Angular `ControlValueAccessor` directive for `<mu-switch>`.

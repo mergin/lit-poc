@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../skeleton/mu-skeleton.js';
+  import '../../core/components/skeleton/mu-skeleton.js';
   import type {Snippet} from 'svelte';
 
   /**

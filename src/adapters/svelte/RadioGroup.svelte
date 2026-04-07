@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../radio/mu-radio-group.js';
+  import '../../core/components/radio/mu-radio-group.js';
   import type {Snippet} from 'svelte';
 
   /**

@@ -1,6 +1,6 @@
 import {Directive, ElementRef, HostListener, forwardRef, inject} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import type {MuRadio} from '../../radio/mu-radio.js';
+import type {MuRadio} from '../../core/components/radio/mu-radio.js';
 
 /**
  * Angular `ControlValueAccessor` directive for `<mu-radio-group>`.

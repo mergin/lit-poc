@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../slider/mu-slider.js';
+  import '../../core/components/slider/mu-slider.js';
   import type {Snippet} from 'svelte';
 
   /**

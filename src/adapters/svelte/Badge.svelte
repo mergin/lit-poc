@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../badge/mu-badge.js';
+  import '../../core/components/badge/mu-badge.js';
   import type {Snippet} from 'svelte';
 
   /**

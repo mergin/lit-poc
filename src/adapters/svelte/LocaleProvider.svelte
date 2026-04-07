@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../i18n/mu-locale-provider.js';
+  import '../../core/i18n/mu-locale-provider.js';
   import type {Snippet} from 'svelte';
 
   /**

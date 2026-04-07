@@ -13,7 +13,7 @@ import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import type {MuTextField} from '../../text-field/mu-text-field.js';
+import type {MuTextField} from '../../core/components/text-field/mu-text-field.js';
 
 /**
  * Angular `ControlValueAccessor` directive for `<mu-text-field>`.

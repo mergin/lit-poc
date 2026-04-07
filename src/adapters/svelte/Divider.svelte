@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../divider/mu-divider.js';
+  import '../../core/components/divider/mu-divider.js';
   import type {Snippet} from 'svelte';
 
   /**

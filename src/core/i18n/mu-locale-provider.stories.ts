@@ -1,10 +1,10 @@
 import {html} from 'lit';
 import type {Meta, StoryObj} from '@storybook/web-components';
 import './mu-locale-provider.js';
-import '../../chip/mu-chip.js';
-import '../../badge/mu-badge.js';
-import '../../snackbar/mu-snackbar.js';
-import '../../typography/mu-typography.js';
+import '../../core/components/chip/mu-chip.js';
+import '../../core/components/badge/mu-badge.js';
+import '../../core/components/snackbar/mu-snackbar.js';
+import '../../core/components/typography/mu-typography.js';
 import type {MuLocale} from './default-locale.js';
 
 const meta: Meta = {

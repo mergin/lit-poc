@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../tooltip/mu-tooltip.js';
+  import '../../core/components/tooltip/mu-tooltip.js';
   import type {Snippet} from 'svelte';
 
   /**

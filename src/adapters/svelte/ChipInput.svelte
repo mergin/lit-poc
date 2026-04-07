@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../chip/mu-chip-input.js';
+  import '../../core/components/chip/mu-chip-input.js';
   import type {Snippet} from 'svelte';
 
   /**

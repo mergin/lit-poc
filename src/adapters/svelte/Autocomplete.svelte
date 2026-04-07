@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../autocomplete/mu-autocomplete.js';
+  import '../../core/components/autocomplete/mu-autocomplete.js';
   import type {Snippet} from 'svelte';
 
   /**

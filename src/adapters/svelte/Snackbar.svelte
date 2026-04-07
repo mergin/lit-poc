@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../snackbar/mu-snackbar.js';
+  import '../../core/components/snackbar/mu-snackbar.js';
   import type {Snippet} from 'svelte';
 
   /**

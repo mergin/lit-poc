@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../switch/mu-switch.js';
+  import '../../core/components/switch/mu-switch.js';
   import type {Snippet} from 'svelte';
 
   /**

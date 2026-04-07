@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../pagination/mu-pagination.js';
+  import '../../core/components/pagination/mu-pagination.js';
   import type {Snippet} from 'svelte';
 
   /**

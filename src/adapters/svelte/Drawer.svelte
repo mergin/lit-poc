@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../drawer/mu-drawer.js';
+  import '../../core/components/drawer/mu-drawer.js';
   import type {Snippet} from 'svelte';
 
   /**

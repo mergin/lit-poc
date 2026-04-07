@@ -2,7 +2,7 @@ import type {Meta, StoryObj} from '@storybook/web-components';
 import {html} from 'lit';
 import './mu-list';
 import './mu-list-item';
-import '../divider/mu-divider';
+import '../core/components/divider/mu-divider.js';
 
 const meta: Meta = {
   title: 'Data Display/List',

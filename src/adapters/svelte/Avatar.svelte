@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../avatar/mu-avatar.js';
+  import '../../core/components/avatar/mu-avatar.js';
   import type {Snippet} from 'svelte';
 
   /**

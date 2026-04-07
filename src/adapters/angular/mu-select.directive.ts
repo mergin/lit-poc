@@ -1,6 +1,6 @@
 import {Directive, ElementRef, HostListener, forwardRef, inject} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import type {MuSelect, SelectValue} from '../../select/mu-select.js';
+import type {MuSelect, SelectValue} from '../../core/components/select/mu-select.js';
 
 /**
  * Angular `ControlValueAccessor` directive for `<mu-select>`.

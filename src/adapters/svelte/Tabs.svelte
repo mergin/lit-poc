@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../tabs/mu-tabs.js';
+  import '../../core/components/tabs/mu-tabs.js';
   import type {Snippet} from 'svelte';
 
   /**

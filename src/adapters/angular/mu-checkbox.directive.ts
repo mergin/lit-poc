@@ -1,6 +1,6 @@
 import {Directive, ElementRef, HostListener, forwardRef, inject} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import type {MuCheckbox} from '../../checkbox/mu-checkbox.js';
+import type {MuCheckbox} from '../../core/components/checkbox/mu-checkbox.js';
 
 /**
  * Angular `ControlValueAccessor` directive for `<mu-checkbox>`.

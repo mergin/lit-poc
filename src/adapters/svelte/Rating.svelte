@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../rating/mu-rating.js';
+  import '../../core/components/rating/mu-rating.js';
   import type {Snippet} from 'svelte';
 
   /**

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../spinner/mu-spinner.js';
+  import '../../core/components/spinner/mu-spinner.js';
   import type {Snippet} from 'svelte';
 
   /**

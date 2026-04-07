@@ -8,7 +8,7 @@ import {
   motionTokens,
   shapeTokens,
   type TokenMap,
-} from '../styles/tokens.js';
+} from '../tokens/index.js';
 
 /**
  * Converts a CSS custom property block into a token map.

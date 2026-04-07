@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../app-bar/mu-app-bar.js';
+  import '../../core/components/app-bar/mu-app-bar.js';
   import type {Snippet} from 'svelte';
 
   /**

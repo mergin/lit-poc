@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../dialog/mu-dialog.js';
+  import '../../core/components/dialog/mu-dialog.js';
   import type {Snippet} from 'svelte';
 
   /**

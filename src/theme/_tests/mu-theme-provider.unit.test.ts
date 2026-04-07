@@ -1,6 +1,6 @@
 import {describe, it, expect, beforeEach} from 'vitest';
 import {MuThemeProvider} from '../mu-theme-provider.js';
-import {lightTokens, darkTokens} from '../../styles/tokens.js';
+import {lightTokens, darkTokens} from '../../tokens/index.js';
 
 describe('MuThemeProvider — unit', (): void => {
   let el: MuThemeProvider;

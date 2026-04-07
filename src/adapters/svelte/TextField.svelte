@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../text-field/mu-text-field.js';
+  import '../../core/components/text-field/mu-text-field.js';
   import type {Snippet} from 'svelte';
 
   /**

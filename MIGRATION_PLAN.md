@@ -25,7 +25,7 @@ This document describes an incremental source-structure migration for the librar
   - [x] Batch E: `accordion`, `autocomplete`, `data-table`, `file-upload`, `rating`, `slider`, `stepper`
 - [x] **Phase 6** — Update Primary Barrels and Build Entries
 - [x] **Phase 7** — Introduce Internal-Only Modules
-- [ ] **Phase 8** — Remove Compatibility Layers
+- [x] **Phase 8** — Remove Compatibility Layers
 
 ## Goal
 

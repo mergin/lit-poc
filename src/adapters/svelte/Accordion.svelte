@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../accordion/mu-accordion.js';
+  import '../../core/components/accordion/mu-accordion.js';
   import type {Snippet} from 'svelte';
 
   /**

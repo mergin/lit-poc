@@ -24,40 +24,45 @@ import React from 'react';
 import {createComponent} from '@lit/react';
 
 // ─── Component class imports (side-effect: registers custom elements) ─────────
-import {MuAvatar} from '../../avatar/mu-avatar.js';
-import {MuBadge} from '../../badge/mu-badge.js';
-import {MuButton} from '../../button/mu-button.js';
-import {MuCard, MuCardHeader, MuCardContent, MuCardActions} from '../../card/mu-card.js';
-import {MuChip} from '../../chip/mu-chip.js';
-import {MuDivider} from '../../divider/mu-divider.js';
-import {MuIcon} from '../../icon/mu-icon.js';
+import {MuAvatar} from '../../core/components/avatar/mu-avatar.js';
+import {MuBadge} from '../../core/components/badge/mu-badge.js';
+import {MuButton} from '../../core/components/button/mu-button.js';
+import {
+  MuCard,
+  MuCardHeader,
+  MuCardContent,
+  MuCardActions,
+} from '../../core/components/card/mu-card.js';
+import {MuChip} from '../../core/components/chip/mu-chip.js';
+import {MuDivider} from '../../core/components/divider/mu-divider.js';
+import {MuIcon} from '../../core/components/icon/mu-icon.js';
 import {MuList} from '../../list/mu-list.js';
 import {MuListItem} from '../../list/mu-list-item.js';
-import {MuTypography} from '../../typography/mu-typography.js';
+import {MuTypography} from '../../core/components/typography/mu-typography.js';
 import {MuThemeProvider} from '../../theme/mu-theme-provider.js';
-import {MuCheckbox} from '../../checkbox/mu-checkbox.js';
-import {MuRadio} from '../../radio/mu-radio.js';
-import {MuRadioGroup} from '../../radio/mu-radio-group.js';
-import {MuSwitch} from '../../switch/mu-switch.js';
-import {MuTextField} from '../../text-field/mu-text-field.js';
-import {MuSelect} from '../../select/mu-select.js';
-import {MuDialog} from '../../dialog/mu-dialog.js';
-import {MuTooltip} from '../../tooltip/mu-tooltip.js';
-import {MuSnackbar} from '../../snackbar/mu-snackbar.js';
-import {MuSkeleton} from '../../skeleton/mu-skeleton.js';
-import {MuSpinner} from '../../spinner/mu-spinner.js';
-import {MuLinearProgress} from '../../linear-progress/mu-linear-progress.js';
-import {MuAlert} from '../../alert/mu-alert.js';
-import {MuTabs} from '../../tabs/mu-tabs.js';
-import {MuTab} from '../../tabs/mu-tab.js';
-import {MuTabPanel} from '../../tabs/mu-tab-panel.js';
-import {MuAccordion} from '../../accordion/mu-accordion.js';
-import {MuAccordionItem} from '../../accordion/mu-accordion-item.js';
-import {MuBreadcrumb} from '../../breadcrumb/mu-breadcrumb.js';
-import {MuBreadcrumbItem} from '../../breadcrumb/mu-breadcrumb-item.js';
-import {MuPagination} from '../../pagination/mu-pagination.js';
-import {MuAppBar} from '../../app-bar/mu-app-bar.js';
-import {MuDrawer} from '../../drawer/mu-drawer.js';
+import {MuCheckbox} from '../../core/components/checkbox/mu-checkbox.js';
+import {MuRadio} from '../../core/components/radio/mu-radio.js';
+import {MuRadioGroup} from '../../core/components/radio/mu-radio-group.js';
+import {MuSwitch} from '../../core/components/switch/mu-switch.js';
+import {MuTextField} from '../../core/components/text-field/mu-text-field.js';
+import {MuSelect} from '../../core/components/select/mu-select.js';
+import {MuDialog} from '../../core/components/dialog/mu-dialog.js';
+import {MuTooltip} from '../../core/components/tooltip/mu-tooltip.js';
+import {MuSnackbar} from '../../core/components/snackbar/mu-snackbar.js';
+import {MuSkeleton} from '../../core/components/skeleton/mu-skeleton.js';
+import {MuSpinner} from '../../core/components/spinner/mu-spinner.js';
+import {MuLinearProgress} from '../../core/components/linear-progress/mu-linear-progress.js';
+import {MuAlert} from '../../core/components/alert/mu-alert.js';
+import {MuTabs} from '../../core/components/tabs/mu-tabs.js';
+import {MuTab} from '../../core/components/tabs/mu-tab.js';
+import {MuTabPanel} from '../../core/components/tabs/mu-tab-panel.js';
+import {MuAccordion} from '../../core/components/accordion/mu-accordion.js';
+import {MuAccordionItem} from '../../core/components/accordion/mu-accordion-item.js';
+import {MuBreadcrumb} from '../../core/components/breadcrumb/mu-breadcrumb.js';
+import {MuBreadcrumbItem} from '../../core/components/breadcrumb/mu-breadcrumb-item.js';
+import {MuPagination} from '../../core/components/pagination/mu-pagination.js';
+import {MuAppBar} from '../../core/components/app-bar/mu-app-bar.js';
+import {MuDrawer} from '../../core/components/drawer/mu-drawer.js';
 import {MuLocaleProvider} from '../../core/i18n/mu-locale-provider.js';
 
 // ─── Layout & Display ─────────────────────────────────────────────────────────

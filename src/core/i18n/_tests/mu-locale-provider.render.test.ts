@@ -1,12 +1,12 @@
 import {expect, test, describe} from 'vitest';
 import {fixture, html} from '@open-wc/testing';
-import '../../../chip/mu-chip';
-import '../../../badge/mu-badge';
-import '../../../snackbar/mu-snackbar';
+import '../../../core/components/chip/mu-chip';
+import '../../../core/components/badge/mu-badge';
+import '../../../core/components/snackbar/mu-snackbar';
 import '../mu-locale-provider';
-import type {MuChip} from '../../../chip/mu-chip';
-import type {MuBadge} from '../../../badge/mu-badge';
-import type {MuSnackbar} from '../../../snackbar/mu-snackbar';
+import type {MuChip} from '../../../core/components/chip/mu-chip';
+import type {MuBadge} from '../../../core/components/badge/mu-badge';
+import type {MuSnackbar} from '../../../core/components/snackbar/mu-snackbar';
 import type {MuLocale} from '../default-locale';
 
 describe('mu-locale-provider render', () => {

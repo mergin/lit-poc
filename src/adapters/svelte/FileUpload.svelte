@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../file-upload/mu-file-upload.js';
+  import '../../core/components/file-upload/mu-file-upload.js';
   import type {Snippet} from 'svelte';
 
   /**

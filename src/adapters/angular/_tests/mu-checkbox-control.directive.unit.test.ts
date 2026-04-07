@@ -16,8 +16,8 @@ vi.mock('@angular/forms', () => ({
 }));
 
 import {inject} from '@angular/core';
-import '../../../checkbox/mu-checkbox.js';
-import type {MuCheckbox} from '../../../checkbox/mu-checkbox.js';
+import '../../../core/components/checkbox/mu-checkbox.js';
+import type {MuCheckbox} from '../../../core/components/checkbox/mu-checkbox.js';
 import {MuCheckboxControlDirective} from '../mu-checkbox.directive.js';
 
 const mockInject = inject as unknown as ReturnType<typeof vi.fn>;

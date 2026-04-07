@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../card/mu-card.js';
+  import '../../core/components/card/mu-card.js';
   import type {Snippet} from 'svelte';
 
   /**

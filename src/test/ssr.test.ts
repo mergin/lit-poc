@@ -13,7 +13,7 @@ describe('SSR smoke test', (): void => {
   it('renders mu-button to a string without throwing', async (): Promise<void> => {
     // ARRANGE
     // Dynamically import to allow server-side custom element registration
-    await import('../button/mu-button.js');
+    await import('../core/components/button/mu-button.js');
 
     // ACT
     const result = render(html`<mu-button>Click</mu-button>`);

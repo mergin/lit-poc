@@ -10,7 +10,7 @@ import {
 } from '@angular/platform-browser-dynamic/testing';
 import {beforeAll, beforeEach, describe, expect, it} from 'vitest';
 import {MuCheckboxControlDirective} from '../mu-checkbox.directive.js';
-import '../../../checkbox/mu-checkbox.js';
+import '../../../core/components/checkbox/mu-checkbox.js';
 
 @Component({
   standalone: true,

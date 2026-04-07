@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../checkbox/mu-checkbox.js';
+  import '../../core/components/checkbox/mu-checkbox.js';
   import type {Snippet} from 'svelte';
 
   /**

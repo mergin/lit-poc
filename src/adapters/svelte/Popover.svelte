@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../popover/mu-popover.js';
+  import '../../core/components/popover/mu-popover.js';
   import type {Snippet} from 'svelte';
 
   /**

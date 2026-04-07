@@ -16,8 +16,8 @@ vi.mock('@angular/forms', () => ({
 }));
 
 import {inject} from '@angular/core';
-import '../../../select/mu-select.js';
-import type {MuSelect} from '../../../select/mu-select.js';
+import '../../../core/components/select/mu-select.js';
+import type {MuSelect} from '../../../core/components/select/mu-select.js';
 import {MuSelectControlDirective} from '../mu-select.directive.js';
 
 const mockInject = inject as unknown as ReturnType<typeof vi.fn>;

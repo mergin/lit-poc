@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../stepper/mu-stepper.js';
+  import '../../core/components/stepper/mu-stepper.js';
   import type {Snippet} from 'svelte';
 
   /**

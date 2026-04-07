@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '../../linear-progress/mu-linear-progress.js';
+  import '../../core/components/linear-progress/mu-linear-progress.js';
   import type {Snippet} from 'svelte';
 
   /**
