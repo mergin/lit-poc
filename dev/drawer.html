@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-drawer Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
+    <style>
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-drawer Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Open Drawers</h2>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap">
+          <button id="open-left">Open left drawer</button>
+          <button id="open-right">Open right drawer</button>
+        </div>
+      </section>
+
+      <mu-drawer
+        id="left-drawer"
+        width="280px"
+      >
+        <div style="padding: 16px">
+          <h2>Navigation</h2>
+          <p>Drawer content here.</p>
+          <button id="close-left">Close</button>
+        </div>
+      </mu-drawer>
+
+      <mu-drawer
+        id="right-drawer"
+        placement="right"
+      >
+        <div style="padding: 16px">
+          <h2>Filters</h2>
+          <p>Right-side drawer content.</p>
+          <button id="close-right">Close</button>
+        </div>
+      </mu-drawer>
+    </main>
+
+    <script
+      type="module"
+      src="/src/drawer/mu-drawer.ts"
+    ></script>
+    <script type="module">
+      const leftDrawer = document.getElementById('left-drawer');
+      const rightDrawer = document.getElementById('right-drawer');
+
+      document.getElementById('open-left').addEventListener('click', () => {
+        leftDrawer.open = true;
+      });
+      document.getElementById('close-left').addEventListener('click', () => {
+        leftDrawer.open = false;
+      });
+      document.getElementById('open-right').addEventListener('click', () => {
+        rightDrawer.open = true;
+      });
+      document.getElementById('close-right').addEventListener('click', () => {
+        rightDrawer.open = false;
+      });
+    </script>
+  </body>
+</html>

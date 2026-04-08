@@ -6,11 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-menu dev</title>
+    <title>mu-menu Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
     <style>
-      body {
-        font-family: sans-serif;
-        padding: 2rem;
+      main {
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -30,43 +32,54 @@
     </style>
   </head>
   <body>
-    <section>
-      <h2>Basic</h2>
-      <mu-menu id="basic">
-        <button slot="trigger">Open menu</button>
-        <mu-menu-item label="Edit">Edit</mu-menu-item>
-        <mu-menu-item label="Duplicate">Duplicate</mu-menu-item>
-        <mu-menu-item label="Archive">Archive</mu-menu-item>
-        <mu-menu-item label="Delete">Delete</mu-menu-item>
-      </mu-menu>
-    </section>
-
-    <section>
-      <h2>With Disabled Item</h2>
-      <mu-menu id="with-disabled">
-        <button slot="trigger">Open menu</button>
-        <mu-menu-item label="Edit">Edit</mu-menu-item>
-        <mu-menu-item
-          label="Duplicate"
-          disabled
-          >Duplicate (disabled)</mu-menu-item
-        >
-        <mu-menu-item label="Delete">Delete</mu-menu-item>
-      </mu-menu>
-    </section>
-
-    <section style="padding-top: 80px">
-      <h2>Top Placement</h2>
-      <mu-menu
-        id="top-placement"
-        placement="top-start"
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
       >
-        <button slot="trigger">Open menu (top)</button>
-        <mu-menu-item label="Option A">Option A</mu-menu-item>
-        <mu-menu-item label="Option B">Option B</mu-menu-item>
-        <mu-menu-item label="Option C">Option C</mu-menu-item>
-      </mu-menu>
-    </section>
+      <h1>mu-menu Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Basic</h2>
+        <mu-menu id="basic">
+          <button slot="trigger">Open menu</button>
+          <mu-menu-item label="Edit">Edit</mu-menu-item>
+          <mu-menu-item label="Duplicate">Duplicate</mu-menu-item>
+          <mu-menu-item label="Archive">Archive</mu-menu-item>
+          <mu-menu-item label="Delete">Delete</mu-menu-item>
+        </mu-menu>
+      </section>
+
+      <section>
+        <h2>With Disabled Item</h2>
+        <mu-menu id="with-disabled">
+          <button slot="trigger">Open menu</button>
+          <mu-menu-item label="Edit">Edit</mu-menu-item>
+          <mu-menu-item
+            label="Duplicate"
+            disabled
+            >Duplicate (disabled)</mu-menu-item
+          >
+          <mu-menu-item label="Delete">Delete</mu-menu-item>
+        </mu-menu>
+      </section>
+
+      <section style="padding-top: 80px">
+        <h2>Top Placement</h2>
+        <mu-menu
+          id="top-placement"
+          placement="top-start"
+        >
+          <button slot="trigger">Open menu (top)</button>
+          <mu-menu-item label="Option A">Option A</mu-menu-item>
+          <mu-menu-item label="Option B">Option B</mu-menu-item>
+          <mu-menu-item label="Option C">Option C</mu-menu-item>
+        </mu-menu>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/menu/mu-menu.js';

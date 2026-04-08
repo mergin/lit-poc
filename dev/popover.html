@@ -6,11 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-popover dev</title>
+    <title>mu-popover Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
     <style>
-      body {
-        font-family: sans-serif;
-        padding: 2rem;
+      main {
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -30,35 +32,46 @@
     </style>
   </head>
   <body>
-    <section>
-      <h2>Basic</h2>
-      <mu-popover id="basic">
-        <button slot="trigger">Show popover</button>
-        <p style="margin: 0">This is the popover content.</p>
-      </mu-popover>
-    </section>
-
-    <section>
-      <h2>Rich Content</h2>
-      <mu-popover id="rich">
-        <button slot="trigger">Show info</button>
-        <div>
-          <strong>Info title</strong>
-          <p style="margin: 8px 0 0">More detailed information here.</p>
-        </div>
-      </mu-popover>
-    </section>
-
-    <section style="padding-top: 80px">
-      <h2>Top Placement</h2>
-      <mu-popover
-        id="top"
-        placement="top"
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
       >
-        <button slot="trigger">Show above</button>
-        <p style="margin: 0">Opens above the trigger.</p>
-      </mu-popover>
-    </section>
+      <h1>mu-popover Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Basic</h2>
+        <mu-popover id="basic">
+          <button slot="trigger">Show popover</button>
+          <p style="margin: 0">This is the popover content.</p>
+        </mu-popover>
+      </section>
+
+      <section>
+        <h2>Rich Content</h2>
+        <mu-popover id="rich">
+          <button slot="trigger">Show info</button>
+          <div>
+            <strong>Info title</strong>
+            <p style="margin: 8px 0 0">More detailed information here.</p>
+          </div>
+        </mu-popover>
+      </section>
+
+      <section style="padding-top: 80px">
+        <h2>Top Placement</h2>
+        <mu-popover
+          id="top"
+          placement="top"
+        >
+          <button slot="trigger">Show above</button>
+          <p style="margin: 0">Opens above the trigger.</p>
+        </mu-popover>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/popover/mu-popover.js';

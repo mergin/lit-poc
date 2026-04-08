@@ -6,11 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-slider dev</title>
+    <title>mu-slider Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
     <style>
-      body {
-        font-family: sans-serif;
-        padding: 2rem;
+      main {
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -31,45 +33,56 @@
     </style>
   </head>
   <body>
-    <section>
-      <h2>Basic</h2>
-      <mu-slider
-        id="basic"
-        label="Volume"
-        value="30"
-      ></mu-slider>
-    </section>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-slider Demo</h1>
+    </header>
 
-    <section>
-      <h2>Disabled</h2>
-      <mu-slider
-        id="disabled"
-        label="Disabled"
-        value="50"
-        disabled
-      ></mu-slider>
-    </section>
+    <main>
+      <section>
+        <h2>Basic</h2>
+        <mu-slider
+          id="basic"
+          label="Volume"
+          value="30"
+        ></mu-slider>
+      </section>
 
-    <section>
-      <h2>Custom Step (10)</h2>
-      <mu-slider
-        id="stepped"
-        label="Zoom"
-        value="40"
-        step="10"
-      ></mu-slider>
-    </section>
+      <section>
+        <h2>Disabled</h2>
+        <mu-slider
+          id="disabled"
+          label="Disabled"
+          value="50"
+          disabled
+        ></mu-slider>
+      </section>
 
-    <section>
-      <h2>Custom Range (-50 to 50)</h2>
-      <mu-slider
-        id="custom-range"
-        label="Temperature"
-        value="0"
-        min="-50"
-        max="50"
-      ></mu-slider>
-    </section>
+      <section>
+        <h2>Custom Step (10)</h2>
+        <mu-slider
+          id="stepped"
+          label="Zoom"
+          value="40"
+          step="10"
+        ></mu-slider>
+      </section>
+
+      <section>
+        <h2>Custom Range (-50 to 50)</h2>
+        <mu-slider
+          id="custom-range"
+          label="Temperature"
+          value="0"
+          min="-50"
+          max="50"
+        ></mu-slider>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/slider/mu-slider.js';

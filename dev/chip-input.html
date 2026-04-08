@@ -1,31 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>mu-chip-input Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
   <body>
-    <a href="/index.html">Back to main</a>
-    <h1>mu-chip-input Demo</h1>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-chip-input Demo</h1>
+    </header>
     <script
       type="module"
       src="/src/chip/mu-chip-input.ts"
     ></script>
-    <div style="max-width: 420px; display: flex; flex-direction: column; gap: 16px">
-      <p>
-        Type a value and press <kbd>Enter</kbd> or <kbd>,</kbd> to add a chip. Press
-        <kbd>Backspace</kbd> on an empty input to remove the last chip.
-      </p>
-      <mu-chip-input placeholder="Add technology…"></mu-chip-input>
-      <mu-chip-input
-        placeholder="Pre-seeded tags…"
-        id="seeded"
-      ></mu-chip-input>
-      <mu-chip-input
-        placeholder="Disabled"
-        disabled
-      ></mu-chip-input>
-    </div>
+
+    <main>
+      <section>
+        <h2>Examples</h2>
+        <div style="max-width: 420px; display: flex; flex-direction: column; gap: 16px">
+          <p>
+            Type a value and press <kbd>Enter</kbd> or <kbd>,</kbd> to add a chip. Press
+            <kbd>Backspace</kbd> on an empty input to remove the last chip.
+          </p>
+          <mu-chip-input placeholder="Add technology…"></mu-chip-input>
+          <mu-chip-input
+            placeholder="Pre-seeded tags…"
+            id="seeded"
+          ></mu-chip-input>
+          <mu-chip-input
+            placeholder="Disabled"
+            disabled
+          ></mu-chip-input>
+        </div>
+      </section>
+    </main>
     <script type="module">
       document.querySelector('#seeded').chips = ['TypeScript', 'Lit'];
     </script>

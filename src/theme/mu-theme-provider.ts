@@ -1,4 +1,4 @@
-import {LitElement, html, css, unsafeCSS, type TemplateResult} from 'lit';
+import {LitElement, html, css, type TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {
   lightTokens,
@@ -8,7 +8,38 @@ import {
   motionTokens,
   shapeTokens,
   type TokenMap,
-} from '../styles/tokens.js';
+} from '../tokens/index.js';
+
+/**
+ * Converts a CSS custom property block into a token map.
+ * @param block Raw CSS custom property declarations.
+ * @returns A token map keyed by CSS custom property name.
+ */
+function tokenBlockToMap(block: string): TokenMap {
+  return Array.from(block.matchAll(/(--[\w-]+):\s*([^;]+);/g)).reduce<TokenMap>(
+    (tokens, match): TokenMap => {
+      const [, key, value] = match;
+      tokens[key] = value.trim();
+      return tokens;
+    },
+    {}
+  );
+}
+
+const staticTokens: TokenMap = {
+  ...tokenBlockToMap(spacingTokens),
+  ...tokenBlockToMap(elevationTokens),
+  ...tokenBlockToMap(motionTokens),
+  ...tokenBlockToMap(shapeTokens),
+};
+
+const reducedMotionTokens: TokenMap = {
+  '--mu-duration-shortest': '0ms',
+  '--mu-duration-shorter': '0ms',
+  '--mu-duration-short': '0ms',
+  '--mu-duration-standard': '0ms',
+  '--mu-duration-complex': '0ms',
+};
 
 /**
  * Theme provider component that applies design tokens to its DOM subtree.
@@ -30,23 +61,12 @@ export class MuThemeProvider extends LitElement {
   /** Active color scheme. Switches between the light and dark token sets. */
   @property({type: String, reflect: true}) mode: 'light' | 'dark' = 'light';
 
+  private readonly _reducedMotionQuery =
+    typeof window === 'undefined' ? null : window.matchMedia('(prefers-reduced-motion: reduce)');
+
   static override styles = css`
     :host {
       display: contents;
-      ${unsafeCSS(spacingTokens)}
-      ${unsafeCSS(elevationTokens)}
-      ${unsafeCSS(motionTokens)}
-      ${unsafeCSS(shapeTokens)}
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      :host {
-        --mu-duration-shortest: 0ms;
-        --mu-duration-shorter: 0ms;
-        --mu-duration-short: 0ms;
-        --mu-duration-standard: 0ms;
-        --mu-duration-complex: 0ms;
-      }
     }
   `;
 
@@ -55,7 +75,16 @@ export class MuThemeProvider extends LitElement {
    */
   override connectedCallback(): void {
     super.connectedCallback();
+    this._reducedMotionQuery?.addEventListener('change', this._handleReducedMotionChange);
     this._applyTokens();
+  }
+
+  /**
+   * Removes observers when the element leaves the DOM.
+   */
+  override disconnectedCallback(): void {
+    this._reducedMotionQuery?.removeEventListener('change', this._handleReducedMotionChange);
+    super.disconnectedCallback();
   }
 
   /**
@@ -70,11 +99,23 @@ export class MuThemeProvider extends LitElement {
   }
 
   /**
+   * Re-applies tokens when the reduced motion preference changes.
+   */
+  private _handleReducedMotionChange = (): void => {
+    this._applyTokens();
+  };
+
+  /**
    * Applies the token map for the current mode to the host element's inline style.
    * CSS custom properties set here cascade into all descendants including shadow roots.
    */
   private _applyTokens(): void {
-    const tokens: TokenMap = this.mode === 'dark' ? darkTokens : lightTokens;
+    const tokens: TokenMap = {
+      ...staticTokens,
+      ...(this.mode === 'dark' ? darkTokens : lightTokens),
+      ...(this._reducedMotionQuery?.matches ? reducedMotionTokens : {}),
+    };
+
     Object.entries(tokens).forEach(([key, value]): void => {
       this.style.setProperty(key, value);
     });

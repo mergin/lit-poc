@@ -6,31 +6,47 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-dialog dev</title>
+    <title>mu-dialog Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
-  <body style="padding: 24px; font-family: sans-serif">
-    <h2>Dialog</h2>
-
-    <button id="open-btn">Open dialog</button>
-
-    <mu-dialog
-      id="my-dialog"
-      headline="Confirm action"
-    >
-      <p>Are you sure you want to proceed? This action cannot be undone.</p>
-      <button
-        slot="actions"
-        id="cancel-btn"
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
       >
-        Cancel
-      </button>
-      <button
-        slot="actions"
-        id="confirm-btn"
-      >
-        Confirm
-      </button>
-    </mu-dialog>
+      <h1>mu-dialog Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Interactive Example</h2>
+        <button id="open-btn">Open dialog</button>
+
+        <mu-dialog
+          id="my-dialog"
+          headline="Confirm action"
+        >
+          <p>Are you sure you want to proceed? This action cannot be undone.</p>
+          <button
+            slot="actions"
+            id="cancel-btn"
+          >
+            Cancel
+          </button>
+          <button
+            slot="actions"
+            id="confirm-btn"
+          >
+            Confirm
+          </button>
+        </mu-dialog>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/dialog/mu-dialog.js';

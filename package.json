@@ -19,35 +19,35 @@
     },
     "./avatar": {
       "import": "./dist/avatar.js",
-      "types": "./dist/avatar/mu-avatar.d.ts"
+      "types": "./dist/core/components/avatar/mu-avatar.d.ts"
     },
     "./badge": {
       "import": "./dist/badge.js",
-      "types": "./dist/badge/mu-badge.d.ts"
+      "types": "./dist/core/components/badge/mu-badge.d.ts"
     },
     "./button": {
       "import": "./dist/button.js",
-      "types": "./dist/button/mu-button.d.ts"
+      "types": "./dist/core/components/button/mu-button.d.ts"
     },
     "./card": {
       "import": "./dist/card.js",
-      "types": "./dist/card/mu-card.d.ts"
+      "types": "./dist/core/components/card/mu-card.d.ts"
     },
     "./chip": {
       "import": "./dist/chip.js",
-      "types": "./dist/chip/mu-chip.d.ts"
+      "types": "./dist/core/components/chip/mu-chip.d.ts"
     },
     "./chip-input": {
       "import": "./dist/chip-input.js",
-      "types": "./dist/chip/mu-chip-input.d.ts"
+      "types": "./dist/core/components/chip/mu-chip-input.d.ts"
     },
     "./divider": {
       "import": "./dist/divider.js",
-      "types": "./dist/divider/mu-divider.d.ts"
+      "types": "./dist/core/components/divider/mu-divider.d.ts"
     },
     "./icon": {
       "import": "./dist/icon.js",
-      "types": "./dist/icon/mu-icon.d.ts"
+      "types": "./dist/core/components/icon/mu-icon.d.ts"
     },
     "./list": {
       "import": "./dist/list.js",
@@ -59,7 +59,7 @@
     },
     "./typography": {
       "import": "./dist/typography.js",
-      "types": "./dist/typography/mu-typography.d.ts"
+      "types": "./dist/core/components/typography/mu-typography.d.ts"
     },
     "./theme-provider": {
       "import": "./dist/theme-provider.js",
@@ -67,179 +67,179 @@
     },
     "./checkbox": {
       "import": "./dist/checkbox.js",
-      "types": "./dist/checkbox/mu-checkbox.d.ts"
+      "types": "./dist/core/components/checkbox/mu-checkbox.d.ts"
     },
     "./radio": {
       "import": "./dist/radio.js",
-      "types": "./dist/radio/mu-radio.d.ts"
+      "types": "./dist/core/components/radio/mu-radio.d.ts"
     },
     "./radio-group": {
       "import": "./dist/radio-group.js",
-      "types": "./dist/radio/mu-radio-group.d.ts"
+      "types": "./dist/core/components/radio/mu-radio-group.d.ts"
     },
     "./switch": {
       "import": "./dist/switch.js",
-      "types": "./dist/switch/mu-switch.d.ts"
+      "types": "./dist/core/components/switch/mu-switch.d.ts"
     },
     "./text-field": {
       "import": "./dist/text-field.js",
-      "types": "./dist/text-field/mu-text-field.d.ts"
+      "types": "./dist/core/components/text-field/mu-text-field.d.ts"
     },
     "./select": {
       "import": "./dist/select.js",
-      "types": "./dist/select/mu-select.d.ts"
+      "types": "./dist/core/components/select/mu-select.d.ts"
     },
     "./dialog": {
       "import": "./dist/dialog.js",
-      "types": "./dist/dialog/mu-dialog.d.ts"
+      "types": "./dist/core/components/dialog/mu-dialog.d.ts"
     },
     "./tooltip": {
       "import": "./dist/tooltip.js",
-      "types": "./dist/tooltip/mu-tooltip.d.ts"
+      "types": "./dist/core/components/tooltip/mu-tooltip.d.ts"
     },
     "./snackbar": {
       "import": "./dist/snackbar.js",
-      "types": "./dist/snackbar/mu-snackbar.d.ts"
+      "types": "./dist/core/components/snackbar/mu-snackbar.d.ts"
     },
     "./skeleton": {
       "import": "./dist/skeleton.js",
-      "types": "./dist/skeleton/mu-skeleton.d.ts"
+      "types": "./dist/core/components/skeleton/mu-skeleton.d.ts"
     },
     "./spinner": {
       "import": "./dist/spinner.js",
-      "types": "./dist/spinner/mu-spinner.d.ts"
+      "types": "./dist/core/components/spinner/mu-spinner.d.ts"
     },
     "./linear-progress": {
       "import": "./dist/linear-progress.js",
-      "types": "./dist/linear-progress/mu-linear-progress.d.ts"
+      "types": "./dist/core/components/linear-progress/mu-linear-progress.d.ts"
     },
     "./alert": {
       "import": "./dist/alert.js",
-      "types": "./dist/alert/mu-alert.d.ts"
+      "types": "./dist/core/components/alert/mu-alert.d.ts"
     },
     "./tabs": {
       "import": "./dist/tabs.js",
-      "types": "./dist/tabs/mu-tabs.d.ts"
+      "types": "./dist/core/components/tabs/mu-tabs.d.ts"
     },
     "./tab": {
       "import": "./dist/tab.js",
-      "types": "./dist/tabs/mu-tab.d.ts"
+      "types": "./dist/core/components/tabs/mu-tab.d.ts"
     },
     "./tab-panel": {
       "import": "./dist/tab-panel.js",
-      "types": "./dist/tabs/mu-tab-panel.d.ts"
+      "types": "./dist/core/components/tabs/mu-tab-panel.d.ts"
     },
     "./accordion": {
       "import": "./dist/accordion.js",
-      "types": "./dist/accordion/mu-accordion.d.ts"
+      "types": "./dist/core/components/accordion/mu-accordion.d.ts"
     },
     "./accordion-item": {
       "import": "./dist/accordion-item.js",
-      "types": "./dist/accordion/mu-accordion-item.d.ts"
+      "types": "./dist/core/components/accordion/mu-accordion-item.d.ts"
     },
     "./breadcrumb": {
       "import": "./dist/breadcrumb.js",
-      "types": "./dist/breadcrumb/mu-breadcrumb.d.ts"
+      "types": "./dist/core/components/breadcrumb/mu-breadcrumb.d.ts"
     },
     "./breadcrumb-item": {
       "import": "./dist/breadcrumb-item.js",
-      "types": "./dist/breadcrumb/mu-breadcrumb-item.d.ts"
+      "types": "./dist/core/components/breadcrumb/mu-breadcrumb-item.d.ts"
     },
     "./pagination": {
       "import": "./dist/pagination.js",
-      "types": "./dist/pagination/mu-pagination.d.ts"
+      "types": "./dist/core/components/pagination/mu-pagination.d.ts"
     },
     "./app-bar": {
       "import": "./dist/app-bar.js",
-      "types": "./dist/app-bar/mu-app-bar.d.ts"
+      "types": "./dist/core/components/app-bar/mu-app-bar.d.ts"
     },
     "./drawer": {
       "import": "./dist/drawer.js",
-      "types": "./dist/drawer/mu-drawer.d.ts"
+      "types": "./dist/core/components/drawer/mu-drawer.d.ts"
     },
     "./locale-provider": {
       "import": "./dist/locale-provider.js",
-      "types": "./dist/i18n/mu-locale-provider.d.ts"
+      "types": "./dist/core/i18n/mu-locale-provider.d.ts"
     },
     "./react": {
       "import": "./dist/react.js",
-      "types": "./dist/react/index.d.ts"
+      "types": "./dist/adapters/react/index.d.ts"
     },
     "./angular": {
       "import": "./dist/angular.js",
-      "types": "./dist/angular/index.d.ts"
+      "types": "./dist/adapters/angular/index.d.ts"
     },
     "./vue": {
       "import": "./dist/vue.js",
-      "types": "./dist/vue/index.d.ts"
+      "types": "./dist/adapters/vue/index.d.ts"
     },
     "./svelte": {
-      "svelte": "./src/svelte/index.ts",
+      "svelte": "./src/adapters/svelte/index.ts",
       "import": "./dist/svelte.js",
-      "types": "./dist/svelte/index.d.ts"
+      "types": "./dist/adapters/svelte/index.d.ts"
     },
     "./slider": {
       "import": "./dist/slider.js",
-      "types": "./dist/slider/mu-slider.d.ts"
+      "types": "./dist/core/components/slider/mu-slider.d.ts"
     },
     "./menu": {
       "import": "./dist/menu.js",
-      "types": "./dist/menu/mu-menu.d.ts"
+      "types": "./dist/core/components/menu/mu-menu.d.ts"
     },
     "./menu-item": {
       "import": "./dist/menu-item.js",
-      "types": "./dist/menu/mu-menu-item.d.ts"
+      "types": "./dist/core/components/menu/mu-menu-item.d.ts"
     },
     "./popover": {
       "import": "./dist/popover.js",
-      "types": "./dist/popover/mu-popover.d.ts"
+      "types": "./dist/core/components/popover/mu-popover.d.ts"
     },
     "./rating": {
       "import": "./dist/rating.js",
-      "types": "./dist/rating/mu-rating.d.ts"
+      "types": "./dist/core/components/rating/mu-rating.d.ts"
     },
     "./file-upload": {
       "import": "./dist/file-upload.js",
-      "types": "./dist/file-upload/mu-file-upload.d.ts"
+      "types": "./dist/core/components/file-upload/mu-file-upload.d.ts"
     },
     "./stepper": {
       "import": "./dist/stepper.js",
-      "types": "./dist/stepper/mu-stepper.d.ts"
+      "types": "./dist/core/components/stepper/mu-stepper.d.ts"
     },
     "./step": {
       "import": "./dist/step.js",
-      "types": "./dist/stepper/mu-step.d.ts"
+      "types": "./dist/core/components/stepper/mu-step.d.ts"
     },
     "./autocomplete": {
       "import": "./dist/autocomplete.js",
-      "types": "./dist/autocomplete/mu-autocomplete.d.ts"
+      "types": "./dist/core/components/autocomplete/mu-autocomplete.d.ts"
     },
     "./data-table": {
       "import": "./dist/data-table.js",
-      "types": "./dist/data-table/mu-data-table.d.ts"
+      "types": "./dist/core/components/data-table/mu-data-table.d.ts"
     },
     "./tokens": {
       "import": "./dist/tokens.js",
-      "types": "./dist/styles/tokens.d.ts"
+      "types": "./dist/tokens/index.d.ts"
     },
     "./tokens.css": "./dist/tokens.css",
     "./ssr": {
       "import": "./dist/ssr.js",
-      "types": "./dist/ssr/index.d.ts"
+      "types": "./dist/platform/ssr/index.d.ts"
     }
   },
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "build": "vite build --config vite.lib.config.ts && tsc --project tsconfig.build.json --emitDeclarationOnly",
+    "build": "npm run validate:landing && vite build --config vite.lib.config.ts && tsc --project tsconfig.build.json --emitDeclarationOnly",
     "build:tokens": "style-dictionary build --config src/styles/sd.config.mjs",
     "build:watch": "tsc --noEmit --watch",
-    "clean": "rm -rf dist/ test-results/ docs/ node_modules/",
+    "clean": "rm -rf package-lock.json dist/ test-results/ docs/ node_modules/",
     "rebuild": "npm run clean && npm i && npm run build",
-    "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
+    "lint": "npm run validate:landing && npm run lint:lit-analyzer && npm run lint:eslint",
     "lint:eslint": "eslint \"src/**/*.ts\"",
-    "lint:lit-analyzer": "lit-analyzer",
+    "lint:lit-analyzer": "node scripts/run-lit-analyzer.mjs",
     "format": "prettier \"**/*.{cjs,html,js,json,md,ts}\" --ignore-path ./.eslintignore --write",
     "docs": "npm run docs:clean && npm run build && npm run analyze && npm run docs:build && npm run docs:assets && npm run docs:gen",
     "docs:clean": "rimraf docs",
@@ -248,8 +248,9 @@
     "docs:build": "vite build --config vite.docs.config.ts",
     "docs:assets": "cp node_modules/prismjs/themes/prism-okaidia.css docs/",
     "docs:serve": "vite --root docs",
-    "analyze": "cem analyze --litelement --globs \"src/**/*.ts\"",
-    "analyze:watch": "cem analyze --litelement --globs \"src/**/*.ts\" --watch",
+    "analyze": "cem analyze --litelement",
+    "analyze:watch": "cem analyze --litelement --watch",
+    "validate:landing": "node scripts/validate-landing-sections.mjs",
     "serve": "vite",
     "serve:prod": "vite preview",
     "test": "npm run test:unit",
@@ -336,7 +337,7 @@
     "@storybook/web-components-vite": "^10.3.4",
     "@sveltejs/vite-plugin-svelte": "^6.2.4",
     "@testing-library/react": "^16.3.2",
-    "@types/node": "^25.5.0",
+    "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",

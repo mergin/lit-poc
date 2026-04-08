@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-app-bar Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        background: #f7f7f8;
+      }
+
+      main {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .page {
+        background: #ffffff;
+        border: 1px solid #d9e2ec;
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .back {
+        display: inline-block;
+        margin-bottom: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+      >
+        Back to dev index
+      </a>
+      <h1>mu-app-bar Demo</h1>
+    </header>
+
+    <main>
+      <mu-app-bar elevation="1">
+        <span slot="start">Menu</span>
+        <span>My Application</span>
+        <span slot="end">Profile</span>
+      </mu-app-bar>
+
+      <div class="page">
+        <p>This page shows default and custom-color app bars.</p>
+
+        <mu-app-bar color="#e91e63">
+          <span slot="start">Search</span>
+          <span>Custom Color</span>
+        </mu-app-bar>
+
+        <div style="height: 16px"></div>
+
+        <mu-app-bar
+          elevation="0"
+          color="#212b36"
+        >
+          <span>Flat App Bar</span>
+        </mu-app-bar>
+      </div>
+    </main>
+
+    <script
+      type="module"
+      src="/src/app-bar/mu-app-bar.ts"
+    ></script>
+  </body>
+</html>

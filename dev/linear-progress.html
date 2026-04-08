@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-linear-progress Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 24px;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 720px;
+      }
+
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-linear-progress Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <p>Determinate progress</p>
+        <mu-linear-progress
+          id="progress"
+          value="40"
+        ></mu-linear-progress>
+        <div class="controls">
+          <button id="decrease">-10</button>
+          <button id="increase">+10</button>
+          <span id="value-label">40%</span>
+        </div>
+      </section>
+
+      <section>
+        <p>Indeterminate</p>
+        <mu-linear-progress indeterminate></mu-linear-progress>
+      </section>
+
+      <section>
+        <p>Custom color</p>
+        <mu-linear-progress
+          value="70"
+          color="#e91e63"
+        ></mu-linear-progress>
+      </section>
+    </main>
+
+    <script
+      type="module"
+      src="/src/linear-progress/mu-linear-progress.ts"
+    ></script>
+    <script type="module">
+      const progress = document.getElementById('progress');
+      const valueLabel = document.getElementById('value-label');
+      const updateValue = (nextValue) => {
+        const boundedValue = Math.max(0, Math.min(100, nextValue));
+        progress.value = boundedValue;
+        valueLabel.textContent = `${boundedValue}%`;
+      };
+
+      document.getElementById('decrease').addEventListener('click', () => {
+        updateValue(progress.value - 10);
+      });
+
+      document.getElementById('increase').addEventListener('click', () => {
+        updateValue(progress.value + 10);
+      });
+    </script>
+  </body>
+</html>

@@ -3,38 +3,31 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>Lit PoC</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
-  <body>
-    <h1>Lit PoC</h1>
-    <li>
-      <ul>
-        <a href="/dev/avatar.html">mu-avatar Demo</a>
-      </ul>
-      <ul>
-        <a href="/dev/button.html">mu-button Demo</a>
-      </ul>
-      <ul>
-        <a href="/dev/card.html">mu-card Demo</a>
-      </ul>
-      <ul>
-        <a href="/dev/icon.html">mu-icon Demo</a>
-      </ul>
-      <ul>
-        <a href="/dev/typography.html">mu-typography Demo</a>
-      </ul>
-      <ul>
-        <a href="/dev/badge.html">mu-badge Demo</a>
-      </ul>
-      <ul>
-        <a href="/dev/chip.html">mu-chip Demo</a>
-      </ul>
-      <ul>
-        <a href="/dev/divider.html">mu-divider Demo</a>
-      </ul>
-      <ul>
-        <a href="/dev/list.html">mu-list Demo</a>
-      </ul>
-    </li>
+  <body
+    class="landing-page"
+    data-link-prefix="/dev/"
+  >
+    <main>
+      <h1>Lit PoC</h1>
+      <p class="landing-intro">Component demos organized to match the Storybook sidebar.</p>
+      <div
+        id="landing-sections"
+        class="sections"
+      ></div>
+    </main>
+    <script
+      type="module"
+      src="/dev/render-landing.js"
+    ></script>
   </body>
 </html>

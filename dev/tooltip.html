@@ -6,44 +6,60 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-tooltip dev</title>
+    <title>mu-tooltip Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
-  <body style="padding: 80px 24px; font-family: sans-serif">
-    <h2>Tooltip</h2>
-
-    <div style="display: flex; gap: 48px; flex-wrap: wrap; align-items: center; margin: 40px">
-      <mu-tooltip
-        id="top-tip"
-        label="Top tooltip"
-        placement="top"
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
       >
-        <button>Top (default)</button>
-      </mu-tooltip>
+      <h1>mu-tooltip Demo</h1>
+    </header>
 
-      <mu-tooltip
-        id="bottom-tip"
-        label="Bottom tooltip"
-        placement="bottom"
-      >
-        <button>Bottom</button>
-      </mu-tooltip>
+    <main>
+      <section>
+        <h2>Placements</h2>
+        <div style="display: flex; gap: 48px; flex-wrap: wrap; align-items: center; margin: 40px">
+          <mu-tooltip
+            id="top-tip"
+            label="Top tooltip"
+            placement="top"
+          >
+            <button>Top (default)</button>
+          </mu-tooltip>
 
-      <mu-tooltip
-        id="left-tip"
-        label="Left tooltip"
-        placement="left"
-      >
-        <button>Left</button>
-      </mu-tooltip>
+          <mu-tooltip
+            id="bottom-tip"
+            label="Bottom tooltip"
+            placement="bottom"
+          >
+            <button>Bottom</button>
+          </mu-tooltip>
 
-      <mu-tooltip
-        id="right-tip"
-        label="Right tooltip"
-        placement="right"
-      >
-        <button>Right</button>
-      </mu-tooltip>
-    </div>
+          <mu-tooltip
+            id="left-tip"
+            label="Left tooltip"
+            placement="left"
+          >
+            <button>Left</button>
+          </mu-tooltip>
+
+          <mu-tooltip
+            id="right-tip"
+            label="Right tooltip"
+            placement="right"
+          >
+            <button>Right</button>
+          </mu-tooltip>
+        </div>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/tooltip/mu-tooltip.js';

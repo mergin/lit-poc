@@ -76,10 +76,10 @@ export default defineConfig({
        * library — the docs site only loads what it actually renders.
        */
       entry: {
-        'mu-avatar.bundled': resolve(__dirname, 'src/avatar/mu-avatar.ts'),
-        'mu-button.bundled': resolve(__dirname, 'src/button/mu-button.ts'),
-        'mu-card.bundled': resolve(__dirname, 'src/card/mu-card.ts'),
-        'mu-icon.bundled': resolve(__dirname, 'src/icon/mu-icon.ts'),
+        'mu-avatar.bundled': resolve(__dirname, 'src/core/components/avatar/mu-avatar.ts'),
+        'mu-button.bundled': resolve(__dirname, 'src/core/components/button/mu-button.ts'),
+        'mu-card.bundled': resolve(__dirname, 'src/core/components/card/mu-card.ts'),
+        'mu-icon.bundled': resolve(__dirname, 'src/core/components/icon/mu-icon.ts'),
       },
       /**
        * ES module output only — the docs site uses `<script type="module">`

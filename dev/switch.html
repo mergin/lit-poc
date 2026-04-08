@@ -6,26 +6,43 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-switch dev</title>
+    <title>mu-switch Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
-  <body style="padding: 24px; font-family: sans-serif">
-    <h2>Switch</h2>
-    <mu-switch
-      id="basic"
-      label="Dark mode"
-    ></mu-switch>
-    <br /><br />
-    <mu-switch
-      id="checked"
-      label="Notifications on"
-      checked
-    ></mu-switch>
-    <br /><br />
-    <mu-switch
-      id="disabled"
-      label="Disabled"
-      disabled
-    ></mu-switch>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-switch Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>States</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px">
+          <mu-switch
+            id="basic"
+            label="Dark mode"
+          ></mu-switch>
+          <mu-switch
+            id="checked"
+            label="Notifications on"
+            checked
+          ></mu-switch>
+          <mu-switch
+            id="disabled"
+            label="Disabled"
+            disabled
+          ></mu-switch>
+        </div>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/switch/mu-switch.js';

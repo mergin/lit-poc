@@ -6,32 +6,48 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-checkbox dev</title>
+    <title>mu-checkbox Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
-  <body style="padding: 24px; font-family: sans-serif">
-    <h2>Checkbox</h2>
-    <mu-checkbox
-      id="basic"
-      label="Accept terms"
-    ></mu-checkbox>
-    <br /><br />
-    <mu-checkbox
-      id="checked"
-      label="Pre-checked"
-      checked
-    ></mu-checkbox>
-    <br /><br />
-    <mu-checkbox
-      id="indeterminate"
-      label="Indeterminate"
-      indeterminate
-    ></mu-checkbox>
-    <br /><br />
-    <mu-checkbox
-      id="disabled"
-      label="Disabled"
-      disabled
-    ></mu-checkbox>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-checkbox Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>States</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px">
+          <mu-checkbox
+            id="basic"
+            label="Accept terms"
+          ></mu-checkbox>
+          <mu-checkbox
+            id="checked"
+            label="Pre-checked"
+            checked
+          ></mu-checkbox>
+          <mu-checkbox
+            id="indeterminate"
+            label="Indeterminate"
+            indeterminate
+          ></mu-checkbox>
+          <mu-checkbox
+            id="disabled"
+            label="Disabled"
+            disabled
+          ></mu-checkbox>
+        </div>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/checkbox/mu-checkbox.js';

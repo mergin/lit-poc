@@ -6,22 +6,38 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-snackbar dev</title>
+    <title>mu-snackbar Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
-  <body style="padding: 24px; font-family: sans-serif">
-    <h2>Snackbar</h2>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-snackbar Demo</h1>
+    </header>
 
-    <div style="display: flex; gap: 12px; flex-wrap: wrap">
-      <button id="show-default">Show default</button>
-      <button id="show-success">Show success</button>
-      <button id="show-error">Show error</button>
-      <button id="show-action">Show with action</button>
-    </div>
+    <main>
+      <section>
+        <h2>Actions</h2>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap">
+          <button id="show-default">Show default</button>
+          <button id="show-success">Show success</button>
+          <button id="show-error">Show error</button>
+          <button id="show-action">Show with action</button>
+        </div>
 
-    <mu-snackbar
-      id="snackbar"
-      duration="0"
-    ></mu-snackbar>
+        <mu-snackbar
+          id="snackbar"
+          duration="0"
+        ></mu-snackbar>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/snackbar/mu-snackbar.js';

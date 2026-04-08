@@ -6,11 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-stepper dev</title>
+    <title>mu-stepper Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
     <style>
-      body {
-        font-family: sans-serif;
-        padding: 2rem;
+      main {
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -35,32 +37,43 @@
     </style>
   </head>
   <body>
-    <section>
-      <h2>Horizontal Linear</h2>
-      <mu-stepper id="basic">
-        <mu-step label="Account"><p>Account details go here.</p></mu-step>
-        <mu-step label="Profile"><p>Profile info here.</p></mu-step>
-        <mu-step label="Review"><p>Review your info.</p></mu-step>
-      </mu-stepper>
-      <div class="controls">
-        <button id="next-btn">Next</button>
-        <button id="back-btn">Back</button>
-      </div>
-    </section>
-
-    <section>
-      <h2>Vertical Non-Linear</h2>
-      <mu-stepper
-        id="vertical"
-        orientation="vertical"
-        linear="false"
-        activeStep="1"
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
       >
-        <mu-step label="Step One"><p>Content 1</p></mu-step>
-        <mu-step label="Step Two"><p>Content 2</p></mu-step>
-        <mu-step label="Step Three"><p>Content 3</p></mu-step>
-      </mu-stepper>
-    </section>
+      <h1>mu-stepper Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Horizontal Linear</h2>
+        <mu-stepper id="basic">
+          <mu-step label="Account"><p>Account details go here.</p></mu-step>
+          <mu-step label="Profile"><p>Profile info here.</p></mu-step>
+          <mu-step label="Review"><p>Review your info.</p></mu-step>
+        </mu-stepper>
+        <div class="controls">
+          <button id="next-btn">Next</button>
+          <button id="back-btn">Back</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Vertical Non-Linear</h2>
+        <mu-stepper
+          id="vertical"
+          orientation="vertical"
+          linear="false"
+          activeStep="1"
+        >
+          <mu-step label="Step One"><p>Content 1</p></mu-step>
+          <mu-step label="Step Two"><p>Content 2</p></mu-step>
+          <mu-step label="Step Three"><p>Content 3</p></mu-step>
+        </mu-stepper>
+      </section>
+    </main>
 
     <script type="module">
       import '/src/stepper/mu-stepper.js';

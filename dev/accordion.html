@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-accordion Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 24px;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        max-width: 720px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-accordion Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Default</h2>
+        <mu-accordion>
+          <mu-accordion-item heading="What is Lit?">
+            Lit is a simple library for building fast, lightweight web components.
+          </mu-accordion-item>
+          <mu-accordion-item heading="Why web components?">
+            Web components are native browser primitives for building reusable UI elements.
+          </mu-accordion-item>
+          <mu-accordion-item heading="How do I get started?">
+            Install Lit with <code>npm install lit</code> and create your first component.
+          </mu-accordion-item>
+        </mu-accordion>
+      </section>
+
+      <section>
+        <h2>Allow Multiple</h2>
+        <mu-accordion allowMultiple>
+          <mu-accordion-item
+            heading="Section A"
+            expanded
+          >
+            Content A
+          </mu-accordion-item>
+          <mu-accordion-item heading="Section B">Content B</mu-accordion-item>
+          <mu-accordion-item heading="Section C">Content C</mu-accordion-item>
+        </mu-accordion>
+      </section>
+    </main>
+
+    <script
+      type="module"
+      src="/src/accordion/mu-accordion.ts"
+    ></script>
+    <script
+      type="module"
+      src="/src/accordion/mu-accordion-item.ts"
+    ></script>
+  </body>
+</html>

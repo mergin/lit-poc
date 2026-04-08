@@ -43,7 +43,7 @@ A modern, accessible, and compositional web component library built with Lit 3 a
 
 ## Components
 
-All components are available as individual subpath imports (`@your-scope/lit-poc/<component>`) or via the main entry point.
+All components are available as individual subpath imports (`lit-poc/<component>`) or via the main entry point.
 
 ### Layout & Display
 
@@ -53,10 +53,17 @@ All components are available as individual subpath imports (`@your-scope/lit-poc
 | Badge            | `<mu-badge>`                  | Small status indicator overlaid on content.                   |
 | Card             | `<mu-card>`                   | Content container with header, body, and actions slots.       |
 | Chip             | `<mu-chip>`                   | Compact element for tags, filters, or actions.                |
+| Chip Input       | `<mu-chip-input>`             | Text input that creates and manages removable chip values.    |
 | Divider          | `<mu-divider>`                | Horizontal or vertical separator line.                        |
 | Icon             | `<mu-icon>`                   | Inline SVG icon wrapper.                                      |
 | List / List Item | `<mu-list>`, `<mu-list-item>` | Vertical list container with optional leading/trailing slots. |
 | Typography       | `<mu-typography>`             | Semantic text elements (h1–h6, body, caption, overline).      |
+
+### Data Display
+
+| Component  | Tag               | Description                                                       |
+| ---------- | ----------------- | ----------------------------------------------------------------- |
+| Data Table | `<mu-data-table>` | Sortable data table with row selection, loading state, and slots. |
 
 ### Feedback & Status
 
@@ -70,14 +77,18 @@ All components are available as individual subpath imports (`@your-scope/lit-poc
 
 ### Form Inputs
 
-| Component           | Tag                              | Description                                                |
-| ------------------- | -------------------------------- | ---------------------------------------------------------- |
-| Button              | `<mu-button>`                    | Interactive button with variants and states.               |
-| Checkbox            | `<mu-checkbox>`                  | Binary toggle with indeterminate support.                  |
-| Radio / Radio Group | `<mu-radio>`, `<mu-radio-group>` | Single-choice radio controls with group management.        |
-| Select              | `<mu-select>`                    | Native-backed dropdown with validation support.            |
-| Switch              | `<mu-switch>`                    | Toggle switch for boolean settings.                        |
-| Text Field          | `<mu-text-field>`                | Single-line text input with label, hint, and error states. |
+| Component           | Tag                              | Description                                                  |
+| ------------------- | -------------------------------- | ------------------------------------------------------------ |
+| Button              | `<mu-button>`                    | Interactive button with variants and states.                 |
+| Checkbox            | `<mu-checkbox>`                  | Binary toggle with indeterminate support.                    |
+| File Upload         | `<mu-file-upload>`               | Native form-associated file picker with drag-and-drop UI.    |
+| Radio / Radio Group | `<mu-radio>`, `<mu-radio-group>` | Single-choice radio controls with group management.          |
+| Rating              | `<mu-rating>`                    | Star rating input with keyboard support and read-only mode.  |
+| Select              | `<mu-select>`                    | Native-backed dropdown with validation support.              |
+| Slider              | `<mu-slider>`                    | Range slider with keyboard and pointer interaction.          |
+| Switch              | `<mu-switch>`                    | Toggle switch for boolean settings.                          |
+| Text Field          | `<mu-text-field>`                | Single-line text input with label, hint, and error states.   |
+| Autocomplete        | `<mu-autocomplete>`              | Combobox with filtering, keyboard navigation, and selection. |
 
 ### Navigation
 
@@ -85,7 +96,9 @@ All components are available as individual subpath imports (`@your-scope/lit-poc
 | ---------- | ----------------------------------------- | ------------------------------------------------------------------ |
 | App Bar    | `<mu-app-bar>`                            | Sticky application header with leading, title, and trailing slots. |
 | Breadcrumb | `<mu-breadcrumb>`, `<mu-breadcrumb-item>` | Hierarchical navigation trail.                                     |
+| Menu       | `<mu-menu>`, `<mu-menu-item>`             | Floating menu with trigger slot and keyboard navigation.           |
 | Pagination | `<mu-pagination>`                         | Page navigation control with ellipsis support.                     |
+| Stepper    | `<mu-stepper>`, `<mu-step>`               | Multi-step progress indicator for guided workflows.                |
 | Tabs       | `<mu-tabs>`, `<mu-tab>`, `<mu-tab-panel>` | ARIA-compliant tabbed interface.                                   |
 
 ### Overlays & Disclosure
@@ -95,6 +108,7 @@ All components are available as individual subpath imports (`@your-scope/lit-poc
 | Accordion | `<mu-accordion>`, `<mu-accordion-item>` | Expandable/collapsible sections.                       |
 | Dialog    | `<mu-dialog>`                           | Modal dialog with focus trapping and Escape-key close. |
 | Drawer    | `<mu-drawer>`                           | Side panel that slides in from left or right.          |
+| Popover   | `<mu-popover>`                          | Floating overlay anchored to trigger content.          |
 | Tooltip   | `<mu-tooltip>`                          | Contextual hover/focus hint.                           |
 
 ### Theme
@@ -103,11 +117,42 @@ All components are available as individual subpath imports (`@your-scope/lit-poc
 | -------------- | --------------------- | ------------------------------------------------------- |
 | Theme Provider | `<mu-theme-provider>` | Sets CSS custom-property tokens for the component tree. |
 
-### Internationalisation (i18n)
+In addition to the component entry point, the package also exposes `lit-poc/tokens` for programmatic token access and `lit-poc/ssr` for server-side rendering helpers.
+
+### Package Utilities
+
+#### `lit-poc/tokens`
+
+Use the tokens entry point when you need direct access to design token maps in JavaScript or TypeScript:
+
+```ts
+import {lightTokens, darkTokens, spacingTokens} from 'lit-poc/tokens';
+
+console.log(lightTokens['--mu-primary']);
+console.log(darkTokens['--mu-bg-default']);
+console.log(spacingTokens);
+```
+
+#### `lit-poc/ssr`
+
+Use the SSR entry point to render Lit templates on the server while importing library exports from the same module:
+
+```ts
+import {html} from 'lit';
+import {collectResult, render} from 'lit-poc/ssr';
+import 'lit-poc';
+
+const stream = render(html`<mu-button color="primary">Save</mu-button>`);
+const markup = await collectResult(stream);
+```
+
+`lit-poc/ssr` is intended for ESM-capable server environments such as Node.js, Vite SSR, or Next.js route handlers. The package already includes `@lit-labs/ssr` as a dependency, so you do not need to install it separately unless you want to use that library directly.
+
+### Internationalization (i18n)
 
 | Component       | Tag                    | Description                                                                           |
 | --------------- | ---------------------- | ------------------------------------------------------------------------------------- |
-| Locale Provider | `<mu-locale-provider>` | Provides localised strings to descendant components via Lit Context (`@lit/context`). |
+| Locale Provider | `<mu-locale-provider>` | Provides localized strings to descendant components via Lit Context (`@lit/context`). |
 
 ---
 
@@ -418,10 +463,10 @@ Each directive fully implements the `ControlValueAccessor` interface used by bot
 
 #### Testing the CVA contract
 
-The library ships unit tests for each directive under `src/angular/_tests/`. Each suite verifies the complete `ControlValueAccessor` contract in isolation. Angular's module graph is never loaded — Vitest's `vi.mock` stubs `@angular/core` and `@angular/forms` before any import, preventing the JIT compilation errors that would otherwise occur in a non-Angular test environment.
+The library ships unit tests for each directive under `src/adapters/angular/_tests/`. Each suite verifies the complete `ControlValueAccessor` contract in isolation. Angular's module graph is never loaded — Vitest's `vi.mock` stubs `@angular/core` and `@angular/forms` before any import, preventing the JIT compilation errors that would otherwise occur in a non-Angular test environment.
 
 ```
-src/angular/_tests/
+src/adapters/angular/_tests/
 ├── mu-checkbox-control.directive.unit.test.ts    (9 tests)
 ├── mu-switch-control.directive.unit.test.ts      (9 tests)
 ├── mu-select-control.directive.unit.test.ts      (9 tests)
@@ -438,7 +483,7 @@ Each test follows the Arrange–Act–Assert pattern and covers:
 Run only the Angular directive tests:
 
 ```bash
-npx vitest run src/angular/_tests/
+npx vitest run src/adapters/angular/_tests/
 ```
 
 #### Known warnings when running tests
@@ -559,6 +604,12 @@ Run end-to-end tests:
 npm run test:e2e
 ```
 
+Run the full automated test suite, including E2E:
+
+```bash
+npm run test:all
+```
+
 #### Performance Tests
 
 Run all component performance benchmarks:
@@ -599,6 +650,12 @@ npm run lint
 npm run format
 ```
 
+Validate the generated dev landing page registry on its own:
+
+```bash
+npm run validate:landing
+```
+
 ### Storybook
 
 Run the interactive component explorer:
@@ -620,6 +677,18 @@ Build and serve the documentation:
 ```bash
 npm run docs
 npm run docs:serve
+```
+
+Generate the custom elements manifest only:
+
+```bash
+npm run analyze
+```
+
+Rebuild exported design-token artefacts only:
+
+```bash
+npm run build:tokens
 ```
 
 ---
@@ -644,9 +713,38 @@ If your commit message does not follow the rules, the commit will be rejected.
 
 ## Project Structure
 
-- `src/` — Source code for all components, unit/E2E tests (inside `_tests/` subfolders), story files (`*.stories.ts`), and shared styles.
-- `dev/` — Demo HTML for local development.
-- `docs/` — Static documentation site (generated).
+```text
+src/
+  core/
+    components/     ← all publishable web components, each with _tests/ and *.stories.ts
+    i18n/           ← MuLocale interface, default locale, and <mu-locale-provider>
+    styles/         ← (reserved; shared-styles implementation moved to internal)
+  adapters/
+    react/          ← @lit/react wrappers (lit-poc/react)
+    angular/        ← ControlValueAccessor directives (lit-poc/angular)
+    vue/            ← defineComponent wrappers (lit-poc/vue)
+    svelte/         ← .svelte wrappers (lit-poc/svelte)
+  platform/
+    ssr/            ← server-side rendering helpers (lit-poc/ssr)
+  tokens/
+    tokens.ts       ← token maps (lightTokens, darkTokens, …)
+    tokens.json     ← Style Dictionary source
+    index.ts        ← public entry point (lit-poc/tokens)
+  internal/
+    utils/          ← non-public helpers (sharedStyles, assertNoA11yViolations)
+    types/          ← non-public type definitions
+  list/             ← <mu-list> and <mu-list-item> (not yet under core/components)
+  theme/            ← <mu-theme-provider>
+  stories/          ← cross-component Storybook stories
+  test/             ← shared test utilities (SSR smoke test)
+  styles/           ← Style Dictionary config (sd.config.mjs) and theme.css
+  index.ts          ← root barrel export
+```
+
+Other top-level directories:
+
+- `dev/` — Demo HTML pages for local development.
+- `docs/` — Static documentation site (generated by Eleventy + Vite).
 - `.storybook/` — Storybook configuration.
 - `.husky/` — Git hooks for linting, testing, and commit message checks.
 
@@ -710,9 +808,9 @@ Every component has its own entry in `lib.entry`. The key names map 1-to-1 with 
 // vite.lib.config.ts
 lib: {
   entry: {
-    index:       'src/index.ts',         // import {} from 'lit-poc'
-    button:      'src/button/mu-button.ts',   // import 'lit-poc/button'
-    'list-item': 'src/list/mu-list-item.ts',  // import 'lit-poc/list-item'
+    index:       'src/index.ts',                                   // import {} from 'lit-poc'
+    button:      'src/core/components/button/mu-button.ts',        // import 'lit-poc/button'
+    'list-item': 'src/list/mu-list-item.ts',                       // import 'lit-poc/list-item'
     // ...
   }
 }

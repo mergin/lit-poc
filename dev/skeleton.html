@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>mu-skeleton Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 24px;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .placeholder-card {
+        width: 300px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        border: 1px solid #d9e2ec;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-skeleton Demo</h1>
+    </header>
+
+    <main>
+      <section>
+        <p>Text</p>
+        <mu-skeleton variant="text"></mu-skeleton>
+        <mu-skeleton
+          variant="text"
+          width="80%"
+        ></mu-skeleton>
+      </section>
+
+      <section>
+        <p>Shapes</p>
+        <div style="display: flex; gap: 16px; align-items: center">
+          <mu-skeleton
+            variant="circular"
+            width="60px"
+            height="60px"
+          ></mu-skeleton>
+          <mu-skeleton
+            variant="rectangular"
+            width="240px"
+            height="80px"
+            animation="wave"
+          ></mu-skeleton>
+        </div>
+      </section>
+
+      <section>
+        <p>Card placeholder</p>
+        <div class="placeholder-card">
+          <mu-skeleton
+            variant="rectangular"
+            height="150px"
+          ></mu-skeleton>
+          <mu-skeleton variant="text"></mu-skeleton>
+          <mu-skeleton
+            variant="text"
+            width="80%"
+          ></mu-skeleton>
+          <mu-skeleton
+            variant="text"
+            width="60%"
+          ></mu-skeleton>
+        </div>
+      </section>
+    </main>
+
+    <script
+      type="module"
+      src="/src/skeleton/mu-skeleton.ts"
+    ></script>
+  </body>
+</html>

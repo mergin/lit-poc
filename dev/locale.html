@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>mu-locale-provider Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
   <body>
-    <a href="/index.html">Back to main</a>
-    <h1>mu-locale-provider Demo</h1>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-locale-provider Demo</h1>
+    </header>
     <script
       type="module"
       src="/src/i18n/mu-locale-provider.ts"
@@ -24,40 +38,46 @@
       src="/src/snackbar/mu-snackbar.ts"
     ></script>
 
-    <h2>Default locale (English)</h2>
-    <div style="display: flex; gap: 8px; align-items: center">
-      <mu-chip
-        label="Tag"
-        deletable
-      ></mu-chip>
-      <mu-badge content="4"><span>Notifications</span></mu-badge>
-      <mu-snackbar
-        id="default-snackbar"
-        message="File saved"
-        open
-      ></mu-snackbar>
-    </div>
+    <main>
+      <section>
+        <h2>Default locale (English)</h2>
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap">
+          <mu-chip
+            label="Tag"
+            deletable
+          ></mu-chip>
+          <mu-badge content="4"><span>Notifications</span></mu-badge>
+          <mu-snackbar
+            id="default-snackbar"
+            message="File saved"
+            open
+          ></mu-snackbar>
+        </div>
+      </section>
 
-    <h2>Custom locale (German) via mu-locale-provider</h2>
-    <mu-locale-provider id="german-provider">
-      <div style="display: flex; gap: 8px; align-items: center">
-        <mu-chip
-          id="german-chip"
-          label="Schlagwort"
-          deletable
-        ></mu-chip>
-        <mu-badge
-          id="german-badge"
-          content="7"
-          ><span>Benachrichtigungen</span></mu-badge
-        >
-        <mu-snackbar
-          id="german-snackbar"
-          message="Datei gespeichert"
-          open
-        ></mu-snackbar>
-      </div>
-    </mu-locale-provider>
+      <section>
+        <h2>Custom locale (German) via mu-locale-provider</h2>
+        <mu-locale-provider id="german-provider">
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap">
+            <mu-chip
+              id="german-chip"
+              label="Schlagwort"
+              deletable
+            ></mu-chip>
+            <mu-badge
+              id="german-badge"
+              content="7"
+              ><span>Benachrichtigungen</span></mu-badge
+            >
+            <mu-snackbar
+              id="german-snackbar"
+              message="Datei gespeichert"
+              open
+            ></mu-snackbar>
+          </div>
+        </mu-locale-provider>
+      </section>
+    </main>
 
     <script type="module">
       const provider = document.getElementById('german-provider');

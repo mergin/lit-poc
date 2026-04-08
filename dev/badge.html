@@ -1,37 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>mu-badge Demo</title>
+    <link
+      rel="stylesheet"
+      href="/dev/demo.css"
+    />
   </head>
   <body>
-    <a href="/index.html">Back to main</a>
-    <h1>mu-badge Demo</h1>
+    <header class="demo-header">
+      <a
+        class="back-link"
+        href="/dev/index.html"
+        >Back to dev index</a
+      >
+      <h1>mu-badge Demo</h1>
+    </header>
     <script
       type="module"
       src="/src/badge/mu-badge.ts"
     ></script>
-    <div style="padding: 24px; display: flex; gap: 32px; align-items: center">
-      <mu-badge content="4">
-        <div style="width: 40px; height: 40px; background: #e0e0e0; border-radius: 4px"></div>
-      </mu-badge>
-      <mu-badge
-        content="4"
-        color="primary"
-      >
-        <div style="width: 40px; height: 40px; background: #e0e0e0; border-radius: 4px"></div>
-      </mu-badge>
-      <mu-badge
-        content="4"
-        color="error"
-      >
-        <div style="width: 40px; height: 40px; background: #e0e0e0; border-radius: 4px"></div>
-      </mu-badge>
-      <mu-badge
-        content="3"
-        id="badge-mail"
-        >Mail</mu-badge
-      >
-    </div>
+
+    <main>
+      <section>
+        <h2>Examples</h2>
+        <div style="display: flex; gap: 32px; align-items: center; flex-wrap: wrap">
+          <mu-badge content="4">
+            <div style="width: 40px; height: 40px; background: #e0e0e0; border-radius: 4px"></div>
+          </mu-badge>
+          <mu-badge
+            content="4"
+            color="primary"
+          >
+            <div style="width: 40px; height: 40px; background: #e0e0e0; border-radius: 4px"></div>
+          </mu-badge>
+          <mu-badge
+            content="4"
+            color="error"
+          >
+            <div style="width: 40px; height: 40px; background: #e0e0e0; border-radius: 4px"></div>
+          </mu-badge>
+          <mu-badge
+            content="3"
+            id="badge-mail"
+            >Mail</mu-badge
+          >
+        </div>
+      </section>
+    </main>
   </body>
 </html>

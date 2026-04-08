@@ -90,18 +90,18 @@ export default defineConfig({
         index: resolve(__dirname, 'src/index.ts'),
 
         // ── Primitive / display ─────────────────────────────────────────────
-        avatar: resolve(__dirname, 'src/avatar/mu-avatar.ts'),
-        badge: resolve(__dirname, 'src/badge/mu-badge.ts'),
-        button: resolve(__dirname, 'src/button/mu-button.ts'),
-        card: resolve(__dirname, 'src/card/mu-card.ts'),
-        chip: resolve(__dirname, 'src/chip/mu-chip.ts'),
-        'chip-input': resolve(__dirname, 'src/chip/mu-chip-input.ts'),
-        divider: resolve(__dirname, 'src/divider/mu-divider.ts'),
-        icon: resolve(__dirname, 'src/icon/mu-icon.ts'),
+        avatar: resolve(__dirname, 'src/core/components/avatar/mu-avatar.ts'),
+        badge: resolve(__dirname, 'src/core/components/badge/mu-badge.ts'),
+        button: resolve(__dirname, 'src/core/components/button/mu-button.ts'),
+        card: resolve(__dirname, 'src/core/components/card/mu-card.ts'),
+        chip: resolve(__dirname, 'src/core/components/chip/mu-chip.ts'),
+        'chip-input': resolve(__dirname, 'src/core/components/chip/mu-chip-input.ts'),
+        divider: resolve(__dirname, 'src/core/components/divider/mu-divider.ts'),
+        icon: resolve(__dirname, 'src/core/components/icon/mu-icon.ts'),
         list: resolve(__dirname, 'src/list/mu-list.ts'),
         /** mu-list-item is a separate entry so it can be imported independently. */
         'list-item': resolve(__dirname, 'src/list/mu-list-item.ts'),
-        typography: resolve(__dirname, 'src/typography/mu-typography.ts'),
+        typography: resolve(__dirname, 'src/core/components/typography/mu-typography.ts'),
 
         // ── Theme / internationalisation ─────────────────────────────────────
         /**
@@ -113,60 +113,66 @@ export default defineConfig({
          * Context-based locale provider.  Wrap the app root to supply
          * translated strings to all child components.
          */
-        'locale-provider': resolve(__dirname, 'src/i18n/mu-locale-provider.ts'),
+        'locale-provider': resolve(__dirname, 'src/core/i18n/mu-locale-provider.ts'),
 
         // ── Form controls ────────────────────────────────────────────────────
         /**
          * All form controls use the `formAssociated = true` pattern so they
          *  participate natively in HTML forms and constraint-validation APIs.
          */
-        checkbox: resolve(__dirname, 'src/checkbox/mu-checkbox.ts'),
-        radio: resolve(__dirname, 'src/radio/mu-radio.ts'),
+        checkbox: resolve(__dirname, 'src/core/components/checkbox/mu-checkbox.ts'),
+        radio: resolve(__dirname, 'src/core/components/radio/mu-radio.ts'),
         /**
          * Radio group manages roving tabindex and single-selection across
          * slotted `mu-radio` children.
          */
-        'radio-group': resolve(__dirname, 'src/radio/mu-radio-group.ts'),
-        switch: resolve(__dirname, 'src/switch/mu-switch.ts'),
-        'text-field': resolve(__dirname, 'src/text-field/mu-text-field.ts'),
-        select: resolve(__dirname, 'src/select/mu-select.ts'),
-        slider: resolve(__dirname, 'src/slider/mu-slider.ts'),
-        autocomplete: resolve(__dirname, 'src/autocomplete/mu-autocomplete.ts'),
-        'file-upload': resolve(__dirname, 'src/file-upload/mu-file-upload.ts'),
-        rating: resolve(__dirname, 'src/rating/mu-rating.ts'),
+        'radio-group': resolve(__dirname, 'src/core/components/radio/mu-radio-group.ts'),
+        switch: resolve(__dirname, 'src/core/components/switch/mu-switch.ts'),
+        'text-field': resolve(__dirname, 'src/core/components/text-field/mu-text-field.ts'),
+        select: resolve(__dirname, 'src/core/components/select/mu-select.ts'),
+        slider: resolve(__dirname, 'src/core/components/slider/mu-slider.ts'),
+        autocomplete: resolve(__dirname, 'src/core/components/autocomplete/mu-autocomplete.ts'),
+        'file-upload': resolve(__dirname, 'src/core/components/file-upload/mu-file-upload.ts'),
+        rating: resolve(__dirname, 'src/core/components/rating/mu-rating.ts'),
 
         // ── Overlay / feedback ───────────────────────────────────────────────
-        dialog: resolve(__dirname, 'src/dialog/mu-dialog.ts'),
-        tooltip: resolve(__dirname, 'src/tooltip/mu-tooltip.ts'),
-        snackbar: resolve(__dirname, 'src/snackbar/mu-snackbar.ts'),
-        popover: resolve(__dirname, 'src/popover/mu-popover.ts'),
+        dialog: resolve(__dirname, 'src/core/components/dialog/mu-dialog.ts'),
+        tooltip: resolve(__dirname, 'src/core/components/tooltip/mu-tooltip.ts'),
+        snackbar: resolve(__dirname, 'src/core/components/snackbar/mu-snackbar.ts'),
+        popover: resolve(__dirname, 'src/core/components/popover/mu-popover.ts'),
 
         // ── Status / progress ────────────────────────────────────────────────
-        skeleton: resolve(__dirname, 'src/skeleton/mu-skeleton.ts'),
-        spinner: resolve(__dirname, 'src/spinner/mu-spinner.ts'),
-        'linear-progress': resolve(__dirname, 'src/linear-progress/mu-linear-progress.ts'),
-        alert: resolve(__dirname, 'src/alert/mu-alert.ts'),
+        skeleton: resolve(__dirname, 'src/core/components/skeleton/mu-skeleton.ts'),
+        spinner: resolve(__dirname, 'src/core/components/spinner/mu-spinner.ts'),
+        'linear-progress': resolve(
+          __dirname,
+          'src/core/components/linear-progress/mu-linear-progress.ts'
+        ),
+        alert: resolve(__dirname, 'src/core/components/alert/mu-alert.ts'),
 
         // ── Navigation ───────────────────────────────────────────────────────
-        tabs: resolve(__dirname, 'src/tabs/mu-tabs.ts'),
-        tab: resolve(__dirname, 'src/tabs/mu-tab.ts'),
-        'tab-panel': resolve(__dirname, 'src/tabs/mu-tab-panel.ts'),
-        accordion: resolve(__dirname, 'src/accordion/mu-accordion.ts'),
-        'accordion-item': resolve(__dirname, 'src/accordion/mu-accordion-item.ts'),
-        breadcrumb: resolve(__dirname, 'src/breadcrumb/mu-breadcrumb.ts'),
-        'breadcrumb-item': resolve(__dirname, 'src/breadcrumb/mu-breadcrumb-item.ts'),
-        pagination: resolve(__dirname, 'src/pagination/mu-pagination.ts'),
-        'app-bar': resolve(__dirname, 'src/app-bar/mu-app-bar.ts'),
-        drawer: resolve(__dirname, 'src/drawer/mu-drawer.ts'),
-        menu: resolve(__dirname, 'src/menu/mu-menu.ts'),
+        tabs: resolve(__dirname, 'src/core/components/tabs/mu-tabs.ts'),
+        tab: resolve(__dirname, 'src/core/components/tabs/mu-tab.ts'),
+        'tab-panel': resolve(__dirname, 'src/core/components/tabs/mu-tab-panel.ts'),
+        accordion: resolve(__dirname, 'src/core/components/accordion/mu-accordion.ts'),
+        'accordion-item': resolve(__dirname, 'src/core/components/accordion/mu-accordion-item.ts'),
+        breadcrumb: resolve(__dirname, 'src/core/components/breadcrumb/mu-breadcrumb.ts'),
+        'breadcrumb-item': resolve(
+          __dirname,
+          'src/core/components/breadcrumb/mu-breadcrumb-item.ts'
+        ),
+        pagination: resolve(__dirname, 'src/core/components/pagination/mu-pagination.ts'),
+        'app-bar': resolve(__dirname, 'src/core/components/app-bar/mu-app-bar.ts'),
+        drawer: resolve(__dirname, 'src/core/components/drawer/mu-drawer.ts'),
+        menu: resolve(__dirname, 'src/core/components/menu/mu-menu.ts'),
         /** mu-menu-item is a separate entry so it can be used outside a mu-menu. */
-        'menu-item': resolve(__dirname, 'src/menu/mu-menu-item.ts'),
+        'menu-item': resolve(__dirname, 'src/core/components/menu/mu-menu-item.ts'),
 
         // ── Complex / composite ──────────────────────────────────────────────
-        stepper: resolve(__dirname, 'src/stepper/mu-stepper.ts'),
+        stepper: resolve(__dirname, 'src/core/components/stepper/mu-stepper.ts'),
         /** mu-step is a separate entry used as slotted children inside mu-stepper. */
-        step: resolve(__dirname, 'src/stepper/mu-step.ts'),
-        'data-table': resolve(__dirname, 'src/data-table/mu-data-table.ts'),
+        step: resolve(__dirname, 'src/core/components/stepper/mu-step.ts'),
+        'data-table': resolve(__dirname, 'src/core/components/data-table/mu-data-table.ts'),
 
         // ── Framework adapters ───────────────────────────────────────────────
         /**
@@ -174,24 +180,24 @@ export default defineConfig({
          * wrapped in a typed React component so consumers avoid manual event
          * wiring and ref forwarding.
          */
-        react: resolve(__dirname, 'src/react/index.ts'),
+        react: resolve(__dirname, 'src/adapters/react/index.ts'),
         /**
          * Angular Control Value Accessor directives for all form controls.
          * Re-exports `MuFormsModule` for easy import in Angular modules.
          */
-        angular: resolve(__dirname, 'src/angular/index.ts'),
+        angular: resolve(__dirname, 'src/adapters/angular/index.ts'),
         /**
          * Vue 3 wrappers generated with `defineComponent`.  Each web component
          * is wrapped in a typed Vue component so consumers get typed props and
          * can use Vue template event shorthands (e.g. `@mu-close`).
          */
-        vue: resolve(__dirname, 'src/vue/index.ts'),
+        vue: resolve(__dirname, 'src/adapters/vue/index.ts'),
         /**
          * Svelte 5 wrappers.  Each web component is wrapped in a `.svelte`
          * component with typed `$props()` and rest-prop forwarding so consumers
          * get typed props and native Svelte event attribute forwarding.
          */
-        svelte: resolve(__dirname, 'src/svelte/index.ts'),
+        svelte: resolve(__dirname, 'src/adapters/svelte/index.ts'),
 
         // ── Design tokens ────────────────────────────────────────────────────
         /**
@@ -200,7 +206,7 @@ export default defineConfig({
          * theming or documentation tooling.  For static CSS consumption use
          * the `tokens.css` subpath export produced by `npm run build:tokens`.
          */
-        tokens: resolve(__dirname, 'src/styles/tokens.ts'),
+        tokens: resolve(__dirname, 'src/tokens/index.ts'),
 
         // ── SSR ──────────────────────────────────────────────────────────────
         /**
@@ -208,7 +214,7 @@ export default defineConfig({
          * alongside `@lit-labs/ssr` utilities so consumers can render
          * component HTML strings on the server without a separate import.
          */
-        ssr: resolve(__dirname, 'src/ssr/index.ts'),
+        ssr: resolve(__dirname, 'src/platform/ssr/index.ts'),
       },
       /**
        * Only ES module output.  CJS and UMD are intentionally omitted:
