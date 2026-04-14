@@ -3,81 +3,8 @@
   "version": 1.1,
   "tags": [
     {
-      "name": "mu-accordion-item",
-      "description": "Individual accordion item with an expandable content region.\nManaged by `mu-accordion`; can also be used standalone.\n---\n\n\n### **Events:**\n - **accordion-toggle** - Dispatched when the item expands or collapses. Detail: `{ expanded: boolean }`.\n\n### **CSS Properties:**\n - **--mu-accordion-divider-color** - Border colour between items; defaults to `--mu-divider` (#e0e0e0). _(default: undefined)_\n- **--mu-accordion-header-color** - Text colour of the header; defaults to `--mu-text-primary`. _(default: undefined)_\n- **--mu-accordion-content-color** - Text colour of the content area; defaults to `--mu-text-secondary`. _(default: undefined)_\n\n### **CSS Parts:**\n - **header** - The `<button>` element that acts as the expandable heading.\n- **content** - The collapsible content region `div`.",
-      "attributes": [
-        {
-          "name": "expanded",
-          "description": "Whether the content region is currently expanded.",
-          "values": []
-        },
-        {
-          "name": "disabled",
-          "description": "Whether the item is disabled.",
-          "values": []
-        },
-        {
-          "name": "heading",
-          "description": "Heading text displayed in the header button.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-accordion",
-      "description": "Accordion container that optionally enforces single-panel expansion.\r\n\r\nSlotted children must be `mu-accordion-item` elements.\n---\n",
-      "attributes": [
-        {
-          "name": "allowMultiple",
-          "description": "When true, multiple items may be expanded simultaneously.\r\nWhen false (default), expanding one item collapses all others.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-alert",
-      "description": "Alert component for communicating feedback messages.\nUses role=\"alert\" for error severity and role=\"status\" for others.\n---\n\n\n### **Events:**\n - **mu-close** - Dispatched when the close button is clicked.",
-      "attributes": [
-        {
-          "name": "severity",
-          "description": "Severity level controlling color, icon and ARIA role.",
-          "values": [{"name": "AlertSeverity"}]
-        },
-        {
-          "name": "closeLabel",
-          "description": "When provided, renders a close button.\nThe button's aria-label is set to this value.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-app-bar",
-      "description": "Application top bar with three named slots: `start`, default, and `end`.\nRenders as a sticky header.\n---\n",
-      "attributes": [
-        {
-          "name": "elevation",
-          "description": "Elevation level controlling box-shadow (0 = flat, 1 = default raised).",
-          "values": []
-        },
-        {
-          "name": "color",
-          "description": "Background color token or explicit CSS color.",
-          "values": []
-        },
-        {
-          "name": "fixed",
-          "description": "Makes the app bar position:fixed so it stays at the top during scroll.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
       "name": "mu-autocomplete",
-      "description": "Autocomplete / combobox form component with filtering and keyboard navigation.\nParticipates natively in HTML forms.\n---\n\n\n### **Events:**\n - **change** - Dispatched when an option is selected. Detail: `{ value: string, label: string }`.\n\n### **CSS Parts:**\n - **input** - The text input element.\n- **listbox** - The dropdown option list.\n- **option** - Each individual option in the listbox.",
+      "description": "Autocomplete / combobox form component with filtering and keyboard navigation.\r\nParticipates natively in HTML forms.\n---\n\n\n### **Events:**\n - **change** - Dispatched when an option is selected. Detail: `{ value: string, label: string }`.\n\n### **CSS Parts:**\n - **input** - The text input element.\n- **listbox** - The dropdown option list.\n- **option** - Each individual option in the listbox.",
       "attributes": [
         {
           "name": "value",
@@ -119,32 +46,39 @@
       "references": []
     },
     {
-      "name": "mu-avatar",
-      "description": "Minimal/MUI-style avatar component.\nCan display an image or initials, supports size and color.\n---\n",
+      "name": "mu-app-bar",
+      "description": "Application top bar with three named slots: `start`, default, and `end`.\r\nRenders as a sticky header.\n---\n",
       "attributes": [
         {
-          "name": "src",
-          "description": "Avatar image URL (optional).",
+          "name": "elevation",
+          "description": "Elevation level controlling box-shadow (0 = flat, 1 = default raised).",
           "values": []
-        },
-        {
-          "name": "alt",
-          "description": "Alt text for the image (for accessibility).",
-          "values": []
-        },
-        {
-          "name": "initials",
-          "description": "Fallback initials if no image.",
-          "values": []
-        },
-        {
-          "name": "size",
-          "description": "Avatar size: 'small' | 'medium' | 'large'.",
-          "values": [{"name": "small"}, {"name": "medium"}, {"name": "large"}]
         },
         {
           "name": "color",
-          "description": "Predefined color: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'.",
+          "description": "Background color token or explicit CSS color.",
+          "values": []
+        },
+        {
+          "name": "fixed",
+          "description": "Makes the app bar position:fixed so it stays at the top during scroll.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-alert",
+      "description": "Alert component for communicating feedback messages.\r\nUses role=\"alert\" for error severity and role=\"status\" for others.\n---\n\n\n### **Events:**\n - **mu-close** - Dispatched when the close button is clicked.",
+      "attributes": [
+        {
+          "name": "severity",
+          "description": "Severity level controlling color, icon and ARIA role.",
+          "values": [{"name": "AlertSeverity"}]
+        },
+        {
+          "name": "closeLabel",
+          "description": "When provided, renders a close button.\r\nThe button's aria-label is set to this value.",
           "values": []
         }
       ],
@@ -179,7 +113,7 @@
     },
     {
       "name": "mu-breadcrumb-item",
-      "description": "Individual breadcrumb item rendered as a list item.\nUse inside a `mu-breadcrumb` container. Set `current` on the final item.\n---\n",
+      "description": "Individual breadcrumb item rendered as a list item.\r\nUse inside a `mu-breadcrumb` container. Set `current` on the final item.\n---\n",
       "attributes": [
         {
           "name": "href",
@@ -188,7 +122,7 @@
         },
         {
           "name": "current",
-          "description": "When true marks this as the current page (aria-current=\"page\").\nThe item is rendered without a link.",
+          "description": "When true marks this as the current page (aria-current=\"page\").\r\nThe item is rendered without a link.",
           "values": []
         }
       ],
@@ -207,8 +141,74 @@
       "references": []
     },
     {
+      "name": "mu-avatar",
+      "description": "Minimal/MUI-style avatar component.\r\nCan display an image or initials, supports size and color.\n---\n",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "Avatar image URL (optional).",
+          "values": []
+        },
+        {
+          "name": "alt",
+          "description": "Alt text for the image (for accessibility).",
+          "values": []
+        },
+        {
+          "name": "initials",
+          "description": "Fallback initials if no image.",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "Avatar size: 'small' | 'medium' | 'large'.",
+          "values": [{"name": "small"}, {"name": "medium"}, {"name": "large"}]
+        },
+        {
+          "name": "color",
+          "description": "Predefined color: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-accordion-item",
+      "description": "Individual accordion item with an expandable content region.\r\nManaged by `mu-accordion`; can also be used standalone.\n---\n\n\n### **Events:**\n - **accordion-toggle** - Dispatched when the item expands or collapses. Detail: `{ expanded: boolean }`.\n\n### **CSS Properties:**\n - **--mu-accordion-divider-color** - Border colour between items; defaults to `--mu-divider` (#e0e0e0). _(default: undefined)_\n- **--mu-accordion-header-color** - Text colour of the header; defaults to `--mu-text-primary`. _(default: undefined)_\n- **--mu-accordion-content-color** - Text colour of the content area; defaults to `--mu-text-secondary`. _(default: undefined)_\n\n### **CSS Parts:**\n - **header** - The `<button>` element that acts as the expandable heading.\n- **content** - The collapsible content region `div`.",
+      "attributes": [
+        {
+          "name": "expanded",
+          "description": "Whether the content region is currently expanded.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Whether the item is disabled.",
+          "values": []
+        },
+        {
+          "name": "heading",
+          "description": "Heading text displayed in the header button.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-accordion",
+      "description": "Accordion container that optionally enforces single-panel expansion.\r\n\r\nSlotted children must be `mu-accordion-item` elements.\n---\n",
+      "attributes": [
+        {
+          "name": "allowMultiple",
+          "description": "When true, multiple items may be expanded simultaneously.\r\nWhen false (default), expanding one item collapses all others.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "mu-button",
-      "description": "Minimal/MUI-style button component.\nSupports 3 sizes, 3 types, and predefined colors.\n---\n\n\n### **CSS Properties:**\n - **--mu-button-bg** - Background colour; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-button-color** - Text colour; defaults to `#fff` for contained variant. _(default: undefined)_\n- **--mu-button-radius** - Border radius; falls back to `--mu-radius-md` (4 px). _(default: undefined)_\n- **--mu-button-padding** - Internal block / inline padding; falls back to `--mu-spacing-2` / `--mu-spacing-4`. _(default: undefined)_\n\n### **CSS Parts:**\n - **button** - The inner `<button>` element.",
+      "description": "Minimal/MUI-style button component.\r\nSupports 3 sizes, 3 types, and predefined colors.\n---\n\n\n### **CSS Properties:**\n - **--mu-button-bg** - Background colour; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-button-color** - Text colour; defaults to `#fff` for contained variant. _(default: undefined)_\n- **--mu-button-radius** - Border radius; falls back to `--mu-radius-md` (4 px). _(default: undefined)_\n- **--mu-button-padding** - Internal block / inline padding; falls back to `--mu-spacing-2` / `--mu-spacing-4`. _(default: undefined)_\n\n### **CSS Parts:**\n - **button** - The inner `<button>` element.",
       "attributes": [
         {
           "name": "size",
@@ -226,6 +226,48 @@
           "values": []
         },
         {"name": "disabled", "description": "Disabled state.", "values": []}
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-data-table",
+      "description": "Data table component with sorting, row selection, and skeleton loading state.\r\nDoes not support virtualization in v1 — keep row count reasonable (< 1000).\n---\n\n\n### **Events:**\n - **sort-change** - Dispatched when sorting changes. Detail: `{ key: string, direction: SortDirection }`.\n- **selection-change** - Dispatched when selection changes. Detail: `{ selected: number[] }`.\n\n### **CSS Parts:**\n - **table** - The `<table>` element.\n- **head** - The `<thead>` element.\n- **body** - The `<tbody>` element.\n- **header-cell** - Each `<th>` in the header row.\n- **cell** - Each `<td>` in a data row.\n- **row** - Each `<tr>` in the body.\n- **row--selected** - Applied to selected rows.",
+      "attributes": [
+        {
+          "name": "columns",
+          "description": "Array of column definitions.",
+          "values": [{"name": "DataTableColumn[]"}]
+        },
+        {
+          "name": "rows",
+          "description": "Array of row data objects.",
+          "values": [{"name": "Record<string"}, {"name": "unknown>[]"}]
+        },
+        {
+          "name": "sortKey",
+          "description": "Key of the currently sorted column, or empty string for none.",
+          "values": []
+        },
+        {
+          "name": "sortDirection",
+          "description": "Current sort direction.",
+          "values": [{"name": "SortDirection"}]
+        },
+        {
+          "name": "selectable",
+          "description": "Enables row selection via checkboxes.",
+          "values": []
+        },
+        {
+          "name": "loading",
+          "description": "Shows skeleton loading rows instead of actual data.",
+          "values": []
+        },
+        {
+          "name": "skeletonRows",
+          "description": "Number of skeleton rows to display when loading.",
+          "values": []
+        }
       ],
       "references": []
     },
@@ -266,7 +308,7 @@
     },
     {
       "name": "mu-chip-input",
-      "description": "Input component that tokenises typed values into deletable chips.\nParticipates in native HTML forms via ElementInternals.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the chip array changes. Detail: `{ chips: string[] }`.\n\n### **CSS Parts:**\n - **container** - The flex wrapper around chips and the text input.\n- **chip-text-input** - The inline text input field.",
+      "description": "Input component that tokenises typed values into deletable chips.\r\nParticipates in native HTML forms via ElementInternals.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the chip array changes. Detail: `{ chips: string[] }`.\n\n### **CSS Parts:**\n - **container** - The flex wrapper around chips and the text input.\n- **chip-text-input** - The inline text input field.",
       "attributes": [
         {
           "name": "chips",
@@ -329,7 +371,7 @@
     },
     {
       "name": "mu-checkbox",
-      "description": "Checkbox form component that participates in native HTML forms via ElementInternals.\nSupports checked, indeterminate, and disabled states with full keyboard accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the checked state changes.\n\n### **CSS Properties:**\n - **--mu-checkbox-color** - Active (checked) fill and border colour; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-checkbox-radius** - Border radius of the box; defaults to 3 px. _(default: undefined)_\n\n### **CSS Parts:**\n - **checkbox** - The focusable wrapper element that holds the visual box.\n- **checkmark** - The inner box containing the SVG tick / dash mark.\n- **label** - The visible label text element.",
+      "description": "Checkbox form component that participates in native HTML forms via ElementInternals.\r\nSupports checked, indeterminate, and disabled states with full keyboard accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the checked state changes.\n\n### **CSS Properties:**\n - **--mu-checkbox-color** - Active (checked) fill and border colour; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-checkbox-radius** - Border radius of the box; defaults to 3 px. _(default: undefined)_\n\n### **CSS Parts:**\n - **checkbox** - The focusable wrapper element that holds the visual box.\n- **checkmark** - The inner box containing the SVG tick / dash mark.\n- **label** - The visible label text element.",
       "attributes": [
         {
           "name": "checked",
@@ -365,50 +407,8 @@
       "references": []
     },
     {
-      "name": "mu-data-table",
-      "description": "Data table component with sorting, row selection, and skeleton loading state.\nDoes not support virtualization in v1 — keep row count reasonable (< 1000).\n---\n\n\n### **Events:**\n - **sort-change** - Dispatched when sorting changes. Detail: `{ key: string, direction: SortDirection }`.\n- **selection-change** - Dispatched when selection changes. Detail: `{ selected: number[] }`.\n\n### **CSS Parts:**\n - **table** - The `<table>` element.\n- **head** - The `<thead>` element.\n- **body** - The `<tbody>` element.\n- **header-cell** - Each `<th>` in the header row.\n- **cell** - Each `<td>` in a data row.\n- **row** - Each `<tr>` in the body.\n- **row--selected** - Applied to selected rows.",
-      "attributes": [
-        {
-          "name": "columns",
-          "description": "Array of column definitions.",
-          "values": [{"name": "DataTableColumn[]"}]
-        },
-        {
-          "name": "rows",
-          "description": "Array of row data objects.",
-          "values": [{"name": "Record<string"}, {"name": "unknown>[]"}]
-        },
-        {
-          "name": "sortKey",
-          "description": "Key of the currently sorted column, or empty string for none.",
-          "values": []
-        },
-        {
-          "name": "sortDirection",
-          "description": "Current sort direction.",
-          "values": [{"name": "SortDirection"}]
-        },
-        {
-          "name": "selectable",
-          "description": "Enables row selection via checkboxes.",
-          "values": []
-        },
-        {
-          "name": "loading",
-          "description": "Shows skeleton loading rows instead of actual data.",
-          "values": []
-        },
-        {
-          "name": "skeletonRows",
-          "description": "Number of skeleton rows to display when loading.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
       "name": "mu-dialog",
-      "description": "Modal dialog overlay using the native &lt;dialog&gt; element.\nManages focus on open/close, traps focus inside, and closes on Escape.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched when the dialog finishes opening.\n- **mu-close** - Dispatched when the dialog closes (any cause).\n\n### **CSS Properties:**\n - **--mu-dialog-radius** - Border radius of the dialog panel; defaults to `--mu-radius-xl` (12 px). _(default: undefined)_\n- **--mu-dialog-shadow** - Box shadow of the dialog; defaults to `--mu-elevation-2`. _(default: undefined)_\n- **--mu-dialog-max-width** - Maximum width of the dialog; defaults to `min(560px, 90vw)`. _(default: undefined)_\n\n### **CSS Parts:**\n - **dialog** - The native `<dialog>` element.\n- **header** - The `<h2>` headline element at the top of the dialog.\n- **content** - The scrollable content area containing the default slot.\n- **actions** - The footer actions area containing the `actions` named slot.\n- **close-button** - The × icon button in the top-right corner.",
+      "description": "Modal dialog overlay using the native &lt;dialog&gt; element.\r\nManages focus on open/close, traps focus inside, and closes on Escape.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched when the dialog finishes opening.\n- **mu-close** - Dispatched when the dialog closes (any cause).\n\n### **CSS Properties:**\n - **--mu-dialog-radius** - Border radius of the dialog panel; defaults to `--mu-radius-xl` (12 px). _(default: undefined)_\n- **--mu-dialog-shadow** - Box shadow of the dialog; defaults to `--mu-elevation-2`. _(default: undefined)_\n- **--mu-dialog-max-width** - Maximum width of the dialog; defaults to `min(560px, 90vw)`. _(default: undefined)_\n\n### **CSS Parts:**\n - **dialog** - The native `<dialog>` element.\n- **header** - The `<h2>` headline element at the top of the dialog.\n- **content** - The scrollable content area containing the default slot.\n- **actions** - The footer actions area containing the `actions` named slot.\n- **close-button** - The × icon button in the top-right corner.",
       "attributes": [
         {
           "name": "open",
@@ -446,8 +446,30 @@
       "references": []
     },
     {
+      "name": "mu-drawer",
+      "description": "Side drawer that slides in from the left or right edge of the viewport.\r\nUses a native `<dialog>` element for focus trapping and Escape handling.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched after the drawer opens.\n- **mu-close** - Dispatched after the drawer closes.",
+      "attributes": [
+        {
+          "name": "open",
+          "description": "Whether the drawer is visible. Reflects to attribute.",
+          "values": []
+        },
+        {
+          "name": "placement",
+          "description": "Side from which the drawer slides in.",
+          "values": [{"name": "DrawerPlacement"}]
+        },
+        {
+          "name": "width",
+          "description": "Width of the drawer panel (any valid CSS length value).",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "mu-file-upload",
-      "description": "File upload form component with drag-and-drop support.\nParticipates natively in HTML forms.\n---\n\n\n### **Events:**\n - **mu-change** - Dispatched when files are selected. Detail: `{ files: FileList }`.\n\n### **CSS Parts:**\n - **dropzone** - The clickable drop zone container.\n- **dropzone--active** - Applied to the drop zone when a file is dragged over.\n- **label** - The main label text inside the drop zone.\n- **hint** - The secondary hint text inside the drop zone.",
+      "description": "File upload form component with drag-and-drop support.\r\nParticipates natively in HTML forms.\n---\n\n\n### **Events:**\n - **mu-change** - Dispatched when files are selected. Detail: `{ files: FileList }`.\n\n### **CSS Parts:**\n - **dropzone** - The clickable drop zone container.\n- **dropzone--active** - Applied to the drop zone when a file is dragged over.\n- **label** - The main label text inside the drop zone.\n- **hint** - The secondary hint text inside the drop zone.",
       "attributes": [
         {
           "name": "multiple",
@@ -479,30 +501,8 @@
       "references": []
     },
     {
-      "name": "mu-drawer",
-      "description": "Side drawer that slides in from the left or right edge of the viewport.\nUses a native `<dialog>` element for focus trapping and Escape handling.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched after the drawer opens.\n- **mu-close** - Dispatched after the drawer closes.",
-      "attributes": [
-        {
-          "name": "open",
-          "description": "Whether the drawer is visible. Reflects to attribute.",
-          "values": []
-        },
-        {
-          "name": "placement",
-          "description": "Side from which the drawer slides in.",
-          "values": [{"name": "DrawerPlacement"}]
-        },
-        {
-          "name": "width",
-          "description": "Width of the drawer panel (any valid CSS length value).",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
       "name": "mu-icon",
-      "description": "Material Icon wrapper component.\nSupports size and color props.\n---\n",
+      "description": "Material Icon wrapper component.\r\nSupports size and color props.\n---\n",
       "attributes": [
         {
           "name": "name",
@@ -563,7 +563,7 @@
     },
     {
       "name": "mu-menu",
-      "description": "Dropdown menu component with keyboard navigation and accessible focus management.\nPlace `mu-menu-item` elements in the default slot.\nUse the `trigger` slot for the element that opens the menu.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched when the menu opens.\n- **mu-close** - Dispatched when the menu closes.\n\n### **CSS Parts:**\n - **menu** - The outer container of the floating list.\n- **list** - The `ul` element holding menu items.",
+      "description": "Dropdown menu component with keyboard navigation and accessible focus management.\r\nPlace `mu-menu-item` elements in the default slot.\r\nUse the `trigger` slot for the element that opens the menu.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched when the menu opens.\n- **mu-close** - Dispatched when the menu closes.\n\n### **CSS Parts:**\n - **menu** - The outer container of the floating list.\n- **list** - The `ul` element holding menu items.",
       "attributes": [
         {
           "name": "open",
@@ -585,7 +585,7 @@
     },
     {
       "name": "mu-pagination",
-      "description": "Pagination component for navigating through pages of content.\nEmits a `page-change` event when a page button or prev/next is clicked.\n---\n\n\n### **Events:**\n - **page-change** - Detail: `{ page: number }`.",
+      "description": "Pagination component for navigating through pages of content.\r\nEmits a `page-change` event when a page button or prev/next is clicked.\n---\n\n\n### **Events:**\n - **page-change** - Detail: `{ page: number }`.",
       "attributes": [
         {
           "name": "count",
@@ -612,7 +612,7 @@
     },
     {
       "name": "mu-popover",
-      "description": "Floating popover component with focus management and accessible markup.\nAttach a trigger element via the `trigger` slot.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched when the popover opens.\n- **mu-close** - Dispatched when the popover closes.\n\n### **Methods:**\n - **openPopover(): _void_** - Opens the popover, positions it, and moves focus to the first focusable child.\n- **closePopover(): _void_** - Closes the popover and restores focus to the trigger.\n\n### **CSS Parts:**\n - **content** - The floating content container.",
+      "description": "Floating popover component with focus management and accessible markup.\r\nAttach a trigger element via the `trigger` slot.\n---\n\n\n### **Events:**\n - **mu-open** - Dispatched when the popover opens.\n- **mu-close** - Dispatched when the popover closes.\n\n### **Methods:**\n - **openPopover(): _void_** - Opens the popover, positions it, and moves focus to the first focusable child.\n- **closePopover(): _void_** - Closes the popover and restores focus to the trigger.\n\n### **CSS Parts:**\n - **content** - The floating content container.",
       "attributes": [
         {
           "name": "open",
@@ -638,57 +638,8 @@
       "references": []
     },
     {
-      "name": "mu-radio-group",
-      "description": "Radio group container that wraps `mu-radio` elements.\nProvides `role=\"radiogroup\"` and an accessible group label.\n---\n",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "Accessible label for the radio group, referenced by aria-labelledby.",
-          "values": []
-        },
-        {
-          "name": "required",
-          "description": "Marks the control as required — at least one radio must be selected.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-radio",
-      "description": "Radio button form component that participates in native HTML forms.\nUse inside a `mu-radio-group` for proper grouping and roving tabindex.\n---\n\n\n### **Events:**\n - **change** - Dispatched when this radio becomes selected.\n\n### **Methods:**\n - **focus(): _void_** - Focuses the host element's inner ripple span.",
-      "attributes": [
-        {
-          "name": "checked",
-          "description": "Whether this radio button is selected.",
-          "values": []
-        },
-        {
-          "name": "disabled",
-          "description": "Disables the radio button, making it non-interactive.",
-          "values": []
-        },
-        {
-          "name": "name",
-          "description": "Form field name used to group radio buttons.",
-          "values": []
-        },
-        {
-          "name": "value",
-          "description": "Value submitted to the form when this radio is selected.",
-          "values": []
-        },
-        {
-          "name": "label",
-          "description": "Visible label rendered next to the radio button. Falls back to default slot.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
       "name": "mu-rating",
-      "description": "Star rating form component.\nSupports half-star precision, read-only mode, and full keyboard navigation.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the rating value changes. Detail: `{ value: number }`.\n\n### **CSS Parts:**\n - **star** - Each individual star wrapper span.\n- **star--filled** - Applied to fully filled stars.\n- **star--empty** - Applied to empty stars.\n- **star--partial** - Applied to partial/half stars.",
+      "description": "Star rating form component.\r\nSupports half-star precision, read-only mode, and full keyboard navigation.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the rating value changes. Detail: `{ value: number }`.\n\n### **CSS Parts:**\n - **star** - Each individual star wrapper span.\n- **star--filled** - Applied to fully filled stars.\n- **star--empty** - Applied to empty stars.\n- **star--partial** - Applied to partial/half stars.",
       "attributes": [
         {
           "name": "value",
@@ -726,7 +677,7 @@
     },
     {
       "name": "mu-select",
-      "description": "Select (dropdown) form component that participates in native HTML forms.\nUses a native `<select>` inside shadow DOM for maximum accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the selected value changes.\n\n### **CSS Properties:**\n - **--mu-select-radius** - Border radius of the select element; defaults to `--mu-radius` (8 px). _(default: undefined)_\n- **--mu-select-border-color** - Default border colour; defaults to `--mu-divider`. _(default: undefined)_\n- **--mu-select-focus-color** - Border and ring colour on focus; defaults to `--mu-primary`. _(default: undefined)_\n\n### **CSS Parts:**\n - **label** - The `<label>` element displayed above the select.\n- **select** - The native `<select>` element.\n- **error** - The error message element displayed below the field.",
+      "description": "Select (dropdown) form component that participates in native HTML forms.\r\nUses a native `<select>` inside shadow DOM for maximum accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the selected value changes.\n\n### **CSS Properties:**\n - **--mu-select-radius** - Border radius of the select element; defaults to `--mu-radius` (8 px). _(default: undefined)_\n- **--mu-select-border-color** - Default border colour; defaults to `--mu-divider`. _(default: undefined)_\n- **--mu-select-focus-color** - Border and ring colour on focus; defaults to `--mu-primary`. _(default: undefined)_\n\n### **CSS Parts:**\n - **label** - The `<label>` element displayed above the select.\n- **select** - The native `<select>` element.\n- **error** - The error message element displayed below the field.",
       "attributes": [
         {
           "name": "value",
@@ -800,7 +751,7 @@
     },
     {
       "name": "mu-slider",
-      "description": "Range slider form element that participates in native HTML forms.\nSupports keyboard navigation, pointer drag, and full accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the value changes. Detail: `{ value: number }`.\n\n### **CSS Parts:**\n - **track** - The background track element.\n- **fill** - The filled portion of the track representing the current value.\n- **thumb** - The draggable circular handle.",
+      "description": "Range slider form element that participates in native HTML forms.\r\nSupports keyboard navigation, pointer drag, and full accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the value changes. Detail: `{ value: number }`.\n\n### **CSS Parts:**\n - **track** - The background track element.\n- **fill** - The filled portion of the track representing the current value.\n- **thumb** - The draggable circular handle.",
       "attributes": [
         {
           "name": "value",
@@ -842,7 +793,7 @@
     },
     {
       "name": "mu-snackbar",
-      "description": "Snackbar notification component rendered in a fixed bottom-center position.\nAuto-dismisses after the configured duration; duration=0 is persistent.\n---\n\n\n### **Events:**\n - **mu-close** - Dispatched when the snackbar is dismissed (any cause).\n- **mu-action** - Dispatched when the action button is clicked.\n\n### **CSS Properties:**\n - **--mu-snackbar-bg** - Background colour; defaults to `--mu-text-primary` (#212b36). _(default: undefined)_\n- **--mu-snackbar-radius** - Border radius; defaults to `--mu-radius-lg` (8 px). _(default: undefined)_\n- **--mu-snackbar-shadow** - Box shadow; defaults to `--mu-elevation-2`. _(default: undefined)_\n\n### **CSS Parts:**\n - **snackbar** - The container div for the snackbar notification.\n- **message** - The text message span inside the snackbar.\n- **action** - The optional call-to-action button.\n- **close-button** - The dismiss (×) icon button.",
+      "description": "Snackbar notification component rendered in a fixed bottom-center position.\r\nAuto-dismisses after the configured duration; duration=0 is persistent.\n---\n\n\n### **Events:**\n - **mu-close** - Dispatched when the snackbar is dismissed (any cause).\n- **mu-action** - Dispatched when the action button is clicked.\n\n### **CSS Properties:**\n - **--mu-snackbar-bg** - Background colour; defaults to `--mu-text-primary` (#212b36). _(default: undefined)_\n- **--mu-snackbar-radius** - Border radius; defaults to `--mu-radius-lg` (8 px). _(default: undefined)_\n- **--mu-snackbar-shadow** - Box shadow; defaults to `--mu-elevation-2`. _(default: undefined)_\n\n### **CSS Parts:**\n - **snackbar** - The container div for the snackbar notification.\n- **message** - The text message span inside the snackbar.\n- **action** - The optional call-to-action button.\n- **close-button** - The dismiss (×) icon button.",
       "attributes": [
         {
           "name": "message",
@@ -873,27 +824,81 @@
       "references": []
     },
     {
-      "name": "mu-spinner",
-      "description": "Circular progress indicator rendered as an SVG.\r\nSupports both indeterminate (spinning) and determinate (percentage) modes.\n---\n",
+      "name": "mu-radio-group",
+      "description": "Radio group container that wraps `mu-radio` elements.\r\nProvides `role=\"radiogroup\"` and an accessible group label.\n---\n",
       "attributes": [
         {
-          "name": "size",
-          "description": "Named size of the spinner.",
-          "values": [{"name": "SpinnerSize"}]
+          "name": "label",
+          "description": "Accessible label for the radio group, referenced by aria-labelledby.",
+          "values": []
         },
         {
-          "name": "color",
-          "description": "Stroke color of the spinning arc. Accepts any valid CSS color value.",
+          "name": "required",
+          "description": "Marks the control as required — at least one radio must be selected.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-radio",
+      "description": "Radio button form component that participates in native HTML forms.\r\nUse inside a `mu-radio-group` for proper grouping and roving tabindex.\n---\n\n\n### **Events:**\n - **change** - Dispatched when this radio becomes selected.\n\n### **Methods:**\n - **focus(): _void_** - Focuses the host element's inner ripple span.",
+      "attributes": [
+        {
+          "name": "checked",
+          "description": "Whether this radio button is selected.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the radio button, making it non-interactive.",
+          "values": []
+        },
+        {
+          "name": "name",
+          "description": "Form field name used to group radio buttons.",
           "values": []
         },
         {
           "name": "value",
-          "description": "Progress value 0–100 for determinate mode.\r\nWhen set to a number the spinner renders a static filled arc;\r\notherwise it spins indefinitely.",
+          "description": "Value submitted to the form when this radio is selected.",
           "values": []
         },
         {
-          "name": "indeterminate",
-          "description": "Whether to spin indefinitely regardless of `value`.",
+          "name": "label",
+          "description": "Visible label rendered next to the radio button. Falls back to default slot.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-switch",
+      "description": "Toggle switch form component that participates in native HTML forms.\r\nSupports checked, disabled states and full keyboard accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the switch is toggled.\n\n### **CSS Properties:**\n - **--mu-switch-color** - Track colour when the switch is on; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-switch-radius** - Border radius of the track; defaults to 14 px. _(default: undefined)_\n\n### **CSS Parts:**\n - **track** - The sliding track element (the pill shape).\n- **thumb** - The circular thumb that slides inside the track.\n- **label** - The visible label text element.",
+      "attributes": [
+        {
+          "name": "checked",
+          "description": "Whether the switch is in the on/checked state.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the switch, making it non-interactive.",
+          "values": []
+        },
+        {
+          "name": "name",
+          "description": "Form field name submitted with the form.",
+          "values": []
+        },
+        {
+          "name": "value",
+          "description": "Value submitted to the form when the switch is on.",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "Visible label rendered next to the switch. Falls back to default slot.",
           "values": []
         }
       ],
@@ -901,7 +906,7 @@
     },
     {
       "name": "mu-step",
-      "description": "Individual step used inside `mu-stepper`.\nDisplays a step indicator with a label and optional content slot.\n---\n\n\n### **CSS Parts:**\n - **indicator** - The circular step indicator.\n- **label** - The step label text.\n- **content** - The slot container for step content.",
+      "description": "Individual step used inside `mu-stepper`.\r\nDisplays a step indicator with a label and optional content slot.\n---\n\n\n### **CSS Parts:**\n - **indicator** - The circular step indicator.\n- **label** - The step label text.\n- **content** - The slot container for step content.",
       "attributes": [
         {
           "name": "label",
@@ -923,7 +928,7 @@
     },
     {
       "name": "mu-stepper",
-      "description": "Step-by-step progress indicator component.\nAccepts `mu-step` elements as children to define each step.\n---\n\n\n### **Events:**\n - **step-change** - Dispatched when the active step changes. Detail: `{ from: number, to: number }`.\n\n### **Methods:**\n - **goTo(toIndex: _number_): _void_** - Navigates to the given step index if allowed.\n- **next(): _void_** - Advances to the next step.\n- **back(): _void_** - Returns to the previous step.\n\n### **CSS Parts:**\n - **connector** - The line connecting two adjacent steps.",
+      "description": "Step-by-step progress indicator component.\r\nAccepts `mu-step` elements as children to define each step.\n---\n\n\n### **Events:**\n - **step-change** - Dispatched when the active step changes. Detail: `{ from: number, to: number }`.\n\n### **Methods:**\n - **goTo(toIndex: _number_): _void_** - Navigates to the given step index if allowed.\n- **next(): _void_** - Advances to the next step.\n- **back(): _void_** - Returns to the previous step.\n\n### **CSS Parts:**\n - **connector** - The line connecting two adjacent steps.",
       "attributes": [
         {
           "name": "activeStep",
@@ -938,6 +943,33 @@
         {
           "name": "linear",
           "description": "When true, steps can only be activated in sequence.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "mu-spinner",
+      "description": "Circular progress indicator rendered as an SVG.\r\nSupports both indeterminate (spinning) and determinate (percentage) modes.\n---\n",
+      "attributes": [
+        {
+          "name": "size",
+          "description": "Named size of the spinner.",
+          "values": [{"name": "SpinnerSize"}]
+        },
+        {
+          "name": "color",
+          "description": "Stroke color of the spinning arc. Accepts any valid CSS color value.",
+          "values": []
+        },
+        {
+          "name": "value",
+          "description": "Progress value 0–100 for determinate mode.\r\nWhen set to a number the spinner renders a static filled arc;\r\notherwise it spins indefinitely.",
+          "values": []
+        },
+        {
+          "name": "indeterminate",
+          "description": "Whether to spin indefinitely regardless of `value`.",
           "values": []
         }
       ],
@@ -984,7 +1016,7 @@
     },
     {
       "name": "mu-tabs",
-      "description": "Tabs container that manages selection and keyboard navigation across\nslotted `mu-tab` and `mu-tab-panel` children.\n---\n\n\n### **Events:**\n - **tab-change** - Dispatched when the selected tab index changes. Detail: `{ index: number }`.\n\n### **CSS Properties:**\n - **--mu-tabs-indicator-color** - Active tab indicator and text colour; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-tabs-divider-color** - Bottom border colour of the tab list; defaults to `--mu-divider`. _(default: undefined)_\n\n### **CSS Parts:**\n - **tab-list** - The `div[role=\"tablist\"]` container element.",
+      "description": "Tabs container that manages selection and keyboard navigation across\r\nslotted `mu-tab` and `mu-tab-panel` children.\n---\n\n\n### **Events:**\n - **tab-change** - Dispatched when the selected tab index changes. Detail: `{ index: number }`.\n\n### **CSS Properties:**\n - **--mu-tabs-indicator-color** - Active tab indicator and text colour; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-tabs-divider-color** - Bottom border colour of the tab list; defaults to `--mu-divider`. _(default: undefined)_\n\n### **CSS Parts:**\n - **tab-list** - The `div[role=\"tablist\"]` container element.",
       "attributes": [
         {
           "name": "selectedIndex",
@@ -993,44 +1025,12 @@
         },
         {
           "name": "orientation",
-          "description": "Layout orientation of the tab list.\n`vertical` places the tab list beside the panels in a row layout.",
+          "description": "Layout orientation of the tab list.\r\n`vertical` places the tab list beside the panels in a row layout.",
           "values": [{"name": "horizontal"}, {"name": "vertical"}]
         },
         {
           "name": "scrollable",
-          "description": "Enables horizontal scroll overflow on the tab list and shows\nscroll-indicator chevron buttons at each end when overflow is present.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
-      "name": "mu-switch",
-      "description": "Toggle switch form component that participates in native HTML forms.\nSupports checked, disabled states and full keyboard accessibility.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the switch is toggled.\n\n### **CSS Properties:**\n - **--mu-switch-color** - Track colour when the switch is on; defaults to `--mu-primary`. _(default: undefined)_\n- **--mu-switch-radius** - Border radius of the track; defaults to 14 px. _(default: undefined)_\n\n### **CSS Parts:**\n - **track** - The sliding track element (the pill shape).\n- **thumb** - The circular thumb that slides inside the track.\n- **label** - The visible label text element.",
-      "attributes": [
-        {
-          "name": "checked",
-          "description": "Whether the switch is in the on/checked state.",
-          "values": []
-        },
-        {
-          "name": "disabled",
-          "description": "Disables the switch, making it non-interactive.",
-          "values": []
-        },
-        {
-          "name": "name",
-          "description": "Form field name submitted with the form.",
-          "values": []
-        },
-        {
-          "name": "value",
-          "description": "Value submitted to the form when the switch is on.",
-          "values": []
-        },
-        {
-          "name": "label",
-          "description": "Visible label rendered next to the switch. Falls back to default slot.",
+          "description": "Enables horizontal scroll overflow on the tab list and shows\r\nscroll-indicator chevron buttons at each end when overflow is present.",
           "values": []
         }
       ],
@@ -1038,7 +1038,7 @@
     },
     {
       "name": "mu-text-field",
-      "description": "Single-line text input form component that participates in native HTML forms.\nWraps a native `<input>` inside shadow DOM with an accessible floating label.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the input loses focus with a changed value.\n- **input** - Dispatched on every keystroke (native input event forwarded).\n\n### **CSS Properties:**\n - **--mu-text-field-radius** - Border radius of the input element; defaults to `--mu-radius` (8 px). _(default: undefined)_\n- **--mu-text-field-border-color** - Default border colour; defaults to `--mu-divider`. _(default: undefined)_\n- **--mu-text-field-focus-color** - Border and ring colour on focus; defaults to `--mu-primary`. _(default: undefined)_\n\n### **CSS Parts:**\n - **label** - The `<label>` element displayed above the input.\n- **wrapper** - The flex wrapper that holds prefix slot, input, and suffix slot.\n- **input** - The native `<input>` or `<textarea>` element.\n- **helper** - The helper text element displayed below the field.\n- **error** - The error message element displayed below the field.",
+      "description": "Single-line text input form component that participates in native HTML forms.\r\nWraps a native `<input>` inside shadow DOM with an accessible floating label.\n---\n\n\n### **Events:**\n - **change** - Dispatched when the input loses focus with a changed value.\n- **input** - Dispatched on every keystroke (native input event forwarded).\n\n### **CSS Properties:**\n - **--mu-text-field-radius** - Border radius of the input element; defaults to `--mu-radius` (8 px). _(default: undefined)_\n- **--mu-text-field-border-color** - Default border colour; defaults to `--mu-divider`. _(default: undefined)_\n- **--mu-text-field-focus-color** - Border and ring colour on focus; defaults to `--mu-primary`. _(default: undefined)_\n\n### **CSS Parts:**\n - **label** - The `<label>` element displayed above the input.\n- **wrapper** - The flex wrapper that holds prefix slot, input, and suffix slot.\n- **input** - The native `<input>` or `<textarea>` element.\n- **helper** - The helper text element displayed below the field.\n- **error** - The error message element displayed below the field.",
       "attributes": [
         {
           "name": "value",
@@ -1110,7 +1110,7 @@
     },
     {
       "name": "mu-tooltip",
-      "description": "Tooltip overlay component that reveals a short label near a trigger element.\nDisplays on hover and keyboard focus with a 300 ms delay.\nUses the Popover API (popover=\"manual\") for top-layer rendering where supported.\n---\n\n\n### **CSS Properties:**\n - **--mu-tooltip-bg** - Background colour of the tooltip; defaults to `--mu-text-primary` (#212b36). _(default: undefined)_\n- **--mu-tooltip-color** - Text colour; defaults to `#fff`. _(default: undefined)_\n- **--mu-tooltip-radius** - Border radius; defaults to `--mu-radius-md` (4 px). _(default: undefined)_\n\n### **CSS Parts:**\n - **tooltip** - The tooltip bubble element.",
+      "description": "Tooltip overlay component that reveals a short label near a trigger element.\r\nDisplays on hover and keyboard focus with a 300 ms delay.\r\nUses the Popover API (popover=\"manual\") for top-layer rendering where supported.\n---\n\n\n### **CSS Properties:**\n - **--mu-tooltip-bg** - Background colour of the tooltip; defaults to `--mu-text-primary` (#212b36). _(default: undefined)_\n- **--mu-tooltip-color** - Text colour; defaults to `#fff`. _(default: undefined)_\n- **--mu-tooltip-radius** - Border radius; defaults to `--mu-radius-md` (4 px). _(default: undefined)_\n\n### **CSS Parts:**\n - **tooltip** - The tooltip bubble element.",
       "attributes": [
         {
           "name": "label",

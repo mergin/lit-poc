@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-popover Demo</title>
+    <title>mu-popover</title>
     <link
       rel="stylesheet"
       href="/dev/demo.css"
@@ -38,7 +38,7 @@
         href="/dev/index.html"
         >Back to dev index</a
       >
-      <h1>mu-popover Demo</h1>
+      <h1>mu-popover</h1>
     </header>
 
     <main>
@@ -74,7 +74,7 @@
     </main>
 
     <script type="module">
-      import '/src/popover/mu-popover.js';
+      import '/src/core/components/popover/mu-popover.ts';
 
       document.querySelectorAll('mu-popover').forEach((el) => {
         el.addEventListener('mu-open', () => console.log('mu-open', el.id));

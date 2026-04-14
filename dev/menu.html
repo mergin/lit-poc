@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-menu Demo</title>
+    <title>mu-menu</title>
     <link
       rel="stylesheet"
       href="/dev/demo.css"
@@ -38,7 +38,7 @@
         href="/dev/index.html"
         >Back to dev index</a
       >
-      <h1>mu-menu Demo</h1>
+      <h1>mu-menu</h1>
     </header>
 
     <main>
@@ -82,8 +82,8 @@
     </main>
 
     <script type="module">
-      import '/src/menu/mu-menu.js';
-      import '/src/menu/mu-menu-item.js';
+      import '/src/core/components/menu/mu-menu.ts';
+      import '/src/core/components/menu/mu-menu-item.ts';
 
       document.querySelectorAll('mu-menu').forEach((el) => {
         el.addEventListener('mu-open', () => console.log('mu-open', el.id));

@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>mu-theme-provider Demo</title>
+    <title>mu-theme-provider</title>
     <link
       rel="stylesheet"
       href="/dev/demo.css"
@@ -24,7 +24,7 @@
         href="/dev/index.html"
         >Back to dev index</a
       >
-      <h1>mu-theme-provider Demo</h1>
+      <h1>mu-theme-provider</h1>
     </header>
 
     <main>
@@ -44,8 +44,8 @@
     </main>
 
     <script type="module">
-      import '/src/theme/mu-theme-provider.js';
-      import '/src/button/mu-button.js';
+      import '/src/core/components/theme/mu-theme-provider.ts';
+      import '/src/core/components/button/mu-button.ts';
 
       const provider = document.getElementById('provider');
       document.getElementById('toggle-btn').addEventListener('click', () => {
