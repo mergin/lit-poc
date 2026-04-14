@@ -278,7 +278,7 @@
     "lit"
   ],
   "author": "David Prieto",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=14.0.0",
     "@angular/forms": ">=14.0.0",
