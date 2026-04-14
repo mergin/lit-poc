@@ -8,7 +8,7 @@ test.describe('mu-linear-progress e2e', () => {
       <!DOCTYPE html>
       <html>
         <body>
-          <script type="module" src="/src/linear-progress/mu-linear-progress.ts"></script>
+          <script type="module" src="/src/core/components/linear-progress/mu-linear-progress.ts"></script>
           <mu-linear-progress value="50"></mu-linear-progress>
         </body>
       </html>

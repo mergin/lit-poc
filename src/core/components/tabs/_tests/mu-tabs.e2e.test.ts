@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/test';
-import {assertNoA11yViolations} from '../../../../../internal/utils/a11y.js';
+import {assertNoA11yViolations} from '../../../../internal/utils/a11y.js';
 
 test.describe('mu-tabs e2e', () => {
   test('switches panel on tab click', async ({page}) => {
@@ -9,7 +9,7 @@ test.describe('mu-tabs e2e', () => {
       <!DOCTYPE html>
       <html>
         <body>
-          <script type="module" src="/src/tabs/mu-tabs.ts"></script>
+          <script type="module" src="/src/core/components/tabs/mu-tabs.ts"></script>
           <mu-tabs>
             <mu-tab slot="tab">Tab 1</mu-tab>
             <mu-tab slot="tab">Tab 2</mu-tab>
@@ -39,7 +39,7 @@ test.describe('mu-tabs e2e', () => {
       <html lang="en">
         <head><title>Tabs Test</title></head>
         <body>
-          <script type="module" src="/src/tabs/mu-tabs.ts"></script>
+          <script type="module" src="/src/core/components/tabs/mu-tabs.ts"></script>
           <mu-tabs>
             <mu-tab slot="tab">Tab 1</mu-tab>
             <mu-tab slot="tab">Tab 2</mu-tab>

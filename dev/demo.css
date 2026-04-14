@@ -89,7 +89,7 @@ section {
 
 section > h2 {
   font-size: 0.85rem;
-  color: #7b8794;
+  color: var(--demo-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
