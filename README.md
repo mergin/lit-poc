@@ -128,25 +128,28 @@ Use the tokens entry point when you need direct access to design token maps in J
 ```ts
 import {lightTokens, darkTokens, spacingTokens} from 'lit-poc/tokens';
 
-console.log(lightTokens['--mu-primary']);
-console.log(darkTokens['--mu-bg-default']);
-console.log(spacingTokens);
+console.log(lightTokens['--mu-primary']); // 'rgb(25, 118, 210)'
+console.log(darkTokens['--mu-bg-default']); // 'rgb(18, 18, 18)'
+console.log(spacingTokens); // {--mu-spacing-xs: '4px', --mu-spacing-sm: '8px', ...}
 ```
+
+This is useful when building custom components or theming utilities that need to programmatically access design tokens.
 
 #### `lit-poc/ssr`
 
-Use the SSR entry point to render Lit templates on the server while importing library exports from the same module:
+Use the SSR entry point to render Lit templates on the server and collect static HTML markup:
 
 ```ts
 import {html} from 'lit';
-import {collectResult, render} from 'lit-poc/ssr';
-import 'lit-poc';
+import {render, collectResult} from 'lit-poc/ssr';
 
-const stream = render(html`<mu-button color="primary">Save</mu-button>`);
-const markup = await collectResult(stream);
+const template = html`<mu-button color="primary">Save</mu-button>`;
+const stream = render(template);
+const htmlString = await collectResult(stream);
+console.log(htmlString); // '<mu-button color="primary">Save</mu-button>'
 ```
 
-`lit-poc/ssr` is intended for ESM-capable server environments such as Node.js, Vite SSR, or Next.js route handlers. The package already includes `@lit-labs/ssr` as a dependency, so you do not need to install it separately unless you want to use that library directly.
+`lit-poc/ssr` is intended for ESM-capable server environments such as Node.js, Vite SSR, Next.js route handlers, or Deno. The package includes `@lit-labs/ssr` as a dependency, so you do not need to install it separately unless using `@lit-labs/ssr` directly for advanced use cases.
 
 ### Internationalization (i18n)
 
@@ -303,6 +306,8 @@ export class AppComponent {
 }
 ```
 
+For class-based components, use a similar pattern with `schemas: [CUSTOM_ELEMENTS_SCHEMA]` in the `@Component` decorator.
+
 Angular binds properties with `[propName]="value"` and listens to events with `(eventName)`.
 
 #### Reactive Forms
@@ -436,7 +441,7 @@ export class AppFormComponent {
 
 The CVA directives use Angular's **selector-based activation** — no extra attribute is needed. Each directive's selector matches the standard Angular forms bindings:
 
-```
+```text
 mu-text-field[formControlName], mu-text-field[formControl], mu-text-field[ngModel]
 mu-checkbox[formControlName],   mu-checkbox[formControl],   mu-checkbox[ngModel]
 mu-switch[formControlName],     mu-switch[formControl],     mu-switch[ngModel]
@@ -465,7 +470,7 @@ Each directive fully implements the `ControlValueAccessor` interface used by bot
 
 The library ships unit tests for each directive under `src/adapters/angular/_tests/`. Each suite verifies the complete `ControlValueAccessor` contract in isolation. Angular's module graph is never loaded — Vitest's `vi.mock` stubs `@angular/core` and `@angular/forms` before any import, preventing the JIT compilation errors that would otherwise occur in a non-Angular test environment.
 
-```
+```text
 src/adapters/angular/_tests/
 ├── mu-checkbox-control.directive.unit.test.ts    (9 tests)
 ├── mu-switch-control.directive.unit.test.ts      (9 tests)
@@ -578,7 +583,14 @@ npm run build
 npm run serve
 ```
 
-Open [http://localhost:8000/dev/index.html](http://localhost:8000/dev/index.html) to view the demo.
+Open [http://localhost:5173/dev/index.html](http://localhost:5173/dev/index.html) or [http://127.0.0.1:5173/dev/index.html](http://127.0.0.1:5173/dev/index.html) to view the component demo pages.
+
+Individual component demos are available at:
+
+- `http://localhost:5173/dev/button.html`
+- `http://localhost:5173/dev/card.html`
+- `http://localhost:5173/dev/theme.html` (theme provider demo)
+- etc.
 
 ### Testing
 
@@ -598,16 +610,34 @@ npm run test:watch
 
 #### End-to-End Tests
 
-Run end-to-end tests:
+Run end-to-end tests across all three browsers (Chromium, Firefox, WebKit):
 
 ```bash
 npm run test:e2e
 ```
 
-Run the full automated test suite, including E2E:
+Run tests in a specific browser only:
+
+```bash
+npm run test:e2e -- --project=chromium
+```
+
+Run tests in headed mode (see browser UI):
+
+```bash
+npm run test:e2e:headed
+```
+
+Run the full automated test suite, including unit, render, and E2E:
 
 ```bash
 npm run test:all
+```
+
+E2E tests use Playwright and test accessibility with `@axe-core/playwright`. Note: Before running E2E tests for the first time, install browsers with:
+
+```bash
+npm run test:e2e:install
 ```
 
 #### Performance Tests
@@ -656,19 +686,23 @@ Validate the generated dev landing page registry on its own:
 npm run validate:landing
 ```
 
-### Storybook
+### Storybook (Interactive Component Explorer)
 
-Run the interactive component explorer:
+Run Storybook in development mode:
 
 ```bash
 npm run storybook
 ```
 
-Build Storybook for deployment:
+Open [http://localhost:6006](http://localhost:6006) to view all components and their stories.
+
+Build Storybook for static deployment:
 
 ```bash
 npm run build-storybook
 ```
+
+Output is written to `storybook-static/`.
 
 ### Static Docs Site
 
@@ -689,6 +723,32 @@ Rebuild exported design-token artefacts only:
 
 ```bash
 npm run build:tokens
+```
+
+Check docs bundle sizes and enforce bundle budgets:
+
+```bash
+npm run checksize
+```
+
+`npm run checksize` rebuilds the docs bundles with `vite.docs.config.ts`, reports raw and gzip sizes for every generated `*.bundled.js` entry and any shared chunks, then fails if one of the configured budgets is exceeded.
+
+Default budgets:
+
+- Entry bundle: `3,500 B` raw / `1,200 B` gzip per `*.bundled.js` file
+- Shared chunk: `26,000 B` raw / `8,000 B` gzip per shared `*.js` file
+- Overall docs output: `35,000 B` raw / `12,000 B` gzip total
+
+Override the defaults in CI or locally with environment variables:
+
+```bash
+CHECKSIZE_MAX_ENTRY_GZIP_BYTES=1400 CHECKSIZE_MAX_TOTAL_GZIP_BYTES=13000 npm run checksize
+```
+
+If you need a cross-platform form in npm scripts or Windows shells, use `cross-env`:
+
+```bash
+npx cross-env CHECKSIZE_MAX_ENTRY_GZIP_BYTES=1400 CHECKSIZE_MAX_TOTAL_GZIP_BYTES=13000 npm run checksize
 ```
 
 ---
@@ -716,30 +776,46 @@ If your commit message does not follow the rules, the commit will be rejected.
 ```text
 src/
   core/
-    components/     ← all publishable web components, each with _tests/ and *.stories.ts
+    components/     ← all publishable web components in semantic folders
+                      each with _tests/ subfolder (*.unit.test.ts, *.render.test.ts, *.e2e.test.ts)
+                      and colocated *.stories.ts for Storybook
     i18n/           ← MuLocale interface, default locale, and <mu-locale-provider>
-    styles/         ← (reserved; shared-styles implementation moved to internal)
+      _tests/       ← locale provider E2E tests
   adapters/
-    react/          ← @lit/react wrappers (lit-poc/react)
+    react/          ← @lit/react wrappers and hooks (lit-poc/react)
+      _tests/       ← React adapter unit tests
     angular/        ← ControlValueAccessor directives (lit-poc/angular)
+      _tests/       ← Angular CVA directive unit tests
     vue/            ← defineComponent wrappers (lit-poc/vue)
-    svelte/         ← .svelte wrappers (lit-poc/svelte)
+    svelte/         ← .svelte component wrappers (lit-poc/svelte)
   platform/
     ssr/            ← server-side rendering helpers (lit-poc/ssr)
   tokens/
-    tokens.ts       ← token maps (lightTokens, darkTokens, …)
+    tokens.ts       ← token maps (lightTokens, darkTokens, spacingTokens, …)
     tokens.json     ← Style Dictionary source
     index.ts        ← public entry point (lit-poc/tokens)
+  theme/            ← <mu-theme-provider> component and theming utilities
+    _tests/         ← theme provider E2E tests
+  list/             ← <mu-list> and <mu-list-item> components
+    _tests/         ← list E2E tests
+  stories/          ← cross-component Storybook stories and utilities
+  test/             ← shared test utilities and fixtures
+  styles/           ← Style Dictionary config (sd.config.mjs), design tokens, and theme.css
   internal/
-    utils/          ← non-public helpers (sharedStyles, assertNoA11yViolations)
+    utils/          ← non-public helpers (sharedStyles, a11y testing utilities)
     types/          ← non-public type definitions
-  list/             ← <mu-list> and <mu-list-item> (not yet under core/components)
-  theme/            ← <mu-theme-provider>
-  stories/          ← cross-component Storybook stories
-  test/             ← shared test utilities (SSR smoke test)
-  styles/           ← Style Dictionary config (sd.config.mjs) and theme.css
   index.ts          ← root barrel export
 ```
+
+### Test Organization
+
+Each component folder under `src/` has a colocated `_tests/` subfolder with three test types:
+
+- `*.unit.test.ts` — Unit tests for logic, methods, and class behavior
+- `*.render.test.ts` — Render tests for DOM structure, template, and shadow DOM
+- `*.e2e.test.ts` — End-to-end tests using Playwright for integration and accessibility
+
+Shared test helpers are located in `src/internal/utils/` and `src/test/`.
 
 Other top-level directories:
 
@@ -761,9 +837,9 @@ The project uses two separate Vite configuration files. Each targets a distinct 
 
 This is the configuration used to publish the npm package. It compiles every component into its own flat ES-module file so consumers can tree-shake at the component level.
 
-#### Output layout
+#### Library output layout
 
-```
+```text
 dist/
 ├── index.js            ← full barrel re-export (import {} from 'lit-poc')
 ├── button.js           ← individual component (~3 kB gzip)
@@ -775,7 +851,7 @@ dist/
     └── shared-*.js     ← Rollup-extracted shared code (styles, utilities)
 ```
 
-#### Key settings
+#### Library key settings
 
 | Setting           | Value                     | Reason                                                                                                                    |
 | ----------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -820,7 +896,7 @@ lib: {
 // package.json
 "exports": {
   ".": { "import": "./dist/index.js", "types": "./dist/index.d.ts" },
-  "./button": { "import": "./dist/button.js", "types": "./dist/button/mu-button.d.ts" },
+  "./button": { "import": "./dist/button.js", "types": "./dist/core/components/button/mu-button.d.ts" },
   "./list-item": { "import": "./dist/list-item.js", "types": "./dist/list/mu-list-item.d.ts" }
 }
 ```
@@ -844,9 +920,9 @@ The `tsconfig.build.json` file sets `"declaration": true` and `"emitDeclarationO
 
 This configuration produces **self-contained** ES module bundles for use in the static documentation site. Unlike the library build, Lit and all other dependencies are **inlined**, so the output files can be loaded directly by a `<script type="module">` tag with no import maps or package manager required.
 
-#### Output layout
+#### Docs output layout
 
-```
+```text
 docs/
 ├── index.html               ← generated by Eleventy (not touched by this build)
 ├── mu-avatar.bundled.js     ← self-contained bundle (Lit inlined)
@@ -855,7 +931,7 @@ docs/
 └── mu-icon.bundled.js
 ```
 
-#### Key settings
+#### Docs key settings
 
 | Setting       | Value    | Reason                                                                                                                                                                             |
 | ------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -870,7 +946,9 @@ Entries use the `<tag-name>.bundled` key pattern so the output filenames clearly
 
 ```ts
 entry: {
-  'mu-button.bundled': 'src/button/mu-button.ts',  // → docs/mu-button.bundled.js
+  'mu-button.bundled': 'src/core/components/button/mu-button.ts',
+  'mu-icon.bundled': 'src/core/components/icon/mu-icon.ts',
+  // ... one per component in the docs
 }
 ```
 
