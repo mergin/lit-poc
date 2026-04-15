@@ -1,5 +1,32 @@
 # @lit/lit-starter-ts
 
+## Unreleased — Phase 15: Angular Web Components Migration Planning
+
+### Documentation
+
+- Added a comprehensive Angular migration planning set for evaluating a staged rewrite from Lit internals to Angular-backed custom elements while preserving the public package contract.
+- Added `ANGULAR_WEB_COMPONENT_MIGRATION_PLAN.md` with:
+  - architectural decision gates for runtime model, zone strategy, SSR handling, and Angular forms compatibility;
+  - a phased migration strategy spanning feasibility spike, shared foundations, component-family rollout, cross-framework validation, documentation updates, and cleanup;
+  - validation commands, risk tracking, and a Copilot execution protocol for safe incremental delivery.
+- Added execution-ready companion docs:
+  - **`ANGULAR_WEB_COMPONENT_PHASE0_BRIEF.md`** — focused feasibility-spike brief for `mu-button`;
+  - **`ANGULAR_WEB_COMPONENT_PHASE0_PROMPT.md`** — ready-to-run Copilot prompt for the Phase 0 spike;
+  - **`ANGULAR_WEB_COMPONENT_GITHUB_TASKS.md`** and **`ANGULAR_WEB_COMPONENT_GITHUB_ISSUES.md`** — milestone/task breakdowns and copy-paste issue templates for GitHub tracking.
+- Added split migration verification checklists covering:
+  - universal parity checks;
+  - display primitives;
+  - form controls;
+  - overlays and feedback;
+  - navigation;
+  - status/progress;
+  - complex interactive components;
+  - theme/localization foundations;
+  - cross-framework verification.
+- Added `ANGULAR_COMPONENT_FAMILY_CHECKLISTS.md` as the checklist index and sign-off template for family-level migration reviews.
+
+---
+
 ## Unreleased — Phase 14: Source Structure Reorganization
 
 ### Refactoring
